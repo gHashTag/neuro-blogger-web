@@ -140,7 +140,7 @@ export default function Wallet() {
       })
     }
   }
-
+  console.log(userNode, 'userNode')
   return (
     <Layout loading={loading}>
       <main className='flex flex-col items-center justify-between p-14'>

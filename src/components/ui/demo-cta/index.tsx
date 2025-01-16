@@ -39,6 +39,7 @@ const DemoButton = () => {
       ...userInfo,
       telegram_id: user.id,
     }
+    console.log(user, 'user')
     console.log(userDataForBaseRecord, 'userDataForBaseRecord')
     const newUserDataFromBase = await createUser(userDataForBaseRecord)
     console.log(newUserDataFromBase, 'newUserDataFromBase')

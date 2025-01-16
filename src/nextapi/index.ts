@@ -1,6 +1,6 @@
 import { SITE_URL } from '@/utils/constants'
 
-export async function createUser(data: any) {
+export async function createUser(data: unknown) {
   try {
     const url = `${SITE_URL}/api/create-user`
     const response = await fetch(url, {
@@ -10,6 +10,7 @@ export async function createUser(data: any) {
       },
       body: JSON.stringify(data),
     })
+    console.log(response, 'response')
 
     const result = await response.json()
     return result

@@ -204,7 +204,7 @@ White label позволяет использовать наши  услу
 
 Автор проекта Дмитрий Васильев создатель школы программирования JavaScript Camp, первый русский в программе АвэЭс Комьюнити Билдерс от Амазон, создатель курсов программирования и игрового мобильного приложения Лила Чакра.
 
-<!-- curl -X POST "https://api.telegram.org/bot6389824290:AAH81vTqOjDcGLlWRVyDPcwCtfxqRYXc2zo/sendMessage" \
+<!-- curl -X POST "https://api.telegram.org/bot/sendMessage" \
 -H "Content-Type: application/json" \
 -d '{
   "chat_id": "-1001729610573",

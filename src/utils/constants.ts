@@ -6,7 +6,7 @@ if (!process.env.NEXT_PUBLIC_SITE_URL) {
   throw new Error('NEXT_PUBLIC_SITE_URL is not set')
 }
 
-export var __DEV__ = process.env.NODE_ENV !== 'production'
+export const __DEV__ = process.env.NODE_ENV !== 'production'
 
 export const SITE_URL = __DEV__
   ? process.env.NEXT_PUBLIC_LOCAL_URL
