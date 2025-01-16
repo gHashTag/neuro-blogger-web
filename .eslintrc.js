@@ -11,6 +11,7 @@ module.exports = {
   plugins: ['@typescript-eslint', 'tailwindcss'],
   parser: '@typescript-eslint/parser',
   rules: {
+    '@typescript-eslint/no-explicit-any': 'warn',
     'selector-class-pattern': null,
     'tailwindcss/classnames-order': 'off',
     semi: 'error',
