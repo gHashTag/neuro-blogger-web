@@ -1,18 +1,8 @@
-import { captureExceptionSentry } from '@/utils/sentry'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import {
-  checkUsernameCodesByUserId,
-  createUser,
-  getSelectIzbushkaId,
-  setMyWorkspace,
-  setPassport,
-} from '@/utils/supabase'
-
-import { tokenAiKoshey } from '@/utils/telegram/bots'
-
 import NextCors from 'nextjs-cors'
-import { createOrFetchRoom } from '@/utils/100ms/helpers'
+
+import { __DEV__ } from '@/utils/constants'
 
 const headers = {
   'Content-Type': 'application/json',
@@ -56,135 +46,24 @@ export default async function handler(
     optionsSuccessStatus: 200,
   })
 
-  const {
-    id,
-    inviter,
-    username,
-    first_name,
-    last_name,
-    is_bot,
-    language_code,
-    select_izbushka,
-    telegram_id,
-    photo_url,
-  }: CreateUserT = await req.body
-
   try {
-    // check if inviter exists
-    const { isInviterExist, invitation_codes, inviter_user_id } =
-      await checkUsernameCodesByUserId(inviter)
+    console.log('CASE: CREATE USER')
+    const url = `${__DEV__ ? 'http://localhost:3000' : process.env.ELESTIO_URL}/user/create`
+    console.log(url, 'url')
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(req.body),
+    })
+    console.log(response, 'response')
 
-    if (isInviterExist) {
-      const newUser = {
-        username,
-        first_name,
-        last_name: last_name || '',
-        is_bot,
-        language_code,
-        inviter: inviter_user_id,
-        invitation_codes,
-        telegram_id: id,
-        select_izbushka,
-        email: '',
-        photo_url: photo_url || '',
-      }
+    const result = await response.json()
 
-      console.log(newUser, 'newUser')
-
-      const { user_id, isUserExist } = await createUser(newUser)
-      console.log(user_id, 'user_id')
-      console.log(isUserExist, 'isUserExist')
-
-      // create workspace
-      if (user_id) {
-        if (!isUserExist) {
-          const workspace_id = await setMyWorkspace(user_id)
-          console.log(workspace_id, 'workspace_id')
-          //Create or get a room
-          const rooms = await createOrFetchRoom({
-            username,
-            first_name,
-            last_name: last_name || '',
-            language_code,
-            user_id,
-            chat_id: telegram_id,
-            workspace_id,
-            token: tokenAiKoshey,
-          })
-          console.log(rooms, 'rooms')
-          if (!rooms) {
-            return res.status(500).json({ message: 'Room not created' })
-          }
-
-          const passport = {
-            user_id,
-            workspace_id,
-            room_id: rooms.room_id,
-            username,
-            first_name,
-            last_name: last_name || '',
-            chat_id: id,
-            type: 'room',
-            is_owner: true,
-          }
-          console.log(passport, 'passport')
-
-          if (!passport) {
-            return res.status(500).json({ message: 'Passport not created' })
-          }
-
-          try {
-            const passport_id_owner = await setPassport(passport)
-            console.log(passport_id_owner, 'passport_id_owner')
-            const { izbushka } = await getSelectIzbushkaId(select_izbushka)
-            console.log(izbushka, 'izbushka')
-            if (
-              !izbushka ||
-              !izbushka.workspace_id ||
-              !izbushka.room_id ||
-              !izbushka.chat_id
-            ) {
-              return res.status(500).json({ message: 'Izbushka not found' })
-            }
-            const passport_user = {
-              user_id,
-              workspace_id: izbushka.workspace_id,
-              room_id: izbushka.room_id,
-              username,
-              first_name,
-              last_name: last_name || '',
-              chat_id: izbushka.chat_id,
-              type: 'room',
-              is_owner: false,
-            }
-            console.log(passport_user, 'passport_user')
-            const passport_id_user = await setPassport(passport_user)
-
-            return res.status(200).json({
-              user_id,
-              passport_id_owner,
-              passport_id_user,
-              workspace_id,
-              rooms_id: rooms.room_id,
-              message: `User created successfully`,
-            })
-          } catch (error) {
-            captureExceptionSentry(error, 'create-user')
-          }
-        } else {
-          return res.status(200).json({
-            user_id,
-            message: `User already exists`,
-          })
-        }
-      } else {
-        return res.status(500).json({ message: 'Workspace not created' })
-      }
-    } else {
-      return res.status(500).json({ message: 'User not found' })
-    }
-  } catch (error: any) {
-    captureExceptionSentry(error, 'create-user')
-    return res.status(500).json({ message: error.message })
+    return res.status(200).json(result)
+  } catch (error) {
+    console.error(error, 'error')
+    return res.status(500).json({ message: JSON.stringify(error) })
   }
 }

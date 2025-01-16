@@ -4,8 +4,21 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)?',
-        headers: [{ key: 'X-Frame-Options', value: 'SAMEORIGIN' }],
+        source: '/api/create-user',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+          {
+            key: 'Access-Control-Allow-Methods',
+            value: 'GET, POST, PUT, DELETE, OPTIONS',
+          },
+          {
+            key: 'Access-Control-Allow-Headers',
+            value: 'Content-Type, Authorization',
+          },
+        ],
       },
     ]
   },
@@ -48,6 +61,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'pbs.twimg.com',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
       },
     ],
   },

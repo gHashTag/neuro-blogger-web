@@ -22,7 +22,7 @@ export const setUserInfo = makeVar<SupabaseUser | null>(null)
 
 export const setUserSupabase = makeVar<SupabaseUser | null>(null)
 
-const initCode = `${__DEV__ ? '' : ''}`
+const initCode = `${__DEV__ ? 'neuro_sage' : ''}`
 
 export const setInviteCode = makeVar<string>(initCode)
 

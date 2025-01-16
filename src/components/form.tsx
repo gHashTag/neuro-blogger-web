@@ -38,6 +38,7 @@ import Captcha, { useCaptcha } from './captcha'
 import { useUser } from '@/hooks/useUser'
 import { checkUsernameAndReturnUser } from '@/utils/supabase'
 import { isValidEmail } from '@/helpers/utils'
+import { __DEV__ } from '@/utils/constants'
 
 type FormState = 'default' | 'loading' | 'error' | 'success'
 
@@ -69,16 +70,20 @@ export default function Form({ sharePage }: Props) {
     isEnabled: isCaptchaEnabled,
   } = useCaptcha()
 
-  const inputRef = useRef(null)
-  const inputRefWord = useRef(null)
+  const email = __DEV__ ? 'neuro_sage@gmail.com' : ''
+  const inputRef = useRef<HTMLInputElement | null>(null)
+  const inputRefWord = useRef<HTMLInputElement | null>(null)
   const { username, user_id, language_code } = useUser()
 
   useEffect(() => {
     if (workspace_id) {
       router.push(`/${username}/${user_id}`)
     }
-    if (inputRef.current || inputRefWord.current) {
-      ;(inputRef.current as any)?.focus()
+    if (inputRef.current) {
+      inputRef.current.focus()
+    }
+    if (inputRefWord.current) {
+      inputRefWord.current.focus()
     }
   }, [router, workspace_id])
 
@@ -198,7 +203,7 @@ export default function Form({ sharePage }: Props) {
                   ref={inputRef}
                   className={`${styles.input}`}
                   autoComplete='off'
-                  type='text'
+                  type='email'
                   id='email-input-field'
                   value={inviteCode}
                   onChange={e => setInviteCode(e.target.value)}
