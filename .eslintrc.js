@@ -13,6 +13,7 @@ module.exports = {
   rules: {
     'selector-class-pattern': null,
     'tailwindcss/classnames-order': 'off',
+    semi: 'error',
   },
   overrides: [
     {
@@ -27,13 +28,15 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
         'plugin:tailwindcss/recommended',
         'prettier',
-        //'plugin:@typescript-eslint/recommended-type-checked',
-        // 'plugin:@typescript-eslint/strict-type-checked',
-        // 'plugin:@typescript-eslint/stylistic-type-checked',
+        'plugin:@typescript-eslint/recommended-type-checked',
+        'plugin:@typescript-eslint/strict-type-checked',
+        'plugin:@typescript-eslint/stylistic-type-checked',
       ],
       rules: {
         'tailwindcss/classnames-order': 'off',
+        semi: 'error',
       },
     },
   ],
-};
+}
+//https://www.freecodecamp.org/news/how-to-set-up-eslint-prettier-stylelint-and-lint-staged-in-nextjs/
