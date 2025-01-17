@@ -183,8 +183,8 @@ importers:
         specifier: ^0.4.4
         version: 0.4.4(react-dom@18.3.1(react@18.2.0))(react@18.2.0)
       nextjs-cors:
-        specifier: ^2.2.0
-        version: 2.2.0(next@15.1.4(@babel/core@7.26.0)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(sass@1.83.4))
+        specifier: 3.0.0-alpha.1
+        version: 3.0.0-alpha.1(next@15.1.4(@babel/core@7.26.0)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(sass@1.83.4))
       ngrok:
         specifier: 5.0.0-beta.2
         version: 5.0.0-beta.2
@@ -1355,6 +1355,11 @@ packages:
 
   '@mtcute/wasm@0.19.0':
     resolution: {integrity: sha512-QvSCjNR3/Y4knRMfccNXAdPUCgnQfjmOD/LGGHgQq/5/7SfA7f4/wk7G/TdlnBPArqk58EvyrC5qeKEy81y9Xw==}
+
+  '@next-cors/core@0.0.1':
+    resolution: {integrity: sha512-9pnlVPwoLGPeAvqLCrZDVwMZoy1GrMqTC2uc4SiCgU8LUeaupN1NVLAcVy8uigbv/2jwzow0U8m2Tf8xdnw56g==}
+    peerDependencies:
+      next: ^8.1.1-canary.54 || ^9.0.0 || ^10.0.0-0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0
 
   '@next/env@15.1.4':
     resolution: {integrity: sha512-2fZ5YZjedi5AGaeoaC0B20zGntEHRhi2SdWcu61i48BllODcAmmtj8n7YarSPt4DaTsJaBFdxQAVEVzgmx2Zpw==}
@@ -6530,10 +6535,10 @@ packages:
       sass:
         optional: true
 
-  nextjs-cors@2.2.0:
-    resolution: {integrity: sha512-FZu/A+L59J4POJNqwXYyCPDvsLDeu5HjSBvytzS6lsrJeDz5cmnH45zV+VoNic0hjaeER9xGaiIjZIWzEHnxQg==}
+  nextjs-cors@3.0.0-alpha.1:
+    resolution: {integrity: sha512-DhOxKq3TB+9YOGBHBkydMoATPfKrQFL7ckzECnNULjPYAdWxWK0F2vA7IL/5FMQPv3Bwz4rkrlih8wq4iVsvYw==}
     peerDependencies:
-      next: ^8.1.1-canary.54 || ^9.0.0 || ^10.0.0-0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0
+      next: ^8.1.1-canary.54 || ^9.0.0 || ^10.0.0-0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0
 
   ngrok@5.0.0-beta.2:
     resolution: {integrity: sha512-UzsyGiJ4yTTQLCQD11k1DQaMwq2/SsztBg2b34zAqcyjS25qjDpogMKPaCKHwe/APRTHeel3iDXcVctk5CNaCQ==}
@@ -9552,6 +9557,11 @@ snapshots:
       long: 5.2.3
 
   '@mtcute/wasm@0.19.0': {}
+
+  '@next-cors/core@0.0.1(next@15.1.4(@babel/core@7.26.0)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(sass@1.83.4))':
+    dependencies:
+      cors: 2.8.5
+      next: 15.1.4(@babel/core@7.26.0)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(sass@1.83.4)
 
   '@next/env@15.1.4': {}
 
@@ -16302,9 +16312,9 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  nextjs-cors@2.2.0(next@15.1.4(@babel/core@7.26.0)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(sass@1.83.4)):
+  nextjs-cors@3.0.0-alpha.1(next@15.1.4(@babel/core@7.26.0)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(sass@1.83.4)):
     dependencies:
-      cors: 2.8.5
+      '@next-cors/core': 0.0.1(next@15.1.4(@babel/core@7.26.0)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(sass@1.83.4))
       next: 15.1.4(@babel/core@7.26.0)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(sass@1.83.4)
 
   ngrok@5.0.0-beta.2:
