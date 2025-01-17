@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import { retrieveLaunchParams } from '@telegram-apps/sdk'
-import dynamic from 'next/dynamic'
 import {
-  HMSRoomProvider,
   selectIsConnectedToRoom,
   useHMSActions,
   useHMSStore,
@@ -16,7 +14,7 @@ import {
 } from '@/utils/supabase'
 import { captureExceptionSentry } from '@/utils/sentry'
 import { Spinner } from '@/components/ui/spinner'
-
+// import { HMSPrebuilt } from '@100mslive/roomkit-react'
 // const miniApp = new MiniApp({
 //   headerColor: "#00ae13",
 //   backgroundColor: "#00ae13",
@@ -25,17 +23,6 @@ import { Spinner } from '@/components/ui/spinner'
 //   createRequestId: () => "1234567890",
 // });
 // console.log(miniApp, "miniApp");
-
-const HMSPrebuilt = dynamic(
-  () =>
-    import('@100mslive/roomkit-react').then(mod => ({
-      //@ts-ignore
-      default: mod.HMSPrebuilt,
-    })),
-  {
-    ssr: false,
-  }
-)
 
 const ShowIzbushka = () => {
   const { initData, platform } = retrieveLaunchParams()
@@ -179,12 +166,13 @@ const ShowIzbushka = () => {
         {!roomId || !fullName ? (
           <Spinner size='lg' />
         ) : (
-          <HMSPrebuilt
-            //@ts-ignore
-            // authToken={token}
-            roomCode={roomId}
-            options={{ userName: fullName || '' }}
-          />
+          // <HMSPrebuilt
+          //   //@ts-ignore
+          //   // authToken={token}
+          //   roomCode={roomId}
+          //   options={{ userName: fullName || '' }}
+          // />
+          <div></div>
         )}
       </div>
     </div>

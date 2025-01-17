@@ -2,26 +2,16 @@
 import { useState, useEffect } from 'react'
 import Layout from '@/components/layout'
 import {
-  HMSRoomProvider,
   selectIsConnectedToRoom,
   useHMSActions,
   useHMSStore,
 } from '@100mslive/react-sdk'
+// import { HMSPrebuilt } from '@100mslive/roomkit-react'
 import { usePassport } from '@/hooks/usePassport'
 import { useRouter } from 'next/router'
-import dynamic from 'next/dynamic'
+
 import { useUser } from '@/hooks/useUser'
 import { captureExceptionSentry } from '@/utils/sentry'
-
-const HMSPrebuilt = dynamic(
-  () =>
-    import('@100mslive/roomkit-react').then(mod => ({
-      default: mod.HMSPrebuilt,
-    })),
-  {
-    ssr: false,
-  }
-)
 
 type QueryType = {
   roomCode: string
@@ -101,10 +91,11 @@ const Rooms = () => {
   return (
     <Layout loading={loading || passportLoading}>
       {isPassport && (
-        <HMSPrebuilt
-          roomCode={roomCode}
-          options={{ userName: getUserName() }}
-        />
+        // <HMSPrebuilt
+        //   roomCode={roomCode}
+        //   options={{ userName: getUserName() }}
+        // />
+        <div></div>
       )}
     </Layout>
   )
