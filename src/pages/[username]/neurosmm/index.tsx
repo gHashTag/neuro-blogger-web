@@ -2,7 +2,7 @@ import { ProblemSection } from '@/components/landingpage/ProblemSection'
 import { SolutionSection } from '@/components/landingpage/SolutionSection'
 import { FAQ } from '@/components/landingpage/FAQ'
 import { Footer } from '@/components/landingpage/Footer'
-import { CoursePricing } from '@/components/landingpage/CoursePricing'
+
 import { AuthorSection } from '@/components/landingpage/AuthorSection'
 import { HeroIntensive } from '@/components/landingpage/HeroIntensive'
 import { AudienceTags } from '@/components/landingpage/AudienceTags'
@@ -11,7 +11,8 @@ import { ContactSection } from '@/components/landingpage/ContactSection'
 import { OfferPage } from '@/components/landingpage/OfferPage'
 import { ServiceBenefits } from '@/components/landingpage/ServiceBenefits'
 import { PricingSection } from '@/components/landingpage/PricingSection'
-import { pricingNeuroSmm } from './PricingNeuroSmm'
+// import { pricingNeuroSmm } from './PricingNeuroSmm'
+// import { CoursePricing } from '@/components/landingpage/CoursePricing'
 
 const autor = {
   name: 'Дмитрий НейроКодер',

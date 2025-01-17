@@ -1,19 +1,18 @@
 import { ProblemSection } from '@/components/landingpage/ProblemSection'
 import { SolutionSection } from '@/components/landingpage/SolutionSection'
 import { LearningOutcomes } from '@/components/landingpage/LearningOutcomes'
-import { Projects } from '@/components/landingpage/Projects'
 import { FAQ } from '@/components/landingpage/FAQ'
-import { SocialProof } from '@/components/landingpage/SocialProof'
 import { Footer } from '@/components/landingpage/Footer'
 import { CourseBlock } from '@/components/landingpage/CourseBlock'
 import { CoursePricing } from '@/components/landingpage/CoursePricing'
 import { AuthorSection } from '@/components/landingpage/AuthorSection'
 import { HeroIntensive } from '@/components/landingpage/HeroIntensive'
 import { AudienceTags } from '@/components/landingpage/AudienceTags'
-import ParallaxComponent from '@/components/landingpage/ParallaxComponent'
+
 import { MainMenu } from '@/components/landingpage/MainMenu'
 import { CourseProgram } from '@/components/landingpage/CourseSlideshow'
 import { ContactSection } from '@/components/landingpage/ContactSection'
+import { pricingPlans } from '../neurosmm/PricingPlans'
 
 const autor = {
   name: 'Дмитрий НейроКодер',
@@ -37,6 +36,11 @@ const autor = {
     'Международный опыт': 'Работа в UAE, Thailand, Indonesia',
     Основатель: 'Leela Chakra AI, NeuroCoder, NeuroBlogger',
   },
+  title: 'SMM НА АВТОПИЛОТЕ',
+  subtitle: 'АВАТАР ВЕДЕТ БЛОГ ЗА ВАС',
+  bonusTitle: 'БОНУС ПРИ РЕГИСТРАЦИИ',
+  neurosmmDescription:
+    'AI контент производство для блогеров, бизнеса и экспертов',
 }
 
 const problemData = {
@@ -71,7 +75,13 @@ function Home() {
 
       <section className='px-4 py-5'>
         <div className='mx-auto max-w-7xl'>
-          <HeroIntensive author={autor} />
+          <HeroIntensive
+            author={autor}
+            title={autor.title}
+            subtitle={autor.subtitle}
+            bonusTitle={autor.bonusTitle}
+            description={autor.neurosmmDescription}
+          />
         </div>
       </section>
 
@@ -119,7 +129,7 @@ function Home() {
       {/* Цена и CTA */}
       <section id='price' className='px-4 py-5'>
         <div className='mx-auto max-w-7xl'>
-          <CoursePricing />
+          <CoursePricing plans={pricingPlans} />
         </div>
       </section>
 
