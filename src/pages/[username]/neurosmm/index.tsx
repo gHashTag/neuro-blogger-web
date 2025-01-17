@@ -11,8 +11,6 @@ import { ContactSection } from '@/components/landingpage/ContactSection'
 import { OfferPage } from '@/components/landingpage/OfferPage'
 import { ServiceBenefits } from '@/components/landingpage/ServiceBenefits'
 import { PricingSection } from '@/components/landingpage/PricingSection'
-// import { pricingNeuroSmm } from './PricingNeuroSmm'
-// import { CoursePricing } from '@/components/landingpage/CoursePricing'
 
 const autor = {
   name: 'Дмитрий НейроКодер',

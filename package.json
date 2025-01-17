@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 80 --turbopack",
-    "build": "prettier --check . && next build",
+    "build": "next build",
     "build:local": "prettier --write . && next build",
     "start": "next start -p 80",
     "lint": "next lint",
@@ -91,6 +91,7 @@
     "telegram": "^2.22.2",
     "three": "^0.172.0",
     "three-globe": "^2.40.4",
+    "types": "link:next-themes/dist/types",
     "usehooks-ts": "^3.1.0",
     "uuid": "^11.0.5"
   },

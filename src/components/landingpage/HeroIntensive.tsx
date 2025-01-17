@@ -61,7 +61,6 @@ export function HeroIntensive({
 
         {/* Правая колонка - Изображение */}
         <div className='relative w-full'>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={author.imageUrl}
             alt='AI Illustration'

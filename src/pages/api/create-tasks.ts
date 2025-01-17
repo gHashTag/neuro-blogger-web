@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getWorkspaceById, supabase } from '@/utils/supabase'
 import { headers } from '@/helpers/headers'
-import NextCors from 'nextjs-cors'
+
 import { Bot } from 'grammy'
 import { translateText } from '@/helpers/api/translateText'
 import { createChatCompletion } from '@/helpers/api/createChatCompletion'
@@ -94,12 +94,6 @@ export default async function handler(
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: { ...headers } })
   }
-  await NextCors(req, res, {
-    // Options
-    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-    origin: '*',
-    optionsSuccessStatus: 200,
-  })
 
   try {
     const { type, data } = await req.body

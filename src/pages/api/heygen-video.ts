@@ -1,5 +1,5 @@
 import { __DEV__ } from '@/utils/constants'
-import { captureExceptionSentry } from '@/utils/sentry'
+
 import type { NextApiRequest, NextApiResponse } from 'next'
 import fs from 'fs'
 import path from 'path'
@@ -7,8 +7,6 @@ import { InputFile } from 'grammy'
 //@ts-ignore
 import ffmpeg from 'fluent-ffmpeg'
 import { botAiKoshey } from '@/utils/telegram/bots'
-
-import NextCors from 'nextjs-cors'
 
 import { getVideoWithChatId } from '@/supabase/videos'
 
@@ -62,12 +60,6 @@ export default async function handler(
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: { ...headers } })
   }
-  await NextCors(req, res, {
-    // Options
-    methods: ['POST'],
-    origin: '*',
-    optionsSuccessStatus: 200,
-  })
 
   const { event_type, event_data }: CreateVideoT = await req.body
 

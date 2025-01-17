@@ -1,7 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import NextCors from 'nextjs-cors'
-
 import { __DEV__ } from '@/utils/constants'
 
 const headers = {
@@ -39,12 +37,6 @@ export default async function handler(
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: { ...headers } })
   }
-  await NextCors(req, res, {
-    // Options
-    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-    origin: '*',
-    optionsSuccessStatus: 200,
-  })
 
   try {
     console.log('CASE: CREATE USER')

@@ -1,4 +1,4 @@
-export const pricingNeuroSmm = [
+export const PricingNeuroSmm = [
   {
     title: '🧠 НейроВстреча',
     description: `🤝 Индивидуальная встреча с экспертом<br />

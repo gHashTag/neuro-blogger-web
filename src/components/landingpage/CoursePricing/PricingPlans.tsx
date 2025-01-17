@@ -1,4 +1,4 @@
-export const pricingPlans = [
+export const PricingPlans = [
   {
     title: '📚 НейроБаза',
     description: `📖 Самостоятельное обучение по нейросетям с ИИ аватаром<br />

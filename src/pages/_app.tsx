@@ -110,7 +110,6 @@ export default function App({ Component, pageProps }: AppProps) {
         uri: `${process.env.NEXT_PUBLIC_SUPABASE_URL}/graphql/v1`,
       })
 
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const authLink = setContext(async (_, { headers }) => {
         //const token = (await supabase.auth.getSession()).data.session?.access_token;
 

@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import { cn } from '@/utils/cn'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import React, { useCallback, useMemo, useRef } from 'react'
+import React, { useCallback, useRef } from 'react'
 
 import * as THREE from 'three'
 
@@ -12,7 +11,6 @@ export const CanvasRevealEffect = ({
   colors = [[0, 255, 255]],
   containerClassName,
   dotSize,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   showGradient = true,
 }: {
   /**

@@ -12,7 +12,7 @@ import { AudienceTags } from '@/components/landingpage/AudienceTags'
 import { MainMenu } from '@/components/landingpage/MainMenu'
 import { CourseProgram } from '@/components/landingpage/CourseSlideshow'
 import { ContactSection } from '@/components/landingpage/ContactSection'
-import { pricingPlans } from '../neurosmm/PricingPlans'
+import { PricingPlans } from '@/components/landingpage/CoursePricing/PricingPlans'
 
 const autor = {
   name: 'Дмитрий НейроКодер',
@@ -129,7 +129,7 @@ function Home() {
       {/* Цена и CTA */}
       <section id='price' className='px-4 py-5'>
         <div className='mx-auto max-w-7xl'>
-          <CoursePricing plans={pricingPlans} />
+          <CoursePricing plans={PricingPlans} />
         </div>
       </section>
 

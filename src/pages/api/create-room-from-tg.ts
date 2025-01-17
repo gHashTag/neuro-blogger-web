@@ -2,10 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '@/utils/supabase'
 import { RoomNode } from '@/types'
 import { headers } from '@/helpers/headers'
-import NextCors from 'nextjs-cors'
-// @ts-ignore
-import jwt from 'jsonwebtoken'
-// @ts-ignore
+
 import { v4 as uuidv4 } from 'uuid'
 import { __DEV__ } from '@/utils/constants'
 import { transliterate } from '@/helpers/api/transliterate'
@@ -26,12 +23,6 @@ export default async function handler(
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: { ...headers } })
   }
-  await NextCors(req, res, {
-    // Options
-    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-    origin: '*',
-    optionsSuccessStatus: 200,
-  })
 
   try {
     const { id, name, type, username, user_id, language_code, chat_id, token } =
@@ -52,7 +43,6 @@ export default async function handler(
       .select('*')
       .eq('username', username)
 
-    // console.log(data, "data");
     if (userError) {
       throw new Error(`Error fetching user: ${userError.message}`)
     }
