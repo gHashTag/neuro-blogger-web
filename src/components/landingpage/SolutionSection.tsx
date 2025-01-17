@@ -56,7 +56,7 @@ export function SolutionSection() {
         {/* Заголовок */}
         <div className='mb-16 px-4 text-center'>
           <span className='mb-4 inline-flex items-center gap-2 rounded-full bg-purple-100 px-4 py-2 text-sm text-purple-700 sm:text-base md:text-lg lg:text-xl'>
-            <Star className='h-12 w-12 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-14 lg:w-14' />
+            <Star className='h-7 w-7 sm:h-7 sm:w-7 md:h-8 md:w-8 lg:h-9 lg:w-9' />
             ИИ-Автоматизация блога вашим цифровым двойником
           </span>
 

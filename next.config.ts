@@ -63,6 +63,14 @@ const nextConfig = {
         hostname: 'pbs.twimg.com',
       },
       {
+        protocol: 'https',
+        hostname: '100ms.live',
+      },
+      {
+        protocol: 'https',
+        hostname: 'dmrooqbmxdhdyblqzswu.supabase.co',
+      },
+      {
         protocol: 'http',
         hostname: 'localhost',
       },

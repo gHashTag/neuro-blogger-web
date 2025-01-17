@@ -14,6 +14,7 @@ import { PricingSection } from '@/components/landingpage/PricingSection'
 
 const autor = {
   name: 'Дмитрий НейроКодер',
+  telegram: 'https://t.me/neurocoder',
   role: 'Full Stack разработчик',
   experience: '10+ лет опыта',
   bonusDescription:
@@ -27,12 +28,44 @@ const autor = {
     'AI Эксперт',
     'Международный опыт',
     'Основатель',
+    'АВТОР ПРОЕКТА',
   ],
   achievementDescriptions: {
     'Full Stack Developer': 'React Native, AWS, Web3',
     'AI Эксперт': 'Интеграция ИИ в приложения',
     'Международный опыт': 'Работа в UAE, Thailand, Indonesia',
     Основатель: 'Leela Chakra AI, NeuroCoder, NeuroBlogger',
+  },
+  title: 'SMM НА АВТОПИЛОТЕ',
+  subtitle: 'АВАТАР ВЕДЕТ БЛОГ ЗА ВАС',
+  bonusTitle: 'БОНУС ПРИ РЕГИСТРАЦИИ',
+  neurosmmDescription:
+    'AI контент производство для блогеров, бизнеса и экспертов',
+}
+
+const metaMuseAutor = {
+  name: 'Натали Ткачева (META MUSE)',
+  telegram: 'https://t.me/muse_nataly',
+  role: 'HI-TECH Influencer, блогер, эксперт по автоматизации',
+  experience: '8 лет хозяйка титанового производства',
+  bonusDescription:
+    'PDF-книга «10 способов заработка на текстовых и графических нейросетях»',
+  imageUrl:
+    'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/meta_muse/meta_muse.jpeg',
+  description:
+    'HI-TECH Influencer, блогер, эксперт по автоматизации, хозяйка титанового производства (8 лет), ментор собственников бизнеса и международный спикер. Full Stack разработчик с более чем 10-летним опытом. Автор первого курса по React Native и AWS Amplify в русскоязычном интернете. Член программы AWS Community Builders от Amazon. Основатель нескольких успешных IT-проектов.',
+  achievements: [
+    'HI-TECH Influencer',
+    'Эксперт по автоматизации',
+    'Международный спикер',
+    'Ментор бизнеса',
+    'МУЗА ПРОЕКТА',
+  ],
+  achievementDescriptions: {
+    'HI-TECH Influencer': 'Влияние в сфере высоких технологий',
+    'Эксперт по автоматизации': 'Опыт в автоматизации процессов',
+    'Международный спикер': 'Выступления на международных конференциях',
+    'Ментор бизнеса': 'Наставничество для собственников бизнеса',
   },
   title: 'SMM НА АВТОПИЛОТЕ',
   subtitle: 'АВАТАР ВЕДЕТ БЛОГ ЗА ВАС',
@@ -48,7 +81,7 @@ const problemData = {
     'Падение охватов',
     'Качество контента',
     'Низкая вовлеченность',
-    'Низкая вовлечённость и конверсии',
+    'Низкая конверсия',
   ],
   descriptions: [
     'Создание регулярного контента отнимает слишком много ресурсов',
@@ -130,15 +163,21 @@ function Home() {
         </div>
       </section> */}
 
-      <section id='author-section' className='px-4 py-5'>
+      <section id='author-section' className='px-4'>
         <div className='mx-auto max-w-7xl'>
           <AuthorSection author={autor} />
         </div>
       </section>
 
+      <section id='meta-muse-section' className='px-4'>
+        <div className='mx-auto max-w-7xl'>
+          <AuthorSection author={metaMuseAutor} side='right' />
+        </div>
+      </section>
+
       <section id='contacts' className='px-4 py-5'>
         <div className='mx-auto max-w-7xl'>
-          <ContactSection />
+          <ContactSection contact={metaMuseAutor.telegram} />
         </div>
       </section>
 
