@@ -18,11 +18,11 @@ importers:
         specifier: ^3.9.9
         version: 3.12.6(@types/react@19.0.7)(graphql-ws@5.16.2(graphql@16.10.0))(graphql@16.10.0)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)
       '@faker-js/faker':
-        specifier: ^8.4.1
-        version: 8.4.1
+        specifier: ^9.4.0
+        version: 9.4.0
       '@graphql-codegen/cli':
         specifier: ^5.0.2
-        version: 5.0.3(@parcel/watcher@2.5.0)(@types/node@20.17.14)(bufferutil@4.0.9)(graphql@16.10.0)(typescript@5.7.3)(utf-8-validate@5.0.10)
+        version: 5.0.3(@parcel/watcher@2.5.0)(@types/node@22.10.7)(bufferutil@4.0.9)(graphql@16.10.0)(typescript@5.7.3)(utf-8-validate@5.0.10)
       '@graphql-codegen/client-preset':
         specifier: ^4.2.5
         version: 4.5.1(graphql@16.10.0)
@@ -36,8 +36,8 @@ importers:
         specifier: ^2.2.0
         version: 2.2.0(react@18.2.0)
       '@mtcute/node':
-        specifier: ^0.13.0
-        version: 0.13.0
+        specifier: ^0.19.3
+        version: 0.19.3
       '@nextui-org/react':
         specifier: ^2.2.10
         version: 2.6.11(@types/react@19.0.7)(framer-motion@11.18.0(@emotion/is-prop-valid@1.2.2)(react-dom@18.3.1(react@18.2.0))(react@18.2.0))(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(tailwindcss@3.4.17)
@@ -99,17 +99,17 @@ importers:
         specifier: ^3.6.5
         version: 3.6.13(react@18.2.0)
       '@react-three/drei':
-        specifier: ^9.102.6
-        version: 9.121.1(@react-three/fiber@8.17.12(@types/react@19.0.7)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(three@0.162.0))(@types/react@19.0.7)(@types/three@0.172.0)(immer@9.0.21)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(three@0.162.0)(use-sync-external-store@1.4.0(react@18.2.0))
+        specifier: ^9.121.2
+        version: 9.121.2(@react-three/fiber@8.17.12(@types/react@19.0.7)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(three@0.172.0))(@types/react@19.0.7)(@types/three@0.172.0)(immer@9.0.21)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(three@0.172.0)(use-sync-external-store@1.4.0(react@18.2.0))
       '@react-three/fiber':
         specifier: ^8.16.0
-        version: 8.17.12(@types/react@19.0.7)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(three@0.162.0)
+        version: 8.17.12(@types/react@19.0.7)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(three@0.172.0)
       '@sentry/react':
-        specifier: ^7.113.0
-        version: 7.120.3(react@18.2.0)
+        specifier: ^8.50.0
+        version: 8.50.0(react@18.2.0)
       '@supabase/supabase-js':
-        specifier: ^2.40.0
-        version: 2.47.14(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+        specifier: ^2.47.16
+        version: 2.47.16(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       '@tabler/icons-react':
         specifier: ^3.19.0
         version: 3.28.1(react@18.2.0)
@@ -117,11 +117,11 @@ importers:
         specifier: ^8.15.3
         version: 8.20.6(react-dom@18.3.1(react@18.2.0))(react@18.2.0)
       '@telegram-apps/sdk':
-        specifier: ^1.1.3
-        version: 1.1.3
+        specifier: ^2.11.3
+        version: 2.11.3
       '@telegram-apps/sdk-react':
-        specifier: ^1.1.3
-        version: 1.1.3(@types/react@19.0.7)(react@18.2.0)
+        specifier: ^2.0.25
+        version: 2.0.25(@types/react@19.0.7)(react@18.2.0)
       '@tonconnect/ui-react':
         specifier: ^2.0.0
         version: 2.0.11(react-dom@18.3.1(react@18.2.0))(react@18.2.0)
@@ -171,8 +171,8 @@ importers:
         specifier: ^9.0.2
         version: 9.0.2
       lucide-react:
-        specifier: ^0.372.0
-        version: 0.372.0(react@18.2.0)
+        specifier: ^0.471.1
+        version: 0.471.1(react@18.2.0)
       next:
         specifier: 15.1.4
         version: 15.1.4(@babel/core@7.26.0)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(sass@1.83.4)
@@ -180,8 +180,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       next-themes:
-        specifier: ^0.3.0
-        version: 0.3.0(react-dom@18.3.1(react@18.2.0))(react@18.2.0)
+        specifier: ^0.4.4
+        version: 0.4.4(react-dom@18.3.1(react@18.2.0))(react@18.2.0)
       nextjs-cors:
         specifier: ^2.2.0
         version: 2.2.0(next@15.1.4(@babel/core@7.26.0)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(sass@1.83.4))
@@ -231,17 +231,17 @@ importers:
         specifier: ^2.22.2
         version: 2.26.16
       three:
-        specifier: ^0.162.0
-        version: 0.162.0
+        specifier: ^0.172.0
+        version: 0.172.0
       three-globe:
-        specifier: ^2.31.0
-        version: 2.40.2(three@0.162.0)
+        specifier: ^2.40.4
+        version: 2.40.4(three@0.172.0)
       usehooks-ts:
         specifier: ^3.1.0
         version: 3.1.0(react@18.2.0)
       uuid:
-        specifier: ^9.0.1
-        version: 9.0.1
+        specifier: ^11.0.5
+        version: 11.0.5
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3
@@ -250,8 +250,8 @@ importers:
         specifier: ^3.5.0
         version: 3.7.1
       '@types/node':
-        specifier: ^20
-        version: 20.17.14
+        specifier: ^22.10.7
+        version: 22.10.7
       '@types/react':
         specifier: ^19
         version: 19.0.7
@@ -286,8 +286,8 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2(eslint-config-prettier@10.0.1(eslint@9.18.0(jiti@2.4.2)))(eslint@9.18.0(jiti@2.4.2))(prettier@3.4.2)
       eslint-plugin-react-hooks:
-        specifier: ^4.6.0
-        version: 4.6.2(eslint@9.18.0(jiti@2.4.2))
+        specifier: ^5.1.0
+        version: 5.1.0(eslint@9.18.0(jiti@2.4.2))
       eslint-plugin-tailwindcss:
         specifier: ^3.17.5
         version: 3.17.5(tailwindcss@3.4.17)
@@ -295,8 +295,8 @@ importers:
         specifier: ^9.1.7
         version: 9.1.7
       lint-staged:
-        specifier: ^15.4.0
-        version: 15.4.0
+        specifier: ^15.4.1
+        version: 15.4.1
       postcss:
         specifier: ^8
         version: 8.5.1
@@ -864,9 +864,9 @@ packages:
     resolution: {integrity: sha512-lB05FkqEdUg2AA0xEbUz0SnkXT1LcCTa438W4IWTUh4hdOnVbQyOJ81OrDXsJk/LSiJHubgGEFoR5EHq1NsH1A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@faker-js/faker@8.4.1':
-    resolution: {integrity: sha512-XQ3cU+Q8Uqmrbf2e0cIC/QN43sTBSC8KF12u29Mb47tWrt2hAgBXSgpZMj4Ao8Uk0iJcU99QsOCaIL8934obCg==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0, npm: '>=6.14.13'}
+  '@faker-js/faker@9.4.0':
+    resolution: {integrity: sha512-85+k0AxaZSTowL0gXp8zYWDIrWclTbRPg/pm/V0dSFZ6W6D4lhcG3uuZl4zLsEKfEvs69xDbLN2cHQudwp95JA==}
+    engines: {node: '>=18.0.0', npm: '>=9.0.0'}
 
   '@floating-ui/core@1.6.9':
     resolution: {integrity: sha512-uMXCuQ3BItDUbAMhIXw7UPXRfAlOAvZzdK9BWpE60MCn+Svt3aLn9jsPTi/WNGlRUu2uI0v5S7JiIUsbsvh3fw==}
@@ -897,6 +897,18 @@ packages:
 
   '@formatjs/intl-localematcher@0.5.10':
     resolution: {integrity: sha512-af3qATX+m4Rnd9+wHcjJ4w2ijq+rAVP3CCinJQvFv1kgSu1W6jypUmvleJxcewdxmutM8dmIRZFxO/IQBZmP2Q==}
+
+  '@fuman/io@0.0.8':
+    resolution: {integrity: sha512-+cRZ2JOMYceNQ2Rh6UYro5XVa11j29Sdd3Yhi4GfxAx6ZwCNIw3P80xcTRwCZSfMPLDNN9Etkq7NIc5v9lpItw==}
+
+  '@fuman/net@0.0.9':
+    resolution: {integrity: sha512-asn7VJbT8woVXAFCUMZrdyNZCSsXZclraeVZ6RYJ+T3RwQ+JfMMZtXLLTZ7XHrBPxk8x8hoHOJa/Fnyfm+ggbQ==}
+
+  '@fuman/node@0.0.9':
+    resolution: {integrity: sha512-ImOGEv1T1n/AOqfPH8ag1q/i0RvxnG0EfYVwlfRl/PXW/uNJiH3PRgT4euvXPNlHx6DViDiFn4ADecz9bTrtUg==}
+
+  '@fuman/utils@0.0.4':
+    resolution: {integrity: sha512-YBZIlGDbM8s9G85pWFZJ9wQrDY4511XLHZ06/uxZfXBY0eSStwje8JFNmRMNF0SjRk4D3iRmPl9wirHKTkg89w==}
 
   '@grammyjs/types@3.18.0':
     resolution: {integrity: sha512-/VpQcT6Z0+Lw6H6jv2JvnDmqB1/9rjbFdDBlPBPUW3kQ1bWfjzfaiVk2+J2eiid3o3sLaPp3ZK0XjEI1gWNc3g==}
@@ -1320,29 +1332,29 @@ packages:
     peerDependencies:
       three: '>= 0.159.0'
 
-  '@mtcute/core@0.13.3':
-    resolution: {integrity: sha512-oShADWtmkTxITyYeinJpNNxXYPziOVhhc+DARMkUbHSC9Xko5UzyxjD5NOTLankf3mYgOe7ve76bdgA2SvWPAw==}
+  '@mtcute/core@0.19.7':
+    resolution: {integrity: sha512-UX2AbXrA/rkOeEnJyImu4P3FeJr+dmjqE0GFY0QmbRcKCkzwYBAmEZ/LrzwEj1cajcSwn9dZkrjkNKs/XLhuRg==}
 
-  '@mtcute/file-id@0.13.0':
-    resolution: {integrity: sha512-2LUWNK7Y9xyQUusq1CE/qqQ+jX2yTO3ODwHh5iZmgIq6IUQVE3F16NQUVe1/62rKU/WPd8lhcPY3Y7b6w1o8tQ==}
+  '@mtcute/file-id@0.19.0':
+    resolution: {integrity: sha512-r9r5JxchoVtYYMLPsf/wSnd5+KB4KmilWHywKQenf0DgKD+LCEN2FJpzY44RFE5dpy+eV5OHZ85zxA6EyYz/mA==}
 
-  '@mtcute/html-parser@0.13.0':
-    resolution: {integrity: sha512-n7H8gFjN30V8XaUJBJsiNTlj6K8owEKIwyasVcPyPMLHqbmXshy447v6H1VIBwtgO4XtEaSOTiRX8jCbzP1hIA==}
+  '@mtcute/html-parser@0.19.0':
+    resolution: {integrity: sha512-AVYD2/FT5g/a2m1o8+9Lg/0H/VIkxAwd9uqvXcR+aMpTQlQExWVwNi805yOtzs2sv8QK0yyVbN5AL7STBu+x+g==}
 
-  '@mtcute/markdown-parser@0.13.0':
-    resolution: {integrity: sha512-yMtwXSRfWWw1mXZQtOOb/LlnwNxpZfvpzm6PvOIiyeR90euTHhdB1v+UfcITpU19yid0g2k88lWX2I5JyjVWow==}
+  '@mtcute/markdown-parser@0.19.0':
+    resolution: {integrity: sha512-sc8Yl5eDjEZ975/UMJNsHoiIjW6oKA2m1j4bi966ZxZ1L1SYjlsgnm1b/Vg+rsbeYoCjz1xU9eZMkPZh2jIVWA==}
 
-  '@mtcute/node@0.13.0':
-    resolution: {integrity: sha512-z4Pr8ihoulDY0htlFbQRpsxh3BXU934Hln4esTUMC28LzakICVZ9vUnmUGGI3/nvhLzbEd9U6ficocVNiSBkkw==}
+  '@mtcute/node@0.19.3':
+    resolution: {integrity: sha512-gAHa+8VPlrM+JmuimWwxKlEwo9jzA2VZqUgiyD2NE3zQG5ovp8sDZNJ76JdsV2M0lqwxT+qlK4ScFqXPN+A+qQ==}
 
-  '@mtcute/tl-runtime@0.13.0':
-    resolution: {integrity: sha512-OhlfvNdulTEQcWYMYXUpbh2sRwb7oG5xa6bVGX5npncU4M+DI6S5H7Jsi3k1J4ZkFjBM/Pltg66w7iAKYkBIKg==}
+  '@mtcute/tl-runtime@0.19.0':
+    resolution: {integrity: sha512-5nqzQexx4/at+lWnd8G5zCsuI7k+vw/cr3IecRaZ+cOyNKLYQX9zqK2n6Lx+A9K1/M9L33YSAVPSPQnC+q0QjQ==}
 
-  '@mtcute/tl@181.0.0':
-    resolution: {integrity: sha512-50Kb+IwN9jKko7aJs8w+5X4BAaUtG4ByTei1JWSpebPDh5LvzGdhn87qEZ9gN0KHuLsaB7EIXL5HQlg1EqKD0g==}
+  '@mtcute/tl@196.0.0':
+    resolution: {integrity: sha512-/FEoLfGk7VatEMkBWn4naRQnolodJX0CL0C2rPJr+gmhLSVMQs1a9HqLMIUFYRlEvZ4ayk4ujOWvF9G64xvW5g==}
 
-  '@mtcute/wasm@0.13.0':
-    resolution: {integrity: sha512-c1CHn4J0JP+nglT+x+JDfsc7l7svjr/OkJrrI1nqDymxiP1EgTv4ZN9UDLwqQk+m/hhg591EpZ/++myM/8aZVA==}
+  '@mtcute/wasm@0.19.0':
+    resolution: {integrity: sha512-QvSCjNR3/Y4knRMfccNXAdPUCgnQfjmOD/LGGHgQq/5/7SfA7f4/wk7G/TdlnBPArqk58EvyrC5qeKEy81y9Xw==}
 
   '@next/env@15.1.4':
     resolution: {integrity: sha512-2fZ5YZjedi5AGaeoaC0B20zGntEHRhi2SdWcu61i48BllODcAmmtj8n7YarSPt4DaTsJaBFdxQAVEVzgmx2Zpw==}
@@ -3593,10 +3605,10 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
 
-  '@react-three/drei@9.121.1':
-    resolution: {integrity: sha512-dSxoN0Gjh4wOmMf7Vt3CNYhi1eTNzqL/7nDlbD2iyu1Xripj5oB1dXyiwcp5OsSNa4mreh6qd+4ot+sKwdyJcw==}
+  '@react-three/drei@9.121.2':
+    resolution: {integrity: sha512-0oyd26wn8NAHrlqrr7oZJMq/x2wikJfMz59R/tGRaqLLI16rFP5M8sU/NFFgSiPuyV09b4NqMuo9oimToA9dgA==}
     peerDependencies:
-      '@react-three/fiber': ^8 || ^9.0.0-0
+      '@react-three/fiber': ^8
       react: ^18
       react-dom: ^18
       three: '>=0.137'
@@ -3808,47 +3820,35 @@ packages:
   '@rushstack/eslint-patch@1.10.5':
     resolution: {integrity: sha512-kkKUDVlII2DQiKy7UstOR1ErJP8kUKAQ4oa+SQtM0K+lPdmmjj0YnnxBgtTVYH7mUKtbsxeFC9y0AmK7Yb78/A==}
 
-  '@sentry-internal/feedback@7.120.3':
-    resolution: {integrity: sha512-ewJJIQ0mbsOX6jfiVFvqMjokxNtgP3dNwUv+4nenN+iJJPQsM6a0ocro3iscxwVdbkjw5hY3BUV2ICI5Q0UWoA==}
-    engines: {node: '>=12'}
+  '@sentry-internal/browser-utils@8.50.0':
+    resolution: {integrity: sha512-hZm6ngWTEzZhaMHpLIKB4wWp0Od1MdCZdvR5FRdIThUMLa1P8rXeolovTRfOE81NE755EiwJHzj4O7rq3EjA+A==}
+    engines: {node: '>=14.18'}
 
-  '@sentry-internal/replay-canvas@7.120.3':
-    resolution: {integrity: sha512-s5xy+bVL1eDZchM6gmaOiXvTqpAsUfO7122DxVdEDMtwVq3e22bS2aiGa8CUgOiJkulZ+09q73nufM77kOmT/A==}
-    engines: {node: '>=12'}
+  '@sentry-internal/feedback@8.50.0':
+    resolution: {integrity: sha512-79WlvSJYCXL/D0PBC8AIT4JbyS44AE3h6lP05IESXMqzTZl3KeSqCx317rwJw1KaxzeFd/JQwkFq95jaKAcLhg==}
+    engines: {node: '>=14.18'}
 
-  '@sentry-internal/tracing@7.120.3':
-    resolution: {integrity: sha512-Ausx+Jw1pAMbIBHStoQ6ZqDZR60PsCByvHdw/jdH9AqPrNE9xlBSf9EwcycvmrzwyKspSLaB52grlje2cRIUMg==}
-    engines: {node: '>=8'}
+  '@sentry-internal/replay-canvas@8.50.0':
+    resolution: {integrity: sha512-Hv1bBaPpe62xFPLpuaUxVBUHd/Ed9bnGndeqN4hueeEGDT9T6NyVokgm35O5xE9/op6Yodm/3NfUkEg8oE++Aw==}
+    engines: {node: '>=14.18'}
 
-  '@sentry/browser@7.120.3':
-    resolution: {integrity: sha512-i9vGcK9N8zZ/JQo1TCEfHHYZ2miidOvgOABRUc9zQKhYdcYQB2/LU1kqlj77Pxdxf4wOa9137d6rPrSn9iiBxg==}
-    engines: {node: '>=8'}
+  '@sentry-internal/replay@8.50.0':
+    resolution: {integrity: sha512-mhRPujzO6n+mb6ZR+wQNkSpjqIqDriR0hZEvdzHQdyXu9zVdCHUJ3sINkzpT1XwiypQVCEfxB6Oh9y/NmcQfGg==}
+    engines: {node: '>=14.18'}
 
-  '@sentry/core@7.120.3':
-    resolution: {integrity: sha512-vyy11fCGpkGK3qI5DSXOjgIboBZTriw0YDx/0KyX5CjIjDDNgp5AGgpgFkfZyiYiaU2Ww3iFuKo4wHmBusz1uA==}
-    engines: {node: '>=8'}
+  '@sentry/browser@8.50.0':
+    resolution: {integrity: sha512-aGJSpuKiHVKkLvd1VklJSZ2oCsl4wcKUVxKIa8dhJC8KjDY0vREQCywrlWuS5KYP0xFy4k28pg6PPR3HKkUlNw==}
+    engines: {node: '>=14.18'}
 
-  '@sentry/integrations@7.120.3':
-    resolution: {integrity: sha512-6i/lYp0BubHPDTg91/uxHvNui427df9r17SsIEXa2eKDwQ9gW2qRx5IWgvnxs2GV/GfSbwcx4swUB3RfEWrXrQ==}
-    engines: {node: '>=8'}
+  '@sentry/core@8.50.0':
+    resolution: {integrity: sha512-q71m8Ha9YGwqn4Gd7sWvcFTRgbHXxEfU4QeIFtwMBpwHfq2Q+9koiF8DOoOHqIEOsnlvZWRQgGggIOdHzajnVw==}
+    engines: {node: '>=14.18'}
 
-  '@sentry/react@7.120.3':
-    resolution: {integrity: sha512-BcpoK9dwblfb20xwjn/1DRtplvPEXFc3XCRkYSnTfnfZNU8yPOcVX4X2X0I8R+/gsg+MWiFOdEtXJ3FqpJiJ4Q==}
-    engines: {node: '>=8'}
+  '@sentry/react@8.50.0':
+    resolution: {integrity: sha512-qkDW5dieROPDf0uk1usXib/SLZTEveN5jvKgBFd+HKWz5JNu+M7L53t9KdZ7ryn4T68utI/LWs4qR3QhmXzUbQ==}
+    engines: {node: '>=14.18'}
     peerDependencies:
-      react: 15.x || 16.x || 17.x || 18.x
-
-  '@sentry/replay@7.120.3':
-    resolution: {integrity: sha512-CjVq1fP6bpDiX8VQxudD5MPWwatfXk8EJ2jQhJTcWu/4bCSOQmHxnnmBM+GVn5acKUBCodWHBN+IUZgnJheZSg==}
-    engines: {node: '>=12'}
-
-  '@sentry/types@7.120.3':
-    resolution: {integrity: sha512-C4z+3kGWNFJ303FC+FxAd4KkHvxpNFYAFN8iMIgBwJdpIl25KZ8Q/VdGn0MLLUEHNLvjob0+wvwlcRBBNLXOow==}
-    engines: {node: '>=8'}
-
-  '@sentry/utils@7.120.3':
-    resolution: {integrity: sha512-UDAOQJtJDxZHQ5Nm1olycBIsz2wdGX8SdzyGVHmD8EOQYAeDZQyIlQYohDe9nazdIOQLZCIc3fU0G9gqVLkaGQ==}
-    engines: {node: '>=8'}
+      react: ^16.14.0 || 17.x || 18.x || 19.x
 
   '@sindresorhus/is@4.6.0':
     resolution: {integrity: sha512-t09vSN3MdfsyCHoFcTRCH/iUtG7OJ0CsjzB8cjAmKc/va/kIgeDI/TxsigdncE/4be734m0cvIYwNaV4i2XqAw==}
@@ -3878,8 +3878,8 @@ packages:
   '@supabase/storage-js@2.7.1':
     resolution: {integrity: sha512-asYHcyDR1fKqrMpytAS1zjyEfvxuOIp1CIXX7ji4lHHcJKqyk+sLl/Vxgm4sN6u8zvuUtae9e4kDxQP2qrwWBA==}
 
-  '@supabase/supabase-js@2.47.14':
-    resolution: {integrity: sha512-Jmm9fN+16KwC2s7GEudiEnVpz5+Bc0DEMrjI3CKPWoRArTEZPUiOm7y1IbAJ3zSpvwsdk9i/c/k7wqCbwlBj9A==}
+  '@supabase/supabase-js@2.47.16':
+    resolution: {integrity: sha512-FnoV0miLnYUL8ZTS94tSIyn+ogCwh5DB5f1fj1n4wHGNAqJSKFb8OQzLVlRFAH7cB9TKQ5eon3/n2lXUWY7GfA==}
 
   '@swc/counter@0.1.3':
     resolution: {integrity: sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==}
@@ -3919,17 +3919,35 @@ packages:
   '@tanstack/virtual-core@3.11.2':
     resolution: {integrity: sha512-vTtpNt7mKCiZ1pwU9hfKPhpdVO2sVzFQsxoVBGtOSHxlrRRzYr8iQ2TlwbAcRYCcEiZ9ECAM8kBzH0v2+VzfKw==}
 
-  '@telegram-apps/sdk-react@1.1.3':
-    resolution: {integrity: sha512-osddnacMIC4/KPvghsHQysPsomNXFQkr2K1owoMgf8MzmPQ2qZahR98xjeUlWU0JTCG+aAY9OHaPUFDNoxW/Bg==}
+  '@telegram-apps/bridge@1.9.2':
+    resolution: {integrity: sha512-SJLcNWLXhbbZr9MiqFH/g2ceuitSJKMxUIZysK4zUNyTUNuonrQG80Q/yrO+XiNbKUj8WdDNM86NBARhuyyinQ==}
+
+  '@telegram-apps/navigation@1.0.13':
+    resolution: {integrity: sha512-TsUueB5LQp77GQHoMa93nq26Uw7GJjrFCPbyseMVU7aBBxAc+8CV2IYytRwcVp5sv/q7ThK5X4JaKn2V1yBHDQ==}
+
+  '@telegram-apps/sdk-react@2.0.25':
+    resolution: {integrity: sha512-WbgND2EvjYaLljZQP62sfTMb/JoDLMyVYa3+s3tnKuVsS5iD09kFjyynKYK6cRPRmam3UlezXSjS6sYrEkBihA==}
     peerDependencies:
-      '@types/react': ^17.0.0 || ^18.0.0
-      react: ^17.0.0 || ^18.0.0
+      '@types/react': ^17.0.0 || ^18.0.0 || ^19.0.0
+      react: ^17.0.0 || ^18.0.0 || ^19.0.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
 
-  '@telegram-apps/sdk@1.1.3':
-    resolution: {integrity: sha512-gvcXNttbCouDNTxjDUbO5FS/BdaHYO0ibSddQxiYitShPIDZDxGon0Eh3OSsgUIVPSQSNdXqkXaeqYgA+jeY0A==}
+  '@telegram-apps/sdk@2.11.3':
+    resolution: {integrity: sha512-KdULzgRe1gcR8B3Z/t3hQrEaDmLGrfsL2IePtPP6ehtMn5tT0uPfnjtDLjDNQMyI7D4Tv2ZOzvDx45wOhhreXg==}
+
+  '@telegram-apps/signals@1.1.1':
+    resolution: {integrity: sha512-vz37r8lemGpPzDiBRfqpXYBynzmy3SFnY6zfHsTZABTYYt0b0WQZyU5mFDqqqugGhka78Gy11xmr9csgy4YgGA==}
+
+  '@telegram-apps/toolkit@1.1.1':
+    resolution: {integrity: sha512-+vhKx6ngfvjyTE6Xagl3z1TPVbfx5s7xAkcYzCdHYUo6T60jLIqLgyZMcI1UPoIAMuMu1pHoO+p8QNCj/+tFmw==}
+
+  '@telegram-apps/transformers@1.2.2':
+    resolution: {integrity: sha512-vvMwXckd1D7Ozc0h66PSUwF5QLrRV9HlGJFFeBuUex8QEk5mSPtsJkLiqB8aBbwuFDa91+TUSM/CxqPZO/e9YQ==}
+
+  '@telegram-apps/types@1.2.1':
+    resolution: {integrity: sha512-so4HLh7clur0YyMthi9KVIgWoGpZdXlFOuQjk3+Q5NAvJZ11nAheBSwPlGw/Ko92+zwvrSBE/lQyN2+p17RP+w==}
 
   '@tensorflow-models/body-segmentation@1.0.2':
     resolution: {integrity: sha512-sbPiL8wpqfKqh01of6qguZzU9yLWOQDTwiPEIHFPA/EAjz5T51LKHKIySll+mmteRo/TxNED8pxd9VJ6q2r7kg==}
@@ -4214,6 +4232,9 @@ packages:
 
   '@types/node@20.17.14':
     resolution: {integrity: sha512-w6qdYetNL5KRBiSClK/KWai+2IMEJuAj+EujKCumalFOwXtvOXaEan9AuwcRID2IcOIAWSIfR495hBtgKlx2zg==}
+
+  '@types/node@22.10.7':
+    resolution: {integrity: sha512-V09KvXxFiutGp6B7XkpaDXlNadZxrzajcY50EuoLIpQ6WWYCSvf19lVIazzfIzQvhUN2HjX12spLojTnhuKlGg==}
 
   '@types/offscreencanvas@2019.3.0':
     resolution: {integrity: sha512-esIJx9bQg+QYF0ra8GnvfianIY8qWB0GBx54PK5Eps6m+xTj86KLavHv6qDhzKcu5UUOgNfJ2pWaIIV7TRUd9Q==}
@@ -4634,8 +4655,8 @@ packages:
     resolution: {integrity: sha512-ir1UPr3dkwexU7FdV8qBBbNDRUhMmIekYMFZfi+C/sLNnRESKPl23nB9b2pltqfOQNnGzsDdId90AEtG5tCx4A==}
     engines: {node: '>=6.0.0'}
 
-  better-sqlite3@9.5.0:
-    resolution: {integrity: sha512-01qVcM4gPNwE+PX7ARNiHINwzVuD6nx0gdldaAAcu+MrzyIAukQ31ZDKEpzRO/CNA9sHpxoTZ8rdjoyAin4dyg==}
+  better-sqlite3@11.3.0:
+    resolution: {integrity: sha512-iHt9j8NPYF3oKCNOO5ZI4JwThjt3Z6J6XrcwG85VNMVzv1ByqrHWv5VILEbCMFWDsoHhXvQ7oC8vgRXFAKgl9w==}
 
   bidi-js@1.0.3:
     resolution: {integrity: sha512-RKshQI1R3YQ+n9YJz2QQ147P66ELpa1FQEg20Dk8oW9t2KgLbpDLLp9aGZ7y8WHSshDknG0bknqGw5/tyCs5tw==}
@@ -5357,12 +5378,6 @@ packages:
       eslint-config-prettier:
         optional: true
 
-  eslint-plugin-react-hooks@4.6.2:
-    resolution: {integrity: sha512-QzliNJq4GinDBcD8gPB5v0wh6g8q3SUi6EFF0x8N/BL9PoVs0atuGc47ozMRyOWAKdwaZ5OnbOEa3WR+dSGKuQ==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
-
   eslint-plugin-react-hooks@5.1.0:
     resolution: {integrity: sha512-mpJRtPgHN2tNAvZ35AMfqeB3Xqeo273QxrHJsbBEPWODRM4r0yB6jfoROqKEYrOn27UtRPpcpHc2UqyBSuUNTw==}
     engines: {node: '>=10'}
@@ -5442,10 +5457,6 @@ packages:
 
   eventemitter3@5.0.1:
     resolution: {integrity: sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA==}
-
-  events@3.2.0:
-    resolution: {integrity: sha512-/46HWwbfCX2xTawVfkKLGxMifJYQBWMwY1mjywRtb4c9x8l5NP3KoJtnIOiL1hfdRkIuYhETxQlo62IF8tcnlg==}
-    engines: {node: '>=0.8.x'}
 
   eventsource@2.0.2:
     resolution: {integrity: sha512-IzUmBGPR3+oUG9dUeXynyNmf91/3zUSJg1lCktzKw47OXuhco54U3r9B7O4XX+Rb1Itm9OZ2b0RkTs10bICOxA==}
@@ -6216,9 +6227,6 @@ packages:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
 
-  lie@3.1.1:
-    resolution: {integrity: sha512-RiNhHysUjhrDQntfYSfY4MU24coXXdEOgw9WGcKHNeEwffDYbF//u87M1EWaMGzuFoSbqW0C9C6lEEhDOAswfw==}
-
   lie@3.3.0:
     resolution: {integrity: sha512-UaiMJzeWRlEujzAuw5LokY1L5ecNQYZKfmyZ9L7wDHb/p5etKaxXhohBcrw0EYby+G/NA52vRSN4N39dxHAIwQ==}
 
@@ -6229,8 +6237,8 @@ packages:
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
-  lint-staged@15.4.0:
-    resolution: {integrity: sha512-UdODqEZiQimd7rCzZ2vqFuELRNUda3mdv7M93jhE4SmDiqAj/w/msvwKgagH23jv2iCPw6Q5m+ltX4VlHvp2LQ==}
+  lint-staged@15.4.1:
+    resolution: {integrity: sha512-P8yJuVRyLrm5KxCtFx+gjI5Bil+wO7wnTl7C3bXhvtTaAFGirzeB24++D0wGoUwxrUKecNiehemgCob9YL39NA==}
     engines: {node: '>=18.12.0'}
     hasBin: true
 
@@ -6246,9 +6254,6 @@ packages:
   listr2@8.2.5:
     resolution: {integrity: sha512-iyAZCeyD+c1gPyE9qpFu8af0Y+MRtmKOncdGoA2S5EY8iFq99dmmvkNnHiWo+pj0s7yH7l3KPIgee77tKpXPWQ==}
     engines: {node: '>=18.0.0'}
-
-  localforage@1.10.0:
-    resolution: {integrity: sha512-14/H1aX7hzBBmmh7sGPd+AOMkkIrHM3Z1PAyGgZigA1H1p5O5ANnMyWzvpAETtG68/dC4pC0ncy3+PPGzXZHPg==}
 
   locate-path@5.0.0:
     resolution: {integrity: sha512-t7hw9pI+WvuwNJXwk5zVHpyhIqzg2qTlklJOf0mVxGSbe3Fp2VieZcduNYjaLDoy6p9uGpQEGWG87WpMKlNq8g==}
@@ -6344,10 +6349,10 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  lucide-react@0.372.0:
-    resolution: {integrity: sha512-0cKdqmilHXWUwWAWnf6CrrjHD8YaqPMtLrmEHXolZusNTr9epULCsiJwIOHk2q1yFxdEwd96D4zShlAj67UJdA==}
+  lucide-react@0.471.1:
+    resolution: {integrity: sha512-syOxwPhf62gg2YOsz72HRn+CIpeudFy67AeKnSR8Hn/fIIF4ubhNbRF+pQ2CaJrl+X9Os4PL87z2DXQi3DVeDA==}
     peerDependencies:
-      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   lz-string@1.5.0:
     resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
@@ -6495,11 +6500,11 @@ packages:
     resolution: {integrity: sha512-FeLURm9MdvzY1SDUGE74tk66mukSqL6MAzxajW7Gqh6DZKBZLrXmXnGWtHJZXkfvoi+V/DUe9Hhtfkl4+nTlYA==}
     engines: {node: '>=16'}
 
-  next-themes@0.3.0:
-    resolution: {integrity: sha512-/QHIrsYpd6Kfk7xakK4svpDI5mmXP0gfvCoJdGpZQ2TOrQZmsW0QxjaiLn8wbIKjtm4BTSqLoix4lxYYOnLJ/w==}
+  next-themes@0.4.4:
+    resolution: {integrity: sha512-LDQ2qIOJF0VnuVrrMSMLrWGjRMkq+0mpgl6e0juCLqdJ+oo8Q84JRWT6Wh11VDQKkMMe+dVzDKLWs5n87T+PkQ==}
     peerDependencies:
-      react: ^16.8 || ^17 || ^18
-      react-dom: ^16.8 || ^17 || ^18
+      react: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
 
   next-tick@1.1.0:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
@@ -7680,8 +7685,8 @@ packages:
     peerDependencies:
       three: '>=0.72.0'
 
-  three-globe@2.40.2:
-    resolution: {integrity: sha512-DLk9VJCiMMAE1wNjEMPGUr187X3A896yx/8B6TIBTBDVbA96m74DO0coyYgAcP8fiZUPtprSid/iVHm6PQFETw==}
+  three-globe@2.40.4:
+    resolution: {integrity: sha512-9JQokcYYU/XcdblnP3AVszk+587a3ouTmcYuWrt+6AIvT0pnuvRogOlkNQZHccoiySHKKfGYPWazSiuf7PuqmA==}
     engines: {node: '>=12'}
     peerDependencies:
       three: '>=0.154'
@@ -7703,8 +7708,8 @@ packages:
     peerDependencies:
       three: '>=0.128.0'
 
-  three@0.162.0:
-    resolution: {integrity: sha512-xfCYj4RnlozReCmUd+XQzj6/5OjDNHBy5nT6rVwrOKGENAvpXe2z1jL+DZYaMu4/9pNsjH/4Os/VvS9IrH7IOQ==}
+  three@0.172.0:
+    resolution: {integrity: sha512-6HMgMlzU97MsV7D/tY8Va38b83kz8YJX+BefKjspMNAv0Vx6dxMogHOrnRl/sbMIs3BPUKijPqDqJ/+UwJbIow==}
 
   throttle-debounce@3.0.1:
     resolution: {integrity: sha512-dTEWWNu6JmeVXY0ZYoPuH5cRIwc0MeGbJwah9KUNYSJwommQpCzTySTpEe8Gs1J23aeWEuAobe4Ag7EHVt/LOg==}
@@ -7858,6 +7863,9 @@ packages:
   undici-types@6.19.8:
     resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
 
+  undici-types@6.20.0:
+    resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
+
   unixify@1.0.0:
     resolution: {integrity: sha512-6bc58dPYhCMHHuwxldQxO3RRNZ4eCogZ/st++0+fcC1nr0jiGUtAdBJ2qzmLQWSxbtz42pWt4QQMiZ9HvZf5cg==}
     engines: {node: '>=0.10.0'}
@@ -7949,12 +7957,12 @@ packages:
     resolution: {integrity: sha512-6Z7Ma2aVEWisaL6TvBCy7P8rm2LQoPv6dJ7ecIaIixHcwfbJ0x7mWdbcwlIM5IGQxPZSFYeqRCqlOOeKoJYMkw==}
     engines: {node: '>= 4'}
 
-  uuid@8.3.2:
-    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+  uuid@11.0.5:
+    resolution: {integrity: sha512-508e6IcKLrhxKdBbcA2b4KQZlLVp2+J5UwQ6F7Drckkc5N9ZJwFa4TgWtsww9UG8fGHbm6gbV19TdM5pQ4GaIA==}
     hasBin: true
 
-  uuid@9.0.1:
-    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
+  uuid@8.3.2:
+    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
 
   value-or-promise@1.0.12:
@@ -8832,7 +8840,7 @@ snapshots:
       '@eslint/core': 0.10.0
       levn: 0.4.1
 
-  '@faker-js/faker@8.4.1': {}
+  '@faker-js/faker@9.4.0': {}
 
   '@floating-ui/core@1.6.9':
     dependencies:
@@ -8877,6 +8885,23 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
+  '@fuman/io@0.0.8':
+    dependencies:
+      '@fuman/utils': 0.0.4
+
+  '@fuman/net@0.0.9':
+    dependencies:
+      '@fuman/io': 0.0.8
+      '@fuman/utils': 0.0.4
+
+  '@fuman/node@0.0.9':
+    dependencies:
+      '@fuman/io': 0.0.8
+      '@fuman/net': 0.0.9
+      '@fuman/utils': 0.0.4
+
+  '@fuman/utils@0.0.4': {}
+
   '@grammyjs/types@3.18.0': {}
 
   '@graphql-codegen/add@5.0.3(graphql@16.10.0)':
@@ -8885,7 +8910,7 @@ snapshots:
       graphql: 16.10.0
       tslib: 2.6.3
 
-  '@graphql-codegen/cli@5.0.3(@parcel/watcher@2.5.0)(@types/node@20.17.14)(bufferutil@4.0.9)(graphql@16.10.0)(typescript@5.7.3)(utf-8-validate@5.0.10)':
+  '@graphql-codegen/cli@5.0.3(@parcel/watcher@2.5.0)(@types/node@22.10.7)(bufferutil@4.0.9)(graphql@16.10.0)(typescript@5.7.3)(utf-8-validate@5.0.10)':
     dependencies:
       '@babel/generator': 7.26.5
       '@babel/template': 7.25.9
@@ -8896,12 +8921,12 @@ snapshots:
       '@graphql-tools/apollo-engine-loader': 8.0.13(graphql@16.10.0)
       '@graphql-tools/code-file-loader': 8.1.13(graphql@16.10.0)
       '@graphql-tools/git-loader': 8.0.17(graphql@16.10.0)
-      '@graphql-tools/github-loader': 8.0.13(@types/node@20.17.14)(graphql@16.10.0)
+      '@graphql-tools/github-loader': 8.0.13(@types/node@22.10.7)(graphql@16.10.0)
       '@graphql-tools/graphql-file-loader': 8.0.11(graphql@16.10.0)
       '@graphql-tools/json-file-loader': 8.0.11(graphql@16.10.0)
       '@graphql-tools/load': 8.0.12(graphql@16.10.0)
-      '@graphql-tools/prisma-loader': 8.0.17(@types/node@20.17.14)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)
-      '@graphql-tools/url-loader': 8.0.24(@types/node@20.17.14)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)
+      '@graphql-tools/prisma-loader': 8.0.17(@types/node@22.10.7)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)
+      '@graphql-tools/url-loader': 8.0.24(@types/node@22.10.7)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)
       '@graphql-tools/utils': 10.7.2(graphql@16.10.0)
       '@whatwg-node/fetch': 0.9.23
       chalk: 4.1.2
@@ -8909,7 +8934,7 @@ snapshots:
       debounce: 1.2.1
       detect-indent: 6.1.0
       graphql: 16.10.0
-      graphql-config: 5.1.3(@types/node@20.17.14)(bufferutil@4.0.9)(graphql@16.10.0)(typescript@5.7.3)(utf-8-validate@5.0.10)
+      graphql-config: 5.1.3(@types/node@22.10.7)(bufferutil@4.0.9)(graphql@16.10.0)(typescript@5.7.3)(utf-8-validate@5.0.10)
       inquirer: 8.2.6
       is-glob: 4.0.3
       jiti: 1.21.7
@@ -9115,7 +9140,7 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@graphql-tools/executor-http@1.2.5(@types/node@20.17.14)(graphql@16.10.0)':
+  '@graphql-tools/executor-http@1.2.5(@types/node@22.10.7)(graphql@16.10.0)':
     dependencies:
       '@graphql-hive/gateway-abort-signal-any': 0.0.3(graphql@16.10.0)
       '@graphql-tools/executor-common': 0.0.1(graphql@16.10.0)
@@ -9125,7 +9150,7 @@ snapshots:
       '@whatwg-node/fetch': 0.10.3
       extract-files: 11.0.0
       graphql: 16.10.0
-      meros: 1.3.0(@types/node@20.17.14)
+      meros: 1.3.0(@types/node@22.10.7)
       tslib: 2.8.1
       value-or-promise: 1.0.12
     transitivePeerDependencies:
@@ -9165,9 +9190,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@graphql-tools/github-loader@8.0.13(@types/node@20.17.14)(graphql@16.10.0)':
+  '@graphql-tools/github-loader@8.0.13(@types/node@22.10.7)(graphql@16.10.0)':
     dependencies:
-      '@graphql-tools/executor-http': 1.2.5(@types/node@20.17.14)(graphql@16.10.0)
+      '@graphql-tools/executor-http': 1.2.5(@types/node@22.10.7)(graphql@16.10.0)
       '@graphql-tools/graphql-tag-pluck': 8.3.12(graphql@16.10.0)
       '@graphql-tools/utils': 10.7.2(graphql@16.10.0)
       '@whatwg-node/fetch': 0.10.3
@@ -9235,9 +9260,9 @@ snapshots:
       graphql: 16.10.0
       tslib: 2.6.3
 
-  '@graphql-tools/prisma-loader@8.0.17(@types/node@20.17.14)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)':
+  '@graphql-tools/prisma-loader@8.0.17(@types/node@22.10.7)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)':
     dependencies:
-      '@graphql-tools/url-loader': 8.0.24(@types/node@20.17.14)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)
+      '@graphql-tools/url-loader': 8.0.24(@types/node@22.10.7)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)
       '@graphql-tools/utils': 10.7.2(graphql@16.10.0)
       '@types/js-yaml': 4.0.9
       '@whatwg-node/fetch': 0.10.3
@@ -9279,10 +9304,10 @@ snapshots:
       tslib: 2.8.1
       value-or-promise: 1.0.12
 
-  '@graphql-tools/url-loader@8.0.24(@types/node@20.17.14)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)':
+  '@graphql-tools/url-loader@8.0.24(@types/node@22.10.7)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)':
     dependencies:
       '@graphql-tools/executor-graphql-ws': 1.3.7(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)
-      '@graphql-tools/executor-http': 1.2.5(@types/node@20.17.14)(graphql@16.10.0)
+      '@graphql-tools/executor-http': 1.2.5(@types/node@22.10.7)(graphql@16.10.0)
       '@graphql-tools/executor-legacy-ws': 1.1.10(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)
       '@graphql-tools/utils': 10.7.2(graphql@16.10.0)
       '@graphql-tools/wrap': 10.0.27(graphql@16.10.0)
@@ -9473,53 +9498,60 @@ snapshots:
 
   '@mediapipe/tasks-vision@0.10.17': {}
 
-  '@monogrid/gainmap-js@3.1.0(three@0.162.0)':
+  '@monogrid/gainmap-js@3.1.0(three@0.172.0)':
     dependencies:
       promise-worker-transferable: 1.0.4
-      three: 0.162.0
+      three: 0.172.0
 
-  '@mtcute/core@0.13.3':
+  '@mtcute/core@0.19.7':
     dependencies:
-      '@mtcute/file-id': 0.13.0
-      '@mtcute/tl': 181.0.0
-      '@mtcute/tl-runtime': 0.13.0
+      '@fuman/io': 0.0.8
+      '@fuman/net': 0.0.9
+      '@fuman/utils': 0.0.4
+      '@mtcute/file-id': 0.19.0
+      '@mtcute/tl': 196.0.0
+      '@mtcute/tl-runtime': 0.19.0
       '@types/events': 3.0.0
-      events: 3.2.0
       long: 5.2.3
 
-  '@mtcute/file-id@0.13.0':
+  '@mtcute/file-id@0.19.0':
     dependencies:
-      '@mtcute/tl-runtime': 0.13.0
+      '@fuman/utils': 0.0.4
+      '@mtcute/tl-runtime': 0.19.0
       long: 5.2.3
 
-  '@mtcute/html-parser@0.13.0':
+  '@mtcute/html-parser@0.19.0':
     dependencies:
-      '@mtcute/core': 0.13.3
+      '@mtcute/core': 0.19.7
       htmlparser2: 6.1.0
       long: 5.2.3
 
-  '@mtcute/markdown-parser@0.13.0':
+  '@mtcute/markdown-parser@0.19.0':
     dependencies:
-      '@mtcute/core': 0.13.3
+      '@mtcute/core': 0.19.7
       long: 5.2.3
 
-  '@mtcute/node@0.13.0':
+  '@mtcute/node@0.19.3':
     dependencies:
-      '@mtcute/core': 0.13.3
-      '@mtcute/html-parser': 0.13.0
-      '@mtcute/markdown-parser': 0.13.0
-      '@mtcute/wasm': 0.13.0
-      better-sqlite3: 9.5.0
+      '@fuman/net': 0.0.9
+      '@fuman/node': 0.0.9
+      '@fuman/utils': 0.0.4
+      '@mtcute/core': 0.19.7
+      '@mtcute/html-parser': 0.19.0
+      '@mtcute/markdown-parser': 0.19.0
+      '@mtcute/wasm': 0.19.0
+      better-sqlite3: 11.3.0
 
-  '@mtcute/tl-runtime@0.13.0':
+  '@mtcute/tl-runtime@0.19.0':
+    dependencies:
+      '@fuman/utils': 0.0.4
+      long: 5.2.3
+
+  '@mtcute/tl@196.0.0':
     dependencies:
       long: 5.2.3
 
-  '@mtcute/tl@181.0.0':
-    dependencies:
-      long: 5.2.3
-
-  '@mtcute/wasm@0.13.0': {}
+  '@mtcute/wasm@0.19.0': {}
 
   '@next/env@15.1.4': {}
 
@@ -12656,15 +12688,15 @@ snapshots:
       '@react-spring/types': 9.7.5
       react: 18.2.0
 
-  '@react-spring/three@9.7.5(@react-three/fiber@8.17.12(@types/react@19.0.7)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(three@0.162.0))(react@18.2.0)(three@0.162.0)':
+  '@react-spring/three@9.7.5(@react-three/fiber@8.17.12(@types/react@19.0.7)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(three@0.172.0))(react@18.2.0)(three@0.172.0)':
     dependencies:
       '@react-spring/animated': 9.7.5(react@18.2.0)
       '@react-spring/core': 9.7.5(react@18.2.0)
       '@react-spring/shared': 9.7.5(react@18.2.0)
       '@react-spring/types': 9.7.5
-      '@react-three/fiber': 8.17.12(@types/react@19.0.7)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(three@0.162.0)
+      '@react-three/fiber': 8.17.12(@types/react@19.0.7)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(three@0.172.0)
       react: 18.2.0
-      three: 0.162.0
+      three: 0.172.0
 
   '@react-spring/types@9.7.5': {}
 
@@ -12905,30 +12937,30 @@ snapshots:
       '@swc/helpers': 0.5.15
       react: 18.2.0
 
-  '@react-three/drei@9.121.1(@react-three/fiber@8.17.12(@types/react@19.0.7)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(three@0.162.0))(@types/react@19.0.7)(@types/three@0.172.0)(immer@9.0.21)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(three@0.162.0)(use-sync-external-store@1.4.0(react@18.2.0))':
+  '@react-three/drei@9.121.2(@react-three/fiber@8.17.12(@types/react@19.0.7)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(three@0.172.0))(@types/react@19.0.7)(@types/three@0.172.0)(immer@9.0.21)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(three@0.172.0)(use-sync-external-store@1.4.0(react@18.2.0))':
     dependencies:
       '@babel/runtime': 7.26.0
       '@mediapipe/tasks-vision': 0.10.17
-      '@monogrid/gainmap-js': 3.1.0(three@0.162.0)
-      '@react-spring/three': 9.7.5(@react-three/fiber@8.17.12(@types/react@19.0.7)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(three@0.162.0))(react@18.2.0)(three@0.162.0)
-      '@react-three/fiber': 8.17.12(@types/react@19.0.7)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(three@0.162.0)
+      '@monogrid/gainmap-js': 3.1.0(three@0.172.0)
+      '@react-spring/three': 9.7.5(@react-three/fiber@8.17.12(@types/react@19.0.7)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(three@0.172.0))(react@18.2.0)(three@0.172.0)
+      '@react-three/fiber': 8.17.12(@types/react@19.0.7)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(three@0.172.0)
       '@use-gesture/react': 10.3.1(react@18.2.0)
-      camera-controls: 2.9.0(three@0.162.0)
+      camera-controls: 2.9.0(three@0.172.0)
       cross-env: 7.0.3
       detect-gpu: 5.0.64
       glsl-noise: 0.0.0
       hls.js: 1.5.19
-      maath: 0.10.8(@types/three@0.172.0)(three@0.162.0)
-      meshline: 3.3.1(three@0.162.0)
+      maath: 0.10.8(@types/three@0.172.0)(three@0.172.0)
+      meshline: 3.3.1(three@0.172.0)
       react: 18.2.0
       react-composer: 5.0.3(react@18.2.0)
-      stats-gl: 2.4.2(@types/three@0.172.0)(three@0.162.0)
+      stats-gl: 2.4.2(@types/three@0.172.0)(three@0.172.0)
       stats.js: 0.17.0
       suspend-react: 0.1.3(react@18.2.0)
-      three: 0.162.0
-      three-mesh-bvh: 0.7.8(three@0.162.0)
-      three-stdlib: 2.35.7(three@0.162.0)
-      troika-three-text: 0.52.3(three@0.162.0)
+      three: 0.172.0
+      three-mesh-bvh: 0.7.8(three@0.172.0)
+      three-stdlib: 2.35.7(three@0.172.0)
+      troika-three-text: 0.52.3(three@0.172.0)
       tunnel-rat: 0.1.2(@types/react@19.0.7)(immer@9.0.21)(react@18.2.0)
       utility-types: 3.11.0
       zustand: 5.0.3(@types/react@19.0.7)(immer@9.0.21)(react@18.2.0)(use-sync-external-store@1.4.0(react@18.2.0))
@@ -12940,7 +12972,7 @@ snapshots:
       - immer
       - use-sync-external-store
 
-  '@react-three/fiber@8.17.12(@types/react@19.0.7)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(three@0.162.0)':
+  '@react-three/fiber@8.17.12(@types/react@19.0.7)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(three@0.172.0)':
     dependencies:
       '@babel/runtime': 7.26.0
       '@types/debounce': 1.2.4
@@ -12954,7 +12986,7 @@ snapshots:
       react-reconciler: 0.27.0(react@18.2.0)
       scheduler: 0.21.0
       suspend-react: 0.1.3(react@18.2.0)
-      three: 0.162.0
+      three: 0.172.0
       zustand: 3.7.2(react@18.2.0)
     optionalDependencies:
       react-dom: 18.3.1(react@18.2.0)
@@ -13146,69 +13178,40 @@ snapshots:
 
   '@rushstack/eslint-patch@1.10.5': {}
 
-  '@sentry-internal/feedback@7.120.3':
+  '@sentry-internal/browser-utils@8.50.0':
     dependencies:
-      '@sentry/core': 7.120.3
-      '@sentry/types': 7.120.3
-      '@sentry/utils': 7.120.3
+      '@sentry/core': 8.50.0
 
-  '@sentry-internal/replay-canvas@7.120.3':
+  '@sentry-internal/feedback@8.50.0':
     dependencies:
-      '@sentry/core': 7.120.3
-      '@sentry/replay': 7.120.3
-      '@sentry/types': 7.120.3
-      '@sentry/utils': 7.120.3
+      '@sentry/core': 8.50.0
 
-  '@sentry-internal/tracing@7.120.3':
+  '@sentry-internal/replay-canvas@8.50.0':
     dependencies:
-      '@sentry/core': 7.120.3
-      '@sentry/types': 7.120.3
-      '@sentry/utils': 7.120.3
+      '@sentry-internal/replay': 8.50.0
+      '@sentry/core': 8.50.0
 
-  '@sentry/browser@7.120.3':
+  '@sentry-internal/replay@8.50.0':
     dependencies:
-      '@sentry-internal/feedback': 7.120.3
-      '@sentry-internal/replay-canvas': 7.120.3
-      '@sentry-internal/tracing': 7.120.3
-      '@sentry/core': 7.120.3
-      '@sentry/integrations': 7.120.3
-      '@sentry/replay': 7.120.3
-      '@sentry/types': 7.120.3
-      '@sentry/utils': 7.120.3
+      '@sentry-internal/browser-utils': 8.50.0
+      '@sentry/core': 8.50.0
 
-  '@sentry/core@7.120.3':
+  '@sentry/browser@8.50.0':
     dependencies:
-      '@sentry/types': 7.120.3
-      '@sentry/utils': 7.120.3
+      '@sentry-internal/browser-utils': 8.50.0
+      '@sentry-internal/feedback': 8.50.0
+      '@sentry-internal/replay': 8.50.0
+      '@sentry-internal/replay-canvas': 8.50.0
+      '@sentry/core': 8.50.0
 
-  '@sentry/integrations@7.120.3':
-    dependencies:
-      '@sentry/core': 7.120.3
-      '@sentry/types': 7.120.3
-      '@sentry/utils': 7.120.3
-      localforage: 1.10.0
+  '@sentry/core@8.50.0': {}
 
-  '@sentry/react@7.120.3(react@18.2.0)':
+  '@sentry/react@8.50.0(react@18.2.0)':
     dependencies:
-      '@sentry/browser': 7.120.3
-      '@sentry/core': 7.120.3
-      '@sentry/types': 7.120.3
-      '@sentry/utils': 7.120.3
+      '@sentry/browser': 8.50.0
+      '@sentry/core': 8.50.0
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
-
-  '@sentry/replay@7.120.3':
-    dependencies:
-      '@sentry-internal/tracing': 7.120.3
-      '@sentry/core': 7.120.3
-      '@sentry/types': 7.120.3
-      '@sentry/utils': 7.120.3
-
-  '@sentry/types@7.120.3': {}
-
-  '@sentry/utils@7.120.3':
-    dependencies:
-      '@sentry/types': 7.120.3
 
   '@sindresorhus/is@4.6.0': {}
 
@@ -13246,7 +13249,7 @@ snapshots:
     dependencies:
       '@supabase/node-fetch': 2.6.15
 
-  '@supabase/supabase-js@2.47.14(bufferutil@4.0.9)(utf-8-validate@5.0.10)':
+  '@supabase/supabase-js@2.47.16(bufferutil@4.0.9)(utf-8-validate@5.0.10)':
     dependencies:
       '@supabase/auth-js': 2.67.3
       '@supabase/functions-js': 2.4.4
@@ -13291,14 +13294,44 @@ snapshots:
 
   '@tanstack/virtual-core@3.11.2': {}
 
-  '@telegram-apps/sdk-react@1.1.3(@types/react@19.0.7)(react@18.2.0)':
+  '@telegram-apps/bridge@1.9.2':
     dependencies:
-      '@telegram-apps/sdk': 1.1.3
+      '@telegram-apps/signals': 1.1.1
+      '@telegram-apps/toolkit': 1.1.1
+      '@telegram-apps/transformers': 1.2.2
+      '@telegram-apps/types': 1.2.1
+
+  '@telegram-apps/navigation@1.0.13':
+    dependencies:
+      '@telegram-apps/bridge': 1.9.2
+      '@telegram-apps/signals': 1.1.1
+      '@telegram-apps/toolkit': 1.1.1
+
+  '@telegram-apps/sdk-react@2.0.25(@types/react@19.0.7)(react@18.2.0)':
+    dependencies:
+      '@telegram-apps/sdk': 2.11.3
       react: 18.2.0
     optionalDependencies:
       '@types/react': 19.0.7
 
-  '@telegram-apps/sdk@1.1.3': {}
+  '@telegram-apps/sdk@2.11.3':
+    dependencies:
+      '@telegram-apps/bridge': 1.9.2
+      '@telegram-apps/navigation': 1.0.13
+      '@telegram-apps/signals': 1.1.1
+      '@telegram-apps/toolkit': 1.1.1
+      '@telegram-apps/transformers': 1.2.2
+
+  '@telegram-apps/signals@1.1.1': {}
+
+  '@telegram-apps/toolkit@1.1.1': {}
+
+  '@telegram-apps/transformers@1.2.2':
+    dependencies:
+      '@telegram-apps/toolkit': 1.1.1
+      '@telegram-apps/types': 1.2.1
+
+  '@telegram-apps/types@1.2.1': {}
 
   '@tensorflow-models/body-segmentation@1.0.2(@mediapipe/selfie_segmentation@0.1.1675465747)(@tensorflow/tfjs-backend-webgl@3.21.0(@tensorflow/tfjs-core@3.21.0))(@tensorflow/tfjs-converter@3.21.0(@tensorflow/tfjs-core@3.21.0))(@tensorflow/tfjs-core@3.21.0)':
     dependencies:
@@ -13729,6 +13762,10 @@ snapshots:
   '@types/node@20.17.14':
     dependencies:
       undici-types: 6.19.8
+
+  '@types/node@22.10.7':
+    dependencies:
+      undici-types: 6.20.0
 
   '@types/offscreencanvas@2019.3.0': {}
 
@@ -14184,7 +14221,7 @@ snapshots:
 
   base64url@3.0.1: {}
 
-  better-sqlite3@9.5.0:
+  better-sqlite3@11.3.0:
     dependencies:
       bindings: 1.5.0
       prebuild-install: 7.1.2
@@ -14295,9 +14332,9 @@ snapshots:
 
   camelize@1.0.1: {}
 
-  camera-controls@2.9.0(three@0.162.0):
+  camera-controls@2.9.0(three@0.172.0):
     dependencies:
-      three: 0.162.0
+      three: 0.172.0
 
   caniuse-lite@1.0.30001692: {}
 
@@ -15045,10 +15082,6 @@ snapshots:
     optionalDependencies:
       eslint-config-prettier: 10.0.1(eslint@9.18.0(jiti@2.4.2))
 
-  eslint-plugin-react-hooks@4.6.2(eslint@9.18.0(jiti@2.4.2)):
-    dependencies:
-      eslint: 9.18.0(jiti@2.4.2)
-
   eslint-plugin-react-hooks@5.1.0(eslint@9.18.0(jiti@2.4.2)):
     dependencies:
       eslint: 9.18.0(jiti@2.4.2)
@@ -15168,8 +15201,6 @@ snapshots:
   eventemitter3@4.0.7: {}
 
   eventemitter3@5.0.1: {}
-
-  events@3.2.0: {}
 
   eventsource@2.0.2: {}
 
@@ -15507,13 +15538,13 @@ snapshots:
 
   graphemer@1.4.0: {}
 
-  graphql-config@5.1.3(@types/node@20.17.14)(bufferutil@4.0.9)(graphql@16.10.0)(typescript@5.7.3)(utf-8-validate@5.0.10):
+  graphql-config@5.1.3(@types/node@22.10.7)(bufferutil@4.0.9)(graphql@16.10.0)(typescript@5.7.3)(utf-8-validate@5.0.10):
     dependencies:
       '@graphql-tools/graphql-file-loader': 8.0.11(graphql@16.10.0)
       '@graphql-tools/json-file-loader': 8.0.11(graphql@16.10.0)
       '@graphql-tools/load': 8.0.12(graphql@16.10.0)
       '@graphql-tools/merge': 9.0.17(graphql@16.10.0)
-      '@graphql-tools/url-loader': 8.0.24(@types/node@20.17.14)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)
+      '@graphql-tools/url-loader': 8.0.24(@types/node@22.10.7)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)
       '@graphql-tools/utils': 10.7.2(graphql@16.10.0)
       cosmiconfig: 8.3.6(typescript@5.7.3)
       graphql: 16.10.0
@@ -15997,10 +16028,6 @@ snapshots:
       prelude-ls: 1.2.1
       type-check: 0.4.0
 
-  lie@3.1.1:
-    dependencies:
-      immediate: 3.0.6
-
   lie@3.3.0:
     dependencies:
       immediate: 3.0.6
@@ -16009,7 +16036,7 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
-  lint-staged@15.4.0:
+  lint-staged@15.4.1:
     dependencies:
       chalk: 5.4.1
       commander: 12.1.0
@@ -16043,10 +16070,6 @@ snapshots:
       log-update: 6.1.0
       rfdc: 1.4.1
       wrap-ansi: 9.0.0
-
-  localforage@1.10.0:
-    dependencies:
-      lie: 3.1.1
 
   locate-path@5.0.0:
     dependencies:
@@ -16132,16 +16155,16 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lucide-react@0.372.0(react@18.2.0):
+  lucide-react@0.471.1(react@18.2.0):
     dependencies:
       react: 18.2.0
 
   lz-string@1.5.0: {}
 
-  maath@0.10.8(@types/three@0.172.0)(three@0.162.0):
+  maath@0.10.8(@types/three@0.172.0)(three@0.172.0):
     dependencies:
       '@types/three': 0.172.0
-      three: 0.162.0
+      three: 0.172.0
 
   map-cache@0.2.2: {}
 
@@ -16155,13 +16178,13 @@ snapshots:
 
   merge2@1.4.1: {}
 
-  meros@1.3.0(@types/node@20.17.14):
+  meros@1.3.0(@types/node@22.10.7):
     optionalDependencies:
-      '@types/node': 20.17.14
+      '@types/node': 22.10.7
 
-  meshline@3.3.1(three@0.162.0):
+  meshline@3.3.1(three@0.172.0):
     dependencies:
-      three: 0.162.0
+      three: 0.172.0
 
   meshoptimizer@0.18.1: {}
 
@@ -16246,7 +16269,7 @@ snapshots:
       '@tsconfig/node16': 1.0.4
       regexparam: 2.0.2
 
-  next-themes@0.3.0(react-dom@18.3.1(react@18.2.0))(react@18.2.0):
+  next-themes@0.4.4(react-dom@18.3.1(react@18.2.0))(react@18.2.0):
     dependencies:
       react: 18.2.0
       react-dom: 18.3.1(react@18.2.0)
@@ -17229,10 +17252,10 @@ snapshots:
       stack-generator: 2.0.10
       stacktrace-gps: 3.1.2
 
-  stats-gl@2.4.2(@types/three@0.172.0)(three@0.162.0):
+  stats-gl@2.4.2(@types/three@0.172.0)(three@0.172.0):
     dependencies:
       '@types/three': 0.172.0
-      three: 0.162.0
+      three: 0.172.0
 
   stats.js@0.17.0: {}
 
@@ -17485,7 +17508,7 @@ snapshots:
     dependencies:
       any-promise: 1.3.0
 
-  three-conic-polygon-geometry@2.1.0(three@0.162.0):
+  three-conic-polygon-geometry@2.1.0(three@0.172.0):
     dependencies:
       '@turf/boolean-point-in-polygon': 7.2.0
       d3-array: 3.2.4
@@ -17494,16 +17517,16 @@ snapshots:
       d3-scale: 4.0.2
       delaunator: 5.0.1
       earcut: 3.0.1
-      three: 0.162.0
+      three: 0.172.0
 
-  three-geojson-geometry@2.1.1(three@0.162.0):
+  three-geojson-geometry@2.1.1(three@0.172.0):
     dependencies:
       d3-geo: 3.1.1
       d3-interpolate: 3.0.1
       earcut: 3.0.1
-      three: 0.162.0
+      three: 0.172.0
 
-  three-globe@2.40.2(three@0.162.0):
+  three-globe@2.40.4(three@0.172.0):
     dependencies:
       '@tweenjs/tween.js': 25.0.0
       accessor-fn: 1.5.1
@@ -17518,25 +17541,25 @@ snapshots:
       h3-js: 4.1.0
       index-array-by: 1.4.2
       kapsule: 1.16.0
-      three: 0.162.0
-      three-conic-polygon-geometry: 2.1.0(three@0.162.0)
-      three-geojson-geometry: 2.1.1(three@0.162.0)
-      three-slippy-map-globe: 1.0.2(three@0.162.0)
+      three: 0.172.0
+      three-conic-polygon-geometry: 2.1.0(three@0.172.0)
+      three-geojson-geometry: 2.1.1(three@0.172.0)
+      three-slippy-map-globe: 1.0.2(three@0.172.0)
       tinycolor2: 1.6.0
       yaot: 1.1.3
 
-  three-mesh-bvh@0.7.8(three@0.162.0):
+  three-mesh-bvh@0.7.8(three@0.172.0):
     dependencies:
-      three: 0.162.0
+      three: 0.172.0
 
-  three-slippy-map-globe@1.0.2(three@0.162.0):
+  three-slippy-map-globe@1.0.2(three@0.172.0):
     dependencies:
       d3-geo: 3.1.1
       d3-octree: 1.1.0
       d3-scale: 4.0.2
-      three: 0.162.0
+      three: 0.172.0
 
-  three-stdlib@2.35.7(three@0.162.0):
+  three-stdlib@2.35.7(three@0.172.0):
     dependencies:
       '@types/draco3d': 1.4.10
       '@types/offscreencanvas': 2019.7.3
@@ -17544,9 +17567,9 @@ snapshots:
       draco3d: 1.5.7
       fflate: 0.6.10
       potpack: 1.0.2
-      three: 0.162.0
+      three: 0.172.0
 
-  three@0.162.0: {}
+  three@0.172.0: {}
 
   throttle-debounce@3.0.1: {}
 
@@ -17572,17 +17595,17 @@ snapshots:
 
   tr46@0.0.3: {}
 
-  troika-three-text@0.52.3(three@0.162.0):
+  troika-three-text@0.52.3(three@0.172.0):
     dependencies:
       bidi-js: 1.0.3
-      three: 0.162.0
-      troika-three-utils: 0.52.0(three@0.162.0)
+      three: 0.172.0
+      troika-three-utils: 0.52.0(three@0.172.0)
       troika-worker-utils: 0.52.0
       webgl-sdf-generator: 1.1.1
 
-  troika-three-utils@0.52.0(three@0.162.0):
+  troika-three-utils@0.52.0(three@0.172.0):
     dependencies:
-      three: 0.162.0
+      three: 0.172.0
 
   troika-worker-utils@0.52.0: {}
 
@@ -17702,6 +17725,8 @@ snapshots:
 
   undici-types@6.19.8: {}
 
+  undici-types@6.20.0: {}
+
   unixify@1.0.0:
     dependencies:
       normalize-path: 2.1.1
@@ -17777,9 +17802,9 @@ snapshots:
 
   utility-types@3.11.0: {}
 
-  uuid@8.3.2: {}
+  uuid@11.0.5: {}
 
-  uuid@9.0.1: {}
+  uuid@8.3.2: {}
 
   value-or-promise@1.0.12: {}
 
