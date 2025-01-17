@@ -13,9 +13,11 @@ import { MainMenu } from '@/components/landingpage/MainMenu'
 import { CourseProgram } from '@/components/landingpage/CourseSlideshow'
 import { ContactSection } from '@/components/landingpage/ContactSection'
 import { PricingPlans } from '@/components/landingpage/CoursePricing/PricingPlans'
+import { Conversation } from '@/components/elevenlabs/conversation'
 
 const autor = {
   name: 'Дмитрий НейроКодер',
+  telegram: 'https://t.me/neuro_sage',
   role: 'Full Stack разработчик',
   experience: '10+ лет опыта',
   bonusDescription:
@@ -66,6 +68,7 @@ function Home() {
   return (
     <div className='min-h-screen bg-gradient-to-b from-pink-50 to-white'>
       <MainMenu />
+
       {/* Hero Section */}
       <section className='relative overflow-hidden px-4 pb-3 pt-20'>
         <div className='relative mx-auto max-w-7xl text-center'>
@@ -84,6 +87,12 @@ function Home() {
           />
         </div>
       </section>
+      <div className='z-10 w-full max-w-5xl items-center justify-between font-mono text-sm'>
+        <h1 className='mb-8 text-center text-4xl font-bold'>
+          ElevenLabs Conversational AI
+        </h1>
+        <Conversation />
+      </div>
 
       {/* Problem Section */}
       <section id='problem-section' className='px-4 py-5'>
@@ -141,7 +150,7 @@ function Home() {
 
       <section id='contacts' className='px-4 py-5'>
         <div className='mx-auto max-w-7xl'>
-          <ContactSection />
+          <ContactSection contact={autor.telegram} />
         </div>
       </section>
 
