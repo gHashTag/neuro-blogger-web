@@ -40,6 +40,24 @@ export const pricingPlans = [
     link: 'https://auth.robokassa.ru/merchant/Invoice/VX-Fd8Tg_Um5cj00RSz6BQ',
   },
   {
+    title: '🌐 НейроСмм',
+    description: `📈 Полная автоматизация SMM<br />
+      🤖 Аватар ведет блог за вас<br />
+      📅 Планирование и автопостинг<br />
+      💬 Автоматические ответы подписчикам<br />
+      🌍 Глобальный охват и мульти-языковой контент<br />
+      📊 Анализ и оптимизация контента<br />
+      🔄 Ежедневный выход Reels<br />
+      📈 Увеличение охватов и вовлеченности<br />
+      🔧 Интеграция с вашими текущими платформами<br />
+      ⭐️ 5000 на баланс бота`,
+    discountedPrice: 149999,
+    price: 179998,
+    discountedLink:
+      'https://auth.robokassa.ru/merchant/Invoice/newDiscountedLink',
+    link: 'https://auth.robokassa.ru/merchant/Invoice/newLink',
+  },
+  {
     title: '🦸🏼‍♂️ НейроМентор',
     description: `📚 Все из тарифа НейроБаза<br />
       🧑‍🏫 Индивидуальное обучение и наставничество<br />

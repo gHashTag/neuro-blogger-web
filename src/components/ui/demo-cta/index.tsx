@@ -125,7 +125,7 @@ const DemoButton = () => {
     localStorage.setItem('room_id', '')
     localStorage.setItem('workspace_id', '')
     localStorage.setItem('photo_url', '')
-    router.push(`/${user.username}/0`)
+    router.push(`/${user.username}`)
   }
 
   return (

@@ -1,12 +1,5 @@
 import React from 'react'
-import {
-  Clock,
-  Users,
-  DollarSign,
-  CheckCircle,
-  Globe,
-  TrendingUp,
-} from 'lucide-react'
+import { Clock, Users, CheckCircle, Globe, TrendingUp } from 'lucide-react'
 
 export function ServiceBenefits() {
   const benefits = [
@@ -47,7 +40,7 @@ export function ServiceBenefits() {
   ]
 
   return (
-    <div className='min-h-screen py-12'>
+    <div className='py-12'>
       <div className='mx-auto max-w-7xl px-4'>
         <h1 className='mb-12 text-center text-4xl font-bold text-gray-800 sm:text-5xl lg:text-6xl'>
           Преимущества услуги

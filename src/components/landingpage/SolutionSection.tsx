@@ -51,20 +51,20 @@ export function SolutionSection() {
   ]
 
   return (
-    <section className='py-5'>
+    <section>
       <div className='max-w-7xl px-4'>
         {/* Заголовок */}
-        <div className='mb-16 text-center'>
+        <div className='mb-16 px-4 text-center'>
           <span className='mb-4 inline-flex items-center gap-2 rounded-full bg-purple-100 px-4 py-2 text-sm text-purple-700 sm:text-base md:text-lg lg:text-xl'>
-            <Star className='h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-7 lg:w-7' />
+            <Star className='h-12 w-12 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-14 lg:w-14' />
             ИИ-Автоматизация блога вашим цифровым двойником
           </span>
 
-          <h2 className='mb-6 bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl'>
+          <h2 className='mb-6 bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl lg:text-6xl'>
             Представьте, что ваш блог работает автоматически
           </h2>
 
-          <p className='mx-auto max-w-3xl text-xl text-gray-600'>
+          <p className='mx-auto max-w-xl text-base text-gray-600 sm:text-lg md:text-xl'>
             Нейросети возьмут на себя рутинные задачи, а вы сможете
             сосредоточиться на развитии
           </p>

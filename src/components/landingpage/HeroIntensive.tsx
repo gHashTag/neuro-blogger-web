@@ -8,42 +8,53 @@ interface HeroIntensiveProps {
     bonusDescription: string
     imageUrl: string
   }
+  title: string
+  subtitle: string
+  bonusTitle: string
+  description: string
 }
 
-export function HeroIntensive({ author }: HeroIntensiveProps) {
+export function HeroIntensive({
+  author,
+  title,
+  subtitle,
+  description,
+  bonusTitle,
+}: HeroIntensiveProps) {
   return (
-    <div className='relative mx-auto max-w-7xl px-4 py-8'>
+    <div className='relative mx-auto max-w-7xl px-4 pt-8'>
       {/* Фоновый градиент */}
       <div className='absolute inset-0 -z-10 bg-gradient-to-b from-white via-gray-50 to-gray-100' />
 
       <div className='grid items-center gap-12 lg:grid-cols-2'>
         {/* Левая колонка */}
-        <div className='space-y-8'>
+        <div className='space-y-10'>
           {/* Заголовок */}
-          <div className='mb-8 text-center text-4xl font-bold sm:text-5xl lg:text-6xl'>
-            <h1 className='mb-6 text-4xl font-bold sm:text-5xl lg:text-6xl'>
-              <span className='block text-gray-900'>КАК ОСВОИТЬ</span>
-              <span className='text-gray-800'>НЕЙРОСЕТИ С НУЛЯ</span>
+          <div className='mb-10 text-center'>
+            <h1 className='mb-4 text-3xl font-extrabold text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl'>
+              <span className='block'>{title}</span>
             </h1>
-            <p className='max-w-xl text-lg font-medium text-gray-600 sm:text-xl'>
-              Искусственный интеллект — простой инструмент для ускорения работы
-              и увеличения дохода.
+            <h3 className='mb-4 text-lg font-semibold text-violet-700 sm:text-xl md:text-2xl'>
+              {subtitle}
+            </h3>
+            <p className='mx-auto max-w-2xl text-base font-medium text-gray-600 sm:text-lg md:text-xl'>
+              {description}
             </p>
           </div>
 
           {/* Бонус */}
           <div className='grid grid-cols-5 overflow-hidden rounded-xl bg-white shadow-lg'>
-            <div className='col-span-1 flex items-center justify-center bg-violet-500 p-4 sm:p-6'>
+            <div className='col-span-1 flex items-center justify-center bg-violet-600 p-6'>
               <span className='rotate-12 transform text-5xl transition-transform hover:rotate-0 sm:text-7xl'>
                 🎁
               </span>
             </div>
-            <div className='col-span-4 p-4 sm:p-6'>
-              <div className='flex items-center gap-2 font-medium text-violet-500'>
-                <Star className='h-4 w-4' />
-                Бонус при регистрации
+            <div className='col-span-4 p-6'>
+              <div className='flex items-center gap-2 font-medium text-violet-600'>
+                <Star className='h-5 w-5' />
+                {bonusTitle}
               </div>
-              <p className='text-gray-900'>{author.bonusDescription}</p>
+              <p className='mt-2 text-gray-800'>{author.bonusDescription}</p>
             </div>
           </div>
         </div>
