@@ -8,7 +8,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Access-Control-Allow-Origin',
-            value: 'https://neuro-blogger-web-u14194.vm.elestio.app',
+            value: '*',
           },
           {
             key: 'Access-Control-Allow-Methods',

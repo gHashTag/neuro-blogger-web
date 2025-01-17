@@ -40,7 +40,7 @@ export default async function handler(
 
   try {
     console.log('CASE: CREATE USER')
-    const url = `${__DEV__ ? 'http://localhost:3000' : process.env.ELESTIO_URL}/user/create`
+    const url = `${__DEV__ ? 'http://localhost:3000' : process.env.NEXT_PUBLIC_AI_SERVER_URL}/user/create`
     console.log(url, 'url')
     const response = await fetch(url, {
       method: 'POST',

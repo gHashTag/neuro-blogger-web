@@ -39,7 +39,7 @@ const autor = {
   },
   title: 'SMM НА АВТОПИЛОТЕ',
   subtitle: 'АВАТАР ВЕДЕТ БЛОГ ЗА ВАС',
-  bonusTitle: 'БОНУС ПРИ РЕГИСТРАЦИИ',
+  bonusTitle: `СВОБОДА И МЕДИЙНОСТЬ В ПОДАРОК ПРИ РЕГИСТРАЦИИ`,
   neurosmmDescription:
     'AI контент производство для блогеров, бизнеса и экспертов',
 }
@@ -70,7 +70,7 @@ const metaMuseAutor = {
   },
   title: 'SMM НА АВТОПИЛОТЕ',
   subtitle: 'АВАТАР ВЕДЕТ БЛОГ ЗА ВАС',
-  bonusTitle: 'БОНУС ПРИ РЕГИСТРАЦИИ',
+  bonusTitle: 'СВОБОДА И МЕДИЙНОСТЬ В ПОДАРОК ПРИ РЕГИСТРАЦИИ',
   neurosmmDescription:
     'AI контент производство для блогеров, бизнеса и экспертов',
 }
@@ -98,7 +98,7 @@ function Home() {
   return (
     <div className='min-h-screen bg-gradient-to-b from-pink-50 to-white'>
       <MainMenu />
-      <AIWidget />
+
       {/* Hero Section */}
       <section className='relative overflow-hidden px-4 pb-3 pt-20'>
         <div className='relative mx-auto max-w-7xl text-center'>
@@ -185,6 +185,7 @@ function Home() {
 
       {/* Footer */}
       <Footer />
+      {/* <AIWidget /> */}
     </div>
   )
 }

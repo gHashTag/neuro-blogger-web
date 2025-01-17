@@ -43,18 +43,23 @@ export function HeroIntensive({
           </div>
 
           {/* Бонус */}
-          <div className='grid grid-cols-5 overflow-hidden rounded-xl bg-white shadow-lg'>
-            <div className='col-span-1 flex items-center justify-center bg-violet-600 p-6'>
-              <span className='rotate-12 transform text-5xl transition-transform hover:rotate-0 sm:text-7xl'>
+          <div className='grid grid-cols-1 overflow-hidden rounded-xl bg-white shadow-lg sm:grid-cols-5'>
+            <div className='flex items-center justify-center bg-violet-600 p-4 sm:col-span-1'>
+              <span className='transform text-4xl transition-transform hover:rotate-0 sm:text-5xl md:text-6xl lg:text-7xl'>
                 🎁
               </span>
             </div>
-            <div className='col-span-4 p-6'>
-              <div className='flex items-center gap-2 font-medium text-violet-600'>
+            <div className='p-4 sm:col-span-4'>
+              <div className='mb-2 flex items-center gap-2 font-semibold text-violet-600'>
                 <Star className='h-5 w-5' />
-                {bonusTitle}
+                <div className='flex flex-col'>
+                  <span>СВОБОДА И МЕДИЙНОСТЬ</span>
+                  <span>В ПОДАРОК ПРИ РЕГИСТРАЦИИ</span>
+                </div>
               </div>
-              <p className='mt-2 text-gray-800'>{author.bonusDescription}</p>
+              <blockquote className='mt-2 border-l-4 border-gray-300 pl-4 italic text-gray-800'>
+                <em>Живи, люби, твори - за тебя работает ИИ</em>
+              </blockquote>
             </div>
           </div>
         </div>
