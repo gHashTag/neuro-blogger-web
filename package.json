@@ -17,6 +17,7 @@
   "dependencies": {
     "@100mslive/react-sdk": "^0.10.4",
     "@100mslive/roomkit-react": "^0.3.4",
+    "@11labs/react": "^0.0.4",
     "@apollo/client": "^3.9.9",
     "@faker-js/faker": "^9.4.0",
     "@graphql-codegen/cli": "^5.0.2",

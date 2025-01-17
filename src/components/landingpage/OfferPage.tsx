@@ -67,7 +67,7 @@ export function OfferPage() {
 
   return (
     <div>
-      <div className='mx-auto max-w-7xl px-4'>
+      <div className='mx-auto max-w-7xl px-4 py-16'>
         <h1 className='mb-12 text-center text-4xl font-bold text-gray-800 sm:text-5xl lg:text-6xl'>
           Что мы предлагаем?
         </h1>

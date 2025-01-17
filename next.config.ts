@@ -8,7 +8,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Access-Control-Allow-Origin',
-            value: '*',
+            value: 'https://neuro-blogger-web-u14194.vm.elestio.app',
           },
           {
             key: 'Access-Control-Allow-Methods',
@@ -70,6 +70,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'dmrooqbmxdhdyblqzswu.supabase.co',
       },
+
       {
         protocol: 'http',
         hostname: 'localhost',

@@ -56,11 +56,11 @@ export function SolutionSection() {
         {/* Заголовок */}
         <div className='mb-16 px-4 text-center'>
           <span className='mb-4 inline-flex items-center gap-2 rounded-full bg-purple-100 px-4 py-2 text-sm text-purple-700 sm:text-base md:text-lg lg:text-xl'>
-            <Star className='h-7 w-7 sm:h-7 sm:w-7 md:h-8 md:w-8 lg:h-9 lg:w-9' />
+            <Star className='h- w-7 sm:h-7 sm:w-7 md:h-8 md:w-8 lg:h-9 lg:w-9' />
             ИИ-Автоматизация блога вашим цифровым двойником
           </span>
 
-          <h2 className='mb-6 bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl lg:text-6xl'>
+          <h2 className='mb-6 mt-10 bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl lg:text-6xl'>
             Представьте, что ваш блог работает автоматически
           </h2>
 

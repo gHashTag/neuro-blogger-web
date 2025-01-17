@@ -68,13 +68,13 @@ export function HeroIntensive({
           />
 
           {/* Стеклянный стикер */}
-          <div className='absolute bottom-4 left-4 rounded-xl border border-white/30 bg-white/10 p-3 backdrop-blur-lg'>
-            <div className='space-y-0.5'>
-              <p className='font-semibold text-white'>{author.name}</p>
-              <p className='text-sm text-white/80'>{author.role}</p>
-              <p className='text-sm font-medium text-violet-200'>
-                {author.experience}
-              </p>
+          <div className='absolute inset-x-0 bottom-0 mb-4 flex justify-center'>
+            <div className='rounded-xl border border-white/30 bg-white/10 p-3 backdrop-blur-lg'>
+              <div className='space-y-0.5'>
+                <p className='font-semibold text-white'>
+                  Стань ИИ ИНФЛЮЕНСЕРОМ
+                </p>
+              </div>
             </div>
           </div>
         </div>

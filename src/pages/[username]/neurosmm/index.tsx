@@ -11,6 +11,7 @@ import { ContactSection } from '@/components/landingpage/ContactSection'
 import { OfferPage } from '@/components/landingpage/OfferPage'
 import { ServiceBenefits } from '@/components/landingpage/ServiceBenefits'
 import { PricingSection } from '@/components/landingpage/PricingSection'
+import AIWidget from '@/utils/AIWidget'
 
 const autor = {
   name: 'Дмитрий НейроКодер',
@@ -97,6 +98,7 @@ function Home() {
   return (
     <div className='min-h-screen bg-gradient-to-b from-pink-50 to-white'>
       <MainMenu />
+      <AIWidget />
       {/* Hero Section */}
       <section className='relative overflow-hidden px-4 pb-3 pt-20'>
         <div className='relative mx-auto max-w-7xl text-center'>
@@ -107,11 +109,11 @@ function Home() {
       <section className='px-4 py-5'>
         <div className='mx-auto max-w-7xl'>
           <HeroIntensive
-            author={autor}
-            title={autor.title}
-            subtitle={autor.subtitle}
-            bonusTitle={autor.bonusTitle}
-            description={autor.neurosmmDescription}
+            author={metaMuseAutor}
+            title={metaMuseAutor.title}
+            subtitle={metaMuseAutor.subtitle}
+            bonusTitle={metaMuseAutor.bonusTitle}
+            description={metaMuseAutor.neurosmmDescription}
           />
         </div>
       </section>
