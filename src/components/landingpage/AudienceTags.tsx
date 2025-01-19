@@ -23,12 +23,6 @@ const audienceTags: AudienceTag[] = [
     textColor: 'text-emerald-700',
   },
   {
-    icon: <GraduationCap className='h-3 w-3 sm:h-4 sm:w-4' />,
-    text: 'Без опыта',
-    bgColor: 'bg-amber-100',
-    textColor: 'text-amber-700',
-  },
-  {
     icon: <Lightbulb className='h-3 w-3 sm:h-4 sm:w-4' />,
     text: 'Начинающим',
     bgColor: 'bg-yellow-100',
@@ -48,15 +42,21 @@ const audienceTags: AudienceTag[] = [
   },
   {
     icon: <Palette className='h-3 w-3 sm:h-4 sm:w-4' />,
-    text: 'Дизайнерам',
+    text: 'Инфлюенсерам',
     bgColor: 'bg-purple-100',
     textColor: 'text-purple-700',
   },
   {
     icon: <PenTool className='h-3 w-3 sm:h-4 sm:w-4' />,
-    text: 'Копирайтерам',
+    text: 'Звездам',
     bgColor: 'bg-green-100',
     textColor: 'text-green-700',
+  },
+  {
+    icon: <GraduationCap className='h-3 w-3 sm:h-4 sm:w-4' />,
+    text: 'Личного бренда',
+    bgColor: 'bg-amber-100',
+    textColor: 'text-amber-700',
   },
 ]
 
