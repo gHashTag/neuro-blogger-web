@@ -48,7 +48,7 @@ export function CoursePricing({ plans }: CoursePricingProps) {
         </div>
       </div>
       <div className='flex flex-col items-center'>
-        <div className='mx-auto mt-8 grid max-w-7xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
+        <div className='mx-auto mt-8 grid max-w-7xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4'>
           {plans.map((plan, index) => (
             <div
               key={index}

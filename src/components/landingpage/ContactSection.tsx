@@ -1,4 +1,10 @@
-export function ContactSection({ contact }: { contact: string }) {
+export function ContactSection({
+  contact,
+  hidePrice = false,
+}: {
+  contact: string
+  hidePrice?: boolean
+}) {
   return (
     <section className='relative py-16'>
       <div className='relative mx-auto max-w-7xl px-4'>
@@ -17,12 +23,14 @@ export function ContactSection({ contact }: { contact: string }) {
             >
               Узнать больше
             </a>
-            <a
-              href='https://auth.robokassa.ru/merchant/Invoice/1TECfbyRZUKhtX-O-0r43g'
-              className='inline-block rounded-full bg-pink-600 px-8 py-4 text-center font-semibold text-white shadow-md transition-all hover:bg-pink-700'
-            >
-              Оплатить предоплату
-            </a>
+            {!hidePrice && (
+              <a
+                href='https://auth.robokassa.ru/merchant/Invoice/1TECfbyRZUKhtX-O-0r43g'
+                className='inline-block rounded-full bg-pink-600 px-8 py-4 text-center font-semibold text-white shadow-md transition-all hover:bg-pink-700'
+              >
+                Оплатить предоплату
+              </a>
+            )}
           </div>
         </div>
       </div>

@@ -38,8 +38,9 @@ const autor = {
     'Международный опыт': 'Работа в UAE, Thailand, Indonesia',
     Основатель: 'Leela Chakra AI, NeuroCoder, NeuroBlogger',
   },
-  title: 'SMM НА АВТОПИЛОТЕ',
-  subtitle: 'АВАТАР ВЕДЕТ БЛОГ ЗА ВАС',
+  title: 'НЕЙРОСЕТИ ОБУЧЕНИЕ С НУЛЯ',
+  subtitle:
+    'Искусственный интеллект — простой инструмент для ускорения работы и увеличения дохода',
   bonusTitle: 'БОНУС ПРИ РЕГИСТРАЦИИ',
   neurosmmDescription:
     'AI контент производство для блогеров, бизнеса и экспертов',
@@ -87,12 +88,12 @@ function Home() {
           />
         </div>
       </section>
-      <div className='z-10 w-full max-w-5xl items-center justify-between font-mono text-sm'>
+      {/* <div className='z-10 w-full max-w-5xl items-center justify-between font-mono text-sm'>
         <h1 className='mb-8 text-center text-4xl font-bold'>
           ElevenLabs Conversational AI
         </h1>
         <Conversation />
-      </div>
+      </div> */}
 
       {/* Problem Section */}
       <section id='problem-section' className='px-4 py-5'>
@@ -150,7 +151,7 @@ function Home() {
 
       <section id='contacts' className='px-4 py-5'>
         <div className='mx-auto max-w-7xl'>
-          <ContactSection contact={autor.telegram} />
+          <ContactSection contact={autor.telegram} hidePrice={true} />
         </div>
       </section>
 
