@@ -67,7 +67,7 @@ export default function MiniApp() {
   return (
     <TelegramCard
       level={Number(level)}
-      imageSrc={`../../../../../../images/miniapp/${username}/${level}.jpg`}
+      imageSrc={`../../../../../../images/miniapp/${username}/${level + 1}.jpg`}
       title={isRussian ? currentLevel.title_ru : currentLevel.title_en}
       is_ru={isRussian}
       link={link}
