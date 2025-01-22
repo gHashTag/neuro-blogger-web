@@ -1,6 +1,7 @@
 import React from 'react'
 import InfoOverlay from './InfoOverlay'
 import LevelBadge from './levelBadge'
+
 interface TelegramCardProps {
   level: number
   imageSrc: string

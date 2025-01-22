@@ -1,6 +1,9 @@
 import { useRouter } from 'next/router'
 import TelegramCard from './TelegramCard'
 import { retrieveLaunchParams } from '@telegram-apps/sdk'
+import { useState, useEffect } from 'react'
+import { isDev } from '@/config'
+import { getTranslation } from '@/supabase/getTranslation'
 
 interface Level {
   title_ru: string
@@ -45,21 +48,44 @@ const levels: Record<number, Level> = {
     title_en: 'PHOTO TO VIDEO',
   },
 }
-const { initData, platform } = retrieveLaunchParams()
+
 const links = {
   neuro_sage: 'https://t.me/neuro_blogger_bot?start=144022504',
 }
 
 export default function MiniApp() {
+  const [userLanguageCode, setUserLanguageCode] = useState<string>('ru')
+  // const [message, setMessage] = useState<string | null>(null)
   const router = useRouter()
   const { username, level } = router.query as {
-    username: string
-    level: string
+    username?: string
+    level?: string
   }
-  if (!initData) {
-    return <p>Init data not found</p>
+
+  useEffect(() => {
+    if (!isDev) {
+      try {
+        const { initData } = retrieveLaunchParams()
+        setUserLanguageCode(initData?.user?.languageCode || 'ru')
+      } catch (error) {
+        console.error('Error retrieving launch parameters:', error)
+      }
+    }
+    // const getMessage = async () => {
+    //   const message = await getTranslation(userLanguageCode, 'welcome_message')
+    //   console.log('message', message)
+    //   if (!message) {
+    //     throw new Error('Message not found')
+    //   }
+
+    //   setMessage(message)
+    // }
+    // getMessage()
+  }, [userLanguageCode])
+
+  if (!username || !level) {
+    return <p>Loading...</p>
   }
-  const userLanguageCode = initData?.user?.languageCode
 
   const currentLevel = levels[Number(level)]
 
@@ -72,7 +98,7 @@ export default function MiniApp() {
   }
   const link = username === 'neuro_sage' ? links[username] : ''
   const imageSrc = `../../../../../../images/miniapp/${username}/${level}.jpg`
-  console.log(imageSrc)
+
   return (
     <TelegramCard
       level={Number(level)}
