@@ -3,7 +3,6 @@ import TelegramCard from './TelegramCard'
 import { retrieveLaunchParams } from '@telegram-apps/sdk'
 import { useState, useEffect } from 'react'
 import { isDev } from '@/config'
-import { getTranslation } from '@/supabase/getTranslation'
 
 interface Level {
   title_ru: string
@@ -49,12 +48,9 @@ const levels: Record<number, Level> = {
   },
 }
 
-const links = {
-  neuro_sage: 'https://t.me/neuro_blogger_bot?start=144022504',
-}
-
 export default function MiniApp() {
   const [userLanguageCode, setUserLanguageCode] = useState<string>('ru')
+  const [userId, setUserId] = useState<string>('')
   // const [message, setMessage] = useState<string | null>(null)
   const router = useRouter()
   const { username, level } = router.query as {
@@ -67,20 +63,13 @@ export default function MiniApp() {
       try {
         const { initData } = retrieveLaunchParams()
         setUserLanguageCode(initData?.user?.languageCode || 'ru')
+        if (initData?.user?.id) {
+          setUserId(initData.user.id.toString())
+        }
       } catch (error) {
         console.error('Error retrieving launch parameters:', error)
       }
     }
-    // const getMessage = async () => {
-    //   const message = await getTranslation(userLanguageCode, 'welcome_message')
-    //   console.log('message', message)
-    //   if (!message) {
-    //     throw new Error('Message not found')
-    //   }
-
-    //   setMessage(message)
-    // }
-    // getMessage()
   }, [userLanguageCode])
 
   if (!username || !level) {
@@ -96,7 +85,8 @@ export default function MiniApp() {
       </p>
     )
   }
-  const link = username === 'neuro_sage' ? links[username] : ''
+
+  const link = `https://t.me/neuro_blogger_bot?start=${userId}`
   const imageSrc = `../../../../../../images/miniapp/${username}/${level}.jpg`
 
   return (
