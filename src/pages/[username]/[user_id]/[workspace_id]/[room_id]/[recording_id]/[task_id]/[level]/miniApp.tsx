@@ -3,6 +3,7 @@ import TelegramCard from './TelegramCard'
 import { retrieveLaunchParams } from '@telegram-apps/sdk'
 import { useState, useEffect } from 'react'
 import { isDev } from '@/config'
+import { Atom } from 'react-loading-indicators'
 
 interface Level {
   title_ru: string
@@ -78,6 +79,7 @@ export default function MiniApp() {
     return (
       <div
         style={{
+          display: 'flex',
           flex: 1,
           height: '100vh',
           width: '100vw',
@@ -87,7 +89,7 @@ export default function MiniApp() {
           backgroundColor: 'white',
         }}
       >
-        <p style={{ color: 'black' }}>Loading...</p>
+        <Atom color='#000000' size='medium' text='' />
       </div>
     )
   }
