@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import TelegramCard from './TelegramCard'
+import { retrieveLaunchParams } from '@telegram-apps/sdk'
 
 interface Level {
   title_ru: string
@@ -44,7 +45,7 @@ const levels: Record<number, Level> = {
     title_en: 'PHOTO TO VIDEO',
   },
 }
-
+const { initData, platform } = retrieveLaunchParams()
 const links = {
   neuro_sage: 'https://t.me/neuro_blogger_bot?start=144022504',
 }
@@ -55,13 +56,19 @@ export default function MiniApp() {
     username: string
     level: string
   }
-  const userLanguages = navigator.language
-  const isRussian = userLanguages === 'ru-RU'
+  if (!initData) {
+    return <p>Init data not found</p>
+  }
+  const userLanguageCode = initData?.user?.languageCode
 
   const currentLevel = levels[Number(level)]
 
   if (!currentLevel) {
-    return <p>{isRussian ? 'Уровень не найден' : 'Level not found'}</p>
+    return (
+      <p>
+        {userLanguageCode === 'ru' ? 'Уровень не найден' : 'Level not found'}
+      </p>
+    )
   }
   const link = username === 'neuro_sage' ? links[username] : ''
   const imageSrc = `../../../../../../images/miniapp/${username}/${level}.jpg`
@@ -70,8 +77,12 @@ export default function MiniApp() {
     <TelegramCard
       level={Number(level)}
       imageSrc={imageSrc}
-      title={isRussian ? currentLevel.title_ru : currentLevel.title_en}
-      is_ru={isRussian}
+      title={
+        userLanguageCode === 'ru'
+          ? currentLevel.title_ru
+          : currentLevel.title_en
+      }
+      is_ru={userLanguageCode === 'ru'}
       link={link}
     />
   )
