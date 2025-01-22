@@ -64,10 +64,12 @@ export default function MiniApp() {
     return <p>{isRussian ? 'Уровень не найден' : 'Level not found'}</p>
   }
   const link = username === 'neuro_sage' ? links[username] : ''
+  const imageSrc = `../../../../../../images/miniapp/${username}/${level}.jpg`
+  console.log(imageSrc)
   return (
     <TelegramCard
       level={Number(level)}
-      imageSrc={`../../../../../../images/miniapp/${username}/${level + 1}.jpg`}
+      imageSrc={imageSrc}
       title={isRussian ? currentLevel.title_ru : currentLevel.title_en}
       is_ru={isRussian}
       link={link}
