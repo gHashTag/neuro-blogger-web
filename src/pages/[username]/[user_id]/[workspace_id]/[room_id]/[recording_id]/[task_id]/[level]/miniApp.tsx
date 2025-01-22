@@ -72,17 +72,23 @@ export default function MiniApp() {
     }
   }, [userLanguageCode])
 
-  if (!username || !level) {
-    return <p>Loading...</p>
-  }
-
   const currentLevel = levels[Number(level)]
 
   if (!currentLevel) {
     return (
-      <p>
-        {userLanguageCode === 'ru' ? 'Уровень не найден' : 'Level not found'}
-      </p>
+      <div
+        style={{
+          flex: 1,
+          height: '100vh',
+          width: '100vw',
+          justifyContent: 'center',
+          alignItems: 'center',
+          color: 'white',
+          backgroundColor: 'white',
+        }}
+      >
+        <p style={{ color: 'black' }}>Loading...</p>
+      </div>
     )
   }
 

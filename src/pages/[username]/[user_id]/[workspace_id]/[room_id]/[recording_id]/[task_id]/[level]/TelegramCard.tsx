@@ -18,7 +18,10 @@ export default function TelegramCard({
   link,
 }: TelegramCardProps) {
   return (
-    <div className='flex h-full w-full flex-col overflow-hidden shadow-lg'>
+    <div
+      className='flex h-full w-full flex-col overflow-hidden shadow-lg'
+      style={{ color: 'white' }}
+    >
       <div className='relative flex-shrink-0 bg-blue-100'>
         <img
           src={imageSrc}
