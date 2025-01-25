@@ -95,12 +95,18 @@ export default function MiniApp() {
   }
 
   const link = `https://t.me/neuro_blogger_bot?start=${userId}`
-  const imageSrc = `../../../../../../images/miniapp/${username}/${level}.jpg`
+
+  let videoSrc = ''
+  if (userLanguageCode === 'ru') {
+    videoSrc = `../../../../../../images/miniapp/neuro_sage/video_ru/${level}.mp4`
+  } else {
+    videoSrc = `../../../../../../images/miniapp/neuro_sage/video_en/${level}.mp4`
+  }
 
   return (
     <TelegramCard
       level={Number(level)}
-      imageSrc={imageSrc}
+      videoSrc={videoSrc}
       title={
         userLanguageCode === 'ru'
           ? currentLevel.title_ru

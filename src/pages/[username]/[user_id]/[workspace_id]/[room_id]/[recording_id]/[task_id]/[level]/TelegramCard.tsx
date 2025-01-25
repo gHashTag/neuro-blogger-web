@@ -4,7 +4,7 @@ import LevelBadge from './levelBadge'
 
 interface TelegramCardProps {
   level: number
-  imageSrc: string
+  videoSrc: string
   title: string
   is_ru: boolean
   link: string
@@ -12,7 +12,7 @@ interface TelegramCardProps {
 
 export default function TelegramCard({
   level,
-  imageSrc,
+  videoSrc,
   title,
   is_ru,
   link,
@@ -23,10 +23,11 @@ export default function TelegramCard({
       style={{ color: 'white' }}
     >
       <div className='relative flex-shrink-0 bg-blue-100'>
-        <img
-          src={imageSrc}
-          alt='Avatar'
+        <video
+          src={videoSrc}
           className='h-full w-full object-cover'
+          autoPlay
+          loop
         />
         <LevelBadge level={level} is_ru={is_ru} />
       </div>
