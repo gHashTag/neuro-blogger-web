@@ -30,7 +30,7 @@ export default function TelegramCard({
         <div className='video-container'>
           <ReactPlayer
             url={videoSrc}
-            className='h-full w-full object-cover'
+            className='pointer-events-none h-full w-full object-cover'
             playing={true}
             loop={true}
             muted={muted}
@@ -40,6 +40,8 @@ export default function TelegramCard({
               backgroundImage: `url(${imageSrc})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
+              objectFit: 'cover',
+              zIndex: -1,
             }}
           />
           <button
