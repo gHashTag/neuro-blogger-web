@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import TelegramCard from './TelegramCard'
-import { retrieveLaunchParams } from '@telegram-apps/sdk'
+import { initData, retrieveLaunchParams } from '@telegram-apps/sdk'
 import { useState, useEffect } from 'react'
 import { isDev } from '@/config'
 import { Atom } from 'react-loading-indicators'
@@ -52,6 +52,7 @@ const levels: Record<number, Level> = {
 export default function MiniApp() {
   const [userLanguageCode, setUserLanguageCode] = useState<string>('ru')
   const [userId, setUserId] = useState<string>('')
+
   // const [message, setMessage] = useState<string | null>(null)
   const router = useRouter()
   const { username, level } = router.query as {
@@ -96,14 +97,15 @@ export default function MiniApp() {
 
   const link = `https://t.me/neuro_blogger_bot?start=${userId}`
 
+  const imageSrc = `../../../../../../images/miniapp/neuro_sage/${level}.jpg`
+
   let videoSrc = ''
+
   if (userLanguageCode === 'ru') {
     videoSrc = `../../../../../../images/miniapp/neuro_sage/video_ru/${level}.mp4`
   } else {
     videoSrc = `../../../../../../images/miniapp/neuro_sage/video_en/${level}.mp4`
   }
-
-  const imageSrc = `../../../../../../images/miniapp/neuro_sage/${level}.jpg`
 
   return (
     <TelegramCard
