@@ -103,6 +103,8 @@ export default function MiniApp() {
     videoSrc = `../../../../../../images/miniapp/neuro_sage/video_en/${level}.mp4`
   }
 
+  const imageSrc = `../../../../../../images/miniapp/neuro_sage/${level}.jpg`
+
   return (
     <TelegramCard
       level={Number(level)}
@@ -114,6 +116,7 @@ export default function MiniApp() {
       }
       is_ru={userLanguageCode === 'ru'}
       link={link}
+      imageSrc={imageSrc}
     />
   )
 }

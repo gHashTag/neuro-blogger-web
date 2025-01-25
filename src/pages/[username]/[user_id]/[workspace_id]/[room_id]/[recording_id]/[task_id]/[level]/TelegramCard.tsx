@@ -8,6 +8,7 @@ interface TelegramCardProps {
   title: string
   is_ru: boolean
   link: string
+  imageSrc: string
 }
 
 export default function TelegramCard({
@@ -16,6 +17,7 @@ export default function TelegramCard({
   title,
   is_ru,
   link,
+  imageSrc,
 }: TelegramCardProps) {
   return (
     <div
@@ -28,6 +30,7 @@ export default function TelegramCard({
           className='h-full w-full object-cover'
           autoPlay
           loop
+          poster={imageSrc}
         />
         <LevelBadge level={level} is_ru={is_ru} />
       </div>
