@@ -1,5 +1,5 @@
 import { SupabaseUser } from '@/types'
-import { supabase } from '@/utils/supabase'
+import { supabase } from '@/core/supabase/supabase'
 import { SupabaseResponse } from '@/utils/types'
 
 export const setVideoId = async (

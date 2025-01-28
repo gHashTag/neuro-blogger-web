@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { getWorkspaceById, supabase } from '@/utils/supabase'
+import { getWorkspaceById, supabase } from '@/core/supabase/supabase'
 import { RoomNode } from '@/types'
 import { headers } from '@/helpers/headers'
 

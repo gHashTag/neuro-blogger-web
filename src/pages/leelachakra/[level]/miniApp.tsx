@@ -282,18 +282,26 @@ export default function MiniApp() {
       try {
         const { initData } = retrieveLaunchParams()
         setUserLanguageCode(initData?.user?.languageCode || 'ru')
-        if (initData?.user?.id) {
-          setUserId(initData.user.id.toString())
+
+        const userId = initData?.user?.id?.toString()
+        if (userId) {
+          setUserId(userId)
+        } else {
+          console.error('User ID is not available')
         }
 
         if (level === '0') {
           const updateLevel = async () => {
-            const planNumber = await getPlanNumber(userId)
-            console.log('planNumber', planNumber)
-            if (planNumber) {
-              setUpdateLevel(planNumber.loka)
+            if (userId) {
+              const planNumber = await getPlanNumber(userId)
+              console.log('planNumber', planNumber)
+              if (planNumber) {
+                setUpdateLevel(planNumber.loka)
+              } else {
+                console.error('Не удалось получить номер плана')
+              }
             } else {
-              console.error('Не удалось получить номер плана')
+              console.error('User ID is not available for updating level')
             }
           }
           updateLevel()
@@ -322,7 +330,8 @@ export default function MiniApp() {
           backgroundColor: 'white',
         }}
       >
-        <Atom color='#000000' size='medium' text='' />
+        <p>{currentLevel}</p>
+        <Atom color='#000000' size='medium' text={currentLevel} />
       </div>
     )
   }

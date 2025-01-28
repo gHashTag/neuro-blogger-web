@@ -16,7 +16,7 @@ import { AssignedTo, Passport, PassportNode } from '@/types'
 
 import { useTasks } from './useTasks'
 import { captureExceptionSentry } from '@/utils/sentry'
-import { checkUsernameAndReturnUser } from '@/utils/supabase'
+import { checkUsernameAndReturnUser } from '@/core/supabase/supabase'
 
 type passportType = {
   user_id?: string

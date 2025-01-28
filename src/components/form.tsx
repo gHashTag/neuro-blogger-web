@@ -36,7 +36,7 @@ import {
 import Captcha, { useCaptcha } from './captcha'
 
 import { useUser } from '@/hooks/useUser'
-import { checkUsernameAndReturnUser } from '@/utils/supabase'
+import { checkUsernameAndReturnUser } from '@/core/supabase/supabase'
 import { isValidEmail } from '@/helpers/utils'
 import { __DEV__ } from '@/utils/constants'
 

@@ -11,7 +11,7 @@ import {
   checkUsernameCodesByUserName,
   supabase,
   updateUserInfoByUsername,
-} from '@/utils/supabase'
+} from '@/core/supabase/supabase'
 
 import {
   setInviteCode,

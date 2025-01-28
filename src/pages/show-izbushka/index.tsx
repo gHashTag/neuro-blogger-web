@@ -11,7 +11,7 @@ import {
   getSelectIzbushkaId,
   getUser,
   setUserPhotoUrl,
-} from '@/utils/supabase'
+} from '@/core/supabase/supabase'
 import { captureExceptionSentry } from '@/utils/sentry'
 import { Spinner } from '@/components/ui/spinner'
 // import { HMSPrebuilt } from '@100mslive/roomkit-react'

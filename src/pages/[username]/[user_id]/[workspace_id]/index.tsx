@@ -18,7 +18,7 @@ import TaskModal from '@/components/modal/TaskModal'
 import { useRooms } from '@/hooks/useRooms'
 import { BreadcrumbWithCustomSeparator } from '@/components/ui/breadcrumb-with-custom-separator'
 import { usePassport } from '@/hooks/usePassport'
-import { getAssignedTasks } from '@/utils/supabase'
+import { getAssignedTasks } from '@/core/supabase/supabase'
 import { usePathname } from 'next/navigation'
 import { usePath } from '@/hooks/usePath'
 
