@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router'
-import TelegramCard from './TelegramCard'
+import TelegramCard from '../TelegramCard'
 import { initData, retrieveLaunchParams } from '@telegram-apps/sdk'
 import { useState, useEffect } from 'react'
 import { isDev } from '@/config'
 import { Atom } from 'react-loading-indicators'
 import { getPlanNumber } from '@/core/supabase/getPlanNumber'
-import { levels } from './levels'
+import { levels } from '../levels'
 
 export default function MiniApp() {
   const [userLanguageCode, setUserLanguageCode] = useState<string>('ru')
@@ -15,6 +15,8 @@ export default function MiniApp() {
     username?: string
     level?: string
   }
+
+  const [updateLevel, setUpdateLevel] = useState<number>(Number(level))
 
   useEffect(() => {
     if (!isDev) {
@@ -28,6 +30,21 @@ export default function MiniApp() {
         } else {
           console.error('User ID is not available')
         }
+
+        const updateLevel = async () => {
+          if (userId) {
+            const planNumber = await getPlanNumber(userId)
+            console.log('planNumber', planNumber)
+            if (planNumber) {
+              setUpdateLevel(planNumber.loka)
+            } else {
+              console.error('Не удалось получить номер плана')
+            }
+          } else {
+            console.error('User ID is not available for updating level')
+          }
+        }
+        updateLevel()
       } catch (error) {
         console.error('Error retrieving launch parameters:', error)
       }
@@ -58,7 +75,7 @@ export default function MiniApp() {
 
   const link = `https://t.me/neuro_blogger_bot?start=${userId}`
 
-  const imageSrc = `https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/leelachakra/plans/${level}.jpg`
+  const imageSrc = `https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/leelachakra/plans/${updateLevel}.jpg`
 
   // let videoSrc = ''
 
