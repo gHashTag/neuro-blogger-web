@@ -4,6 +4,7 @@ import { initData, retrieveLaunchParams } from '@telegram-apps/sdk'
 import { useState, useEffect } from 'react'
 import { isDev } from '@/config'
 import { Atom } from 'react-loading-indicators'
+import { getPlanNumber } from '@/core/supabase/getPlanNumber'
 
 interface Level {
   title_ru: string
@@ -268,13 +269,13 @@ const levels: Record<number, Level> = {
 export default function MiniApp() {
   const [userLanguageCode, setUserLanguageCode] = useState<string>('ru')
   const [userId, setUserId] = useState<string>('')
-
-  // const [message, setMessage] = useState<string | null>(null)
   const router = useRouter()
   const { username, level } = router.query as {
     username?: string
     level?: string
   }
+
+  const [updateLevel, setUpdateLevel] = useState<number>(Number(level))
 
   useEffect(() => {
     if (!isDev) {
@@ -283,6 +284,21 @@ export default function MiniApp() {
         setUserLanguageCode(initData?.user?.languageCode || 'ru')
         if (initData?.user?.id) {
           setUserId(initData.user.id.toString())
+        }
+
+        if (level === '0') {
+          const updateLevel = async () => {
+            const planNumber = await getPlanNumber(userId)
+            console.log('planNumber', planNumber)
+            if (planNumber) {
+              setUpdateLevel(planNumber.loka)
+            } else {
+              console.error('Не удалось получить номер плана')
+            }
+          }
+          updateLevel()
+        } else {
+          setUpdateLevel(Number(level))
         }
       } catch (error) {
         console.error('Error retrieving launch parameters:', error)
@@ -313,7 +329,7 @@ export default function MiniApp() {
 
   const link = `https://t.me/neuro_blogger_bot?start=${userId}`
 
-  const imageSrc = `https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/leelachakra/plans/${level}.jpg`
+  const imageSrc = `https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/leelachakra/plans/${updateLevel}.jpg`
 
   // let videoSrc = ''
 

@@ -1,6 +1,6 @@
 // @ts-ignore
 import { v4 as uuidv4 } from 'uuid'
-import { supabase } from '../supabase'
+import { supabase } from '../../core/supabase/supabase'
 
 if (!process.env.NEXT_PUBLIC_100MS) {
   throw new Error('NEXT_PUBLIC_100MS is not set!')

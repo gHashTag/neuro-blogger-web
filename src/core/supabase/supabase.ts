@@ -1,9 +1,9 @@
 'use client'
 import { SupabaseUser, Task } from '@/types'
 
-import { createClient } from '@supabase/supabase-js'
-import { captureExceptionSentry } from './sentry'
-import { SupabaseResponse } from './types'
+import { captureExceptionSentry } from '../../utils/sentry'
+import { SupabaseResponse } from '../../utils/types'
+import { supabase } from '.'
 
 interface QuestionContext {
   lesson_number?: number
@@ -21,19 +21,6 @@ interface UpdateResultParams {
   language: string
   value: boolean
 }
-
-if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
-  throw new Error('NEXT_PUBLIC_SUPABASE_URL is not set')
-}
-
-if (!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
-  throw new Error('NEXT_PUBLIC_SUPABASE_ANON_KEY is not set')
-}
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-)
 
 export async function getWorkspaceById(workspace_id: string) {
   const { data, error } = await supabase
