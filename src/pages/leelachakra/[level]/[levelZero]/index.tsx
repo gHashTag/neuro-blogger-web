@@ -1,13 +1,13 @@
 'use client'
 import React from 'react'
 import { useRouter } from 'next/router'
-import TelegramCard from '../TelegramCard'
+import TelegramCard from '../../../../components/leelachakra/TelegramCard'
 import { initData, retrieveLaunchParams } from '@telegram-apps/sdk'
 import { useState, useEffect } from 'react'
 import { isDev } from '@/config'
 import { Atom } from 'react-loading-indicators'
 import { getPlanNumber } from '@/core/supabase/getPlanNumber'
-import { levels } from '../levels'
+import { leelaLevels } from '../../../../components/leelachakra/leelaLevels'
 
 export default function MiniApp() {
   const [userLanguageCode, setUserLanguageCode] = useState<string>('ru')
@@ -22,38 +22,32 @@ export default function MiniApp() {
 
   useEffect(() => {
     if (!isDev) {
-      try {
-        const { initData } = retrieveLaunchParams()
-        setUserLanguageCode(initData?.user?.languageCode || 'ru')
+      const fetchData = async () => {
+        try {
+          const { initData } = retrieveLaunchParams()
+          setUserLanguageCode(initData?.user?.languageCode || 'ru')
 
-        const userId = initData?.user?.id?.toString()
-        if (userId) {
-          setUserId(userId)
-        } else {
-          console.error('User ID is not available')
-        }
-
-        const updateLevel = async () => {
+          const userId = initData?.user?.id?.toString()
           if (userId) {
             const planNumber = await getPlanNumber(userId)
-            console.log('planNumber', planNumber)
             if (planNumber) {
               setUpdateLevel(planNumber.loka)
             } else {
               console.error('Не удалось получить номер плана')
             }
+            setUserId(userId)
           } else {
-            console.error('User ID is not available for updating level')
+            console.error('User ID is not available')
           }
+        } catch (error) {
+          console.error('Error retrieving launch parameters:', error)
         }
-        updateLevel()
-      } catch (error) {
-        console.error('Error retrieving launch parameters:', error)
       }
+      fetchData()
     }
   }, [])
 
-  const currentLevel = levels[Number(level)]
+  const currentLevel = leelaLevels[Number(level)]
 
   if (!currentLevel) {
     return (

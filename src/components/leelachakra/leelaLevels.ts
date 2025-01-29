@@ -3,7 +3,7 @@ interface Level {
   title_en: string
 }
 
-export const levels: Record<number, Level> = {
+export const leelaLevels: Record<number, Level> = {
   1: { title_ru: 'РОЖДЕНИЕ', title_en: 'BIRTH' },
   2: { title_ru: 'МАЙЯ', title_en: 'MAYA' },
   3: { title_ru: 'ГНЕВ', title_en: 'ANGER' },
