@@ -8,7 +8,7 @@ import { InputFile } from 'grammy'
 import ffmpeg from 'fluent-ffmpeg'
 import { botAiKoshey } from '@/utils/telegram/bots'
 
-import { getVideoWithChatId } from '@/supabase/videos'
+import { getVideoWithChatId } from '@/core/supabase/videos'
 
 if (
   !process.env.NEXT_PUBLIC_TELEGRAM_API_ID ||

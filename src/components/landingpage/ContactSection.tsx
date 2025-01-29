@@ -25,7 +25,7 @@ export function ContactSection({
             </a>
             {!hidePrice && (
               <a
-                href='https://auth.robokassa.ru/merchant/Invoice/1TECfbyRZUKhtX-O-0r43g'
+                href='https://auth.robokassa.ru/merchant/Invoice/epvKXOjlOUOox7FWbnAkYQ'
                 className='inline-block rounded-full bg-pink-600 px-8 py-4 text-center font-semibold text-white shadow-md transition-all hover:bg-pink-700'
               >
                 Оплатить предоплату

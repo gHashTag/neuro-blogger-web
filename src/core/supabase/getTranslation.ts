@@ -1,4 +1,4 @@
-import { supabase } from '@/core/supabase/supabase'
+import { supabase } from '.'
 
 export async function getTranslation(
   languageCode: string,

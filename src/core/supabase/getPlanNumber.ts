@@ -1,4 +1,4 @@
-import { supabase } from './'
+import { supabase } from '.'
 
 export async function getPlanNumber(
   telegram_id: string
