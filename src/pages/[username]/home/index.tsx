@@ -14,16 +14,30 @@ import { CourseProgram } from '@/components/landingpage/CourseSlideshow'
 import { ContactSection } from '@/components/landingpage/ContactSection'
 import { PricingPlans } from '@/components/landingpage/CoursePricing/PricingPlans'
 import {
-  Author,
   playomAutor,
   metaMuseAutor,
   neuroCoderAutor,
   problemData,
-} from '@/data/authorsHomePage'
-import { initialAuthorState } from '@/data'
+  initialAuthorState,
+  Author,
+} from '@/data'
+
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+
+const description = {
+  title: 'НЕЙРОСЕТИ ОБУЧЕНИЕ С НУЛЯ',
+  imageTitle: 'СТАНЬ ИИ-ЭКСПЕРТОМ',
+  subtitle:
+    'Искусственный интеллект — простой инструмент для ускорения работы и увеличения дохода',
+  bonusTitleOne: `СВОБОДА И МЕДИЙНОСТЬ`,
+  bonusTitleTwo: `В ПОДАРОК ПРИ РЕГИСТРАЦИИ`,
+  bonusTitleThree: `Живи, люби, твори - за тебя работает ИИ`,
+  quote: `Живи, люби, твори - за тебя работает ИИ`,
+  neurosmmDescription:
+    'AI контент производство для блогеров, бизнеса и экспертов',
+}
 
 function Home() {
   const [currentAuthor, setCurrentAuthor] = useState<Author>(initialAuthorState)
@@ -70,11 +84,8 @@ function Home() {
         {currentAuthor && (
           <div className='mx-auto max-w-7xl'>
             <HeroIntensive
-              author={currentAuthor}
-              title={currentAuthor.title}
-              subtitle={currentAuthor.subtitle}
-              bonusTitle={currentAuthor.bonusTitle}
-              description={currentAuthor.neurosmmDescription}
+              imageUrl={currentAuthor.imageUrl}
+              description={description}
             />
           </div>
         )}
@@ -144,6 +155,8 @@ function Home() {
           <section id='contacts' className='px-4 py-5'>
             <div className='mx-auto max-w-7xl'>
               <ContactSection
+                title='Готовы вывести свой бизнес на новый уровень?'
+                description='Оставьте заявку прямо сейчас и станьте одним из первых, кто воспользуется уникальным решением!'
                 contact={currentAuthor.telegram}
                 hidePrice={true}
               />

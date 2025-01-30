@@ -342,3 +342,19 @@ export interface CreateUserProps {
   email?: string
   photo_url?: string
 }
+
+export interface Author {
+  name: string
+  telegram: string
+  role: string
+  experience: string
+  bonusDescription: string
+  imageUrl: string
+  description: string
+  achievements: string[]
+  achievementDescriptions: Record<string, string>
+  title: string
+  subtitle: string
+  bonusTitle: string
+  neurosmmDescription: string
+}

@@ -10,6 +10,7 @@ import {
 
 interface ProblemSectionProps {
   problemData: {
+    intro: string
     titles: string[]
     descriptions: string[]
   }
@@ -59,8 +60,7 @@ export function ProblemSection({ problemData }: ProblemSectionProps) {
           </h2>
 
           <p className='mx-auto max-w-3xl text-xl text-gray-600'>
-            95% блогеров сталкиваются с этими проблемами ежедневно. Но теперь
-            есть решение
+            {problemData.intro}
           </p>
         </div>
 

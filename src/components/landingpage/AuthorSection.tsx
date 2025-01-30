@@ -14,7 +14,7 @@ interface AuthorSectionProps {
 
 export function AuthorSection({ author, side = 'left' }: AuthorSectionProps) {
   return (
-    <section className='px-4 py-16'>
+    <section>
       <div className='mx-auto max-w-7xl'>
         <div className='grid grid-cols-1 items-center gap-12 md:grid-cols-2'>
           {side === 'left' ? (
@@ -34,9 +34,6 @@ export function AuthorSection({ author, side = 'left' }: AuthorSectionProps) {
 
               {/* Информация об авторе */}
               <div className='rounded-lg bg-white p-8 shadow-lg'>
-                <h2 className='mb-6 mt-8 text-4xl font-extrabold text-gray-600'>
-                  Об авторе
-                </h2>
                 <h3 className='mb-4 text-3xl font-semibold text-gray-900'>
                   {author.name}
                 </h3>
@@ -74,9 +71,6 @@ export function AuthorSection({ author, side = 'left' }: AuthorSectionProps) {
             <>
               {/* Информация об авторе */}
               <div className='rounded-lg bg-white p-8 shadow-lg'>
-                <h2 className='mb-6 mt-8 text-4xl font-extrabold text-gray-600'>
-                  Об авторе
-                </h2>
                 <h3 className='mb-4 text-3xl font-semibold text-gray-900'>
                   {author.name}
                 </h3>

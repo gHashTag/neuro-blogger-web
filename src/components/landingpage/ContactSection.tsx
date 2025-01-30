@@ -1,21 +1,22 @@
 export function ContactSection({
+  title,
+  description,
   contact,
   hidePrice = false,
 }: {
+  title: string
+  description: string
   contact: string
   hidePrice?: boolean
 }) {
   return (
     <section className='relative py-16'>
-      <div className='relative mx-auto max-w-7xl px-4'>
-        <h2 className='mb-8 text-center text-4xl font-bold text-purple-700'>
-          Готовы вывести свой SMM на новый уровень?
-        </h2>
+      <div className='relative mx-auto max-w-7xl'>
         <div className='rounded-lg bg-white bg-opacity-80 p-8 text-center shadow-lg'>
-          <p className='mb-6 text-lg text-gray-700'>
-            Оставьте заявку прямо сейчас и станьте одним из первых, кто
-            воспользуется уникальным решением!
-          </p>
+          <h2 className='mb-8 text-center text-4xl font-bold text-purple-700'>
+            {title}
+          </h2>
+          <p className='mb-6 mt-4 text-lg text-gray-700'>{description}</p>
           <div className='flex justify-center gap-4'>
             <a
               href={contact}

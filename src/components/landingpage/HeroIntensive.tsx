@@ -1,26 +1,28 @@
 import { Star } from 'lucide-react'
 
 interface HeroIntensiveProps {
-  author: {
-    name: string
-    role: string
-    experience: string
-    bonusDescription: string
-    imageUrl: string
+  imageUrl: string
+  description: {
+    title: string
+    subtitle: string
+    bonusTitleOne: string
+    bonusTitleTwo: string
+    imageTitle: string
+    bonusTitleThree: string
+    quote: string
   }
-  title: string
-  subtitle: string
-  bonusTitle: string
-  description: string
 }
 
-export function HeroIntensive({
-  author,
-  title,
-  subtitle,
-  description,
-  bonusTitle,
-}: HeroIntensiveProps) {
+export function HeroIntensive({ imageUrl, description }: HeroIntensiveProps) {
+  const {
+    title,
+    subtitle,
+    bonusTitleOne,
+    bonusTitleTwo,
+    imageTitle,
+    bonusTitleThree,
+    quote,
+  } = description
   return (
     <div className='relative mx-auto max-w-7xl px-4 pt-8'>
       {/* Фоновый градиент */}
@@ -38,7 +40,7 @@ export function HeroIntensive({
               {subtitle}
             </h3>
             <p className='mx-auto max-w-2xl text-base font-medium text-gray-600 sm:text-lg md:text-xl'>
-              {description}
+              {quote}
             </p>
           </div>
 
@@ -53,12 +55,12 @@ export function HeroIntensive({
               <div className='mb-2 flex items-center gap-2 font-semibold text-violet-600'>
                 <Star className='h-5 w-5' />
                 <div className='flex flex-col'>
-                  <span>СВОБОДА И МЕДИЙНОСТЬ</span>
-                  <span>В ПОДАРОК ПРИ РЕГИСТРАЦИИ</span>
+                  <span>{bonusTitleOne}</span>
+                  <span>{bonusTitleTwo}</span>
                 </div>
               </div>
               <blockquote className='mt-2 border-l-4 border-gray-300 pl-4 italic text-gray-800'>
-                <em>Живи, люби, твори - за тебя работает ИИ</em>
+                <em>{bonusTitleThree}</em>
               </blockquote>
             </div>
           </div>
@@ -67,7 +69,7 @@ export function HeroIntensive({
         {/* Правая колонка - Изображение */}
         <div className='relative w-full'>
           <img
-            src={author.imageUrl}
+            src={imageUrl}
             alt='AI Illustration'
             className='h-96 w-full rounded-xl object-cover shadow-lg lg:h-[500px]'
           />
@@ -76,9 +78,7 @@ export function HeroIntensive({
           <div className='absolute inset-x-0 bottom-0 mb-4 flex justify-center'>
             <div className='rounded-xl border border-white/30 bg-white/10 p-3 backdrop-blur-lg'>
               <div className='space-y-0.5'>
-                <p className='font-semibold text-white'>
-                  Стань ИИ ИНФЛЮЕНСЕРОМ
-                </p>
+                <p className='font-semibold text-white'>{imageTitle}</p>
               </div>
             </div>
           </div>

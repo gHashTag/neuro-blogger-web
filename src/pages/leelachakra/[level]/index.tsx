@@ -8,6 +8,7 @@ import { isDev } from '@/config'
 import { Atom } from 'react-loading-indicators'
 import { getPlanNumber } from '@/core/supabase/getPlanNumber'
 import { leelaLevels } from '../../../components/leelachakra/leelaLevels'
+import Loader from '@/components/loader'
 
 export default function MiniApp() {
   const [userLanguageCode, setUserLanguageCode] = useState<string>('ru')
@@ -39,23 +40,7 @@ export default function MiniApp() {
   const currentLevel = leelaLevels[Number(level)]
 
   if (!currentLevel) {
-    return (
-      <div
-        style={{
-          display: 'flex',
-          flex: 1,
-          height: '100vh',
-          width: '100vw',
-          justifyContent: 'center',
-          alignItems: 'center',
-          color: 'white',
-          backgroundColor: 'white',
-        }}
-      >
-        <p>{currentLevel}</p>
-        <Atom color='#000000' size='medium' text={currentLevel} />
-      </div>
-    )
+    return <Loader />
   }
 
   const link = `https://t.me/leelachakra_bot?start=${userId}`

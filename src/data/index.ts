@@ -1,6 +1,7 @@
-import { Author } from './authorsHomePage'
+import { Author } from '@/types'
 
 export * from './authors'
+export * from './problemData'
 
 export const initialAuthorState: Author = {
   name: '',

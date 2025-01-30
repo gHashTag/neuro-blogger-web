@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { ProblemSection } from '@/components/landingpage/ProblemSection'
 import { SolutionSection } from '@/components/landingpage/SolutionSection'
 import { FAQ } from '@/components/landingpage/FAQ'
@@ -15,30 +14,56 @@ import { PricingSection } from '@/components/landingpage/PricingSection'
 
 import { useRouter } from 'next/router'
 import {
+  neuroCoderAutor,
+  metaMuseAutor,
+  playomAutor,
   Author,
   initialAuthorState,
-  metaMuseAutor,
-  problemData,
-  neuroCoderAutor,
-  playomAutor,
 } from '@/data'
-import Loader from '@/components/loader'
+import { useEffect, useState } from 'react'
+import { NeuroCallsSolutionSection } from '@/components/neurocalls/NeuroCallsSolutionSection'
+import { NeuroCallsOfferPage } from '@/components/neurocalls/NeuroCallsOfferPage'
+import { NeuroCallsServiceBenefits } from '@/components/neurocalls/NeuroCallsServiceBenefits'
+import { NeuroCallsPricingSection } from '@/components/neurocalls/NeuroCallsPricingSection'
+import { NeuroCallsFAQ } from '@/components/neurocalls/NeuroCallsFAQ'
 
 const description = {
-  title: 'SMM НА АВТОПИЛОТЕ',
-  subtitle: 'АВАТАР ВЕДЕТ БЛОГ ЗА ВАС',
-  bonusTitle: 'СВОБОДА И МЕДИЙНОСТЬ В ПОДАРОК ПРИ РЕГИСТРАЦИИ',
+  title: 'НЕЙРО-ЗВОНКИ',
+  subtitle: 'АВТОМАТИЗАЦИЯ БИЗНЕС-ПРОЦЕССОВ',
+  bonusTitle: `СВОБОДА И МЕДИЙНОСТЬ В ПОДАРОК ПРИ РЕГИСТРАЦИИ`,
   neurosmmDescription:
-    'Погружайтесь в обучение и игру под руководством нейрокоуча Гаи Камской.',
+    'Автоматическая расшифровка разговоров, обобщение ключевых моментов, извлечение задач и интеграция с чат-ботом для эффективного взаимодействия и управления данными.',
   imageTitle: 'СТАНЬ ИИ-ЭКСПЕРТОМ',
   bonusTitleOne: `СВОБОДА И МЕДИЙНОСТЬ`,
   bonusTitleTwo: `В ПОДАРОК ПРИ РЕГИСТРАЦИИ`,
   bonusTitleThree: `Живи, люби, твори - за тебя работает ИИ`,
-  quote: `AI контент производство для блогеров, бизнеса и экспертов`,
+  quote: `Живи, люби, твори - за тебя работает ИИ`,
+}
+
+export const problemData = {
+  intro:
+    '95% компаний сталкиваются с этими проблемами ежедневно. Но теперь есть решение',
+  titles: [
+    'Нехватка времени',
+    'Сложности с командой',
+    'Падение продуктивности',
+    'Качество работы',
+    'Низкая вовлеченность',
+    'Низкая конверсия',
+  ],
+  descriptions: [
+    'Управление задачами и проектами отнимает слишком много ресурсов',
+    'Найти профессионалов, которые справятся со всеми бизнес-процессами, сложно',
+    'Сотрудники не успевают выполнять все задачи вовремя',
+    'Не хватает автоматизации и оптимизации процессов',
+    'Сотрудники редко взаимодействуют с новыми инструментами',
+    'Клиенты не реагируют на предложения и не становятся постоянными',
+  ],
 }
 
 function Home() {
   const [currentAuthor, setCurrentAuthor] = useState<Author>(initialAuthorState)
+  const [username, setUsername] = useState<string | null>(null)
   const router = useRouter()
 
   useEffect(() => {
@@ -47,9 +72,13 @@ function Home() {
 
     const username = newpathname ? newpathname.split('/')[1] : null
     console.log(username, 'username')
+    setUsername(username)
 
     let author
     switch (username) {
+      case 'neuro_sage':
+        author = neuroCoderAutor
+        break
       case 'muse_nataly':
         author = metaMuseAutor
         break
@@ -57,18 +86,18 @@ function Home() {
         author = playomAutor
         break
       default:
-        author = metaMuseAutor
+        author = neuroCoderAutor
     }
-    setCurrentAuthor(author)
+    setCurrentAuthor(author as Author)
     console.log(author, 'currentAuthor')
   }, [router.isReady])
 
-  if (!router.isReady) return <Loader />
+  if (!router.isReady) return <p>Loading...</p>
 
   return (
     <div className='min-h-screen bg-gradient-to-b from-pink-50 to-white'>
       <MainMenu />
-      Hero Section
+
       <section className='relative overflow-hidden px-4 pb-3 pt-20'>
         <div className='relative mx-auto max-w-7xl text-center'>
           <AudienceTags />
@@ -93,29 +122,29 @@ function Home() {
       {/* Solution Section */}
       <section id='solution-section' className='px-4 py-5'>
         <div className='mx-auto max-w-7xl'>
-          <SolutionSection />
+          <NeuroCallsSolutionSection />
         </div>
       </section>
       {/* Learning Outcomes */}
       <section id='learning-outcomes' className='px-4'>
         <div className='mx-auto max-w-7xl'>
-          <OfferPage />
+          <NeuroCallsOfferPage />
         </div>
       </section>
       <section id='service-benefits' className='px-4x'>
         <div className='mx-auto max-w-7xl'>
-          <ServiceBenefits />
+          <NeuroCallsServiceBenefits />
         </div>
       </section>
       <section id='pricing' className='px-4'>
         <div className='max-w-1xl mx-auto'>
-          <PricingSection />
+          <NeuroCallsPricingSection />
         </div>
       </section>
       {/* FAQ */}
       <section id='faq' className='px-4 py-5'>
         <div className='mx-auto max-w-7xl'>
-          <FAQ />
+          <NeuroCallsFAQ />
         </div>
       </section>
       {/* Цена и CTA */}
@@ -124,12 +153,16 @@ function Home() {
           <CoursePricing plans={pricingNeuroSmm} />
         </div>
       </section> */}
-      <section id='author-section' className='px-4'>
+
+      <section id='author-section' className='px-8 py-10'>
         <div className='mx-auto max-w-7xl'>
+          <h2 className='mb-8 text-center text-4xl font-bold text-gray-800 sm:text-5xl lg:text-6xl'>
+            Команда
+          </h2>
           <AuthorSection author={neuroCoderAutor} />
         </div>
       </section>
-      {currentAuthor && (
+      {currentAuthor && username !== 'neuro_sage' && (
         <>
           <section id='meta-muse-section' className='px-4'>
             <div className='mx-auto max-w-7xl'>
@@ -140,7 +173,7 @@ function Home() {
           <section id='contacts' className='px-4 py-5'>
             <div className='mx-auto max-w-7xl'>
               <ContactSection
-                title='Готовы вывести SMM на новый уровень?'
+                title='Готовы вывести свой бизнес на новый уровень?'
                 description='Оставьте заявку прямо сейчас и станьте одним из первых, кто воспользуется уникальным решением!'
                 contact={currentAuthor.telegram}
               />
