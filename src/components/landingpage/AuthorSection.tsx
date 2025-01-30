@@ -35,7 +35,7 @@ export function AuthorSection({ author, side = 'left' }: AuthorSectionProps) {
               {/* Информация об авторе */}
               <div className='rounded-lg bg-white p-8 shadow-lg'>
                 <h2 className='mb-6 mt-8 text-4xl font-extrabold text-gray-600'>
-                  Об авторе курса
+                  Об авторе
                 </h2>
                 <h3 className='mb-4 text-3xl font-semibold text-gray-900'>
                   {author.name}
@@ -75,7 +75,7 @@ export function AuthorSection({ author, side = 'left' }: AuthorSectionProps) {
               {/* Информация об авторе */}
               <div className='rounded-lg bg-white p-8 shadow-lg'>
                 <h2 className='mb-6 mt-8 text-4xl font-extrabold text-gray-600'>
-                  Об авторе курса
+                  Об авторе
                 </h2>
                 <h3 className='mb-4 text-3xl font-semibold text-gray-900'>
                   {author.name}

@@ -1,5 +1,12 @@
-import { OpenloginUserInfo } from '@toruslabs/openlogin-utils'
-import { Sticker } from 'grammy/types'
+declare global {
+  interface Window {
+    next?: {
+      router?: {
+        pathname?: string
+      }
+    }
+  }
+}
 
 // Определение типа статуса задачи
 export type TaskStatus = 'todo' | 'in_progress' | 'done' | 'archived'
