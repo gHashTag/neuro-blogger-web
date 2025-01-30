@@ -58,7 +58,7 @@ export default function MiniApp() {
     )
   }
 
-  const link = `https://t.me/neuro_blogger_bot?start=${userId}`
+  const link = `https://t.me/leelachakra_bot?start=${userId}`
 
   const imageSrc = `https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/leelachakra/plans/${level}.jpg`
 
