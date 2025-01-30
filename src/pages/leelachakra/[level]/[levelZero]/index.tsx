@@ -25,11 +25,14 @@ export default function MiniApp() {
       const fetchData = async () => {
         try {
           const { initData } = retrieveLaunchParams()
+          console.log('initData', initData)
           setUserLanguageCode(initData?.user?.languageCode || 'ru')
 
           const userId = initData?.user?.id?.toString()
+          console.log('userId', userId)
           if (userId) {
             const planNumber = await getPlanNumber(userId)
+
             if (planNumber) {
               setUpdateLevel(planNumber.loka)
             } else {
@@ -47,7 +50,7 @@ export default function MiniApp() {
     }
   }, [])
 
-  const currentLevel = leelaLevels[Number(level)]
+  const currentLevel = leelaLevels[Number(updateLevel)]
 
   if (!currentLevel) {
     return (
@@ -83,7 +86,7 @@ export default function MiniApp() {
 
   return (
     <TelegramCard
-      level={Number(level)}
+      level={Number(updateLevel)}
       // videoSrc={videoSrc}
       title={
         userLanguageCode === 'ru'
