@@ -68,7 +68,6 @@ function Home() {
   return (
     <div className='min-h-screen bg-gradient-to-b from-pink-50 to-white'>
       <MainMenu />
-      Hero Section
       <section className='relative overflow-hidden px-4 pb-3 pt-20'>
         <div className='relative mx-auto max-w-7xl text-center'>
           <AudienceTags />

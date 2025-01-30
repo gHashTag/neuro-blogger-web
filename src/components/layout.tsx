@@ -43,6 +43,7 @@ import { Spinner } from '@/components/ui/spinner'
 // import { cache } from "@/pages/_app";
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { useUser } from '@/hooks/useUser'
+import { mockedUser } from '@/utils/constants'
 
 type Props = {
   children: React.ReactNode
@@ -197,7 +198,7 @@ export default function Layout({
               <div className={styles['header-logos']}>
                 <Link href={`/${username}`} className={styles.logo}>
                   <Avatar>
-                    <AvatarImage src={photo_url || ''} />
+                    <AvatarImage src={photo_url || mockedUser.photo_url} />
                     <AvatarFallback>{shortName}</AvatarFallback>
                   </Avatar>
                 </Link>

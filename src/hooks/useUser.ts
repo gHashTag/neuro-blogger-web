@@ -1,4 +1,14 @@
+import { initialAuthorState } from '@/data'
+import { __DEV__, mockedUser } from '@/utils/constants'
+
 const useUser = () => {
+  if (__DEV__) {
+    console.log('Mocking user in development mode')
+    localStorage.setItem('username', mockedUser.username)
+    localStorage.setItem('user_id', mockedUser.user_id)
+    return mockedUser
+  }
+
   const username = localStorage.getItem('username') || ''
   const user_id = localStorage.getItem('user_id') || ''
   const workspace_id = localStorage.getItem('workspace_id') || ''

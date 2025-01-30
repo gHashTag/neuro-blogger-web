@@ -8,9 +8,6 @@ import { HeroIntensive } from '@/components/landingpage/HeroIntensive'
 import { AudienceTags } from '@/components/landingpage/AudienceTags'
 import { MainMenu } from '@/components/landingpage/MainMenu'
 import { ContactSection } from '@/components/landingpage/ContactSection'
-import { OfferPage } from '@/components/landingpage/OfferPage'
-import { ServiceBenefits } from '@/components/landingpage/ServiceBenefits'
-import { PricingSection } from '@/components/landingpage/PricingSection'
 
 import { useRouter } from 'next/router'
 import {

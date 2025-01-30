@@ -20,6 +20,7 @@ import TaskModal from '@/components/modal/TaskModal'
 
 import { BreadcrumbWithCustomSeparator } from '@/components/ui/breadcrumb-with-custom-separator'
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
+import { __DEV__ } from '@/utils/constants'
 export type updateUserDataType = {
   user_id: string
   first_name: string
@@ -52,7 +53,7 @@ export default function Office() {
 
   useEffect(() => {
     if (!username) {
-      router.push('/')
+      !__DEV__ && router.push('/')
     } else {
       setVisibleHeader(true)
       localStorage.setItem('workspace_id', '')
@@ -88,12 +89,30 @@ export default function Office() {
     }
   }, [id_task, setOpenModalTaskId])
 
-  const goToOffice = (
-    type: string,
-    workspace_id: string,
+  const goToOffice = ({
+    type,
+    workspace_id,
+    workspace_name,
+  }: {
+    type: string
+    workspace_id: string
     workspace_name: string
-  ) => {
-    router.push(`/${username}/${user_id}/${workspace_id}`)
+  }) => {
+    if (!username || !user_id || !workspace_id) {
+      console.error('Missing required parameters for navigation', {
+        username,
+        user_id,
+        workspace_id,
+      })
+      return
+    }
+
+    // Построение URL для навигации
+    const path = `/${username}/${user_id}/${workspace_id}`
+    console.log(path, 'path')
+    router.push(path)
+
+    // Установка значений в localStorage
     localStorage.setItem('workspace_id', workspace_id)
     localStorage.setItem('workspace_name', workspace_name)
     localStorage.setItem('type', type)
@@ -128,7 +147,7 @@ export default function Office() {
           <CanvasRevealEffectDemo
             officeData={welcomeMenu || []}
             onClick={(type, workspace_id, workspace_name) =>
-              goToOffice(type, workspace_id, workspace_name)
+              goToOffice({ type, workspace_id, workspace_name })
             }
           />
         )}

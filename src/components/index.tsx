@@ -34,6 +34,7 @@ export default function Conf() {
   const router = useRouter()
 
   useEffect(() => {
+    console.log('username', username)
     if (username) {
       router.push(`/${username}/${user_id}`)
     }

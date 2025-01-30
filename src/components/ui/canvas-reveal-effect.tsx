@@ -1,12 +1,11 @@
 'use client'
-import { cn } from '@/utils/cn'
+import { cn } from '@/lib/utils'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import React, { useCallback, useRef } from 'react'
-
+import React, { useMemo, useRef } from 'react'
 import * as THREE from 'three'
 
 export const CanvasRevealEffect = ({
-  animationSpeed = 1.0,
+  animationSpeed = 0.4,
   opacities = [0.3, 0.3, 0.3, 0.5, 0.5, 0.5, 0.8, 0.8, 0.8, 1],
   colors = [[0, 255, 255]],
   containerClassName,
@@ -42,9 +41,9 @@ export const CanvasRevealEffect = ({
           center={['x', 'y']}
         />
       </div>
-      {/* {showGradient && (
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 to-[84%]" />
-      )} */}
+      {showGradient && (
+        <div className='absolute inset-0 bg-gradient-to-t from-gray-950 to-[84%]' />
+      )}
     </div>
   )
 }
@@ -209,7 +208,7 @@ const ShaderMaterial = ({
     timeLocation.value = timestamp
   })
 
-  const getUniforms = useCallback(() => {
+  const getUniforms = () => {
     const preparedUniforms: any = {}
 
     for (const uniformName in uniforms) {
@@ -253,36 +252,45 @@ const ShaderMaterial = ({
       value: new THREE.Vector2(size.width * 2, size.height * 2),
     } // Initialize u_resolution
     return preparedUniforms
-  }, [size, uniforms])
+  }
 
   // Shader material
-  // const material = useMemo(() => {
-  //   const materialObject = new THREE.ShaderMaterial({
-  //     vertexShader: `
-  //     precision mediump float;
-  //     in vec2 coordinates;
-  //     uniform vec2 u_resolution;
-  //     out vec2 fragCoord;
-  //     void main(){
-  //       float x = position.x;
-  //       float y = position.y;
-  //       gl_Position = vec4(x, y, 0.0, 1.0);
-  //       fragCoord = (position.xy + vec2(1.0)) * 0.5 * u_resolution;
-  //       fragCoord.y = u_resolution.y - fragCoord.y;
-  //     }
-  //     `,
-  //     fragmentShader: source,
-  //     uniforms: getUniforms(),
-  //     glslVersion: THREE.GLSL3,
-  //     blending: THREE.CustomBlending,
-  //     blendSrc: THREE.SrcAlphaFactor,
-  //     blendDst: THREE.OneFactor,
-  //   })
+  const material = useMemo(() => {
+    const materialObject = new THREE.ShaderMaterial({
+      vertexShader: `
+      precision mediump float;
+      in vec2 coordinates;
+      uniform vec2 u_resolution;
+      out vec2 fragCoord;
+      void main(){
+        float x = position.x;
+        float y = position.y;
+        gl_Position = vec4(x, y, 0.0, 1.0);
+        fragCoord = (position.xy + vec2(1.0)) * 0.5 * u_resolution;
+        fragCoord.y = u_resolution.y - fragCoord.y;
+      }
+      `,
+      fragmentShader: source,
+      uniforms: getUniforms(),
+      glslVersion: THREE.GLSL3,
+      blending: THREE.CustomBlending,
+      blendSrc: THREE.SrcAlphaFactor,
+      blendDst: THREE.OneFactor,
+    })
 
-  //   return materialObject
-  // }, [source, getUniforms])
+    return materialObject
+  }, [size.width, size.height, source])
 
-  return <div />
+  return (
+    // @ts-ignore
+    <mesh ref={ref as any}>
+      {/* @ts-ignore */}
+      <planeGeometry args={[2, 2]} />
+      {/* @ts-ignore */}
+      <primitive object={material} attach='material' />
+      {/* @ts-ignore */}
+    </mesh>
+  )
 }
 
 const Shader: React.FC<ShaderProps> = ({ source, uniforms, maxFps = 60 }) => {

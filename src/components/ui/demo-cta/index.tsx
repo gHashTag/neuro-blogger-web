@@ -4,60 +4,15 @@ import { useReactiveVar } from '@apollo/client'
 import { visibleSignInVar, setInviterUserInfo } from '@/apollo/reactive-store'
 
 import { TLoginButton, TLoginButtonSize, TUser } from 'react-telegram-auth'
-// import createUser from '@/pages/api/create-user'
-// import { useSupabase } from "@/hooks/useSupabase";
+
 import { useRouter } from 'next/router'
-import { __DEV__, botName, SITE_URL } from '@/utils/constants'
-
-// export type CreateUserT = {
-//   id: number
-//   username: string
-//   first_name: string
-//   last_name: string
-//   is_bot: boolean
-//   language_code: string
-//   chat_id: number
-//   inviter: string
-//   select_izbushka: string
-//   telegram_id: number
-//   photo_url: string
-// }
-
-// const createUser = async (user: TUser) => {
-//   try {
-//     const url = `${
-//       __DEV__ ? 'http://localhost:3000' : process.env.ELESTIO_URL
-//     }/user/create`
-//     console.log(url, 'url')
-//     const response = await fetch(url, {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(user),
-//     })
-
-//     const result = await response.json()
-//     console.log(result, 'result')
-//     return result
-//   } catch (error) {
-//     console.error(error, 'error')
-//     return { message: JSON.stringify(error) }
-//   }
-// }
-
-// if (!process.env.NEXT_PUBLIC_ELESTIO_URL) {
-//   throw new Error('NEXT_PUBLIC_ELESTIO_URL is not set')
-// }
-
-if (!process.env.NEXT_PUBLIC_SITE_URL) {
-  throw new Error('NEXT_PUBLIC_SITE_URL is not set')
-}
-if (!process.env.NEXT_PUBLIC_LOCAL_URL) {
-  throw new Error('NEXT_PUBLIC_LOCAL_URL is not set')
-}
+import { __DEV__, botName, mockedUser, SITE_URL } from '@/utils/constants'
 
 export async function createUser(data: TUser) {
+  if (__DEV__) {
+    console.log('Mocking createUser in development mode')
+    return Promise.resolve(mockedUser)
+  }
   try {
     console.log('CASE: CREATE USER 1')
     console.log(SITE_URL, 'SITE_URL')
@@ -85,6 +40,10 @@ const DemoButton = () => {
   // const { createSupabaseUser } = useSupabase();
 
   useEffect(() => {
+    if (__DEV__) {
+      router.push(`/${mockedUser.username}/${mockedUser.user_id}`)
+      return
+    }
     setTimeout(() => {
       const el = document.getElementById('cta-btn')
       el?.classList.add('show-overlay')
@@ -93,6 +52,7 @@ const DemoButton = () => {
     }, 3000)
   }, [])
   const ctaRef = useRef(null)
+
   const clickedOutside = () => {
     const el = document.getElementById('cta-btn')
     const tooltip = document.getElementById('cta-tooltip')
@@ -112,10 +72,17 @@ const DemoButton = () => {
     const newUserDataFromBase = await createUser(userDataForBaseRecord)
     console.log(newUserDataFromBase, 'newUserDataFromBase')
 
-    if (!userDataForBaseRecord.username) throw new Error('Username is required')
-    if (!newUserDataFromBase.user_id) throw new Error('User ID is required')
-    localStorage.setItem('username', userDataForBaseRecord.username)
-    localStorage.setItem('user_id', newUserDataFromBase.user_id)
+    if (__DEV__) {
+      console.log('Using mocked data for development')
+      localStorage.setItem('username', mockedUser.username)
+      localStorage.setItem('user_id', mockedUser.user_id)
+    } else {
+      if (!userDataForBaseRecord.username)
+        throw new Error('Username is required')
+      if (!newUserDataFromBase.user_id) throw new Error('User ID is required')
+      localStorage.setItem('username', userDataForBaseRecord.username)
+      localStorage.setItem('user_id', newUserDataFromBase.user_id)
+    }
 
     localStorage.setItem('first_name', user.first_name)
     localStorage.setItem('last_name', user.last_name || '')
