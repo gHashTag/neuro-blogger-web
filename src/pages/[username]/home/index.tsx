@@ -13,59 +13,48 @@ import { MainMenu } from '@/components/landingpage/MainMenu'
 import { CourseProgram } from '@/components/landingpage/CourseSlideshow'
 import { ContactSection } from '@/components/landingpage/ContactSection'
 import { PricingPlans } from '@/components/landingpage/CoursePricing/PricingPlans'
-import { Conversation } from '@/components/elevenlabs/conversation'
-
-const autor = {
-  name: 'Дмитрий НейроКодер',
-  telegram: 'https://t.me/neuro_sage',
-  role: 'Full Stack разработчик',
-  experience: '10+ лет опыта',
-  bonusDescription:
-    'PDF-книга «10 способов заработка на текстовых и графических нейросетях»',
-  imageUrl:
-    'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/ava.jpg',
-  description:
-    'Full Stack разработчик с более чем 10-летним опытом. Автор первого курса по React Native и AWS Amplify в русскоязычном интернете. Член программы AWS Community Builders от Amazon. Основатель нескольких успешных IT-проектов.',
-  achievements: [
-    'Full Stack Developer',
-    'AI Эксперт',
-    'Международный опыт',
-    'Основатель',
-  ],
-  achievementDescriptions: {
-    'Full Stack Developer': 'React Native, AWS, Web3',
-    'AI Эксперт': 'Интеграция ИИ в приложения',
-    'Международный опыт': 'Работа в UAE, Thailand, Indonesia',
-    Основатель: 'Leela Chakra AI, NeuroCoder, NeuroBlogger',
-  },
-  title: 'НЕЙРОСЕТИ ОБУЧЕНИЕ С НУЛЯ',
-  subtitle:
-    'Искусственный интеллект — простой инструмент для ускорения работы и увеличения дохода',
-  bonusTitle: 'БОНУС ПРИ РЕГИСТРАЦИИ',
-  neurosmmDescription:
-    'AI контент производство для блогеров, бизнеса и экспертов',
-}
-
-const problemData = {
-  titles: [
-    'Нехватка времени',
-    'Сложности с командой',
-    'Падение охватов',
-    'Качество контента',
-    'Низкая конверсия',
-    'Низкая вовлеченность',
-  ],
-  descriptions: [
-    'Создание регулярного контента отнимает слишком много ресурсов',
-    'Найти профессионалов, которые справятся со всем SMM-процессом, сложно',
-    'Алгоритмы соцсетей перестают показывать ваши посты',
-    'Не хватает визуальной эстетики и идеальных текстов',
-    'Подписчики редко взаимодействуют с контентом',
-    'Подписчики не реагируют на контент и не становятся клиентами',
-  ],
-}
+import {
+  Author,
+  playomAutor,
+  metaMuseAutor,
+  neuroCoderAutor,
+  problemData,
+} from '@/data/authorsHomePage'
+import { initialAuthorState } from '@/data'
+import { useEffect } from 'react'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 function Home() {
+  const [currentAuthor, setCurrentAuthor] = useState<Author>(initialAuthorState)
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!router.isReady) return
+    const newpathname = router.asPath
+
+    const username = newpathname ? newpathname.split('/')[1] : null
+    console.log(username, 'username')
+
+    let author
+    switch (username) {
+      case 'neuro_sage':
+        author = neuroCoderAutor
+        break
+      case 'muse_nataly':
+        author = metaMuseAutor
+        break
+      case 'playom':
+        author = playomAutor
+        break
+      default:
+        author = metaMuseAutor
+    }
+    setCurrentAuthor(author)
+    console.log(author, 'currentAuthor')
+  }, [router.isReady])
+
+  if (!router.isReady) return <p>Loading...</p>
   return (
     <div className='min-h-screen bg-gradient-to-b from-pink-50 to-white'>
       <MainMenu />
@@ -78,15 +67,17 @@ function Home() {
       </section>
 
       <section className='px-4 py-5'>
-        <div className='mx-auto max-w-7xl'>
-          <HeroIntensive
-            author={autor}
-            title={autor.title}
-            subtitle={autor.subtitle}
-            bonusTitle={autor.bonusTitle}
-            description={autor.neurosmmDescription}
-          />
-        </div>
+        {currentAuthor && (
+          <div className='mx-auto max-w-7xl'>
+            <HeroIntensive
+              author={currentAuthor}
+              title={currentAuthor.title}
+              subtitle={currentAuthor.subtitle}
+              bonusTitle={currentAuthor.bonusTitle}
+              description={currentAuthor.neurosmmDescription}
+            />
+          </div>
+        )}
       </section>
       {/* <div className='z-10 w-full max-w-5xl items-center justify-between font-mono text-sm'>
         <h1 className='mb-8 text-center text-4xl font-bold'>
@@ -142,19 +133,24 @@ function Home() {
           <CoursePricing plans={PricingPlans} />
         </div>
       </section>
+      {currentAuthor && (
+        <>
+          <section id='author-section' className='px-4 py-5'>
+            <div className='mx-auto max-w-7xl'>
+              <AuthorSection author={currentAuthor} />
+            </div>
+          </section>
 
-      <section id='author-section' className='px-4 py-5'>
-        <div className='mx-auto max-w-7xl'>
-          <AuthorSection author={autor} />
-        </div>
-      </section>
-
-      <section id='contacts' className='px-4 py-5'>
-        <div className='mx-auto max-w-7xl'>
-          <ContactSection contact={autor.telegram} hidePrice={true} />
-        </div>
-      </section>
-
+          <section id='contacts' className='px-4 py-5'>
+            <div className='mx-auto max-w-7xl'>
+              <ContactSection
+                contact={currentAuthor.telegram}
+                hidePrice={true}
+              />
+            </div>
+          </section>
+        </>
+      )}
       {/* Footer */}
       <Footer />
     </div>
