@@ -60,7 +60,7 @@ export default async function handler(
 
   try {
     const {
-      user_id,
+      telegram_id,
       name,
       type,
       workspace_id,
@@ -128,7 +128,7 @@ export default async function handler(
         name,
         workspace_id,
         updated_at: new Date(),
-        user_id,
+        telegram_id,
         room_id: id,
         language_code,
         token,

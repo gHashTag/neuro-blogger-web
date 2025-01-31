@@ -16,6 +16,7 @@ import {
   playomAutor,
   Author,
   initialAuthorState,
+  ezavarykinAutor,
 } from '@/data'
 import { useEffect, useState } from 'react'
 import { NeuroCallsSolutionSection } from '@/components/neurocalls/NeuroCallsSolutionSection'
@@ -78,6 +79,9 @@ function Home() {
         break
       case 'muse_nataly':
         author = metaMuseAutor
+        break
+      case 'E_Zavarykin':
+        author = ezavarykinAutor
         break
       case 'playom':
         author = playomAutor

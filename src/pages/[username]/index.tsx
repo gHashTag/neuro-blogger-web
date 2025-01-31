@@ -21,7 +21,7 @@ const QUERY = gql`
     usersCollection(filter: { username: { eq: $username } }) {
       edges {
         node {
-          user_id
+          telegram_id
           first_name
           last_name
           username
@@ -37,7 +37,7 @@ const QUERY = gql`
 
 const MUTATION = gql`
   mutation UpdateUser(
-    $user_id: UUID
+    $telegram_id: UUID
     $first_name: String!
     $last_name: String!
     $designation: String!
@@ -45,7 +45,7 @@ const MUTATION = gql`
     $position: String!
   ) {
     updateusersCollection(
-      filter: { user_id: { eq: $user_id } }
+      filter: { telegram_id: { eq: $telegram_id } }
       set: {
         first_name: $first_name
         last_name: $last_name
@@ -60,7 +60,7 @@ const MUTATION = gql`
         last_name
         username
         photo_url
-        user_id
+        telegram_id
         company
         position
       }
@@ -69,7 +69,7 @@ const MUTATION = gql`
 `
 
 export type updateUserDataType = {
-  user_id: string
+  telegram_id: string
   first_name: string
   last_name: string
   designation: string
@@ -113,7 +113,7 @@ export default function Wallet() {
     try {
       if (data) {
         const variables = {
-          user_id: userNode.user_id,
+          telegram_id: userNode.telegram_id,
           first_name: data?.first_name,
           last_name: data?.last_name,
           designation: data?.designation,

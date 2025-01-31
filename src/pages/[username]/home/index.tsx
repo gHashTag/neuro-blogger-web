@@ -20,6 +20,7 @@ import {
   problemData,
   initialAuthorState,
   Author,
+  ezavarykinAutor,
 } from '@/data'
 
 import { useEffect } from 'react'
@@ -57,6 +58,9 @@ function Home() {
         break
       case 'muse_nataly':
         author = metaMuseAutor
+        break
+      case 'E_Zavarykin':
+        author = ezavarykinAutor
         break
       case 'playom':
         author = playomAutor

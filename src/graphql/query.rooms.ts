@@ -14,7 +14,7 @@ export const GET_ROOMS_COLLECTIONS_BY_ROOM_ID_QUERY = gql`
       edges {
         node {
           id
-          user_id
+          telegram_id
           workspace_id
           name
           username
@@ -35,19 +35,19 @@ export const GET_ROOMS_COLLECTIONS_BY_ROOM_ID_QUERY = gql`
 `
 
 export const GET_ROOMS_COLLECTIONS_BY_WORKSPACE_ID_QUERY = gql`
-  query RoomsCollection($workspace_id: UUID!, $user_id: UUID!) {
+  query RoomsCollection($workspace_id: UUID!, $telegram_id: UUID!) {
     roomsCollection(
       filter: {
         and: [
           { workspace_id: { eq: $workspace_id } }
-          { user_id: { eq: $user_id } }
+          { telegram_id: { eq: $telegram_id } }
         ]
       }
     ) {
       edges {
         node {
           id
-          user_id
+          telegram_id
           workspace_id
           name
           username
@@ -67,13 +67,13 @@ export const GET_ROOMS_COLLECTIONS_BY_WORKSPACE_ID_QUERY = gql`
   }
 `
 
-export const GET_ROOMS_COLLECTIONS_BY_USER_ID_QUERY = gql`
-  query RoomsCollection($user_id: UUID!) {
-    roomsCollection(filter: { user_id: { eq: $user_id } }) {
+export const GET_ROOMS_COLLECTIONS_BY_telegram_id_QUERY = gql`
+  query RoomsCollection($telegram_id: UUID!) {
+    roomsCollection(filter: { telegram_id: { eq: $telegram_id } }) {
       edges {
         node {
           id
-          user_id
+          telegram_id
           workspace_id
           name
           username
@@ -99,7 +99,7 @@ export const ROOMS_BY_ID_COLLECTION_QUERY = gql`
       edges {
         node {
           id
-          user_id
+          telegram_id
           workspace_id
           name
           description
@@ -121,21 +121,21 @@ export const GET_ROOMS_COLLECTIONS_BY_WORKSPACE_ID_ROOM_ID_QUERY = gql`
   query RoomsCollection(
     $workspace_id: UUID!
     $room_id: String!
-    $user_id: UUID!
+    $telegram_id: UUID!
   ) {
     roomsCollection(
       filter: {
         and: [
           { workspace_id: { eq: $workspace_id } }
           { room_id: { eq: $room_id } }
-          { user_id: { eq: $user_id } }
+          { telegram_id: { eq: $telegram_id } }
         ]
       }
     ) {
       edges {
         node {
           id
-          user_id
+          telegram_id
           workspace_id
           name
           username
@@ -204,7 +204,7 @@ export const ROOM_NAME_COLLECTION_QUERY = gql`
       edges {
         node {
           id
-          user_id
+          telegram_id
           name
           description
           updated_at

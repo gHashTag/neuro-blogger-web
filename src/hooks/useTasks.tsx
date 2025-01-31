@@ -5,11 +5,11 @@ import {
   GET_TASKS_BY_RECORDING_ID,
   MUTATION_TASK_STATUS_UPDATE,
   MUTATION_TASK_UPDATE,
-  GET_TASKS_BY_USER_ID,
+  GET_TASKS_BY_telegram_id,
   TASKS_COLLECTION_QUERY,
   GET_PUBLIC_ROOM_TASKS_QUERY,
   GET_ROOM_TASKS_WORKSPACE_ID_QUERY,
-  GET_TASKS_BY_NOT_EQ_USER_ID,
+  GET_TASKS_BY_NOT_EQ_telegram_id,
 } from '@/graphql/query.tasks'
 import { useRouter } from 'next/router'
 import { ApolloError, useMutation, useQuery } from '@apollo/client'
@@ -37,7 +37,7 @@ import { captureExceptionSentry } from '@/utils/sentry'
 const useTasks = (): UseTasksReturn => {
   const {
     username,
-    user_id,
+    telegram_id,
     workspace_id,
     workspace_type,
     room_id,
@@ -52,17 +52,17 @@ const useTasks = (): UseTasksReturn => {
   const { control, handleSubmit, getValues, setValue, reset, watch } = useForm()
 
   let queryVariables = {}
-  let query = GET_TASKS_BY_USER_ID
+  let query = GET_TASKS_BY_telegram_id
 
   // console.log(workspace_type, "workspace_type");
-  // console.log(user_id, "user_id");
+  // console.log(telegram_id, "telegram_id");
   console.log(workspace_id, 'workspace_id')
 
   if (!recording_id && !room_id && !workspace_id) {
     // console.log("tasksQuery :::1");
     query = TASKS_COLLECTION_QUERY
     queryVariables = {
-      user_id,
+      telegram_id,
       // id: localStorage.getItem("id"),
     }
   } else if (
@@ -75,7 +75,7 @@ const useTasks = (): UseTasksReturn => {
     query = TASKS_COLLECTION_QUERY
     queryVariables = {
       workspace_id,
-      user_id,
+      telegram_id,
     }
   } else if (
     !room_id &&
@@ -84,9 +84,9 @@ const useTasks = (): UseTasksReturn => {
     workspace_type === 'Water'
   ) {
     // console.log("tasksQuery Water");
-    query = GET_TASKS_BY_NOT_EQ_USER_ID
+    query = GET_TASKS_BY_NOT_EQ_telegram_id
     queryVariables = {
-      user_id,
+      telegram_id,
     }
   } else if (
     !room_id &&
@@ -100,7 +100,7 @@ const useTasks = (): UseTasksReturn => {
     // console.log("tasksQuery :::3");
     query = TASKS_COLLECTION_QUERY
     queryVariables = {
-      user_id,
+      telegram_id,
       room_id,
       workspace_id,
     }
@@ -114,7 +114,7 @@ const useTasks = (): UseTasksReturn => {
     // console.log("tasksQuery :::5");
     query = GET_TASKS_BY_RECORDING_ID
     queryVariables = {
-      user_id,
+      telegram_id,
       room_id,
       workspace_id,
       recording_id,
@@ -146,7 +146,9 @@ const useTasks = (): UseTasksReturn => {
     setEditTask(true)
     localStorage.setItem('workspace_id', workspace_id)
     localStorage.setItem('room_id', room_id)
-    router.push(`/${username}/${user_id}/${workspace_id}/${room_id}/0/${id}`)
+    router.push(
+      `/${username}/${telegram_id}/${workspace_id}/${room_id}/0/${id}`
+    )
   }
 
   if (tasksError instanceof ApolloError) {
@@ -211,7 +213,7 @@ const useTasks = (): UseTasksReturn => {
 
       const formDataWithUserId = {
         ...formData,
-        user_id,
+        telegram_id,
         workspace_id,
         room_id,
         recording_id,
@@ -259,7 +261,7 @@ const useTasks = (): UseTasksReturn => {
     refetchTasks,
     reset,
     toast,
-    user_id,
+    telegram_id,
   ])
 
   const onUpdateTaskStatus = useCallback(
@@ -367,10 +369,10 @@ const useTasks = (): UseTasksReturn => {
   }, [onClose])
 
   const onEditTask = (id: string) => {
-    // const isOwner = task_user_id === user_id;
+    // const isOwner = task_telegram_id === telegram_id;
     setEditTask(false)
     localStorage.setItem('header_name', `Task #${id}`)
-    router.push(`/${username}/${user_id}/${workspace_id}/0/0/${id}`)
+    router.push(`/${username}/${telegram_id}/${workspace_id}/0/0/${id}`)
   }
 
   const columns = useMemo(
@@ -583,7 +585,7 @@ const useTasks = (): UseTasksReturn => {
       {
         id: 'actions',
         cell: ({ row }: any) => {
-          const isOwnerTask = row.original.node.user_id === user_id
+          const isOwnerTask = row.original.node.telegram_id === telegram_id
           return (
             isOwnerTask && (
               <DataTableRowActions

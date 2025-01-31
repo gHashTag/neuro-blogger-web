@@ -22,7 +22,7 @@ import { BreadcrumbWithCustomSeparator } from '@/components/ui/breadcrumb-with-c
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
 import { __DEV__ } from '@/utils/constants'
 export type updateUserDataType = {
-  user_id: string
+  telegram_id: string
   first_name: string
   last_name: string
   designation: string
@@ -31,7 +31,13 @@ export type updateUserDataType = {
 export default function Office() {
   const router = useRouter()
 
-  const { username, user_id, language_code } = useUser()
+  const { username, telegram_id, language_code } = useUser()
+  console.log(
+    username,
+    telegram_id,
+    language_code,
+    'username, telegram_id, language_code'
+  )
 
   const {
     workspacesLoading,
@@ -98,17 +104,17 @@ export default function Office() {
     workspace_id: string
     workspace_name: string
   }) => {
-    if (!username || !user_id || !workspace_id) {
+    if (!username || !telegram_id || !workspace_id) {
       console.error('Missing required parameters for navigation', {
         username,
-        user_id,
+        telegram_id,
         workspace_id,
       })
       return
     }
 
     // Построение URL для навигации
-    const path = `/${username}/${user_id}/${workspace_id}`
+    const path = `/${username}/${telegram_id}/${workspace_id}`
     console.log(path, 'path')
     router.push(path)
 

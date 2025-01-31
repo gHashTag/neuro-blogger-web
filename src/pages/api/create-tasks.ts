@@ -11,7 +11,7 @@ import { ResponseData } from '@/types'
 
 type Task = {
   assignee: {
-    user_id: string
+    telegram_id: string
     first_name: string
     last_name: string
     username: string
@@ -179,13 +179,13 @@ export default async function handler(
 
         const preparedUsers = getPreparedUsers(users)
         // console.log(preparedUsers, "preparedUsers");
-        const prompt = `add the 'user_id' from of ${JSON.stringify(
+        const prompt = `add the 'telegram_id' from of ${JSON.stringify(
           preparedUsers
         )} to the objects of the ${JSON.stringify(
           preparedTasks
         )} array. (Example: [{
           assignee: {
-            user_id: "1a1e4c75-830c-4fe8-a312-c901c8aa144b",
+            telegram_id: "1a1e4c75-830c-4fe8-a312-c901c8aa144b",
             first_name: "Andrey",
             last_name: "O",
             username: "reactotron"
@@ -200,9 +200,9 @@ export default async function handler(
 
         if (Array.isArray(tasksArray)) {
           const newTasks = tasksArray.map((task: any) => {
-            // Если user_id отсутствует или пуст, присваиваем значение по умолчанию
-            if (!task.assignee.user_id) {
-              task.assignee.user_id = 'd685d450-9759-4cd2-96cb-f1dc132d3078'
+            // Если telegram_id отсутствует или пуст, присваиваем значение по умолчанию
+            if (!task.assignee.telegram_id) {
+              task.assignee.telegram_id = 'd685d450-9759-4cd2-96cb-f1dc132d3078'
             }
             return task
           })
@@ -229,11 +229,11 @@ export default async function handler(
           if (workspace_name) {
             for (const task of newTasks) {
               // Убедитесь, что userId существует и не равен null
-              const user_id = task?.assignee?.user_id
+              const telegram_id = task?.assignee?.telegram_id
               // console.log(data.room_id, "data.room_id");
               const taskData = await supabase.from('tasks').insert([
                 {
-                  user_id,
+                  telegram_id,
                   room_id: data.room_id,
                   workspace_id,
                   recording_id: data.recording_id,

@@ -26,26 +26,26 @@ export function BreadcrumbWithCustomSeparator({
 }) {
   const router = useRouter()
 
-  const { user_id, workspace_name, recording_name } = useUser()
+  const { telegram_id, workspace_name, recording_name } = useUser()
 
   const goToHome = () => {
-    router.push(`/${username}/${user_id}`)
+    router.push(`/${username}/${telegram_id}`)
     setLoading(true)
   }
 
   const goToWorkspaces = () => {
-    router.push(`/${username}/${user_id}/${workspace_id}`)
+    router.push(`/${username}/${telegram_id}/${workspace_id}`)
     setLoading(true)
   }
 
   const goToRooms = () => {
-    router.push(`/${username}/${user_id}/${workspace_id}/${room_id}`)
+    router.push(`/${username}/${telegram_id}/${workspace_id}/${room_id}`)
     setLoading(true)
   }
 
   const goToRecords = () => {
     router.push(
-      `/${username}/${user_id}/${workspace_id}/${room_id}/${record_id}`
+      `/${username}/${telegram_id}/${workspace_id}/${room_id}/${record_id}`
     )
     setLoading(true)
   }

@@ -21,7 +21,7 @@ export type CreateUserT = {
 }
 
 type ResponseData = {
-  user_id?: string
+  telegram_id?: string
   passport_id_owner?: string
   passport_id_user?: string
   workspace_id?: string

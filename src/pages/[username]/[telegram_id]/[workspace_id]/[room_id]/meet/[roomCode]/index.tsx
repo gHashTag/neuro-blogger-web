@@ -18,20 +18,21 @@ type QueryType = {
   username: string
   workspace_id: string
   room_id: string
-  user_id: string
+  telegram_id: string
 }
 
 const Rooms = () => {
   const router = useRouter()
   const { firstName, lastName } = useUser()
-  const { workspace_id, room_id, roomCode, user_id } = router.query as QueryType
+  const { workspace_id, room_id, roomCode, telegram_id } =
+    router.query as QueryType
   const [token, setToken] = useState<string | undefined>(undefined)
   const isConnected = useHMSStore(selectIsConnectedToRoom)
   const [loading, setLoading] = useState(false)
   const [isPassport, setIsPassport] = useState(false)
   const hmsActions = useHMSActions()
   const { passportData, passportLoading } = usePassport({
-    user_id,
+    telegram_id,
     room_id,
   })
   const getUserName = () => {

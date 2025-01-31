@@ -9,7 +9,7 @@ import {
 import { createRoom } from '@/utils/edge-functions'
 import {
   DELETE_ROOM_MUTATION,
-  GET_ROOMS_COLLECTIONS_BY_USER_ID_QUERY,
+  GET_ROOMS_COLLECTIONS_BY_telegram_id_QUERY,
   GET_ROOMS_COLLECTIONS_BY_WORKSPACE_ID_QUERY,
   GET_ROOMS_COLLECTIONS_BY_WORKSPACE_ID_ROOM_ID_QUERY,
   ROOMS_BY_ID_COLLECTION_QUERY,
@@ -98,14 +98,14 @@ const useRooms = (): UseRoomsReturn => {
 
   const {
     username,
-    user_id,
+    telegram_id,
     workspace_id,
     room_id,
     recording_id,
     language_code,
   } = useUser()
   // console.log("username", username);
-  // console.log("user_id", user_id);
+  // console.log("telegram_id", telegram_id);
   // console.log("workspace_id", workspace_id);
   // console.log("room_id", room_id);
   // console.log("recording_id", recording_id);
@@ -118,7 +118,7 @@ const useRooms = (): UseRoomsReturn => {
     // console.log("rooms :::1");
     passportQuery = ROOMS_BY_ID_COLLECTION_QUERY
     queryVariables = {
-      user_id,
+      telegram_id,
     }
   }
 
@@ -126,16 +126,16 @@ const useRooms = (): UseRoomsReturn => {
     // console.log("rooms :::2");
     passportQuery = GET_ROOMS_COLLECTIONS_BY_WORKSPACE_ID_QUERY
     queryVariables = {
-      user_id,
+      telegram_id,
       workspace_id,
     }
   }
 
   if (recording_id && !room_id && !workspace_id) {
     // console.log("rooms :::3");
-    passportQuery = GET_ROOMS_COLLECTIONS_BY_USER_ID_QUERY
+    passportQuery = GET_ROOMS_COLLECTIONS_BY_telegram_id_QUERY
     queryVariables = {
-      user_id,
+      telegram_id,
     }
   }
 
@@ -143,7 +143,7 @@ const useRooms = (): UseRoomsReturn => {
     // console.log("rooms :::4");
     passportQuery = GET_ROOMS_COLLECTIONS_BY_WORKSPACE_ID_ROOM_ID_QUERY
     queryVariables = {
-      user_id,
+      telegram_id,
       room_id,
       workspace_id,
     }
@@ -153,7 +153,7 @@ const useRooms = (): UseRoomsReturn => {
     // console.log("rooms :::5");
     passportQuery = GET_ROOMS_COLLECTIONS_BY_WORKSPACE_ID_ROOM_ID_QUERY
     queryVariables = {
-      user_id,
+      telegram_id,
       room_id,
       workspace_id,
     }
@@ -254,9 +254,9 @@ const useRooms = (): UseRoomsReturn => {
     const formData = getValues()
 
     try {
-      if (username && user_id) {
+      if (username && telegram_id) {
         const response = await createRoom({
-          user_id,
+          telegram_id,
           username,
           workspace_id,
           name: formData.name,
@@ -275,7 +275,7 @@ const useRooms = (): UseRoomsReturn => {
 
           createPassport(workspace_id, room_id, true)
           router.push(
-            `/${username}/${user_id}/${workspace_id}/${response.rooms.room_id}`
+            `/${username}/${telegram_id}/${workspace_id}/${response.rooms.room_id}`
           )
           setLoading(false)
           toast({
@@ -344,7 +344,7 @@ const useRooms = (): UseRoomsReturn => {
         refetchRooms()
         assetsRefetch()
         roomNameRefetch()
-        router.push(`/${username}/${user_id}/${workspace_id}`)
+        router.push(`/${username}/${telegram_id}/${workspace_id}`)
       },
     })
   }

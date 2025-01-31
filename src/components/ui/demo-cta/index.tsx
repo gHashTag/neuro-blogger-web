@@ -41,7 +41,7 @@ const DemoButton = () => {
 
   useEffect(() => {
     if (__DEV__) {
-      router.push(`/${mockedUser.username}/${mockedUser.user_id}`)
+      router.push(`/${mockedUser.username}/${mockedUser.telegram_id}`)
       return
     }
     setTimeout(() => {
@@ -75,13 +75,14 @@ const DemoButton = () => {
     if (__DEV__) {
       console.log('Using mocked data for development')
       localStorage.setItem('username', mockedUser.username)
-      localStorage.setItem('user_id', mockedUser.user_id)
+      localStorage.setItem('telegram_id', mockedUser.telegram_id)
     } else {
       if (!userDataForBaseRecord.username)
         throw new Error('Username is required')
-      if (!newUserDataFromBase.user_id) throw new Error('User ID is required')
+      if (!newUserDataFromBase.telegram_id)
+        throw new Error('User ID is required')
       localStorage.setItem('username', userDataForBaseRecord.username)
-      localStorage.setItem('user_id', newUserDataFromBase.user_id)
+      localStorage.setItem('telegram_id', newUserDataFromBase.telegram_id)
     }
 
     localStorage.setItem('first_name', user.first_name)

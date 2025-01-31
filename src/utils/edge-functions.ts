@@ -1,4 +1,3 @@
-import { usePassport } from '@/hooks/usePassport'
 import { headers } from './headers'
 import { __DEV__, SITE_URL } from '@/utils/constants'
 
@@ -11,7 +10,7 @@ if (!process.env.NEXT_PUBLIC_FUNCTION_SECRET) {
 }
 
 type CreateRoomProps = {
-  user_id: string
+  telegram_id: string
   username: string
   name: string
   workspace_id: string
@@ -22,7 +21,7 @@ type CreateRoomProps = {
 }
 
 async function createRoom({
-  user_id,
+  telegram_id,
   username,
   name,
   workspace_id,
@@ -34,7 +33,7 @@ async function createRoom({
   const url = `${SITE_URL}/api/create-room`
 
   const newData = {
-    user_id,
+    telegram_id,
     username,
     name,
     workspace_id,

@@ -23,7 +23,7 @@ import { usePathname } from 'next/navigation'
 import { usePath } from '@/hooks/usePath'
 
 type PassportType = {
-  user_id?: string
+  telegram_id?: string
   workspace_id?: string
   room_id?: string
   is_owner: boolean
@@ -34,8 +34,8 @@ const MeetsPage = () => {
   const router = useRouter()
   const loading = useReactiveVar(setLoading)
   // const room_id = useReactiveVar(setRoomId);
-  const { user_id, workspace_type } = useUser()
-  // const { username, user_id, workspace_id, workspace_type } = useUser();
+  const { telegram_id, workspace_type } = useUser()
+  // const { username, telegram_id, workspace_id, workspace_type } = useUser();
 
   const path = usePathname()
   const { username, workspace_id } = usePath(path)
@@ -43,12 +43,12 @@ const MeetsPage = () => {
   const passportObj: PassportType =
     workspace_type === 'Water'
       ? {
-          user_id,
+          telegram_id,
           is_owner: false,
           type: 'room',
         }
       : {
-          user_id,
+          telegram_id,
           is_owner: true,
           type: 'room',
         }
@@ -93,7 +93,7 @@ const MeetsPage = () => {
   const [assignedTasks, setAssignedTasks] = useState<Task[]>()
 
   const assigned = async () => {
-    const result = await getAssignedTasks(user_id)
+    const result = await getAssignedTasks(telegram_id)
     setAssignedTasks(result)
     return result
   }
@@ -146,8 +146,10 @@ const MeetsPage = () => {
 
   const goToRoomId = (room: RoomEdge) => {
     // localStorage.setItem("is_owner", "false");
-    router.push(`/${username}/${user_id}/${workspace_id}/${room.node.room_id}`)
-    // router.push(`/${username}/${user_id}/${workspace_id}/${room.node.name}`);
+    router.push(
+      `/${username}/${telegram_id}/${workspace_id}/${room.node.room_id}`
+    )
+    // router.push(`/${username}/${telegram_id}/${workspace_id}/${room.node.name}`);
     localStorage.setItem('room_id', room.node.room_id)
     setRoomId(room.node.room_id)
     room.node.name && localStorage.setItem('room_name', room.node.name)
@@ -159,7 +161,7 @@ const MeetsPage = () => {
       const memberCode = codes.data[0].code
       localStorage.setItem('workspace_id', workspace_id)
       router.push(
-        `/${node.username}/${user_id}/${node.workspace_id}/${node.room_id}/meet/${memberCode}`
+        `/${node.username}/${telegram_id}/${node.workspace_id}/${node.room_id}/meet/${memberCode}`
       )
     } else {
       console.error('No codes available')

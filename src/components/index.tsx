@@ -30,13 +30,13 @@ import { Globe } from 'lucide-react'
 
 export default function Conf() {
   const loggedIn = useReactiveVar(setLoggedIn)
-  const { username, user_id } = useUser()
+  const { username, telegram_id } = useUser()
   const router = useRouter()
 
   useEffect(() => {
     console.log('username', username)
     if (username) {
-      router.push(`/${username}/${user_id}`)
+      router.push(`/${username}/${telegram_id}`)
     }
     if (!loggedIn) {
       setVisibleHeader(false)

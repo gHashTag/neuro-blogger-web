@@ -48,7 +48,7 @@ function InviteMemberModal({
   isEditing,
   type,
 }: WorkspaceModalType) {
-  const { user_id, workspace_id, room_id, recording_id } = useUser()
+  const { telegram_id, workspace_id, room_id, recording_id } = useUser()
 
   return (
     <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
@@ -75,7 +75,7 @@ function InviteMemberModal({
                         {...field}
                         onChange={e => {
                           setValue('username', e.target.value)
-                          setValue('user_id', user_id)
+                          setValue('telegram_id', telegram_id)
                           setValue('workspace_id', workspace_id)
                           setValue('room_id', room_id)
                           setValue('recording_id', recording_id)

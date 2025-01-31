@@ -42,7 +42,7 @@ export const EvervaultCard = ({
   const [copiedText, copy] = useCopyToClipboard()
   const [randomString, setRandomString] = useState('')
   const { toast } = useToast()
-  const { username, user_id, workspace_id, room_id } = useUser()
+  const { username, telegram_id, workspace_id, room_id } = useUser()
 
   useEffect(() => {
     let str = generateRandomString(1500)
@@ -79,11 +79,11 @@ export const EvervaultCard = ({
   const handleClick = useCallback(async () => {
     if (
       router.pathname !==
-      `/${username}/${user_id}/${workspace_id}/${room_id}/meet/${inviteHostCode}`
+      `/${username}/${telegram_id}/${workspace_id}/${room_id}/meet/${inviteHostCode}`
     ) {
       if (type === 'guest') {
         handleCopy(
-          `${SITE_URL}/${username}/${user_id}/${workspace_id}/${room_id}/meet/${inviteMemberCode}`
+          `${SITE_URL}/${username}/${telegram_id}/${workspace_id}/${room_id}/meet/${inviteMemberCode}`
         )
         inviteToMeet(type)
       } else if (type === 'member') {
@@ -102,13 +102,13 @@ export const EvervaultCard = ({
     passportData,
     room_id,
     type,
-    user_id,
+    telegram_id,
     workspace_id,
   ])
 
   const href =
     type === 'host'
-      ? `/${username}/${user_id}/${workspace_id}/${room_id}/meet/${inviteHostCode}`
+      ? `/${username}/${telegram_id}/${workspace_id}/${room_id}/meet/${inviteHostCode}`
       : router.asPath
 
   return (

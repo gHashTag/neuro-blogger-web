@@ -73,11 +73,11 @@ export default function Form({ sharePage }: Props) {
   const email = __DEV__ ? 'neuro_sage@gmail.com' : ''
   const inputRef = useRef<HTMLInputElement | null>(null)
   const inputRefWord = useRef<HTMLInputElement | null>(null)
-  const { username, user_id, language_code } = useUser()
+  const { username, telegram_id, language_code } = useUser()
 
   useEffect(() => {
     if (workspace_id) {
-      router.push(`/${username}/${user_id}`)
+      router.push(`/${username}/${telegram_id}`)
     }
     if (inputRef.current) {
       inputRef.current.focus()
@@ -117,7 +117,7 @@ export default function Form({ sharePage }: Props) {
         await checkUsernameAndReturnUser(inviteCode)
 
       if (isInviterExist) {
-        const { select_izbushka, user_id } = user
+        const { select_izbushka, telegram_id } = user
         setIsEmailStep(true)
         setTimeout(() => {
           setFormState('default')
@@ -125,7 +125,7 @@ export default function Form({ sharePage }: Props) {
           setFocused(true)
           setInviterUserInfo({
             select_izbushka: select_izbushka || '',
-            inviter: user_id,
+            inviter: telegram_id,
             is_bot: false,
           })
         }, 1000)

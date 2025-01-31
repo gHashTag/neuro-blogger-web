@@ -11,13 +11,13 @@ interface QuestionContext {
 }
 
 interface updateProgressContext {
-  user_id: string
+  telegram_id: string
   isTrue: boolean
   path: string
 }
 
 interface UpdateResultParams {
-  user_id: string
+  telegram_id: string
   language: string
   value: boolean
 }
@@ -40,13 +40,13 @@ export async function getWorkspaceByName(name: string) {
   return data
 }
 
-export async function setMyWorkspace(user_id: string) {
+export async function setMyWorkspace(telegram_id: string) {
   const { data, error } = await supabase
     .from('workspaces')
     .insert([
       {
         title: 'Fire',
-        user_id,
+        telegram_id,
       },
     ])
     .select('*')
@@ -56,11 +56,11 @@ export async function setMyWorkspace(user_id: string) {
   return workspace_id
 }
 
-export async function setRoom(user_id: string) {
+export async function setRoom(telegram_id: string) {
   const { data: dataRooms, error } = await supabase
     .from('rooms')
     .select('*')
-    .eq('user_id', user_id)
+    .eq('telegram_id', telegram_id)
     .order('id', { ascending: false })
 
   const lastElement = dataRooms && dataRooms[0]
@@ -83,7 +83,7 @@ export async function setPassport(passport: any) {
 
 type CreateUserReturn = {
   userData: SupabaseUser[]
-  user_id: string
+  telegram_id: string
   isUserExist: boolean
   error: any
 }
@@ -119,7 +119,7 @@ export async function createUser(
     console.error('Error checking user existence:', error)
     return {
       userData: [],
-      user_id: '',
+      telegram_id: '',
       isUserExist: false,
       error: error,
     }
@@ -129,7 +129,7 @@ export async function createUser(
     console.log('User already exists', existingUser)
     return {
       userData: [existingUser],
-      user_id: existingUser.user_id,
+      telegram_id: existingUser.telegram_id,
       isUserExist: true,
       error: null,
     }
@@ -146,7 +146,7 @@ export async function createUser(
     console.error('Error creating user:', insertError)
     return {
       userData: [],
-      user_id: '',
+      telegram_id: '',
       isUserExist: false,
       error: insertError,
     }
@@ -156,7 +156,7 @@ export async function createUser(
     console.error('User data was not returned after insertion')
     return {
       userData: [],
-      user_id: '',
+      telegram_id: '',
       isUserExist: false,
       error: 'User data was not returned after insertion',
     }
@@ -164,7 +164,7 @@ export async function createUser(
 
   return {
     userData: data,
-    user_id: data[0].user_id,
+    telegram_id: data[0].telegram_id,
     isUserExist: false,
     error: insertError,
   }
@@ -237,10 +237,10 @@ export async function getQuestion(ctx: QuestionContext) {
 }
 
 export async function resetProgress(username: string): Promise<void> {
-  // Получаем user_id по username из таблицы users
+  // Получаем telegram_id по username из таблицы users
   const { data: userData, error: userError } = await supabase
     .from('users')
-    .select('user_id')
+    .select('telegram_id')
     .eq('username', username)
     .single()
 
@@ -248,13 +248,13 @@ export async function resetProgress(username: string): Promise<void> {
     throw new Error(userError?.message || 'User not found')
   }
 
-  const userId = userData.user_id
+  const userId = userData.telegram_id
 
-  // Проверяем, существует ли запись в таблице javascript_progress для данного user_id
+  // Проверяем, существует ли запись в таблице javascript_progress для данного telegram_id
   const { data: progressData, error: progressError } = await supabase
     .from('progress')
-    .select('user_id')
-    .eq('user_id', userId)
+    .select('telegram_id')
+    .eq('telegram_id', userId)
 
   if (progressError) throw new Error(progressError.message)
 
@@ -262,28 +262,28 @@ export async function resetProgress(username: string): Promise<void> {
     // Если записи нет, создаем новую
     const { error: insertError } = await supabase
       .from('progress')
-      .insert([{ user_id: userId }])
+      .insert([{ telegram_id: userId }])
 
     if (insertError) throw new Error(insertError.message)
   } else {
-    // Если запись существует, очищаем все поля, кроме user_id и created_at
+    // Если запись существует, очищаем все поля, кроме telegram_id и created_at
     const { error: updateError } = await supabase
       .from('progress')
       .update({
         javascript: 0,
       })
-      .eq('user_id', userId)
+      .eq('telegram_id', userId)
 
     if (updateError) throw new Error(updateError.message)
   }
 }
 
-export async function getCorrects(user_id: string): Promise<number> {
+export async function getCorrects(telegram_id: string): Promise<number> {
   // Запрос к базе данных для получения данных пользователя
   const { data, error } = await supabase
     .from('progress')
     .select('*')
-    .eq('user_id', user_id)
+    .eq('telegram_id', telegram_id)
     .single()
 
   if (error) {
@@ -301,20 +301,20 @@ export async function getCorrects(user_id: string): Promise<number> {
 }
 
 export async function updateProgress({
-  user_id,
+  telegram_id,
   isTrue,
 }: updateProgressContext): Promise<void> {
   const { data: progressData, error: progressError } = await supabase
     .from('progress')
     .select('*')
-    .eq('user_id', user_id)
+    .eq('telegram_id', telegram_id)
 
   if (progressError) throw new Error(progressError.message)
 
   if (progressData && progressData.length === 0) {
     const { error: insertError } = await supabase
       .from('progress')
-      .insert([{ user_id: user_id }])
+      .insert([{ telegram_id: telegram_id }])
 
     if (insertError) throw new Error(insertError.message)
   } else {
@@ -325,20 +325,20 @@ export async function updateProgress({
           ? progressData[0].javascript + 1
           : progressData[0].javascript,
       })
-      .eq('user_id', user_id)
+      .eq('telegram_id', telegram_id)
 
     if (updateError) throw new Error(updateError.message)
   }
 }
 
 export async function updateResult({
-  user_id,
+  telegram_id,
   language,
   value,
 }: UpdateResultParams): Promise<void> {
   const { data, error } = await supabase
     .from('result')
-    .upsert({ user_id, [language]: value }, { onConflict: 'user_id' })
+    .upsert({ telegram_id, [language]: value }, { onConflict: 'telegram_id' })
 
   if (error) {
     console.error('Error updateResult:', error)
@@ -349,15 +349,15 @@ export async function updateResult({
 }
 
 export async function getUid(username: string) {
-  // Запрос к таблице users для получения user_id по username
+  // Запрос к таблице users для получения telegram_id по username
   const { data, error } = await supabase
     .from('users')
-    .select('user_id')
+    .select('telegram_id')
     .eq('username', username)
     .single()
 
   if (error) {
-    console.error('Error getting user_id:', error.message)
+    console.error('Error getting telegram_id:', error.message)
     throw new Error(error.message)
   }
 
@@ -366,19 +366,19 @@ export async function getUid(username: string) {
     return null // or throw an error if the user must exist
   }
 
-  // Возвращаем user_id
-  return data.user_id
+  // Возвращаем telegram_id
+  return data.telegram_id
 }
 
-export async function getAssignedTasks(user_id: string): Promise<Task[]> {
+export async function getAssignedTasks(telegram_id: string): Promise<Task[]> {
   const { data, error } = await supabase
     .from('tasks')
     .select('*')
-    .neq('user_id', user_id)
+    .neq('telegram_id', telegram_id)
   // .neq("assigned_to", null)
   // .contains(
   //   "assigned_to",
-  //   JSON.stringify([{ user_id }]),
+  //   JSON.stringify([{ telegram_id }]),
   // );
 
   if (error) {
@@ -400,23 +400,23 @@ export async function getAssignedTasks(user_id: string): Promise<Task[]> {
 }
 
 export const checkUsernameCodesByUserId = async (
-  user_id: string
+  telegram_id: string
 ): Promise<{
   isInviterExist: boolean
   invitation_codes: string
-  inviter_user_id: string
+  inviter_telegram_id: string
   error?: boolean
 }> => {
   try {
     const { data: userData, error: userError } = await supabase
       .from('users')
       .select('*')
-      .eq('user_id', user_id)
+      .eq('telegram_id', telegram_id)
 
     const { data: rooms, error: roomsError } = await supabase
       .from('rooms')
       .select('*')
-      .eq('user_id', user_id)
+      .eq('telegram_id', telegram_id)
 
     if (roomsError) {
       console.error(roomsError, 'roomsError')
@@ -428,14 +428,14 @@ export const checkUsernameCodesByUserId = async (
         isInviterExist: false,
         invitation_codes: '',
         error: true,
-        inviter_user_id: '',
+        inviter_telegram_id: '',
       }
     }
 
     return {
       isInviterExist: userData.length > 0 ? true : false,
       invitation_codes,
-      inviter_user_id: userData[0].user_id,
+      inviter_telegram_id: userData[0].telegram_id,
     }
   } catch (error) {
     console.error(error, 'error checkUsernameCodes')
@@ -443,7 +443,7 @@ export const checkUsernameCodesByUserId = async (
       isInviterExist: false,
       invitation_codes: '',
       error: true,
-      inviter_user_id: '',
+      inviter_telegram_id: '',
     }
   }
 }
@@ -453,7 +453,7 @@ export const checkUsernameCodesByUserName = async (
 ): Promise<{
   isInviterExist: boolean
   invitation_codes: string
-  inviter_user_id: string
+  inviter_telegram_id: string
   error?: boolean
 }> => {
   try {
@@ -477,14 +477,14 @@ export const checkUsernameCodesByUserName = async (
         isInviterExist: false,
         invitation_codes: '',
         error: true,
-        inviter_user_id: '',
+        inviter_telegram_id: '',
       }
     }
 
     return {
       isInviterExist: userData.length > 0 ? true : false,
       invitation_codes,
-      inviter_user_id: userData[0].user_id,
+      inviter_telegram_id: userData[0].telegram_id,
     }
   } catch (error) {
     console.error(error, 'error checkUsernameCodes')
@@ -492,7 +492,7 @@ export const checkUsernameCodesByUserName = async (
       isInviterExist: false,
       invitation_codes: '',
       error: true,
-      inviter_user_id: '',
+      inviter_telegram_id: '',
     }
   }
 }
@@ -602,7 +602,7 @@ export const getSupabaseUserByUsername = async (username: string) => {
 
 const createUserInDatabase = async (
   newUser: SupabaseUser
-): Promise<{ user_id: string }> => {
+): Promise<{ telegram_id: string }> => {
   await supabase.from('users').insert([newUser])
   const user = await getSupabaseUserByUsername(newUser.username || '')
 

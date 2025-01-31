@@ -108,8 +108,8 @@ export default function Layout({
   //   cache.writeQuery({
   //     query: CURRENT_USER,
   //     data: {
-  //       isLoggedIn: !!localStorage.getItem("user_id"),
-  //       user_id: localStorage.getItem("user_id"),
+  //       isLoggedIn: !!localStorage.getItem("telegram_id"),
+  //       telegram_id: localStorage.getItem("telegram_id"),
   //       user_name: localStorage.getItem("user_name"),
   //       first_name: localStorage.getItem("first_name"),
   //       last_name: localStorage.getItem("last_name"),
@@ -127,7 +127,7 @@ export default function Layout({
   const activeMenuButton = useReactiveVar(setActiveRoute)
 
   const activeRoute = router.asPath
-  const { user_id, photo_url, firstName, lastName, username } = useUser()
+  const { telegram_id, photo_url, firstName, lastName, username } = useUser()
 
   const isAuthorized = !!username
 
@@ -135,7 +135,8 @@ export default function Layout({
     (lastName && lastName[0]) || ''
   }`
 
-  const mainButtonRoute = activeRoute !== '/' ? `/${username}/${user_id}` : '/'
+  const mainButtonRoute =
+    activeRoute !== '/' ? `/${username}/${telegram_id}` : '/'
 
   return (
     <>
@@ -156,7 +157,7 @@ export default function Layout({
                       <>
                         <CustomLink
                           route="office"
-                          pathname={`/${user_id}`}
+                          pathname={`/${telegram_id}`}
                           legacyBehavior
                           passHref
                           activeMenuButton={activeMenuButton}

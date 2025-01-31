@@ -13,7 +13,7 @@ type CreateOrFetchRoomProps = {
   first_name: string
   last_name: string
   language_code: string
-  user_id: string
+  telegram_id: string
   chat_id: number
   workspace_id: string
   token: string
@@ -24,7 +24,7 @@ export const createOrFetchRoom = async ({
   first_name,
   last_name,
   language_code,
-  user_id,
+  telegram_id,
   chat_id,
   workspace_id,
   token,
@@ -65,7 +65,7 @@ export const createOrFetchRoom = async ({
     type: 'video-space',
     name: `${first_name} ${last_name}`,
     updated_at: new Date(),
-    user_id,
+    telegram_id,
     room_id,
     token,
     chat_id,

@@ -6,7 +6,7 @@ export const GET_ALL_TASKS = gql`
       edges {
         node {
           id
-          user_id
+          telegram_id
           workspace_id
           room_id
           recording_id
@@ -21,7 +21,7 @@ export const GET_ALL_TASKS = gql`
           status
           label
           user_passport {
-            user_id
+            telegram_id
             first_name
             last_name
             photo_url
@@ -35,7 +35,7 @@ export const GET_ALL_TASKS = gql`
 
 export const TASKS_COLLECTION_QUERY = gql`
   query GetTasks(
-    $user_id: UUID!
+    $telegram_id: UUID!
     $room_id: String!
     $recording_id: String
     $workspace_id: UUID!
@@ -45,7 +45,7 @@ export const TASKS_COLLECTION_QUERY = gql`
         and: [
           {
             workspace_id: { eq: $workspace_id }
-            user_id: { eq: $user_id }
+            telegram_id: { eq: $telegram_id }
             room_id: { eq: $room_id }
             recording_id: { eq: $recording_id }
           }
@@ -56,7 +56,7 @@ export const TASKS_COLLECTION_QUERY = gql`
       edges {
         node {
           id
-          user_id
+          telegram_id
           workspace_id
           room_id
           recording_id
@@ -72,7 +72,7 @@ export const TASKS_COLLECTION_QUERY = gql`
           status
           label
           user_passport {
-            user_id
+            telegram_id
             first_name
             last_name
             photo_url
@@ -89,7 +89,7 @@ export const CREATE_TASK_MUTATION = gql`
     insertIntotasksCollection(objects: $objects) {
       records {
         id
-        user_id
+        telegram_id
         created_at
         title
         description
@@ -106,7 +106,7 @@ export const CREATE_TASK_MUTATION = gql`
         status
         label
         user_passport {
-          user_id
+          telegram_id
           first_name
           last_name
           photo_url
@@ -145,7 +145,7 @@ export const MUTATION_TASK_STATUS_UPDATE = gql`
         workspace_id
         room_id
         recording_id
-        user_id
+        telegram_id
         title
         description
         status
@@ -160,7 +160,7 @@ export const MUTATION_TASK_STATUS_UPDATE = gql`
         priority
         order
         user_passport {
-          user_id
+          telegram_id
           first_name
           last_name
           photo_url
@@ -198,7 +198,7 @@ export const MUTATION_TASK_UPDATE = gql`
     ) {
       records {
         id
-        user_id
+        telegram_id
         title
         description
         status
@@ -212,7 +212,7 @@ export const MUTATION_TASK_UPDATE = gql`
         label
         priority
         user_passport {
-          user_id
+          telegram_id
           first_name
           last_name
           photo_url
@@ -241,7 +241,7 @@ export const GET_TASKS_BY_RECORDING_ID = gql`
         and: [
           {
             id: { eq: $id }
-            user_id: { eq: $user_id }
+            telegram_id: { eq: $telegram_id }
             workspace_id: { eq: $workspace_id }
             room_id: { eq: $room_id }
             recording_id: { eq: $recording_id }
@@ -253,7 +253,7 @@ export const GET_TASKS_BY_RECORDING_ID = gql`
       edges {
         node {
           id
-          user_id
+          telegram_id
           workspace_id
           room_id
           created_at
@@ -268,7 +268,7 @@ export const GET_TASKS_BY_RECORDING_ID = gql`
           status
           label
           user_passport {
-            user_id
+            telegram_id
             first_name
             last_name
             photo_url
@@ -283,7 +283,7 @@ export const GET_TASKS_BY_RECORDING_ID = gql`
 export const GET_TASK_BY_ID = gql`
   query GetUserTasks(
     $id: UUID!
-    $user_id: UUID!
+    $telegram_id: UUID!
     $workspace_id: UUID!
     $room_id: String!
     $recording_id: String!
@@ -293,7 +293,7 @@ export const GET_TASK_BY_ID = gql`
         and: [
           {
             id: { eq: $id }
-            user_id: { eq: $user_id }
+            telegram_id: { eq: $telegram_id }
             workspace_id: { eq: $workspace_id }
             room_id: { eq: $room_id }
             recording_id: { eq: $recording_id }
@@ -305,7 +305,7 @@ export const GET_TASK_BY_ID = gql`
       edges {
         node {
           id
-          user_id
+          telegram_id
           workspace_id
           room_id
           created_at
@@ -322,7 +322,7 @@ export const GET_TASK_BY_ID = gql`
           status
           label
           user_passport {
-            user_id
+            telegram_id
             first_name
             last_name
             photo_url
@@ -335,11 +335,11 @@ export const GET_TASK_BY_ID = gql`
 `
 
 // export const GET_TASKS_FOR_WORKSPACE = gql`
-//   query GetRoomTasks($user_id: UUID!, $workspace_id: UUID!) {
+//   query GetRoomTasks($telegram_id: UUID!, $workspace_id: UUID!) {
 //     tasksCollection(
 //       filter: {
 //         and: [
-//           { workspace_id: { eq: $workspace_id }, user_id: { eq: $user_id } }
+//           { workspace_id: { eq: $workspace_id }, telegram_id: { eq: $telegram_id } }
 //         ]
 //       }
 //       orderBy: { created_at: DescNullsFirst }
@@ -347,7 +347,7 @@ export const GET_TASK_BY_ID = gql`
 //       edges {
 //         node {
 //           id
-//           user_id
+//           telegram_id
 //           workspace_id
 //           room_id
 //           created_at
@@ -371,13 +371,17 @@ export const GET_TASK_BY_ID = gql`
 // `;
 
 export const GET_TASKS_FOR_ROOM = gql`
-  query GetRoomTasks($user_id: UUID!, $room_id: String!, $workspace_id: UUID!) {
+  query GetRoomTasks(
+    $telegram_id: UUID!
+    $room_id: String!
+    $workspace_id: UUID!
+  ) {
     tasksCollection(
       filter: {
         and: [
           {
             workspace_id: { eq: $workspace_id }
-            user_id: { eq: $user_id }
+            telegram_id: { eq: $telegram_id }
             room_id: { eq: $room_id }
           }
         ]
@@ -387,7 +391,7 @@ export const GET_TASKS_FOR_ROOM = gql`
       edges {
         node {
           id
-          user_id
+          telegram_id
           workspace_id
           room_id
           created_at
@@ -402,7 +406,7 @@ export const GET_TASKS_FOR_ROOM = gql`
           status
           label
           user_passport {
-            user_id
+            telegram_id
             first_name
             last_name
             photo_url
@@ -423,7 +427,7 @@ export const GET_ROOM_TASKS_WORKSPACE_ID_QUERY = gql`
       edges {
         node {
           id
-          user_id
+          telegram_id
           workspace_id
           room_id
           created_at
@@ -440,7 +444,7 @@ export const GET_ROOM_TASKS_WORKSPACE_ID_QUERY = gql`
           status
           label
           user_passport {
-            user_id
+            telegram_id
             first_name
             last_name
             photo_url
@@ -461,7 +465,7 @@ export const GET_PUBLIC_ROOM_TASKS_QUERY = gql`
       edges {
         node {
           id
-          user_id
+          telegram_id
           workspace_id
           room_id
           created_at
@@ -478,7 +482,7 @@ export const GET_PUBLIC_ROOM_TASKS_QUERY = gql`
           status
           label
           user_passport {
-            user_id
+            telegram_id
             first_name
             last_name
             photo_url
@@ -490,16 +494,16 @@ export const GET_PUBLIC_ROOM_TASKS_QUERY = gql`
   }
 `
 
-export const GET_TASKS_BY_USER_ID = gql`
-  query GetUserTasks($user_id: UUID!) {
+export const GET_TASKS_BY_telegram_id = gql`
+  query GetUserTasks($telegram_id: UUID!) {
     tasksCollection(
-      filter: { and: [{ user_id: { eq: $user_id } }] }
+      filter: { and: [{ telegram_id: { eq: $telegram_id } }] }
       orderBy: { created_at: DescNullsFirst }
     ) {
       edges {
         node {
           id
-          user_id
+          telegram_id
           workspace_id
           room_id
           created_at
@@ -514,7 +518,7 @@ export const GET_TASKS_BY_USER_ID = gql`
           status
           label
           user_passport {
-            user_id
+            telegram_id
             first_name
             last_name
             photo_url
@@ -526,16 +530,16 @@ export const GET_TASKS_BY_USER_ID = gql`
   }
 `
 
-export const GET_TASKS_BY_NOT_EQ_USER_ID = gql`
-  query GetUserTasks($user_id: UUID!) {
+export const GET_TASKS_BY_NOT_EQ_telegram_id = gql`
+  query GetUserTasks($telegram_id: UUID!) {
     tasksCollection(
-      filter: { and: [{ user_id: { neq: $user_id } }] }
+      filter: { and: [{ telegram_id: { neq: $telegram_id } }] }
       orderBy: { created_at: DescNullsFirst }
     ) {
       edges {
         node {
           id
-          user_id
+          telegram_id
           workspace_id
           room_id
           created_at
@@ -550,7 +554,7 @@ export const GET_TASKS_BY_NOT_EQ_USER_ID = gql`
           status
           label
           user_passport {
-            user_id
+            telegram_id
             first_name
             last_name
             photo_url

@@ -21,6 +21,7 @@ import {
   problemData,
   neuroCoderAutor,
   playomAutor,
+  ezavarykinAutor,
 } from '@/data'
 import Loader from '@/components/loader'
 
@@ -55,6 +56,9 @@ function Home() {
         break
       case 'playom':
         author = playomAutor
+        break
+      case 'E_Zavarykin':
+        author = ezavarykinAutor
         break
       default:
         author = metaMuseAutor

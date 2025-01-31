@@ -11,7 +11,7 @@ type CreateRoom = {
   original_name: string
   type: string
   username: string
-  user_id: string
+  telegram_id: string
   token: string
   chat_id: number
   language_code: string
@@ -23,7 +23,7 @@ async function create100MsRoom({
   original_name,
   type,
   username,
-  user_id,
+  telegram_id,
   token,
   chat_id,
   language_code,

@@ -24,7 +24,7 @@ function ModalDialog(
 ) {
   const { username } = useUser()
   const router = useRouter()
-  const user_id = localStorage.getItem('user_id')
+  const telegram_id = localStorage.getItem('telegram_id')
   const activeRoute = router.asPath
 
   const ref = useRef<HTMLElement | null>(null)
@@ -46,11 +46,11 @@ function ModalDialog(
         >
           <Link
             href={{
-              pathname: `/${username}/${user_id}`,
+              pathname: `/${username}/${telegram_id}`,
             }}
             className={cn(styles['nav-item'], {
               [styles['nav-active']]: activeRoute.startsWith(
-                `/${username}/${user_id}`
+                `/${username}/${telegram_id}`
               ),
             })}
             onClick={() => {

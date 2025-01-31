@@ -33,15 +33,15 @@ export function useSupabase() {
   const [userId, setUserId] = useState<string>('')
 
   const updateUserLocalStorage = (
-    user_id: string,
+    telegram_id: string,
     username: string,
     first_name: string,
     last_name: string,
     photo_url: string
   ) => {
-    setUserId(user_id)
+    setUserId(telegram_id)
     localStorage.setItem('username', username)
-    localStorage.setItem('user_id', user_id)
+    localStorage.setItem('telegram_id', telegram_id)
     localStorage.setItem('first_name', first_name || '')
     localStorage.setItem('last_name', last_name || '')
     localStorage.setItem('photo_url', photo_url || '')
@@ -49,12 +49,12 @@ export function useSupabase() {
 
   const createSupabaseUser = async (
     user: TUser
-  ): Promise<{ user_id: string; username: string } | undefined> => {
+  ): Promise<{ telegram_id: string; username: string } | undefined> => {
     try {
       if (!user.username) {
         console.error('Username not founded')
         return {
-          user_id: '',
+          telegram_id: '',
           username: '',
         }
       }
@@ -74,31 +74,31 @@ export function useSupabase() {
         // если да то направитьего дальше сохранить аватарку
         const updateUser = await updateUserInfoByUsername(user)
 
-        setUserId(updateUser.user_id)
+        setUserId(updateUser.telegram_id)
 
         updateUserLocalStorage(
-          updateUser.user_id,
+          updateUser.telegram_id,
           username,
           first_name,
           last_name || '',
           photo_url || ''
         )
         return {
-          user_id: updateUser.user_id,
+          telegram_id: updateUser.telegram_id,
           username,
         }
       } else {
         // если нет то отправить в бот
         window.location.href = `https://t.me/${botName}`
         return {
-          user_id: '',
+          telegram_id: '',
           username: '',
         }
       }
     } catch (error) {
       captureExceptionSentry('Error creating user', 'useSupabase')
       return {
-        user_id: '',
+        telegram_id: '',
         username: '',
       }
     }
@@ -170,7 +170,7 @@ export function useSupabase() {
   }, [])
 
   return {
-    user_id: userId,
+    telegram_id: userId,
     getAssetById,
     assets,
     tasks,

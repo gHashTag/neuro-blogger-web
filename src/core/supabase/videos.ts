@@ -3,13 +3,13 @@ import { supabase } from '@/core/supabase/supabase'
 import { SupabaseResponse } from '@/utils/types'
 
 export const setVideoId = async (
-  user_id: string,
+  telegram_id: string,
   video_id: string
 ): Promise<SupabaseUser[][] | Response> => {
   try {
     const { data, error }: SupabaseResponse<SupabaseUser[]> = await supabase
       .from('videos')
-      .insert([{ video_id, user_id }])
+      .insert([{ video_id, telegram_id }])
       .select('*')
 
     console.log(data, 'data')
@@ -50,7 +50,7 @@ interface Video {
   created_at: string
   video_id: string
   url: string | null
-  user_id: string
+  telegram_id: string
 }
 
 export const getVideoWithChatId = async (
@@ -81,7 +81,7 @@ export const getVideoWithChatId = async (
       created_at: data.created_at,
       video_id: data.video_id,
       url: data.url,
-      user_id: data.user_id,
+      telegram_id: data.telegram_id,
     }
 
     const chat_id = data.users.telegram_id

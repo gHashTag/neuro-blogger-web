@@ -25,8 +25,16 @@ export default async function handler(
   }
 
   try {
-    const { id, name, type, username, user_id, language_code, chat_id, token } =
-      await req.body
+    const {
+      id,
+      name,
+      type,
+      username,
+      telegram_id,
+      language_code,
+      chat_id,
+      token,
+    } = await req.body
 
     const { data: dataRooms, error: errorRooms } = await supabase
       .from('rooms')
@@ -92,7 +100,7 @@ export default async function handler(
         type,
         name,
         updated_at: new Date(),
-        user_id,
+        telegram_id,
         room_id: id,
         language_code,
         token,

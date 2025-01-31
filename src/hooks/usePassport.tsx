@@ -19,7 +19,7 @@ import { captureExceptionSentry } from '@/utils/sentry'
 import { checkUsernameAndReturnUser } from '@/core/supabase/supabase'
 
 type passportType = {
-  user_id?: string
+  telegram_id?: string
   room_id?: string | null | undefined
   recording_id?: string
   task_id?: string
@@ -34,10 +34,10 @@ const usePassport = ({
   type,
 }: // assigned_to,
 passportType): UsePassportReturn => {
-  const { username, user_id, is_owner, workspace_id, workspace_type } =
+  const { username, telegram_id, is_owner, workspace_id, workspace_type } =
     useUser()
   // console.log(username, "username");
-  // console.log(user_id, "user_id");
+  // console.log(telegram_id, "telegram_id");
   // console.log(workspace_id, "workspace_id");
   // console.log(room_id, "room_id");
   // console.log(recording_id, "recording_id");
@@ -61,10 +61,10 @@ passportType): UsePassportReturn => {
 
   let queryVariables
 
-  if (user_id && workspace_id && room_id && recording_id) {
+  if (telegram_id && workspace_id && room_id && recording_id) {
     // console.log("usePassport 5");
     queryVariables = {
-      user_id,
+      telegram_id,
       workspace_id,
       room_id,
       recording_id,
@@ -73,10 +73,10 @@ passportType): UsePassportReturn => {
     }
   }
 
-  if (user_id && is_owner && workspace_id && room_id && !recording_id) {
+  if (telegram_id && is_owner && workspace_id && room_id && !recording_id) {
     // console.log("usePassport 4");
     queryVariables = {
-      user_id,
+      telegram_id,
       workspace_id,
       room_id,
       is_owner,
@@ -85,7 +85,7 @@ passportType): UsePassportReturn => {
   }
 
   if (
-    user_id &&
+    telegram_id &&
     is_owner &&
     workspace_id &&
     type &&
@@ -95,7 +95,7 @@ passportType): UsePassportReturn => {
   ) {
     // console.log("usePassport 3");
     queryVariables = {
-      user_id,
+      telegram_id,
       workspace_id,
       is_owner,
       type,
@@ -103,17 +103,17 @@ passportType): UsePassportReturn => {
     }
   }
 
-  if (user_id && is_owner && !workspace_id && !room_id && !recording_id) {
+  if (telegram_id && is_owner && !workspace_id && !room_id && !recording_id) {
     // console.log("usePassport 2");
     queryVariables = {
-      user_id,
+      telegram_id,
       is_owner,
       type,
     }
   }
 
   if (
-    user_id &&
+    telegram_id &&
     is_owner &&
     !workspace_id &&
     !room_id &&
@@ -122,7 +122,7 @@ passportType): UsePassportReturn => {
   ) {
     // console.log("usePassport 1");
     queryVariables = {
-      user_id,
+      telegram_id,
       type,
     }
   }
@@ -131,7 +131,7 @@ passportType): UsePassportReturn => {
     // console.log("usePassport Water");
     passportQuery = PASSPORT_COLLECTION_IS_NOT_OWNER_QUERY
     queryVariables = {
-      user_id,
+      telegram_id,
       is_owner,
       type: 'room',
     }
@@ -156,7 +156,7 @@ passportType): UsePassportReturn => {
     }
   }
 
-  // if (!recording_id && !room_id && !workspace_id && !user_id) {
+  // if (!recording_id && !room_id && !workspace_id && !telegram_id) {
   //   passportQuery = GET_ALL_PASSPORTS_QUERY;
   // }
 
@@ -242,7 +242,7 @@ passportType): UsePassportReturn => {
       }
       const variables = {
         objects: {
-          user_id: user.user_id,
+          telegram_id: user.telegram_id,
           workspace_id: formData.workspace_id,
           room_id: formData.room_id,
           recording_id: formData.recording_id || '',
@@ -260,7 +260,7 @@ passportType): UsePassportReturn => {
 
       // const assignedArray: PassportNode[] = [
       //   {
-      //     user_id: user.user_id,
+      //     telegram_id: user.telegram_id,
       //     username: user.username,
       //     photo_url: user.photo_url,
       //   },
@@ -313,7 +313,7 @@ passportType): UsePassportReturn => {
       const { isUserExist, user } = await checkUsernameAndReturnUser(username)
       const variables = {
         objects: {
-          user_id: user.user_id,
+          telegram_id: user.telegram_id,
           workspace_id,
           room_id,
           recording_id: recording_id || '',
@@ -373,9 +373,9 @@ passportType): UsePassportReturn => {
     })
   }
 
-  const onDeletePassportTask = (passport_id: number, user_id: string) => {
+  const onDeletePassportTask = (passport_id: number, telegram_id: string) => {
     // const newAssignee =
-    //   assigned_to && assigned_to.filter((item) => item.user_id !== user_id);
+    //   assigned_to && assigned_to.filter((item) => item.telegram_id !== telegram_id);
 
     mutateDeletePassport({
       variables: {
@@ -446,7 +446,7 @@ type UsePassportReturn = {
   isOpenModalPassport: boolean
   onOpenModalPassport: () => void
   onOpenChangeModalPassport: () => void
-  onDeletePassportTask: (passport_id: number, user_id: string) => void
+  onDeletePassportTask: (passport_id: number, telegram_id: string) => void
   onDeletePassportRoom: (id: number) => void
   onCreatePassport: () => void
   createPassport: (

@@ -3,19 +3,19 @@ import { gql } from '@apollo/client'
 // export const CURRENT_USER = gql`
 //   query CurrentUser {
 //     isLoggedIn @client
-//     user_id @client
+//     telegram_id @client
 //     first_name @client
 //     last_name @client
 //   }
 // `;
 
 export const WORKSPACES_COLLECTION_QUERY = gql`
-  query WorkspacesCollection($user_id: UUID!) {
-    workspacesCollection(filter: { user_id: { eq: $user_id } }) {
+  query WorkspacesCollection($telegram_id: UUID!) {
+    workspacesCollection(filter: { telegram_id: { eq: $telegram_id } }) {
       edges {
         node {
           id
-          user_id
+          telegram_id
           workspace_id
           colors
           background
@@ -30,12 +30,12 @@ export const WORKSPACES_COLLECTION_QUERY = gql`
 `
 
 export const MY_WORKSPACE_COLLECTION_QUERY = gql`
-  query MyWorkspaceCollection($user_id: UUID!) {
-    workspacesCollection(filter: { user_id: { eq: $user_id } }) {
+  query MyWorkspaceCollection($telegram_id: UUID!) {
+    workspacesCollection(filter: { telegram_id: { eq: $telegram_id } }) {
       edges {
         node {
           id
-          user_id
+          telegram_id
           workspace_id
           colors
           background
@@ -54,7 +54,7 @@ export const CREATE_WORKSPACE_MUTATION = gql`
     insertIntoworkspacesCollection(objects: $objects) {
       records {
         id
-        user_id
+        telegram_id
         created_at
         title
         description
@@ -85,7 +85,7 @@ export const WORKSPACE_UPDATE_MUTATION = gql`
     ) {
       records {
         id
-        user_id
+        telegram_id
         title
         description
         status

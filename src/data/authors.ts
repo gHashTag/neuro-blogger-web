@@ -93,7 +93,8 @@ export const ezavarykinAutor: Author = {
   role: 'Бизнес-наставник, коуч, ИИ артист',
   experience: 'Первый бизнес в 10 классе, на сегодня 3 бизнес-проекта',
   bonusDescription: 'Автор множества философских текстов и цитат',
-  imageUrl: 'https://example.com/path/to/image.jpg', // URL изображения (замените на актуальный)
+  imageUrl:
+    'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/E_Zavarykin/E_Zavarykin.jpg',
   description:
     'Разработчик и спикер образовательных тренингов для подростков и молодёжи. Наставник для подростков, находящихся в сложных жизненных ситуациях. Стремился попасть в Книгу рекордов Гиннесса. ИИ Артист с одним аудиоальбомом, созданным совместно с ИИ.',
   achievements: ['Бизнес-наставник', 'Коуч', 'ИИ артист', 'Спикер с 2012 года'],

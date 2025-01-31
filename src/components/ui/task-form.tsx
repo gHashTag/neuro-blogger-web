@@ -42,7 +42,7 @@ export function TaskForm({
   watchTask,
   setValueTask,
   onUpdateTask,
-  user_id,
+  telegram_id,
 }: // assigned_to,
 {
   id: string
@@ -58,7 +58,7 @@ export function TaskForm({
   watchTask: UseFormWatch<FieldValues>
   setValueTask: UseFormSetValue<FieldValues>
   onUpdateTask: (id: string) => void
-  user_id: string
+  telegram_id: string
   // assigned_to: string | undefined;
 }) {
   const router = useRouter()
@@ -73,9 +73,9 @@ export function TaskForm({
 
   const isEditTask = useReactiveVar(setEditTask)
 
-  const { user_id: owner_user_id, workspace_id, room_id } = useUser()
+  const { telegram_id: owner_telegram_id, workspace_id, room_id } = useUser()
 
-  const isOwnerTask = owner_user_id === user_id
+  const isOwnerTask = owner_telegram_id === telegram_id
 
   useEffect(() => {
     localStorage.setItem('is_owner', 'false')
@@ -116,8 +116,8 @@ export function TaskForm({
 
   const onDeleteAssignee = ({ node }: Passport) => {
     node.passport_id &&
-      node.user_id &&
-      onDeletePassportTask(node.passport_id, node.user_id)
+      node.telegram_id &&
+      onDeletePassportTask(node.passport_id, node.telegram_id)
   }
 
   const handleClickPlus = async () => {
@@ -218,7 +218,7 @@ export function TaskForm({
                 onCreate={onCreatePassport}
                 onDelete={() =>
                   openModalPassportId &&
-                  onDeletePassportTask(openModalPassportId, user_id)
+                  onDeletePassportTask(openModalPassportId, telegram_id)
                 }
                 onUpdate={onUpdatePassport}
                 control={controlPassport}

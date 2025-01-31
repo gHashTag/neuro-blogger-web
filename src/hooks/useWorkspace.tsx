@@ -15,7 +15,7 @@ import { WorkspaceArray } from '@/types'
 import { captureExceptionSentry } from '@/utils/sentry'
 
 const useWorkspace = (): UseWorkspaceReturn => {
-  const { user_id, username } = useUser()
+  const { telegram_id, username } = useUser()
   const { toast } = useToast()
   const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure()
   const { control, handleSubmit, getValues, setValue, reset } = useForm()
@@ -27,7 +27,7 @@ const useWorkspace = (): UseWorkspaceReturn => {
     refetch: myWorkspaceRefetch,
   } = useQuery(MY_WORKSPACE_COLLECTION_QUERY, {
     variables: {
-      user_id,
+      telegram_id,
     },
   })
 
@@ -46,7 +46,7 @@ const useWorkspace = (): UseWorkspaceReturn => {
     refetch: workspacesRefetch,
   } = useQuery(WORKSPACES_COLLECTION_QUERY, {
     variables: {
-      user_id,
+      telegram_id,
     },
   })
 
@@ -72,7 +72,7 @@ const useWorkspace = (): UseWorkspaceReturn => {
         title: 'Water',
         type: 'water',
         updated_at: '2024-04-10T15:39:50.949122+00:00',
-        user_id: 'ec0c948a-2b96-4ccd-942f-0a991d78a94f',
+        telegram_id: 'ec0c948a-2b96-4ccd-942f-0a991d78a94f',
         workspace_id: '54dc9d0e-dd96-43e7-bf72-02c2807f8977',
       },
     },
@@ -90,7 +90,7 @@ const useWorkspace = (): UseWorkspaceReturn => {
         title: 'Copper pipes',
         type: 'earth',
         updated_at: '2024-04-10T15:39:50.949122+00:00',
-        user_id: 'ec0c948a-2b96-4ccd-942f-0a991d78a94f',
+        telegram_id: 'ec0c948a-2b96-4ccd-942f-0a991d78a94f',
         workspace_id: 'd696abd8-3b7a-46f2-907f-5342a2b533a0',
       },
     }
@@ -137,7 +137,7 @@ const useWorkspace = (): UseWorkspaceReturn => {
 
       const formDataWithUserId = {
         ...formData,
-        user_id,
+        telegram_id,
       }
 
       const mutateCreateWorkspaceResult = await mutateCreateWorkspace({

@@ -4,19 +4,19 @@ import SubCard from '@/components/ui/LandingCards/SubCard'
 const cardsCreateRoom = [
   {
     title: 'Video Space',
-    img: 'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/images/Rooms/Video%20Space.png',
+    img: '/images/Video Space.png',
     onClickType: 'video-space',
     isDisabled: false,
   },
   {
     title: 'Audio Space',
-    img: 'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/images/Rooms/Audio%20Space.png',
+    img: '/images/Audio Space.png',
     onClickType: 'audio-space',
     isDisabled: false,
   },
   {
     title: 'Token-gated',
-    img: 'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/images/Rooms/Token-gated.png',
+    img: '/images/Token-gated.png',
     onClickType: 'token-gated',
     isDisabled: true,
   },

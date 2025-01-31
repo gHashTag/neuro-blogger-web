@@ -26,7 +26,7 @@ interface WorkspaceNode {
   title: string
   type: string
   updated_at: string
-  user_id: string
+  telegram_id: string
   workspace_id: string
 }
 
@@ -38,7 +38,7 @@ export type Workspace = {
 export type WorkspaceArray = Workspace[]
 
 export type AssignedTo = {
-  user_id: string | undefined
+  telegram_id: string | undefined
   username: string | undefined
   photo_url: string | undefined
   passport_id?: number
@@ -74,7 +74,7 @@ export type TasksArray = Task[]
 export type TaskNode = {
   __typename: string
   id: string
-  user_id: string
+  telegram_id: string
   created_at: string
   title: string
   description: string
@@ -129,7 +129,7 @@ export type TSupabaseUser = {
   telegram_id?: number | null
   email?: string | null
   created_at?: Date
-  user_id?: string
+  telegram_id?: string
   aggregateverifier?: string | null
   admin_email?: string | null
   role?: string | null
@@ -158,7 +158,7 @@ export interface DropResult {
 
 // Если assigned_to использует jsonb для хранения нескольких назначений
 export interface AssignedUser {
-  user_id: string // UUID назначенного пользователя
+  telegram_id: string // UUID назначенного пользователя
   // Дополнительные поля, если необходимо
 }
 
@@ -270,7 +270,7 @@ export interface RoomNode {
   large_room?: boolean | null
   codes: string
   type_additional?: string | null
-  user_id?: string | null
+  telegram_id?: string | null
   room_id: string
   language_code: string | null
   chat_id: string
@@ -283,7 +283,7 @@ export interface RoomNode {
 
 export type TaskNodeType = {
   id: string
-  user_id: string
+  telegram_id: string
   workspace_id: string
   room_id: string
   recording_id: string
