@@ -75,7 +75,7 @@ const DemoButton = () => {
     if (__DEV__) {
       console.log('Using mocked data for development')
       localStorage.setItem('username', mockedUser.username)
-      localStorage.setItem('telegram_id', mockedUser.telegram_id)
+      localStorage.setItem('telegram_id', mockedUser.id.toString())
     } else {
       if (!userDataForBaseRecord.username)
         throw new Error('Username is required')

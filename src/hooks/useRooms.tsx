@@ -263,7 +263,7 @@ const useRooms = (): UseRoomsReturn => {
           type: openModalRoomId,
           token: formData.token,
           chat_id: formData.chat_id,
-          language_code,
+          language_code: language_code || 'ru',
         })
 
         if (response) {

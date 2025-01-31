@@ -37,7 +37,7 @@ export function CanvasRevealEffectDemo({
             key={node.id}
             workspace_id={node.workspace_id}
             type={node.type}
-            title={getTitle(node.title, language_code)}
+            title={getTitle(node.title, language_code || 'ru')}
             onClick={onClick}
             icon={<NineNineNineIcon />}
           >

@@ -129,7 +129,6 @@ export type TSupabaseUser = {
   telegram_id?: number | null
   email?: string | null
   created_at?: Date
-  telegram_id?: string
   aggregateverifier?: string | null
   admin_email?: string | null
   role?: string | null

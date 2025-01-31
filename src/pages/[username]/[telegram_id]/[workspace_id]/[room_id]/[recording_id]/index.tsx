@@ -82,7 +82,7 @@ const RecordingPage = () => {
             workspace_id={workspace_id}
             room_id={room_id}
             record_id={recording_id as string}
-            room_name={room_name}
+            room_name={room_name || ''}
           />
           <div style={{ padding: 15 }} />
         </div>
