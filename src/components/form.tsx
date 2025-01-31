@@ -125,7 +125,7 @@ export default function Form({ sharePage }: Props) {
           setFocused(true)
           setInviterUserInfo({
             select_izbushka: select_izbushka || '',
-            inviter: telegram_id,
+            inviter: telegram_id ? telegram_id.toString() : '',
             is_bot: false,
           })
         }, 1000)
