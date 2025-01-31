@@ -18,8 +18,8 @@ import { ContactSectionDark } from '@/components/landingpage/ContactSectionDark'
 const neuroPhotoNeuroCoder = [
   'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder1.jpg',
   'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder2.jpg',
-  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder4.jpg',
-  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder6.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder3.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder5.jpg',
   'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder7.jpg',
   'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder8.jpg',
   'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder9.jpg',

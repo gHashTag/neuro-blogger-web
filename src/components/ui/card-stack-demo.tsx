@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 import { BackgroundGradientDemo } from './вackground-gradient-demo'
 export function CardStackDemo() {
   return (
-    <div className='flex flex-col items-center justify-center'>
+    <div className='flex flex-col items-center justify-center px-4 sm:px-6 md:px-10'>
       <h2 className='text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl'>
         Отзывы клиентов
       </h2>

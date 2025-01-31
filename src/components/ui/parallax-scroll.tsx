@@ -20,12 +20,15 @@ export const ParallaxScroll = ({
   const translateFirst = useTransform(scrollYProgress, [0, 1], [0, -200])
   const translateSecond = useTransform(scrollYProgress, [0, 1], [0, 200])
   const translateThird = useTransform(scrollYProgress, [0, 1], [0, -200])
+  const translateFourth = useTransform(scrollYProgress, [0, 1], [0, 200])
+  const translateFifth = useTransform(scrollYProgress, [0, 1], [0, -200])
+  const translateSixth = useTransform(scrollYProgress, [0, 1], [0, 200])
 
-  const third = Math.ceil(images.length / 3)
+  const sixth = Math.ceil(images.length / 6) // Разделение на шесть частей
 
-  const firstPart = images.slice(0, third)
-  const secondPart = images.slice(third, 2 * third)
-  const thirdPart = images.slice(2 * third)
+  const parts = Array.from({ length: 6 }, (_, i) =>
+    images.slice(i * sixth, (i + 1) * sixth)
+  )
 
   const ImageGrid = ({
     images,
@@ -41,9 +44,10 @@ export const ParallaxScroll = ({
         <motion.div style={{ y: translate }} key={`${gridKey}-${idx}`}>
           <Image
             src={el}
-            className='!m-0 h-80 w-full gap-10 rounded-lg object-cover object-left-top !p-0'
-            height='400'
-            width='400'
+            className='!m-0 h-[calc(100vw*9/16)] w-full object-cover object-center !p-0'
+            layout='responsive'
+            width={16}
+            height={9}
             alt='thumbnail'
           />
         </motion.div>
@@ -56,22 +60,27 @@ export const ParallaxScroll = ({
       className={cn('h-[50rem] w-full items-start overflow-y-auto', className)}
       ref={gridRef}
     >
-      <div className='mx-auto grid max-w-5xl grid-cols-1 items-start gap-10 px-10 py-20 md:grid-cols-2 lg:grid-cols-3'>
-        <ImageGrid
-          images={firstPart}
-          translate={translateFirst}
-          gridKey='grid-1'
-        />
-        <ImageGrid
-          images={secondPart}
-          translate={translateSecond}
-          gridKey='grid-2'
-        />
-        <ImageGrid
-          images={thirdPart}
-          translate={translateThird}
-          gridKey='grid-3'
-        />
+      <div className='mx-auto grid w-full max-w-none grid-cols-1 items-start gap-10 px-10 py-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'>
+        {parts.map((part, index) => (
+          <ImageGrid
+            key={index}
+            images={part}
+            translate={
+              index % 6 === 0
+                ? translateFirst
+                : index % 6 === 1
+                  ? translateSecond
+                  : index % 6 === 2
+                    ? translateThird
+                    : index % 6 === 3
+                      ? translateFourth
+                      : index % 6 === 4
+                        ? translateFifth
+                        : translateSixth
+            }
+            gridKey={`grid-${index + 1}`}
+          />
+        ))}
       </div>
     </div>
   )
