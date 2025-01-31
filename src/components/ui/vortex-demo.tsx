@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/moving-border'
 
 export function VortexDemo() {
   const onCreateOrder = () => {
-    window.location.href = 'https://t.me/NEUROBLOGGER'
+    window.location.href = 'https://t.me/neuro_blogger_bot?start=144022504'
   }
   return (
     <div className='mx-auto h-[20rem] w-[calc(100%-4rem)] overflow-hidden rounded-md'>
@@ -15,7 +15,7 @@ export function VortexDemo() {
         <h2 className='text-center text-2xl font-bold text-white md:text-6xl'>
           {/* Заголовок */}
         </h2>
-        <p className='mt-6 max-w-xl text-center text-sm text-white md:text-2xl'>
+        <p className='mt-2 max-w-xl text-center text-base text-white sm:text-lg md:text-2xl lg:text-3xl'>
           Представь, как твои фотографии превращаются в стильные и современные
           произведения искусства, подчеркивая твою индивидуальность и выделяя из
           толпы.

@@ -5,10 +5,10 @@ import { VortexDemo } from './vortex-demo'
 
 export function SparklesPreview({ isHidden = false }: { isHidden?: boolean }) {
   return (
-    <div className='flex h-[25rem] w-full flex-col items-center justify-center overflow-hidden rounded-md bg-black'>
+    <div className='flex h-[35rem] w-full flex-col items-center justify-center overflow-hidden rounded-md bg-black'>
       {!isHidden ? (
         <>
-          <h1 className='relative z-20 text-center text-3xl font-bold text-white sm:text-3xl md:text-5xl lg:text-7xl xl:text-[8rem]'>
+          <h1 className='relative z-20 text-center text-4xl font-bold text-white sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl 2xl:text-9xl'>
             НейроФото
           </h1>
           <div className='relative h-10 w-[40rem]'>

@@ -5,16 +5,16 @@ import { BackgroundGradientDemo } from './вackground-gradient-demo'
 export function CardStackDemo() {
   return (
     <div className='flex flex-col items-center justify-center'>
-      <h2 className='mb-4 text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl'>
+      <h2 className='text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl'>
         Отзывы клиентов
       </h2>
-      <div className='flex h-[40rem] w-full items-center justify-center'>
+      <div className='flex h-[30rem] w-full items-center justify-center'>
         <CardStack items={CARDS} />
       </div>
-      <h2 className='mb-4 text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl'>
+      <h2 className='my-20 mt-16 text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl'>
         Цена
       </h2>
-      <div className='flex h-[50rem] w-full items-center justify-center'>
+      <div className='mt-16 flex h-[50rem] w-full items-center justify-center'>
         <BackgroundGradientDemo />
       </div>
     </div>
@@ -75,6 +75,28 @@ const CARDS = [
       <p>
         Отличный сервис! <Highlight>Индивидуальный подход</Highlight> и внимание
         к деталям сделали мой опыт незабываемым. Спасибо!
+      </p>
+    ),
+  },
+  {
+    id: 3,
+    name: 'Михаил Сергеев',
+    designation: 'Регулярный клиент',
+    content: (
+      <p>
+        Я постоянно пользуюсь этим сервисом. Качество всегда на высоте!{' '}
+        <Highlight>Профессионализм</Highlight> команды не вызывает сомнений!
+      </p>
+    ),
+  },
+  {
+    id: 4,
+    name: 'Ольга Павлова',
+    designation: 'Новый клиент',
+    content: (
+      <p>
+        Впервые воспользовалась и осталась довольна. Все было сделано быстро и
+        качественно. <Highlight>Советую</Highlight> всем, кто ценит свое время!
       </p>
     ),
   },

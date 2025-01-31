@@ -12,40 +12,59 @@ import { SparklesPreview } from '@/components/ui/sparkles-preview'
 import { InfiniteMovingCardsDemo } from '@/components/ui/infinite-moving-cards-demo'
 import { CardStackDemo } from '@/components/ui/card-stack-demo'
 import { BackgroundBoxesDemo } from '@/components/ui/background-boxes-demo'
+import { ContactSection } from '@/components/landingpage/ContactSection'
+import { ContactSectionDark } from '@/components/landingpage/ContactSectionDark'
 
 const neuroPhotoNeuroCoder = [
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/01.jpg',
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/02.jpg',
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/04.jpg',
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/05.jpg',
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/06.jpg',
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/07.jpg',
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/08.jpg',
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/09.jpg',
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/10.jpg',
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/11.jpg',
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/12.jpg',
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/13.jpg',
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/14.jpg',
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/15.jpg',
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/03.jpg',
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/16.jpg',
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/17.jpg',
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/18.jpg',
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/19.jpg',
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/20.jpg',
-  'https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/neuro_coder/landing/portfolio/21.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder1.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder2.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder4.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder6.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder7.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder8.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder9.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder10.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder11.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder12.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder13.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder14.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder15.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder16.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder17.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder18.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder19.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder20.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder21.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder22.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder23.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder24.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder25.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder26.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder27.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder28.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder29.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder30.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder31.jpg',
+  'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder32.jpg',
 ]
 
 export default function LandingPage() {
   return (
     <div>
       <SparklesPreview isHidden={false} />
-
       <ParallaxScrollDemo images={neuroPhotoNeuroCoder} />
       <StickyScrollRevealDemo />
       <CardStackDemo />
-      <SparklesPreview isHidden={true} />
+      <section id='contacts' className='px-4 py-5'>
+        <div className='mx-auto max-w-7xl'>
+          <ContactSectionDark
+            title='Готовы вывести свой блог на новый уровень?'
+            description='Оставьте заявку прямо сейчас и станьте одним из первых, кто воспользуется уникальным решением!'
+            contact='https://t.me/neuro_sage'
+          />
+        </div>
+      </section>
+      <div className='h-[10rem] w-full'></div>
     </div>
   )
 }
