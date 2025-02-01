@@ -58,7 +58,6 @@ EXPOSE 80
 ENV PORT=80
 ENV HOSTNAME=0.0.0.0
 
-
-
 # Run the nextjs app
-CMD ["node", "server.js"]
+CMD ["pnpm", "start"]
+### https://www.vorillaz.com/neaxtjs-docker-env
