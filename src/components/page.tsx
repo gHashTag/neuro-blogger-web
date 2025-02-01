@@ -18,7 +18,7 @@ import cn from 'classnames'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-import { SITE_NAME, SITE_URL, TWITTER_USER_NAME } from '@lib/constants'
+import { SITE_NAME, SITE_URL, TWITTER_USER_NAME } from '@/lib/constants'
 
 type Meta = {
   title: string | null

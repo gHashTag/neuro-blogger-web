@@ -21,8 +21,8 @@ import {
 } from '@/apollo/reactive-store'
 import { useReactiveVar } from '@apollo/client'
 import { captureExceptionSentry } from '@/utils/sentry'
-import { useUser } from './useUser'
-import { botName } from '@/utils/constants'
+
+import { botName } from '@/config'
 
 export function useSupabase() {
   const userSupabase = useReactiveVar(setUserSupabase)

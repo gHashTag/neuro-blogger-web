@@ -1,13 +1,5 @@
 import { headers } from './headers'
-import { __DEV__, SITE_URL } from '@/utils/constants'
-
-if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
-  throw new Error('NEXT_PUBLIC_SUPABASE_URL is not set')
-}
-
-if (!process.env.NEXT_PUBLIC_FUNCTION_SECRET) {
-  throw new Error('NEXT_PUBLIC_FUNCTION_SECRET is not set')
-}
+import { SITE_URL } from '@/config'
 
 type CreateRoomProps = {
   telegram_id: string

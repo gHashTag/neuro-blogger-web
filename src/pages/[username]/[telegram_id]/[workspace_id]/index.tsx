@@ -9,7 +9,6 @@ import { useReactiveVar } from '@apollo/client'
 import { Passport, RoomEdge, Task, TaskNode } from '@/types'
 import CardRoom from '@/components/ui/card-room'
 import { DataTable } from '@/components/table/data-table'
-import { __DEV__ } from '@/utils/constants'
 
 import { setLoading, setRoomId } from '@/apollo/reactive-store'
 import { useUser } from '@/hooks/useUser'

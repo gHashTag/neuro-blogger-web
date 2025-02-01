@@ -6,10 +6,11 @@ import { visibleSignInVar, setInviterUserInfo } from '@/apollo/reactive-store'
 import { TLoginButton, TLoginButtonSize, TUser } from 'react-telegram-auth'
 
 import { useRouter } from 'next/router'
-import { __DEV__, botName, mockedUser, SITE_URL } from '@/utils/constants'
+import { isDev, botName, SITE_URL } from '@/config'
+import { mockedUser } from '@/utils/constants'
 
 export async function createUser(data: TUser) {
-  if (__DEV__) {
+  if (isDev) {
     console.log('Mocking createUser in development mode')
     return Promise.resolve(mockedUser)
   }
@@ -40,7 +41,7 @@ const DemoButton = () => {
   // const { createSupabaseUser } = useSupabase();
 
   useEffect(() => {
-    if (__DEV__) {
+    if (isDev) {
       router.push(`/${mockedUser.username}/${mockedUser.telegram_id}`)
       return
     }
@@ -72,7 +73,7 @@ const DemoButton = () => {
     const newUserDataFromBase = await createUser(userDataForBaseRecord)
     console.log(newUserDataFromBase, 'newUserDataFromBase')
 
-    if (__DEV__) {
+    if (isDev) {
       console.log('Using mocked data for development')
       localStorage.setItem('username', mockedUser.username)
       localStorage.setItem('telegram_id', mockedUser.id.toString())

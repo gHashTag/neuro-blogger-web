@@ -31,10 +31,10 @@ import { setContext } from '@apollo/client/link/context'
 import { Spinner } from '@/components/ui/spinner'
 import { loadErrorMessages, loadDevMessages } from '@apollo/client/dev'
 import { corsHeaders } from '@/helpers/corsHeaders'
-import { __DEV__, botName } from '@/utils/constants'
+import { botName, isDev } from '@/config'
 import { ErrorBoundary } from '@/components/error-boundary'
 
-if (__DEV__) {
+if (isDev) {
   // Adds messages only in a dev environment
   loadDevMessages()
   loadErrorMessages()
@@ -170,7 +170,7 @@ export default function App({ Component, pageProps }: AppProps) {
                   >
                     {/* <Analytics />
                     <SpeedInsights /> */}
-                    {!__DEV__ && <BackgroundBeams />}
+                    {!isDev && <BackgroundBeams />}
                     <HMSRoomProvider>
                       <Component {...pageProps} />
 

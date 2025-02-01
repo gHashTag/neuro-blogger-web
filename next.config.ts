@@ -1,5 +1,13 @@
 /** @type {import('next').NextConfig} */
 
+if (!process.env.NEXT_PUBLIC_LOCAL_URL) {
+  throw new Error('NEXT_PUBLIC_LOCAL_URL is not set')
+}
+
+if (!process.env.NEXT_PUBLIC_SITE_URL) {
+  throw new Error('NEXT_PUBLIC_SITE_URL is not set')
+}
+
 const nextConfig = {
   async headers() {
     return [

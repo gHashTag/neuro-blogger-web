@@ -38,7 +38,7 @@ import Captcha, { useCaptcha } from './captcha'
 import { useUser } from '@/hooks/useUser'
 import { checkUsernameAndReturnUser } from '@/core/supabase/supabase'
 import { isValidEmail } from '@/helpers/utils'
-import { __DEV__ } from '@/utils/constants'
+import { isDev } from '@/config'
 
 type FormState = 'default' | 'loading' | 'error' | 'success'
 
@@ -70,7 +70,7 @@ export default function Form({ sharePage }: Props) {
     isEnabled: isCaptchaEnabled,
   } = useCaptcha()
 
-  const email = __DEV__ ? 'neuro_sage@gmail.com' : ''
+  const email = isDev ? 'neuro_sage@gmail.com' : ''
   const inputRef = useRef<HTMLInputElement | null>(null)
   const inputRefWord = useRef<HTMLInputElement | null>(null)
   const { username, telegram_id, language_code } = useUser()

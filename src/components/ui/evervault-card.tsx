@@ -10,7 +10,7 @@ import { useUser } from '@/hooks/useUser'
 
 import { Passport } from '@/types'
 import { captureExceptionSentry } from '@/utils/sentry'
-import { SITE_URL } from '@/utils/constants'
+import { SITE_URL } from '@/config'
 
 type EvervaultCardProps = {
   text: string

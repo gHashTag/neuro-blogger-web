@@ -1,6 +1,6 @@
 import { initialAuthorState } from '@/data'
-import { __DEV__, mockedUser } from '@/utils/constants'
-
+import { mockedUser } from '@/utils/constants'
+import { isDev } from '@/config'
 type UserType = {
   username: string
   telegram_id: string
@@ -20,7 +20,7 @@ type UserType = {
 }
 
 const useUser = (): UserType => {
-  if (__DEV__) {
+  if (isDev) {
     console.log('Mocking user in development mode')
     localStorage.setItem('username', mockedUser.username)
     localStorage.setItem('telegram_id', mockedUser.telegram_id.toString())

@@ -1,4 +1,4 @@
-import { __DEV__, SITE_URL } from '@/utils/constants'
+import { SITE_URL } from '@/config'
 import { captureExceptionSentry } from '@/utils/sentry'
 
 const headers = {

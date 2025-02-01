@@ -20,7 +20,8 @@ import TaskModal from '@/components/modal/TaskModal'
 
 import { BreadcrumbWithCustomSeparator } from '@/components/ui/breadcrumb-with-custom-separator'
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
-import { __DEV__ } from '@/utils/constants'
+import { isDev } from '@/config'
+
 export type updateUserDataType = {
   telegram_id: string
   first_name: string
@@ -59,7 +60,7 @@ export default function Office() {
 
   useEffect(() => {
     if (!username) {
-      !__DEV__ && router.push('/')
+      !isDev && router.push('/')
     } else {
       setVisibleHeader(true)
       localStorage.setItem('workspace_id', '')

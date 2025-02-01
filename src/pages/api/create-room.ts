@@ -7,17 +7,13 @@ import { headers } from '@/helpers/headers'
 import jwt from 'jsonwebtoken'
 
 import { v4 as uuidv4 } from 'uuid'
-import { __DEV__ } from '@/utils/constants'
+import { isDev } from '@/config'
 import { transliterate } from '@/helpers/api/transliterate'
 import { createCodes } from './create-room-from-tg'
 
 type ResponseData = {
   rooms?: RoomNode
   message?: string
-}
-
-if (!process.env.NEXT_PUBLIC_100MS) {
-  throw new Error('NEXT_PUBLIC_100MS is not set')
 }
 
 const createToken100ms = () => {

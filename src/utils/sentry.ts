@@ -1,4 +1,4 @@
-import { __DEV__ } from '@/utils/constants'
+import { isDev } from '@/config'
 import * as Sentry from '@sentry/react'
 
 export const captureExceptionSentry = (error: any, target: string) => {
@@ -10,7 +10,7 @@ export const captureExceptionSentry = (error: any, target: string) => {
     return
   }
   console.error(`On:${target}/ My Error: ${error} `)
-  if (!__DEV__) {
+  if (!isDev) {
     Sentry.captureException(error)
   }
 }

@@ -1,4 +1,4 @@
-import { __DEV__ } from '@/utils/constants'
+import { isDev } from '@/config'
 import { OptionType, SupabaseUser, TSupabaseUser } from '@/types'
 import { makeVar } from '@apollo/client'
 
@@ -22,7 +22,7 @@ export const setUserInfo = makeVar<SupabaseUser | null>(null)
 
 export const setUserSupabase = makeVar<SupabaseUser | null>(null)
 
-const initCode = `${__DEV__ ? 'neuro_sage' : ''}`
+const initCode = `${isDev ? 'neuro_sage' : ''}`
 
 export const setInviteCode = makeVar<string>(initCode)
 
