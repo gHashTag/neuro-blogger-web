@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { __DEV__ } from '@/utils/constants'
+import { isDev, NEXT_PUBLIC_AI_SERVER_URL } from '@/config'
 
 const headers = {
   'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ export default async function handler(
   try {
     console.log('CASE: API CREATE USER')
     // const url = `${process.env.NEXT_PUBLIC_AI_SERVER_URL}/user/create`
-    const url = `${__DEV__ ? 'http://localhost:3000' : process.env.NEXT_PUBLIC_AI_SERVER_URL}/user/create`
+    const url = `${isDev ? 'http://localhost:3000' : NEXT_PUBLIC_AI_SERVER_URL}/user/create`
     console.log(url, 'url')
     const response = await fetch(url, {
       method: 'POST',
