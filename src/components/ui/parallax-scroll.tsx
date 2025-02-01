@@ -39,12 +39,21 @@ export const ParallaxScroll = ({
     translate: any
     gridKey: string
   }) => (
-    <div className='grid gap-10'>
+    <div className='grid gap-0'>
       {images.map((el, idx) => (
-        <motion.div style={{ y: translate }} key={`${gridKey}-${idx}`}>
+        <motion.div
+          style={{
+            y: translate,
+            width: '100%',
+            height: 'auto',
+            padding: '0',
+            margin: '0',
+          }}
+          key={`${gridKey}-${idx}`}
+        >
           <Image
             src={el}
-            className='!m-0 h-[calc(100vw*9/16)] w-full object-cover object-center !p-0'
+            className='!m-0 object-cover object-center !p-0'
             layout='responsive'
             width={16}
             height={9}
@@ -57,10 +66,10 @@ export const ParallaxScroll = ({
 
   return (
     <div
-      className={cn('h-[50rem] w-full items-start overflow-y-auto', className)}
+      className={cn('h-[40rem] w-full items-start overflow-y-auto', className)}
       ref={gridRef}
     >
-      <div className='mx-auto grid w-full max-w-none grid-cols-1 items-start gap-10 px-10 py-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6'>
+      <div className='mx-auto grid w-full max-w-none grid-cols-1 items-start gap-0 px-1 py-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-6'>
         {parts.map((part, index) => (
           <ImageGrid
             key={index}
