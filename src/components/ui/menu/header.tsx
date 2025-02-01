@@ -9,7 +9,7 @@ import {
   NavbarItem,
   Link,
   Button,
-} from '@nextui-org/react'
+} from '@heroui/react'
 import IconLogo from './icon-logo'
 import { usePathname } from 'next/navigation'
 import DropdownMenuApp from './dropdown'

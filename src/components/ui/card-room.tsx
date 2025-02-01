@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 import { BackgroundGradient } from './background-gradient'
 
-import { Spacer } from '@nextui-org/react'
+import { Spacer } from '@heroui/react'
 import { RoomInfoT } from '@/types'
 
 interface CardProps {

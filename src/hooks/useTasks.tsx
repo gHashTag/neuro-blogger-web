@@ -13,7 +13,7 @@ import {
 } from '@/graphql/query.tasks'
 import { useRouter } from 'next/router'
 import { ApolloError, useMutation, useQuery } from '@apollo/client'
-import { useDisclosure } from '@nextui-org/react'
+import { useDisclosure } from '@heroui/react'
 import { useCallback, useMemo, useState } from 'react'
 import {
   FieldValues,

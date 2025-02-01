@@ -3,7 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 import { useMotionValue } from 'framer-motion'
 import { Passport, PassportArray } from '@/types'
-import { Avatar } from '@nextui-org/react'
+import { Avatar } from '@heroui/react'
 
 type AnimatedTooltipRoomsProps = {
   assigneeItems: Passport[]
@@ -73,7 +73,7 @@ export const AnimatedTooltipRooms = ({
                 name={`${item?.node?.first_name?.charAt(
                   0
                 )}${item?.node?.last_name?.charAt(0)}`}
-                className='text-large relative !m-0 rounded-full border-2 border-white object-cover object-top !p-0 transition duration-500 group-hover:z-30 group-hover:scale-105'
+                className='relative !m-0 rounded-full border-2 border-white object-cover object-top !p-0 text-large transition duration-500 group-hover:z-30 group-hover:scale-105'
                 style={{
                   height: 51,
                   width: 51,

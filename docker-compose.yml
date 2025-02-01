@@ -1,14 +1,16 @@
+version: '3.8'
 services:
-  neuroblogger:
-    restart: always
+  web:
     build:
-      context: .
+      context: ./
+      target: runner
+    volumes:
+      - .:/app
+    command: npm run dev
     ports:
       - "80:80"
-    env_file:
-      - .env
     environment:
-      - NODE_ENV=production
-    volumes:
-      - ./src:/app/src
-    command: ["npm", "start"]
+      NODE_ENV: production
+
+
+# https://geshan.com.np/blog/2023/01/nextjs-docker/

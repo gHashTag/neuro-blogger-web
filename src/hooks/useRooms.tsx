@@ -20,7 +20,7 @@ import {
 import { useUser } from './useUser'
 import { useToast } from '@/components/ui/use-toast'
 // @ts-ignore
-import { useDisclosure } from '@nextui-org/react'
+import { useDisclosure } from '@heroui/react'
 import { useRouter } from 'next/router'
 import { ArrayInviteT, RoomEdge, RoomNode, RoomsData } from '@/types'
 import { setLoading, setRoomId } from '@/apollo/reactive-store'

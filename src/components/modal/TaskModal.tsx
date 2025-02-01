@@ -7,7 +7,7 @@ import {
   ModalBody,
   ModalFooter,
   //@ts-ignore
-} from '@nextui-org/react'
+} from '@heroui/react'
 //@ts-ignore
 import { Controller } from 'react-hook-form'
 import { Input } from '@/components/ui/input'

@@ -6,7 +6,7 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
-} from '@nextui-org/react'
+} from '@heroui/react'
 
 import MenuLogo from './menu-logo'
 

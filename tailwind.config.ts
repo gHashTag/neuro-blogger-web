@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import { heroui } from '@heroui/react'
 
 export default {
   darkMode: ['class'],
@@ -58,5 +59,6 @@ export default {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  plugins: [require('tailwindcss-animate'), heroui()],
 } satisfies Config

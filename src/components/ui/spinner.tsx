@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Spinner as LoadingSpinner } from '@nextui-org/react'
+import { Spinner as LoadingSpinner } from '@heroui/react'
 
 const Spinner = ({ size }: { size: 'sm' | 'md' | 'lg' }) => (
   <div

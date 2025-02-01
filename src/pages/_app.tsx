@@ -2,7 +2,7 @@ import '@/styles/globals.css'
 // import "@/styles/styles.css";
 import { useEffect, useState } from 'react'
 import type { AppProps } from 'next/app'
-import { NextUIProvider } from '@nextui-org/react'
+import { HeroUIProvider } from '@heroui/react'
 import { HMSRoomProvider } from '@100mslive/react-sdk'
 import { EnvProvider } from '@/env/provider'
 import { TonConnectUIProvider } from '@tonconnect/ui-react'
@@ -155,13 +155,13 @@ export default function App({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <main className='dark bg-background text-foreground'>
+    <main className='bg-background text-foreground dark'>
       <ErrorBoundary>
         <div>
           {/* <HuddleProvider client={huddleClient}> */}
           {/* <HuddleProvider client={huddleClient}> */}
           <ApolloProvider client={client}>
-            <NextUIProvider>
+            <HeroUIProvider>
               <NextThemesProvider attribute='class' defaultTheme='dark'>
                 <ThemeProvider
                   attribute='class'
@@ -188,7 +188,7 @@ export default function App({ Component, pageProps }: AppProps) {
                   </TonConnectUIProvider>
                 </ThemeProvider>
               </NextThemesProvider>
-            </NextUIProvider>
+            </HeroUIProvider>
           </ApolloProvider>
           {/* </HuddleProvider> */}
         </div>

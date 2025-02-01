@@ -8,7 +8,7 @@ import {
   PASSPORT_UPDATE_MUTATION,
 } from '@/graphql/query.passport'
 import { ApolloError, useMutation, useQuery } from '@apollo/client'
-import { useDisclosure } from '@nextui-org/react'
+import { useDisclosure } from '@heroui/react'
 import { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useUser } from './useUser'

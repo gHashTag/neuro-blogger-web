@@ -1,56 +1,36 @@
-FROM node:20-alpine AS base
-
-# --- Dependencies ---
-### Rebuild deps only when needed ###
-FROM base AS deps
+FROM node:18-alpine AS deps
 RUN apk add --no-cache libc6-compat git python3 make g++
-
 WORKDIR /app
 
 COPY package.json ./
-RUN npm install
+RUN  npm install --production
 
-# Установите next глобально
-RUN npm install -g next
-
-# --- Builder ---
-FROM base AS builder
-
+FROM node:18-alpine AS builder
 WORKDIR /app
-
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+
+ENV NEXT_TELEMETRY_DISABLED 1
+
 RUN npm run build
 
-# --- Production runner ---
-FROM base AS runner
-# Set NODE_ENV to production
-ENV NODE_ENV=production
+FROM node:18-alpine AS runner
+WORKDIR /app
 
-# Disable Next.js telemetry
-# Learn more here: https://nextjs.org/telemetry
-ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED 1
 
-# Set correct permissions for nextjs user
-# Don't run as root
-RUN addgroup nodejs
-RUN adduser -SDH nextjs
-RUN mkdir .next
-RUN chown nextjs:nodejs .next
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
 
-# Automatically leverage output traces to reduce image size
-# https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
 
 USER nextjs
 
-# Expose ports (for orchestrators and dynamic reverse proxies)
 EXPOSE 80
-ENV PORT=80
-ENV HOSTNAME=0.0.0.0
 
-# Run the nextjs app
+ENV PORT 80
+
 CMD ["npm", "start"]
-### https://www.vorillaz.com/neaxtjs-docker-env
