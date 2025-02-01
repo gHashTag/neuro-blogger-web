@@ -5,29 +5,19 @@ FROM node:20-alpine AS base
 FROM base AS deps
 RUN apk add --no-cache libc6-compat git python3 make g++
 
-RUN echo Building nextjs image with corepack
-
-# Setup pnpm environment
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
-RUN corepack prepare pnpm@latest --activate
-
 WORKDIR /app
 
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile --prefer-frozen-lockfile
+COPY package.json ./
+RUN npm install
 
 # --- Builder ---
 FROM base AS builder
-RUN corepack enable
-RUN corepack prepare pnpm@latest --activate 
 
 WORKDIR /app
 
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN pnpm build
+RUN npm run build
 
 # --- Production runner ---
 FROM base AS runner
@@ -59,5 +49,5 @@ ENV PORT=80
 ENV HOSTNAME=0.0.0.0
 
 # Run the nextjs app
-CMD ["pnpm", "start"]
+CMD ["npm", "start"]
 ### https://www.vorillaz.com/neaxtjs-docker-env
