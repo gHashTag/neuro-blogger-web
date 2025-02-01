@@ -77,6 +77,10 @@ const nextConfig = {
       },
     ],
   },
+  env: {
+    NEXT_PUBLIC_LOCAL_URL: process.env.NEXT_PUBLIC_LOCAL_URL,
+    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
+  },
   // typescript: {
   //   // !! WARN !!
   //   // Dangerously allow production builds to successfully complete even if
