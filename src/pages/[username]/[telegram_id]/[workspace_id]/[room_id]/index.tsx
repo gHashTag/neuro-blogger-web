@@ -24,8 +24,9 @@ import TaskModal from '@/components/modal/TaskModal'
 import { BreadcrumbWithCustomSeparator } from '@/components/ui/breadcrumb-with-custom-separator'
 import { useAssets } from '@/hooks/useAssets'
 import MeetModal from '@/components/modal/meet-modal'
+import { NEXT_PUBLIC_MANAGEMENT_TOKEN } from '@/config'
 
-const managementToken = process.env.NEXT_PUBLIC_MANAGEMENT_TOKEN
+const managementToken = NEXT_PUBLIC_MANAGEMENT_TOKEN
 
 if (!managementToken) {
   throw new Error('NEXT_PUBLIC_MANAGEMENT_TOKEN is not set')

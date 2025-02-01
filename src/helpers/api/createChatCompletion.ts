@@ -1,6 +1,6 @@
 import OpenAI from 'openai'
-
-const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY
+import { NEXT_PUBLIC_OPENAI_API_KEY } from '@/config'
+const apiKey = NEXT_PUBLIC_OPENAI_API_KEY
 const openai = new OpenAI({ apiKey })
 
 export async function createChatCompletion(prompt: string, systemPrompt = '') {

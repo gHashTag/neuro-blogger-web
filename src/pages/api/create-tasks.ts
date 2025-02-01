@@ -1,3 +1,4 @@
+'use server'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getWorkspaceById, supabase } from '@/core/supabase/supabase'
 import { headers } from '@/helpers/headers'

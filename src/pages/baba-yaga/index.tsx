@@ -1,3 +1,4 @@
+'use client'
 import { retrieveLaunchParams } from '@telegram-apps/sdk'
 
 const BabaYaga = () => {

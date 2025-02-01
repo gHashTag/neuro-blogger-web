@@ -1,7 +1,7 @@
-if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
-  throw new Error('NEXT_PUBLIC_SUPABASE_URL is not set')
-}
-
+import {
+  NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  NEXT_PUBLIC_SUPABASE_URL,
+} from '@/config'
 import { corsHeaders } from '@/helpers/corsHeaders'
 import {
   ApolloClient,
@@ -39,7 +39,7 @@ const cache = new InMemoryCache({
 })
 
 const httpLink = createHttpLink({
-  uri: `${process.env.NEXT_PUBLIC_SUPABASE_URL}/graphql/v1`,
+  uri: `${NEXT_PUBLIC_SUPABASE_URL}/graphql/v1`,
 })
 
 const authLink = setContext(async (_, { headers }) => {
@@ -48,7 +48,7 @@ const authLink = setContext(async (_, { headers }) => {
   return {
     headers: {
       ...corsHeaders,
-      apiKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+      apiKey: NEXT_PUBLIC_SUPABASE_ANON_KEY,
     },
   }
 })

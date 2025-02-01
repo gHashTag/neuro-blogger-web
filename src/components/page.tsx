@@ -79,6 +79,7 @@ export default function Page({ meta, children, fullViewport = false }: Props) {
           type='font/woff2'
           crossOrigin='anonymous'
         />
+
         {image && (
           <meta
             property='og:image'

@@ -1,12 +1,14 @@
+'use server'
 import { NextResponse } from 'next/server'
+import { NEXT_PUBLIC_AGENT_ID, ELEVENLABS_API_KEY } from '@/config'
 
 export async function GET() {
   try {
     const response = await fetch(
-      `https://api.elevenlabs.io/v1/convai/conversation/get_signed_url?agent_id=${process.env.NEXT_PUBLIC_AGENT_ID}`,
+      `https://api.elevenlabs.io/v1/convai/conversation/get_signed_url?agent_id=${NEXT_PUBLIC_AGENT_ID}`,
       {
         headers: {
-          'xi-api-key': process.env.ELEVENLABS_API_KEY!,
+          'xi-api-key': ELEVENLABS_API_KEY!,
         },
       }
     )

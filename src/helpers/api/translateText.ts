@@ -1,6 +1,7 @@
 import OpenAI from 'openai'
+import { NEXT_PUBLIC_OPENAI_API_KEY } from '@/config'
 
-const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY
+const apiKey = NEXT_PUBLIC_OPENAI_API_KEY
 const openai = new OpenAI({ apiKey })
 
 const systemPrompt =

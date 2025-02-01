@@ -66,6 +66,7 @@
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
+    "envsafe": "^2.0.3",
     "fluent-ffmpeg": "^2.1.3",
     "framer-motion": "^11.0.22",
     "grammy": "^1.24.0",

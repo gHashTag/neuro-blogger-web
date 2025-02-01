@@ -1,12 +1,9 @@
 // @ts-ignore
 import { v4 as uuidv4 } from 'uuid'
 import { supabase } from '../../core/supabase/supabase'
+import { NEXT_PUBLIC_100MS } from '@/config'
 
-if (!process.env.NEXT_PUBLIC_100MS) {
-  throw new Error('NEXT_PUBLIC_100MS is not set!')
-}
-
-const newToken100ms = process.env.NEXT_PUBLIC_100MS
+const newToken100ms = NEXT_PUBLIC_100MS
 
 type CreateOrFetchRoomProps = {
   username: string

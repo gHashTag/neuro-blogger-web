@@ -1,3 +1,4 @@
+'use server'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { isDev, NEXT_PUBLIC_AI_SERVER_URL } from '@/config'

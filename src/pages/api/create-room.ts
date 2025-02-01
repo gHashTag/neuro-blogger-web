@@ -1,3 +1,4 @@
+'use server'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getWorkspaceById, supabase } from '@/core/supabase/supabase'
 import { RoomNode } from '@/types'
@@ -7,7 +8,7 @@ import { headers } from '@/helpers/headers'
 import jwt from 'jsonwebtoken'
 
 import { v4 as uuidv4 } from 'uuid'
-import { isDev } from '@/config'
+import { isDev, NEXT_PUBLIC_100MS } from '@/config'
 import { transliterate } from '@/helpers/api/transliterate'
 import { createCodes } from './create-room-from-tg'
 
@@ -93,7 +94,7 @@ export default async function handler(
         enabled: true,
       }
 
-      const newToken = process.env.NEXT_PUBLIC_100MS
+      const newToken = NEXT_PUBLIC_100MS
 
       const roomResponse = await fetch('https://api.100ms.live/v2/rooms', {
         method: 'POST',

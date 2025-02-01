@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import { NEXT_PUBLIC_HCAPTCHA_SITE_KEY } from '@/config'
 import type HCaptcha from '@hcaptcha/react-hcaptcha'
 import { IS_CAPTCHA_ENABLED } from '@lib/captcha'
 
@@ -48,7 +49,7 @@ const Captcha = forwardRef<HCaptcha, Props>((props, ref) => {
     <Suspense fallback={null}>
       <LazyCaptcha
         ref={ref}
-        sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY as string}
+        sitekey={NEXT_PUBLIC_HCAPTCHA_SITE_KEY as string}
         size='invisible'
         {...props}
       />

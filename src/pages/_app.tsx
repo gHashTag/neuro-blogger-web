@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import type { AppProps } from 'next/app'
 import { NextUIProvider } from '@nextui-org/react'
 import { HMSRoomProvider } from '@100mslive/react-sdk'
-
+import { EnvProvider } from '@/env/provider'
 import { TonConnectUIProvider } from '@tonconnect/ui-react'
 
 import ResizeHandler from '@components/resize-handler'
@@ -31,7 +31,13 @@ import { setContext } from '@apollo/client/link/context'
 import { Spinner } from '@/components/ui/spinner'
 import { loadErrorMessages, loadDevMessages } from '@apollo/client/dev'
 import { corsHeaders } from '@/helpers/corsHeaders'
-import { botName, isDev } from '@/config'
+import {
+  botName,
+  isDev,
+  NEXT_PUBLIC_SENTRY_DSN,
+  NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  NEXT_PUBLIC_SUPABASE_URL,
+} from '@/config'
 import { ErrorBoundary } from '@/components/error-boundary'
 
 if (isDev) {
@@ -41,7 +47,7 @@ if (isDev) {
 }
 
 Sentry.init({
-  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+  dsn: NEXT_PUBLIC_SENTRY_DSN,
   maxBreadcrumbs: 50,
   tracesSampleRate: 1.0,
   replaysSessionSampleRate: 0.1,
@@ -107,7 +113,7 @@ export default function App({ Component, pageProps }: AppProps) {
       // setPersistor(newPersistor);
       setHeaderName('')
       const httpLink = createHttpLink({
-        uri: `${process.env.NEXT_PUBLIC_SUPABASE_URL}/graphql/v1`,
+        uri: `${NEXT_PUBLIC_SUPABASE_URL}/graphql/v1`,
       })
 
       const authLink = setContext(async (_, { headers }) => {
@@ -116,7 +122,7 @@ export default function App({ Component, pageProps }: AppProps) {
         return {
           headers: {
             ...corsHeaders,
-            apiKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+            apiKey: NEXT_PUBLIC_SUPABASE_ANON_KEY,
           },
         }
       })
@@ -152,6 +158,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <main className='dark bg-background text-foreground'>
       <ErrorBoundary>
         <div>
+          {/* <HuddleProvider client={huddleClient}> */}
           {/* <HuddleProvider client={huddleClient}> */}
           <ApolloProvider client={client}>
             <NextUIProvider>

@@ -1,13 +1,8 @@
 /** @type {import('next').NextConfig} */
 
-if (!process.env.NEXT_PUBLIC_LOCAL_URL) {
-  throw new Error('NEXT_PUBLIC_LOCAL_URL is not set')
-}
+import getConfig from 'next/config'
 
-if (!process.env.NEXT_PUBLIC_SITE_URL) {
-  throw new Error('NEXT_PUBLIC_SITE_URL is not set')
-}
-
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   async headers() {
     return [
@@ -29,10 +24,6 @@ const nextConfig = {
         ],
       },
     ]
-  },
-  env: {
-    NEXT_PUBLIC_LOCAL_URL: process.env.NEXT_PUBLIC_LOCAL_URL,
-    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
   },
   reactStrictMode: true,
   output: 'standalone',

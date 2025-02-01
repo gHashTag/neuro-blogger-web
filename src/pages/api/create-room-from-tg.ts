@@ -1,8 +1,9 @@
+'use server'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '@/core/supabase/supabase'
 import { RoomNode } from '@/types'
 import { headers } from '@/helpers/headers'
-
+import { NEXT_PUBLIC_100MS } from '@/config'
 import { v4 as uuidv4 } from 'uuid'
 
 import { transliterate } from '@/helpers/api/transliterate'
@@ -66,7 +67,7 @@ export default async function handler(
         enabled: true,
       }
 
-      const newToken = process.env.NEXT_PUBLIC_100MS
+      const newToken = NEXT_PUBLIC_100MS
 
       const roomResponse = await fetch('https://api.100ms.live/v2/rooms', {
         method: 'POST',

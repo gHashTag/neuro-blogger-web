@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import { HCAPTCHA_SECRET_KEY, NEXT_PUBLIC_HCAPTCHA_SITE_KEY } from '@/config'
 import { corsHeaders } from '@/helpers/corsHeaders'
 
 export async function validateCaptchaResult(result: string): Promise<boolean> {
@@ -24,13 +25,11 @@ export async function validateCaptchaResult(result: string): Promise<boolean> {
       headers: {
         ...corsHeaders,
       },
-      body: `secret=${process.env.HCAPTCHA_SECRET_KEY}&response=${result}`,
+      body: `secret=${HCAPTCHA_SECRET_KEY}&response=${result}`,
     }
   ).then(res => res.json())
 
   return success
 }
 
-export const IS_CAPTCHA_ENABLED = Boolean(
-  process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY
-)
+export const IS_CAPTCHA_ENABLED = Boolean(NEXT_PUBLIC_HCAPTCHA_SITE_KEY)

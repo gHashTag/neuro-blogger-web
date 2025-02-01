@@ -1,12 +1,9 @@
+import { NEXT_PUBLIC_SUPABASE_URL } from '@/config'
 import type { CodegenConfig } from '@graphql-codegen/cli'
 import { addTypenameSelectionDocumentTransform } from '@graphql-codegen/client-preset'
 
-if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
-  throw new Error('NEXT_PUBLIC_SUPABASE_URL is not set')
-}
-
 const config: CodegenConfig = {
-  schema: `${process.env.NEXT_PUBLIC_SUPABASE_URL}/graphql/v1`,
+  schema: `${NEXT_PUBLIC_SUPABASE_URL}/graphql/v1`,
   documents: 'src/**/*.tsx',
   overwrite: true,
   ignoreNoDocuments: true,
