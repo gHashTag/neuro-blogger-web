@@ -22,11 +22,9 @@ export function AuthorSection({ author, side = 'left' }: AuthorSectionProps) {
               {/* Фото автора */}
               <div className='relative'>
                 <div className='aspect-square overflow-hidden rounded-2xl shadow-lg'>
-                  <Image
+                  <img
                     alt='Author'
                     src={author.imageUrl}
-                    layout='fill'
-                    objectFit='cover'
                     className='rounded-2xl'
                   />
                 </div>
@@ -107,11 +105,9 @@ export function AuthorSection({ author, side = 'left' }: AuthorSectionProps) {
               {/* Фото автора */}
               <div className='relative'>
                 <div className='aspect-square overflow-hidden rounded-2xl shadow-lg'>
-                  <Image
+                  <img
                     alt='Author'
                     src={author.imageUrl}
-                    layout='fill'
-                    objectFit='cover'
                     className='rounded-2xl'
                   />
                 </div>
