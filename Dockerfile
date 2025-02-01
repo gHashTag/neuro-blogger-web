@@ -10,6 +10,9 @@ WORKDIR /app
 COPY package.json ./
 RUN npm install
 
+# Установите next глобально
+RUN npm install -g next
+
 # --- Builder ---
 FROM base AS builder
 
