@@ -53,8 +53,14 @@ export default function LandingPage() {
     <div>
       <SparklesPreview isHidden={false} />
       <ParallaxScrollDemo images={neuroPhotoNeuroCoder} />
+
       <StickyScrollRevealDemo />
-      <CardStackDemo />
+
+      <section id='contacts' className='mt-10 px-4 py-5'>
+        <div className='mx-auto max-w-7xl'>
+          <CardStackDemo />
+        </div>
+      </section>
       <section id='contacts' className='px-4 py-5'>
         <div className='mx-auto max-w-7xl'>
           <ContactSectionDark
