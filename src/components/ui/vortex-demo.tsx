@@ -7,15 +7,15 @@ export function VortexDemo() {
     window.location.href = 'https://t.me/neuro_blogger_bot?start=144022504'
   }
   return (
-    <div className='mx-auto h-[20rem] overflow-hidden rounded-md'>
+    <div className='h-[20rem] w-full overflow-hidden'>
       <Vortex
         backgroundColor='transparent'
-        className='flex h-full w-full flex-col items-center justify-center px-0 py-4 sm:px-2 md:px-10'
+        className='flex h-full w-full flex-col items-center justify-center'
       >
         <h2 className='text-center text-2xl font-bold text-white md:text-6xl'>
           {/* Заголовок */}
         </h2>
-        <p className='mx-4 mt-2 max-w-xl text-center text-base text-white sm:mx-6 sm:text-lg md:mx-8 md:text-2xl lg:mx-10 lg:text-3xl'>
+        <p className='mx-auto mt-2 w-1/2 text-center text-base text-white sm:text-lg md:text-2xl lg:text-3xl'>
           Представь, как твои фотографии превращаются в стильные и современные
           произведения искусства, подчеркивая твою индивидуальность и выделяя из
           толпы.
