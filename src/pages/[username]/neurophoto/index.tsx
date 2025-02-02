@@ -5,7 +5,7 @@ import { StickyScrollRevealDemo } from '@/components/ui/sticky-scroll-reveal-dem
 import { SparklesPreview } from '@/components/ui/sparkles-preview'
 import { CardStackDemo } from '@/components/ui/card-stack-demo'
 import { ContactSectionDark } from '@/components/landingpage/ContactSectionDark'
-import { neuroPhotoNeuroCoder } from './photos'
+import neuroPhotoNeuroCoder from '@/data/photos'
 
 export default function LandingPage() {
   return (

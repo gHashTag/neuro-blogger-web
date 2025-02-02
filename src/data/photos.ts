@@ -1,4 +1,4 @@
-export const neuroPhotoNeuroCoder = [
+const neuroPhotoNeuroCoder = [
   'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder1.jpg',
   'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder2.jpg',
   'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder3.jpg',
@@ -30,3 +30,5 @@ export const neuroPhotoNeuroCoder = [
   'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder31.jpg',
   'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/neurophoto/a_photo_of_neuro_coder32.jpg',
 ]
+
+export default neuroPhotoNeuroCoder
