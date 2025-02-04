@@ -24,50 +24,50 @@ export default function Hero() {
   const { language_code } = useUser()
   return (
     <div className={styles.wrapper}>
-      {/* <h2
+      <h2
         className={cn(
           styleUtils.appear,
-          styleUtils["appear-third"],
-          styleUtils["show-on-mobile"],
+          styleUtils['appear-third'],
+          styleUtils['show-on-mobile'],
           styles.description
         )}
       >
         {SITE_DESCRIPTION}
-      </h2> */}
-      {/* <h1
+      </h2>
+      <h1
         className={cn(
           styleUtils.appear,
-          styleUtils["appear-third"],
+          styleUtils['appear-third'],
           styles.hero
         )}
       >
         Bank of Digital
-      </h1> */}
+      </h1>
       <h1 className={cn(styleUtils.appear, styleUtils['brand'], styles.hero)}>
         {BRAND_NAME}
       </h1>
-      <div style={{ height: 120 }}></div>
-      {/* <h1
+
+      <h1
         className={cn(
           styleUtils.appear,
-          styleUtils["appear-third"],
+          styleUtils['appear-third'],
           styles.hero
         )}
       >
         Avatars
-      </h1> */}
+      </h1>
       <div style={{ height: 20 }}></div>
-      {/* <div
+      <div
         className={cn(
           styleUtils.appear,
-          styleUtils["appear-fourth"],
+          styleUtils['appear-fourth'],
           styles.info
         )}
       >
-        {language_code === "ru"
-          ? "Банк ИИ Аватаров"
-          : "Where Immortality is Banked"}
-      </div> */}
+        {language_code === 'ru'
+          ? 'Банк ИИ Аватаров'
+          : 'Where Immortality is Banked'}
+      </div>
     </div>
   )
 }
