@@ -130,24 +130,29 @@ export default function MiniApp() {
         }}
       >
         <Atom color='#000000' size='medium' text='' />
-        <p>JSON.stringify(currentLevel)</p>
-        <p>JSON.stringify(updateLevel)</p>
-        <p>JSON.stringify(userLanguageCode)</p>
-        <p>JSON.stringify(userId)</p>
       </div>
     )
   }
 
   const link = `https://t.me/neuro_blogger_bot?start=${userId}`
 
-  const imageSrc = `../../../../../../images/miniapp/neuro_sage/${updateLevel}.jpg`
+  const imageSrc =
+    updateLevel > 9
+      ? '../../../../../../images/miniapp/neuro_sage/all_levels_completed.jpg'
+      : `../../../../../../images/miniapp/neuro_sage/${updateLevel}.jpg`
 
   let videoSrc = ''
 
   if (userLanguageCode === 'ru') {
-    videoSrc = `../../../../../../images/miniapp/neuro_sage/video_ru/${updateLevel}.mp4`
+    videoSrc =
+      updateLevel > 9
+        ? '../../../../../../images/miniapp/neuro_sage/all_levels_completed.mp4'
+        : `../../../../../../images/miniapp/neuro_sage/video_ru/${updateLevel}.mp4`
   } else {
-    videoSrc = `../../../../../../images/miniapp/neuro_sage/video_en/${updateLevel}.mp4`
+    videoSrc =
+      updateLevel > 9
+        ? '../../../../../../images/miniapp/neuro_sage/all_levels_completed.mp4'
+        : `../../../../../../images/miniapp/neuro_sage/video_en/${updateLevel}.mp4`
   }
 
   return (
