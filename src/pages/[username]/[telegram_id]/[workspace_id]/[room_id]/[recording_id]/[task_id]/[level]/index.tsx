@@ -104,6 +104,10 @@ export default function MiniApp() {
         }}
       >
         <Atom color='#000000' size='medium' text='' />
+        <p>JSON.stringify(currentLevel)</p>
+        <p>JSON.stringify(updateLevel)</p>
+        <p>JSON.stringify(userLanguageCode)</p>
+        <p>JSON.stringify(userId)</p>
       </div>
     )
   }
