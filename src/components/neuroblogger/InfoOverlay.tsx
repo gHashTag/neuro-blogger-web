@@ -4,9 +4,15 @@ interface InfoOverlayProps {
   title: string
   link: string
   is_ru: boolean
+  allLevelsCompleted: boolean
 }
 
-const InfoOverlay: React.FC<InfoOverlayProps> = ({ title, link, is_ru }) => {
+const InfoOverlay: React.FC<InfoOverlayProps> = ({
+  title,
+  link,
+  is_ru,
+  allLevelsCompleted,
+}) => {
   const [copied, setCopied] = useState(false)
 
   const handleCopy = () => {
@@ -22,7 +28,9 @@ const InfoOverlay: React.FC<InfoOverlayProps> = ({ title, link, is_ru }) => {
     >
       <div className='rounded-lg bg-white bg-opacity-5 p-2 text-center shadow-lg backdrop-blur-md'>
         <p className='text-sm text-gray-100'>
-          {is_ru ? 'открой нейрокоманду' : 'open neurocommand'}
+          {is_ru && !allLevelsCompleted
+            ? 'открой нейрокоманду'
+            : !allLevelsCompleted && 'open neurocommand'}
         </p>
         <h3 className='text-lg font-bold text-white'>{title}</h3>
         <p className='text-sm text-gray-100'>

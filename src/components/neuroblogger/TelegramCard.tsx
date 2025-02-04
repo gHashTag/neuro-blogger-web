@@ -11,6 +11,7 @@ interface TelegramCardProps {
   is_ru: boolean
   link: string
   imageSrc: string
+  allLevelsCompleted: boolean
 }
 
 export default function TelegramCard({
@@ -20,6 +21,7 @@ export default function TelegramCard({
   is_ru,
   link,
   imageSrc,
+  allLevelsCompleted,
 }: TelegramCardProps) {
   const [muted, setMuted] = useState(true)
 
@@ -53,7 +55,12 @@ export default function TelegramCard({
         </div>
         <LevelBadge level={level} is_ru={is_ru} />
       </div>
-      <InfoOverlay title={title} link={link} is_ru={is_ru} />
+      <InfoOverlay
+        title={title}
+        link={link}
+        is_ru={is_ru}
+        allLevelsCompleted={allLevelsCompleted}
+      />
       <div className='flex flex-col items-center justify-center bg-white p-3' />
     </div>
   )

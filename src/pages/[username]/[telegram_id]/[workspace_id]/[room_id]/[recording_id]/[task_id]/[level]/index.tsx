@@ -78,7 +78,8 @@ export default function MiniApp() {
   const [userId, setUserId] = useState<string>('')
 
   const [updateLevel, setUpdateLevel] = useState<number>(0)
-  const router = useRouter()
+
+  const questCount = 11
 
   useEffect(() => {
     if (!isDev) {
@@ -111,7 +112,7 @@ export default function MiniApp() {
   }, [])
 
   const currentLevel =
-    updateLevel > 9
+    updateLevel > questCount
       ? { title_ru: 'ВСЕ УРОВНИ ПРОЙДЕНЫ', title_en: 'ALL LEVELS COMPLETED' }
       : levels[Number(updateLevel)]
 
@@ -137,7 +138,7 @@ export default function MiniApp() {
   const link = `https://t.me/neuro_blogger_bot?start=${userId}`
 
   const imageSrc =
-    updateLevel > 9
+    updateLevel > questCount
       ? '../../../../../../images/miniapp/neuro_sage/all_levels_completed.jpg'
       : `../../../../../../images/miniapp/neuro_sage/${updateLevel}.jpg`
 
@@ -145,18 +146,19 @@ export default function MiniApp() {
 
   if (userLanguageCode === 'ru') {
     videoSrc =
-      updateLevel > 9
+      updateLevel > questCount
         ? '../../../../../../images/miniapp/neuro_sage/all_levels_completed.mp4'
         : `../../../../../../images/miniapp/neuro_sage/video_ru/${updateLevel}.mp4`
   } else {
     videoSrc =
-      updateLevel > 9
+      updateLevel > questCount
         ? '../../../../../../images/miniapp/neuro_sage/all_levels_completed.mp4'
         : `../../../../../../images/miniapp/neuro_sage/video_en/${updateLevel}.mp4`
   }
 
   return (
     <TelegramCard
+      allLevelsCompleted={updateLevel > questCount}
       level={Number(updateLevel)}
       videoSrc={videoSrc}
       title={
