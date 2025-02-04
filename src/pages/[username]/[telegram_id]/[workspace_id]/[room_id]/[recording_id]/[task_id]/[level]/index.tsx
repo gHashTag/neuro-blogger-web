@@ -138,36 +138,44 @@ export default function MiniApp() {
 
   const imageSrc =
     updateLevel > questCount
-      ? '../../../../../../images/miniapp/neuro_sage/all_levels_completed.jpg'
-      : `../../../../../../images/miniapp/neuro_sage/${updateLevel}.jpg`
-
+      ? '/images/miniapp/neuro_sage/all_levels_completed.jpg'
+      : `/images/miniapp/neuro_sage/${updateLevel}.jpg`
+  console.log(imageSrc, 'imageSrc')
   let videoSrc = ''
+  console.log(videoSrc, 'videoSrc')
 
   if (userLanguageCode === 'ru') {
     videoSrc =
       updateLevel > questCount
-        ? '../../../../../../images/miniapp/neuro_sage/all_levels_completed.mp4'
-        : `../../../../../../images/miniapp/neuro_sage/video_ru/${updateLevel}.mp4`
+        ? '/images/miniapp/neuro_sage/all_levels_completed.mp4'
+        : `/images/miniapp/neuro_sage/video_ru/${updateLevel}.mp4`
   } else {
     videoSrc =
       updateLevel > questCount
-        ? '../../../../../../images/miniapp/neuro_sage/all_levels_completed.mp4'
-        : `../../../../../../images/miniapp/neuro_sage/video_en/${updateLevel}.mp4`
+        ? '/images/miniapp/neuro_sage/all_levels_completed.mp4'
+        : `/images/miniapp/neuro_sage/video_en/${updateLevel}.mp4`
   }
 
   return (
-    <TelegramCard
-      allLevelsCompleted={updateLevel > questCount}
-      level={Number(updateLevel)}
-      videoSrc={videoSrc}
-      title={
-        userLanguageCode === 'ru'
-          ? currentLevel.title_ru
-          : currentLevel.title_en
-      }
-      is_ru={userLanguageCode === 'ru'}
-      link={link}
-      imageSrc={imageSrc}
-    />
+    <div>
+      <TelegramCard
+        allLevelsCompleted={updateLevel > questCount}
+        level={Number(updateLevel)}
+        videoSrc={videoSrc}
+        title={
+          userLanguageCode === 'ru'
+            ? currentLevel.title_ru
+            : currentLevel.title_en
+        }
+        is_ru={userLanguageCode === 'ru'}
+        link={link}
+        imageSrc={imageSrc}
+      />
+      <div>
+        <p>JSON.stringify(initData, null, 2)</p>
+        <p>JSON.stringify(imageSrc, null, 2)</p>
+        <p>JSON.stringify(videoSrc, null, 2)</p>
+      </div>
+    </div>
   )
 }
