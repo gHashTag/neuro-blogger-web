@@ -216,19 +216,23 @@ export default function Form({ sharePage }: Props) {
                   required
                 />
               </label>
-              <Button
-                type='submit'
-                className={cn(
-                  styles.submit,
-                  styles.register,
-                  styles[formState]
-                )}
-                disabled={formState === 'loading'}
-              >
-                <p className={styles['register-text']}>
-                  {language_code === 'ru' ? 'Вход' : 'Sign in'}
-                </p>
-              </Button>
+              <div className='px-4 sm:px-8'>
+                <Button
+                  type='submit'
+                  className={cn(
+                    'w-full rounded-lg bg-yellow-500 px-4 py-2 font-semibold text-black shadow-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-75',
+                    'sm:px-6 sm:py-3 sm:text-lg',
+                    'md:px-8 md:py-4 md:text-xl',
+                    'lg:px-10 lg:py-5 lg:text-2xl',
+                    styles[formState]
+                  )}
+                  disabled={formState === 'loading'}
+                >
+                  <p className='text-center'>
+                    {language_code === 'ru' ? 'Проверка' : 'Check'}
+                  </p>
+                </Button>
+              </div>
             </div>
             <Captcha ref={captchaRef} onVerify={checkEmail} />
           </form>
