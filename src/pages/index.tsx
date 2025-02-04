@@ -22,8 +22,8 @@ import ConfContent from '@components/index'
 
 export default function Conf() {
   const meta = {
-    title: 'NEUROBLOGGER',
-    description: 'NEUROBLOGGER in Telegram',
+    title: 'DAO999NFT',
+    description: 'DAO999NFT in Telegram',
   }
 
   return (

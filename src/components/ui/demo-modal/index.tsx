@@ -41,15 +41,12 @@ const DemoModal = () => {
 
   return (
     <div className='font-sans'>
-      <p className='my-0 text-[32px] font-semibold'>
-        Welcome to the NEUROBLOGGER
-      </p>
+      <p className='my-0 text-[32px] font-semibold'>Welcome to the DAO999NFT</p>
       <div>
         <p className='my-0 text-[15px] text-gray-300'>
           A new era in the financial world opens today with the launch of the
-          NEUROBLOGGER digital avatar bank. This is a unique financial
-          institution where immortality is now not only a concept, but a
-          reality.
+          DAO999NFT digital avatar bank. This is a unique financial institution
+          where immortality is now not only a concept, but a reality.
         </p>
         {data.map(m => (
           <div
@@ -72,7 +69,7 @@ const DemoModal = () => {
             backgroundColor='var(--brand)'
             foregroundColor='black'
           />
-          NEUROBLOGGER
+          DAO999NFT
         </div>
       </div>
     </div>

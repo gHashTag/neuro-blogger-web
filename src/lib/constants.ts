@@ -23,7 +23,7 @@ import {
 export const SITE_URL = 'https://dao999nft.com/'
 export const SITE_ORIGIN = NEXT_PUBLIC_SITE_URL || new URL(SITE_URL).origin
 export const TWITTER_USER_NAME = 'dao999nft'
-export const BRAND_NAME = 'NEUROBLOGGER'
+export const BRAND_NAME = 'DAO999NFT'
 export const SITE_NAME_MULTILINE = ['dao999nft']
 export const SITE_NAME = 'dao999nft'
 export const META_DESCRIPTION =
