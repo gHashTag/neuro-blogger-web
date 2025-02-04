@@ -1,8 +1,8 @@
 'use client'
 import { SupabaseUser, Task } from '@/interfaces'
 
-import { captureExceptionSentry } from '../../utils/sentry'
-import { SupabaseResponse } from '../../utils/types'
+import { captureExceptionSentry } from '@/utils/sentry'
+import { SupabaseResponse } from '@/interfaces/types'
 import { supabase } from '.'
 
 interface QuestionContext {

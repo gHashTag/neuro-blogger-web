@@ -1,6 +1,6 @@
 import { SupabaseUser } from '@/interfaces'
 import { supabase } from '@/core/supabase/supabase'
-import { SupabaseResponse } from '@/utils/types'
+import { SupabaseResponse } from '@/interfaces/types'
 
 export const setVideoId = async (
   telegram_id: string,
