@@ -24,7 +24,7 @@ import {
 } from 'react-hook-form'
 import { setEditTask, setOpenModalId } from '@/apollo/reactive-store'
 import { useUser } from './useUser'
-import { AssignedTo, PassportNode, TasksArray } from '@/types'
+import { AssignedTo, PassportNode, TasksArray } from '@/interfaces'
 import { DataTableRowActions } from '@/components/table/data-table-row-actions'
 import { Checkbox } from '@radix-ui/react-checkbox'
 import { DataTableColumnHeader } from '@/components/table/data-table-column-header'

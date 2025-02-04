@@ -1,4 +1,4 @@
-import { SupabaseUser } from '@/types'
+import { SupabaseUser } from '@/interfaces'
 import { supabase } from '@/core/supabase/supabase'
 import { SupabaseResponse } from '@/utils/types'
 

@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import React from 'react'
 import { useMotionValue } from 'framer-motion'
-import { Passport, PassportArray } from '@/types'
+import { Passport, PassportArray } from '@/interfaces'
 import { Avatar } from '@heroui/react'
 
 type AnimatedTooltipRoomsProps = {

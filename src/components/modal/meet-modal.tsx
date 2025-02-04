@@ -16,7 +16,7 @@ import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import styled from 'styled-components'
 import { useEffect, useState } from 'react'
-import { RoomEdge, RoomNode } from '@/types'
+import { RoomEdge, RoomNode } from '@/interfaces'
 import { FormValues } from '@/hooks/useRooms'
 
 const RightAlignedFooter = styled(ModalFooter)`

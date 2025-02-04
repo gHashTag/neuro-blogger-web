@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 import { BackgroundGradient } from './background-gradient'
 
 import { Spacer } from '@heroui/react'
-import { RoomInfoT } from '@/types'
+import { RoomInfoT } from '@/interfaces'
 
 interface CardProps {
   room: RoomInfoT | undefined

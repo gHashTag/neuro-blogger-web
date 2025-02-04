@@ -1,5 +1,5 @@
 import { isDev } from '@/config'
-import { OptionType, SupabaseUser, TSupabaseUser } from '@/types'
+import { OptionType, SupabaseUser, TSupabaseUser } from '@/interfaces'
 import { makeVar } from '@apollo/client'
 
 export const setUserEmail = makeVar<string>('')

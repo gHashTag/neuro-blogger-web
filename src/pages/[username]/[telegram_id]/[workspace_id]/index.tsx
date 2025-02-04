@@ -6,7 +6,7 @@ import MeetModal from '@/components/modal/meet-modal'
 import { SelectRoom } from '@/components/ui/select-room'
 
 import { useReactiveVar } from '@apollo/client'
-import { Passport, RoomEdge, Task, TaskNode } from '@/types'
+import { Passport, RoomEdge, Task, TaskNode } from '@/interfaces'
 import CardRoom from '@/components/ui/card-room'
 import { DataTable } from '@/components/table/data-table'
 

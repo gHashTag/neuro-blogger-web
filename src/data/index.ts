@@ -1,4 +1,4 @@
-import { Author } from '@/types'
+import { Author } from '@/interfaces'
 
 export * from './authors'
 export * from './problemData'

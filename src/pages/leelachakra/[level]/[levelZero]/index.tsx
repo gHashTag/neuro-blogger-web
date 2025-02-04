@@ -25,11 +25,11 @@ export default function MiniApp() {
       const fetchData = async () => {
         try {
           const { initData } = retrieveLaunchParams()
-          console.log('initData', initData)
+
           setUserLanguageCode(initData?.user?.languageCode || 'ru')
 
           const userId = initData?.user?.id?.toString()
-          console.log('userId', userId)
+
           if (userId) {
             const planNumber = await getPlanNumber(userId)
 

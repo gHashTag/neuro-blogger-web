@@ -8,7 +8,7 @@ import { translateText } from '@/helpers/api/translateText'
 import { createChatCompletion } from '@/helpers/api/createChatCompletion'
 
 import { createChatCompletionJson } from '@/helpers/api/createChatCompletionJson'
-import { ResponseData } from '@/types'
+import { ResponseData } from '@/interfaces'
 
 type Task = {
   assignee: {

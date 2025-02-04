@@ -6,7 +6,7 @@ import {
   SupabaseUser,
   TasksArray,
   TUser,
-} from '@/types'
+} from '@/interfaces'
 import {
   checkUsernameCodesByUserName,
   supabase,

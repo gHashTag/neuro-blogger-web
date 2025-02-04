@@ -18,3 +18,4 @@ export const supabaseAdmin = createClient(
 export * from './getPlan'
 
 export * from './getPlanNumber'
+export * from './getReferalsCountAndUserData'

@@ -11,7 +11,7 @@ import { useDisclosure } from '@heroui/react'
 import { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useUser } from './useUser'
-import { WorkspaceArray } from '@/types'
+import { WorkspaceArray } from '@/interfaces'
 import { captureExceptionSentry } from '@/utils/sentry'
 
 const useWorkspace = (): UseWorkspaceReturn => {

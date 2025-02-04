@@ -1,5 +1,5 @@
 'use client'
-import { SupabaseUser, Task } from '@/types'
+import { SupabaseUser, Task } from '@/interfaces'
 
 import { captureExceptionSentry } from '../../utils/sentry'
 import { SupabaseResponse } from '../../utils/types'

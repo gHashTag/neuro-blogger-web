@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useUser } from '@/hooks/useUser'
 
-import { Passport } from '@/types'
+import { Passport } from '@/interfaces'
 import { captureExceptionSentry } from '@/utils/sentry'
 import { SITE_URL } from '@/config'
 

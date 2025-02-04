@@ -28,7 +28,7 @@ import { useUser } from '@/hooks/useUser'
 import { AnimatedTooltipTasks } from './animated-tooltip-tasks'
 import { usePassport } from '@/hooks/usePassport'
 import InviteMemberModal from '../modal/InviteMemberModal'
-import { AssignedTo, Passport } from '@/types'
+import { AssignedTo, Passport } from '@/interfaces'
 
 export function TaskForm({
   id,

@@ -1,7 +1,7 @@
 'use server'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getWorkspaceById, supabase } from '@/core/supabase/supabase'
-import { RoomNode } from '@/types'
+import { RoomNode } from '@/interfaces'
 import { headers } from '@/helpers/headers'
 
 // @ts-ignore

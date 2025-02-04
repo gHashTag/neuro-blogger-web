@@ -1,7 +1,7 @@
 'use server'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '@/core/supabase/supabase'
-import { RoomNode } from '@/types'
+import { RoomNode } from '@/interfaces'
 import { headers } from '@/helpers/headers'
 import { NEXT_PUBLIC_100MS } from '@/config'
 import { v4 as uuidv4 } from 'uuid'

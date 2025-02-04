@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router'
-import TelegramCard from '../../../../../../../../components/neuroblogger/TelegramCard'
+import TelegramCard from '@/components/neuroblogger/TelegramCard'
 import { retrieveLaunchParams } from '@telegram-apps/sdk'
 import { useState, useEffect } from 'react'
 import { isDev } from '@/config'
 import { Atom } from 'react-loading-indicators'
+import { getReferalsCountAndUserData } from '@/core/supabase'
 
 interface Level {
   title_ru: string
@@ -53,28 +54,40 @@ export default function MiniApp() {
   const [userLanguageCode, setUserLanguageCode] = useState<string>('ru')
   const [userId, setUserId] = useState<string>('')
 
-  // const [message, setMessage] = useState<string | null>(null)
+  const [updateLevel, setUpdateLevel] = useState<number>(0)
   const router = useRouter()
-  const { username, level } = router.query as {
-    username?: string
-    level?: string
-  }
 
   useEffect(() => {
     if (!isDev) {
-      try {
-        const { initData } = retrieveLaunchParams()
-        setUserLanguageCode(initData?.user?.languageCode || 'ru')
-        if (initData?.user?.id) {
-          setUserId(initData.user.id.toString())
-        }
-      } catch (error) {
-        console.error('Error retrieving launch parameters:', error)
-      }
-    }
-  }, [userLanguageCode])
+      const fetchData = async () => {
+        try {
+          const { initData } = retrieveLaunchParams()
 
-  const currentLevel = levels[Number(level)]
+          setUserLanguageCode(initData?.user?.languageCode || 'ru')
+
+          const userId = initData?.user?.id?.toString()
+
+          if (userId) {
+            const { count } = await getReferalsCountAndUserData(userId)
+
+            if (count) {
+              setUpdateLevel(count)
+            } else {
+              console.error('Не удалось получить номер плана')
+            }
+            setUserId(userId)
+          } else {
+            console.error('User ID is not available')
+          }
+        } catch (error) {
+          console.error('Error retrieving launch parameters:', error)
+        }
+      }
+      fetchData()
+    }
+  }, [])
+
+  const currentLevel = levels[Number(updateLevel)]
 
   if (!currentLevel) {
     return (
@@ -97,19 +110,19 @@ export default function MiniApp() {
 
   const link = `https://t.me/neuro_blogger_bot?start=${userId}`
 
-  const imageSrc = `../../../../../../images/miniapp/neuro_sage/${level}.jpg`
+  const imageSrc = `../../../../../../images/miniapp/neuro_sage/${updateLevel}.jpg`
 
   let videoSrc = ''
 
   if (userLanguageCode === 'ru') {
-    videoSrc = `../../../../../../images/miniapp/neuro_sage/video_ru/${level}.mp4`
+    videoSrc = `../../../../../../images/miniapp/neuro_sage/video_ru/${updateLevel}.mp4`
   } else {
-    videoSrc = `../../../../../../images/miniapp/neuro_sage/video_en/${level}.mp4`
+    videoSrc = `../../../../../../images/miniapp/neuro_sage/video_en/${updateLevel}.mp4`
   }
 
   return (
     <TelegramCard
-      level={Number(level)}
+      level={Number(updateLevel)}
       videoSrc={videoSrc}
       title={
         userLanguageCode === 'ru'

@@ -1,5 +1,5 @@
 import { useUser } from '@/hooks/useUser'
-import { RecordingAsset } from '@/types'
+import { RecordingAsset } from '@/interfaces'
 import { cn } from '@/utils/cn'
 import { AnimatePresence, motion } from 'framer-motion'
 

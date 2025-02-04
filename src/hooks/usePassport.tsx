@@ -12,7 +12,7 @@ import { useDisclosure } from '@heroui/react'
 import { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useUser } from './useUser'
-import { AssignedTo, Passport, PassportNode } from '@/types'
+import { AssignedTo, Passport, PassportNode } from '@/interfaces'
 
 import { useTasks } from './useTasks'
 import { captureExceptionSentry } from '@/utils/sentry'

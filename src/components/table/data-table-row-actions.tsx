@@ -20,7 +20,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
-import { RowTaskType } from '@/types'
+import { RowTaskType } from '@/interfaces'
 import { setIdTask } from '@/apollo/reactive-store'
 
 interface DataTableRowActionsProps {

@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import React from 'react'
 import { useMotionValue } from 'framer-motion'
-import { Passport } from '@/types'
+import { Passport } from '@/interfaces'
 
 type AnimatedTooltipTasksProps = {
   assigneeItems?: Passport[]
