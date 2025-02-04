@@ -1,6 +1,4 @@
 import { ProblemSection } from '@/components/landingpage/ProblemSection'
-import { SolutionSection } from '@/components/landingpage/SolutionSection'
-import { FAQ } from '@/components/landingpage/FAQ'
 import { Footer } from '@/components/landingpage/Footer'
 
 import { AuthorSection } from '@/components/landingpage/AuthorSection'
@@ -24,6 +22,7 @@ import { NeuroCallsOfferPage } from '@/components/neurocalls/NeuroCallsOfferPage
 import { NeuroCallsServiceBenefits } from '@/components/neurocalls/NeuroCallsServiceBenefits'
 import { NeuroCallsPricingSection } from '@/components/neurocalls/NeuroCallsPricingSection'
 import { NeuroCallsFAQ } from '@/components/neurocalls/NeuroCallsFAQ'
+import Loader from '@/components/loader'
 
 const description = {
   title: 'НЕЙРО-ЗВОНКИ',
@@ -69,7 +68,7 @@ function Home() {
     const newpathname = router.asPath
 
     const username = newpathname ? newpathname.split('/')[1] : null
-    console.log(username, 'username')
+
     setUsername(username)
 
     let author
@@ -90,10 +89,9 @@ function Home() {
         author = neuroCoderAutor
     }
     setCurrentAuthor(author as Author)
-    console.log(author, 'currentAuthor')
-  }, [router.isReady])
+  }, [router.asPath, router.isReady])
 
-  if (!router.isReady) return <p>Loading...</p>
+  if (!router.isReady) return <Loader />
 
   return (
     <div className='min-h-screen bg-gradient-to-b from-pink-50 to-white'>

@@ -8,6 +8,7 @@ export interface Author {
   description: string
   achievements: string[]
   achievementDescriptions: Record<string, string>
+  neuroPhotoImageUrl?: string
 }
 
 export const neuroCoderAutor: Author = {
@@ -34,6 +35,8 @@ export const neuroCoderAutor: Author = {
     'Международный опыт': 'Работа в UAE, Thailand, Indonesia',
     Основатель: 'Leela Chakra AI, NeuroCoder, NeuroBlogger',
   },
+  neuroPhotoImageUrl:
+    'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/miniapp/01.jpg',
 }
 
 export const metaMuseAutor = {
@@ -85,6 +88,8 @@ export const playomAutor: Author = {
     'Исследователь Вед': 'Глубокое изучение ведической культуры.',
     'Преподаватель джняна-йоги': 'Обучение философии недвойственности.',
   },
+  neuroPhotoImageUrl:
+    'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/playom/miniapp/01.jpg',
 }
 
 export const ezavarykinAutor: Author = {

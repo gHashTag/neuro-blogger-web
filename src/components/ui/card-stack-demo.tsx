@@ -2,7 +2,18 @@
 import { CardStack } from '../ui/card-stack'
 import { cn } from '@/lib/utils'
 import { BackgroundGradientDemo } from './вackground-gradient-demo'
-export function CardStackDemo() {
+
+export function CardStackDemo({
+  imageUrl,
+  refLink,
+  price,
+  title,
+}: {
+  imageUrl: string
+  refLink: string
+  price: number
+  title: string
+}) {
   return (
     <div className='flex flex-col items-center justify-center px-4 sm:px-6 md:px-10'>
       <h2 className='text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl'>
@@ -15,7 +26,12 @@ export function CardStackDemo() {
         Цена
       </h2>
       <div className='mt-16 flex h-[50rem] w-full items-center justify-center'>
-        <BackgroundGradientDemo />
+        <BackgroundGradientDemo
+          imageUrl={imageUrl}
+          refLink={refLink}
+          price={price}
+          title={title}
+        />
       </div>
     </div>
   )

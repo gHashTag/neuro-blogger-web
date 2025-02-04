@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import TelegramCard from '@/components/neuroblogger/TelegramCard'
 import { retrieveLaunchParams } from '@telegram-apps/sdk'
 import { useState, useEffect } from 'react'
