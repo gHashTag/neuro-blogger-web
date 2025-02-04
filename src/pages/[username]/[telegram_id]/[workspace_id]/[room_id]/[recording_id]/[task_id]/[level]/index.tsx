@@ -87,7 +87,10 @@ export default function MiniApp() {
     }
   }, [])
 
-  const currentLevel = levels[Number(updateLevel)]
+  const currentLevel =
+    updateLevel > 9
+      ? { title_ru: 'ВСЕ УРОВНИ ПРОЙДЕНЫ', title_en: 'ALL LEVELS COMPLETED' }
+      : levels[Number(updateLevel)]
 
   if (!currentLevel) {
     return (
