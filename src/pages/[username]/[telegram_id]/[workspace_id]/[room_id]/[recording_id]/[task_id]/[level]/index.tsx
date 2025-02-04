@@ -11,42 +11,65 @@ interface Level {
   title_en: string
 }
 
-const levels: Record<number, Level> = {
+export const levels: Record<number, Level> = {
+  0: {
+    title_ru: '💫 Оформить подписку',
+    title_en: '💫 Subscribe',
+  },
+  // digitalAvatarBodyWizard
   1: {
-    title_ru: 'МОЗГ АВАТАРА',
-    title_en: 'AVATAR BRAIN',
+    title_ru: '🤖 Цифровое тело',
+    title_en: '🤖 Digital Body',
   },
+  // neuroPhotoWizard
   2: {
-    title_ru: 'ЧАТ С АВАТАРОМ',
-    title_en: 'CHAT WITH AVATAR',
+    title_ru: '📸 Нейрофото',
+    title_en: '📸 NeuroPhoto',
   },
+  // imageToPromptWizard
   3: {
-    title_ru: 'ВЫБОР МОДЕЛИ ИИ',
-    title_en: 'CHOOSE AI MODEL',
+    title_ru: '🔍 Промпт из фото',
+    title_en: '🔍 Prompt from Photo',
   },
+  // avatarWizard
   4: {
-    title_ru: 'ЦИФРОВОЕ ТЕЛО',
-    title_en: 'DIGITAL BODY',
+    title_ru: '🧠 Мозг аватара',
+    title_en: '🧠 Avatar Brain',
   },
+  // chatWithAvatarWizard
   5: {
-    title_ru: 'НЕЙРОФОТО',
-    title_en: 'NEUROPHOTO',
+    title_ru: '💭 Чат с аватаром',
+    title_en: '💭 Chat with avatar',
   },
+  // selectModelWizard
   6: {
-    title_ru: 'ПРОМПТ ИЗ ФОТО',
-    title_en: 'PROMPT FROM PHOTO',
+    title_ru: '🤖 Выбор модели ИИ',
+    title_en: '🤖 Choose AI Model',
   },
+  // voiceAvatarWizard
   7: {
-    title_ru: 'ГОЛОС АВАТАРА',
-    title_en: 'AVATAR VOICE',
+    title_ru: '🎤 Голос аватара',
+    title_en: '🎤 Avatar Voice',
   },
+  // textToSpeechWizard
   8: {
-    title_ru: 'ТЕКСТ В ГОЛОС',
-    title_en: 'TEXT TO VOICE',
+    title_ru: '🎙️ Текст в голос',
+    title_en: '🎙️ Text to Voice',
   },
+  // imageToVideoWizard
   9: {
-    title_ru: 'ФОТО В ВИДЕО',
-    title_en: 'PHOTO TO VIDEO',
+    title_ru: '🎥 Фото в видео',
+    title_en: '🎥 Photo to Video',
+  },
+  // textToVideoWizard
+  10: {
+    title_ru: '🎥 Видео из текста',
+    title_en: '🎥 Text to Video',
+  },
+  // textToImageWizard
+  11: {
+    title_ru: '🖼️ Текст в фото',
+    title_en: '🖼️ Text to Image',
   },
 }
 
