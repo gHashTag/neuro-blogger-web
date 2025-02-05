@@ -134,8 +134,8 @@ export default function MiniApp() {
 
   const imageSrc =
     updateLevel > questCount
-      ? 'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/miniapp/all_levels_completed.jpg'
-      : `https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/miniapp/${updateLevel}.jpg`
+      ? 'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/miniapp/quest/all_levels_completed.jpg'
+      : `https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/miniapp/quest/${updateLevel}.jpg`
   console.log(imageSrc, 'imageSrc')
   // let videoSrc = ''
   // console.log(videoSrc, 'videoSrc')
