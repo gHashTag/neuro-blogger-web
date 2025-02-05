@@ -2,23 +2,29 @@ import React from 'react'
 import { Vortex } from '../ui/vortex'
 import { Button } from '@/components/ui/moving-border'
 
-export function VortexDemo() {
+export function VortexDemo({
+  title,
+  description,
+  href,
+}: {
+  description: string
+  title: string
+  href: string
+}) {
   const onCreateOrder = () => {
-    window.location.href = 'https://t.me/neuro_blogger_bot?start=144022504'
+    window.location.href = href
   }
   return (
-    <div className='h-[20rem] w-full overflow-hidden'>
+    <div className='h-[30rem] w-full overflow-hidden'>
       <Vortex
         backgroundColor='transparent'
         className='flex h-full w-full flex-col items-center justify-center'
       >
-        <h2 className='text-center text-2xl font-bold text-white md:text-6xl'>
-          {/* Заголовок */}
+        <h2 className='mx-auto max-w-4xl px-4 text-center text-xl font-bold text-white sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl'>
+          {title}
         </h2>
-        <p className='mx-auto mt-2 w-1/2 text-center text-base text-white sm:text-lg md:text-2xl lg:text-3xl'>
-          Представь, как твои фотографии превращаются в стильные и современные
-          произведения искусства, подчеркивая твою индивидуальность и выделяя из
-          толпы.
+        <p className='mx-auto mt-2 max-w-3xl px-4 text-center text-base text-white sm:text-lg md:text-xl'>
+          {description}
         </p>
         <div className='mt-6 flex flex-col items-center gap-4 sm:flex-row'>
           <Button onClick={() => onCreateOrder()}>Заказать</Button>
