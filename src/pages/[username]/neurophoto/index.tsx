@@ -26,7 +26,9 @@ export default function LandingPage() {
     switch (username) {
       case 'neuro_sage':
         neuroPhoto = neuroPhotoNeuroCoder
-        setAutorImageUrl('/images/miniapp/neuro_sage/neurophoto/1.jpg')
+        setAutorImageUrl(
+          'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/miniapp/01.jpg'
+        )
         setUserId('144022504')
         break
       // case 'muse_nataly':
@@ -37,7 +39,9 @@ export default function LandingPage() {
       //   break
       case 'playom':
         neuroPhoto = neuroPhotoPlayom
-        setAutorImageUrl('/images/miniapp/playom/neurophoto/1.jpg')
+        setAutorImageUrl(
+          'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/playom/leelachakra.JPG'
+        )
         setUserId('435572800')
         break
       default:
