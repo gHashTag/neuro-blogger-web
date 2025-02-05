@@ -109,7 +109,7 @@ export default function MiniApp() {
   const currentLevel =
     updateLevel > questCount
       ? { title_ru: 'ВСЕ УРОВНИ ПРОЙДЕНЫ', title_en: 'ALL LEVELS COMPLETED' }
-      : levels[Number(updateLevel)]
+      : levels[Number(updateLevel + 1)]
 
   if (!currentLevel) {
     return (
