@@ -40,7 +40,7 @@ export default function LandingPage() {
     const config = {
       neuro_sage: {
         photos: neuroPhotoNeuroCoder,
-        autorImageUrl: `${url}/neuro_sage/miniapp/01.jpg`,
+        autorImageUrl: `${url}/neuro_sage/miniapp/quest/0.jpg`,
         userId: '144022504',
         title: 'НейроФото',
         subTitle: '',
