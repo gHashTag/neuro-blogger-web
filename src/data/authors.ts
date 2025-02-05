@@ -47,7 +47,7 @@ export const metaMuseAutor = {
   bonusDescription:
     'PDF-книга «10 способов заработка на текстовых и графических нейросетях»',
   imageUrl:
-    'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/meta_muse/meta_muse.jpeg',
+    'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/muse_nataly/muse_nataly.jpeg',
   description:
     'HI-TECH Influencer, блогер, эксперт по автоматизации, хозяйка титанового производства (8 лет), ментор собственников бизнеса и международный спикер. Full Stack разработчик с более чем 10-летним опытом. Автор первого курса по React Native и AWS Amplify в русскоязычном интернете. Член программы AWS Community Builders от Amazon. Основатель нескольких успешных IT-проектов.',
   achievements: [
