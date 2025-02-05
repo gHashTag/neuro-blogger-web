@@ -1,3 +1,4 @@
+'use client'
 import TelegramCard from '@/components/neuroblogger/TelegramCard'
 import { retrieveLaunchParams } from '@telegram-apps/sdk'
 import { useState, useEffect } from 'react'
@@ -137,7 +138,7 @@ export default function MiniApp() {
       ? 'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/miniapp/quest/all_levels_completed.jpg'
       : `https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/miniapp/quest/${updateLevel}.jpg`
   console.log(imageSrc, 'imageSrc')
-  // let videoSrc = ''
+  let videoSrc = ''
   // console.log(videoSrc, 'videoSrc')
 
   // if (userLanguageCode === 'ru') {
@@ -157,7 +158,7 @@ export default function MiniApp() {
       <TelegramCard
         allLevelsCompleted={updateLevel > questCount}
         level={Number(updateLevel)}
-        // videoSrc={videoSrc}
+        videoSrc={videoSrc}
         title={
           userLanguageCode === 'ru'
             ? currentLevel.title_ru

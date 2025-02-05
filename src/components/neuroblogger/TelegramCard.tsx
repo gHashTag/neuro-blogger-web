@@ -61,12 +61,14 @@ export default function TelegramCard({
               className='pointer-events-none h-full w-full object-cover'
             />
           )}
-          <button
-            onClick={() => setMuted(!muted)}
-            className='absolute right-4 top-3 rounded-full bg-gray-800 bg-opacity-50 p-2'
-          >
-            {muted ? <FaVolumeMute size={24} /> : <FaVolumeUp size={24} />}
-          </button>
+          {videoSrc && (
+            <button
+              onClick={() => setMuted(!muted)}
+              className='absolute right-4 top-3 rounded-full bg-gray-800 bg-opacity-50 p-2'
+            >
+              {muted ? <FaVolumeMute size={24} /> : <FaVolumeUp size={24} />}
+            </button>
+          )}
         </div>
         <LevelBadge level={level} is_ru={is_ru} />
       </div>

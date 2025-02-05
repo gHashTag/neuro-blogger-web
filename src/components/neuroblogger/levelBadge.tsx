@@ -1,3 +1,4 @@
+import React from 'react'
 interface LevelBadgeProps {
   level: number
   is_ru: boolean
