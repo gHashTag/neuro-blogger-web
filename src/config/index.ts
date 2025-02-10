@@ -1,3 +1,6 @@
+import dotenv from 'dotenv'
+dotenv.config()
+
 export const isDev = process.env.NEXT_PUBLIC_NODE_ENV === 'development'
 
 export const NEXT_PUBLIC_SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -28,13 +31,22 @@ export const NEXT_PUBLIC_100MS = process.env.NEXT_PUBLIC_100MS
 export const NEXT_PUBLIC_AGENT_ID = process.env.NEXT_PUBLIC_AGENT_ID
 export const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY
 
+export const NEXT_PUBLIC_BOT_TOKEN_1 = process.env.NEXT_PUBLIC_BOT_TOKEN_1
+export const NEXT_PUBLIC_BOT_TOKEN_2 = process.env.NEXT_PUBLIC_BOT_TOKEN_2
 // Определите объект для хранения токенов и их соответствующих имен
-const BOT_TOKENS_MAP: { [key: string]: string } = {
-  NEXT_PUBLIC_BOT_TOKEN_1: 'neuro_sage',
-  NEXT_PUBLIC_BOT_TOKEN_2: 'muse_nataly',
-}
+const BOT_TOKENS_MAP = [
+  {
+    value: NEXT_PUBLIC_BOT_TOKEN_1,
+    name: 'neuro_sage',
+    botName: 'neuro_blogger_bot',
+  },
+  {
+    value: NEXT_PUBLIC_BOT_TOKEN_2,
+    name: 'muse_nataly',
+    botName: 'MetaMuse_Manifest_bot',
+  },
+]
 
-// Выберите токены в зависимости от окружения
 const BOT_TOKENS_PROD = [
   process.env.NEXT_PUBLIC_BOT_TOKEN_1,
   process.env.NEXT_PUBLIC_BOT_TOKEN_2,
@@ -47,15 +59,20 @@ const BOT_TOKENS_TEST = [
 export const BOT_TOKENS = isDev ? BOT_TOKENS_TEST : BOT_TOKENS_PROD
 // Функция для получения имени аватара по токену
 export function getAvatarName(token: string): string {
-  console.log('getAvatarName')
-  const tokenKey = Object.keys(BOT_TOKENS_MAP).find(
-    key => process.env[key] === token
-  )
-  console.log(process.env, 'process.env')
-  console.log(tokenKey, 'tokenKey')
-  return tokenKey ? BOT_TOKENS_MAP[tokenKey] : 'neuro_sage'
+  const tokenEntry = BOT_TOKENS_MAP.find(entry => {
+    return entry.value === token
+  })
+
+  return tokenEntry ? tokenEntry.name : 'neuro_sage'
 }
 
+export const getBotNameByToken = (token: string): string | undefined => {
+  const tokenEntry = BOT_TOKENS_MAP.find(entry => {
+    return entry.value === token
+  })
+
+  return tokenEntry ? tokenEntry.botName : 'neuro_blogger_bot'
+}
 // Экспортируйте токены по умолчанию
 export const DEFAULT_BOT_TOKEN = process.env.NEXT_PUBLIC_BOT_TOKEN_1
 export const PULSE_BOT_TOKEN = process.env.NEXT_PUBLIC_BOT_TOKEN_1

@@ -77,6 +77,7 @@ export default function MiniApp() {
   const [userLanguageCode, setUserLanguageCode] = useState<string>('ru')
   const [userId, setUserId] = useState<string>('')
   const [avatar, setAvatar] = useState<string>('')
+  const [botLink, setBotLink] = useState<string>('')
 
   const [updateLevel, setUpdateLevel] = useState<number>(0)
 
@@ -93,13 +94,17 @@ export default function MiniApp() {
           const userId = initData?.user?.id?.toString()
 
           if (userId) {
-            const { count, avatar } = await getReferalsCountAndUserData(userId)
+            const { count, avatar, botName } =
+              await getReferalsCountAndUserData(userId)
 
             if (count) {
               setUpdateLevel(count)
             }
             if (avatar) {
               setAvatar(avatar)
+            }
+            if (botName) {
+              setBotLink(botName)
             }
             setUserId(userId)
           }
@@ -135,10 +140,15 @@ export default function MiniApp() {
     )
   }
 
-  const link = `https://t.me/neuro_blogger_bot?start=${userId}`
+  const link = `https://t.me/${botLink}?start=${userId}`
 
   const url =
     'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars'
+
+  if (!avatar) {
+    console.log('!avatar')
+    return
+  }
   const imageSrc =
     updateLevel > questCount
       ? `${url}/${avatar}/miniapp/quest/all_levels_completed.jpg`
@@ -146,35 +156,33 @@ export default function MiniApp() {
 
   let videoSrc = ''
 
-  if (userLanguageCode === 'ru') {
-    videoSrc =
-      updateLevel > questCount
-        ? `${url}/${avatar}/miniapp/video_ru/${updateLevel}.mp4`
-        : `${url}/${avatar}/miniapp/video_ru/all_levels_completed.mp4`
-  } else {
-    videoSrc =
-      updateLevel > questCount
-        ? `${url}/${avatar}/miniapp/video_en/${updateLevel}.mp4`
-        : `${url}/${avatar}/miniapp/video_en/all_levels_completed.mp4`
-  }
+  // if (userLanguageCode === 'ru' && avatar) {
+  //   videoSrc =
+  //     updateLevel > questCount
+  //       ? `${url}/${avatar}/miniapp/video_ru/${updateLevel}.mp4`
+  //       : `${url}/${avatar}/miniapp/video_ru/all_levels_completed.mp4`
+  // } else {
+  //   videoSrc =
+  //     updateLevel > questCount
+  //       ? `${url}/${avatar}/miniapp/video_en/${updateLevel}.mp4`
+  //       : `${url}/${avatar}/miniapp/video_en/all_levels_completed.mp4`
+  // }
 
   console.log(imageSrc, 'imageSrc')
   console.log(videoSrc, 'videoSrc')
   return (
-    <div>
-      <TelegramCard
-        allLevelsCompleted={updateLevel > questCount}
-        level={Number(updateLevel)}
-        videoSrc={videoSrc}
-        title={
-          userLanguageCode === 'ru'
-            ? currentLevel.title_ru
-            : currentLevel.title_en
-        }
-        is_ru={userLanguageCode === 'ru'}
-        link={link}
-        imageSrc={imageSrc}
-      />
-    </div>
+    <TelegramCard
+      allLevelsCompleted={updateLevel > questCount}
+      level={Number(updateLevel)}
+      videoSrc={videoSrc}
+      title={
+        userLanguageCode === 'ru'
+          ? currentLevel.title_ru
+          : currentLevel.title_en
+      }
+      is_ru={userLanguageCode === 'ru'}
+      link={link}
+      imageSrc={imageSrc}
+    />
   )
 }
