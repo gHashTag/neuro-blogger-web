@@ -77,8 +77,7 @@ export default function MiniApp() {
   const [userLanguageCode, setUserLanguageCode] = useState<string>('ru')
   const [userId, setUserId] = useState<string>('')
   const [avatar, setAvatar] = useState<string>('')
-  const [botLink, setBotLink] = useState<string>('')
-
+  const [botName, setBotName] = useState<string>('')
   const [updateLevel, setUpdateLevel] = useState<number>(0)
 
   const questCount = 11
@@ -104,7 +103,7 @@ export default function MiniApp() {
               setAvatar(avatar)
             }
             if (botName) {
-              setBotLink(botName)
+              setBotName(botName)
             }
             setUserId(userId)
           }
@@ -140,7 +139,7 @@ export default function MiniApp() {
     )
   }
 
-  const link = `https://t.me/${botLink}?start=${userId}`
+  const link = `https://t.me/${botName}?start=${userId}`
 
   const url =
     'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars'

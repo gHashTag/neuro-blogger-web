@@ -51,17 +51,14 @@ export const getReferalsCountAndUserData = async (
         botName: '',
       }
     }
-    const botName = getBotNameByToken(userData.token)
-    if (!botName) {
-      throw new Error(`!botName}`)
-    }
+
     return {
       count: data?.length || 0,
       subscription: userData.subscription || 'stars',
       userData: userData as UserType,
       isExist: true,
       avatar,
-      botName,
+      botName: userData.bot_name,
     }
   } catch (error) {
     console.error('Ошибка в getReferalsCountAndUserData:', error)
