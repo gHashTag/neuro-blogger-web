@@ -1,4 +1,4 @@
-export const isDev = process.env.NEXT_PUBLIC_ENV === 'development'
+export const isDev = process.env.NODE_ENV === 'development'
 
 export const NEXT_PUBLIC_SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
 export const NEXT_PUBLIC_SUPABASE_ANON_KEY =
@@ -27,3 +27,43 @@ export const NEXT_PUBLIC_SENTRY_DSN = process.env.NEXT_PUBLIC_SENTRY_DSN
 export const NEXT_PUBLIC_100MS = process.env.NEXT_PUBLIC_100MS
 export const NEXT_PUBLIC_AGENT_ID = process.env.NEXT_PUBLIC_AGENT_ID
 export const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY
+
+if (!process.env.BOT_TOKEN_1) throw new Error('BOT_TOKEN_1 is not set')
+if (!process.env.BOT_TOKEN_2) throw new Error('BOT_TOKEN_2 is not set')
+if (!process.env.BOT_TOKEN_TEST_1)
+  throw new Error('BOT_TOKEN_TEST_1 is not set')
+if (!process.env.BOT_TOKEN_TEST_2)
+  throw new Error('BOT_TOKEN_TEST_2 is not set')
+
+// Определите объект для хранения токенов и их соответствующих имен
+const BOT_TOKENS_MAP: Record<string, string> = {
+  BOT_TOKEN_1: 'neuro_sage',
+  BOT_TOKEN_2: 'muse_nataly',
+}
+
+// Проверьте наличие всех токенов
+Object.keys(BOT_TOKENS_MAP).forEach(key => {
+  if (!process.env[key]) {
+    throw new Error(`${key} is not set`)
+  }
+})
+
+// Выберите токены в зависимости от окружения
+const BOT_TOKENS_PROD = [process.env.BOT_TOKEN_1, process.env.BOT_TOKEN_2]
+const BOT_TOKENS_TEST = [
+  process.env.BOT_TOKEN_TEST_1,
+  process.env.BOT_TOKEN_TEST_2,
+]
+
+export const BOT_TOKENS = isDev ? BOT_TOKENS_TEST : BOT_TOKENS_PROD
+// Функция для получения имени аватара по токену
+export function getAvatarName(token: string): string {
+  const tokenKey = Object.keys(BOT_TOKENS_MAP).find(
+    key => process.env[key] === token
+  )
+  return tokenKey ? BOT_TOKENS_MAP[tokenKey] : 'neuro_sage'
+}
+
+// Экспортируйте токены по умолчанию
+export const DEFAULT_BOT_TOKEN = process.env.BOT_TOKEN_1
+export const PULSE_BOT_TOKEN = process.env.BOT_TOKEN_1

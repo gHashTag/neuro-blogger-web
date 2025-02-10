@@ -76,6 +76,7 @@ export const levels: Record<number, Level> = {
 export default function MiniApp() {
   const [userLanguageCode, setUserLanguageCode] = useState<string>('ru')
   const [userId, setUserId] = useState<string>('')
+  const [avatar, setAvatar] = useState<string>('')
 
   const [updateLevel, setUpdateLevel] = useState<number>(0)
 
@@ -92,10 +93,13 @@ export default function MiniApp() {
           const userId = initData?.user?.id?.toString()
 
           if (userId) {
-            const { count } = await getReferalsCountAndUserData(userId)
+            const { count, avatar } = await getReferalsCountAndUserData(userId)
 
             if (count) {
               setUpdateLevel(count)
+            }
+            if (avatar) {
+              setAvatar(avatar)
             }
             setUserId(userId)
           }
@@ -133,26 +137,29 @@ export default function MiniApp() {
 
   const link = `https://t.me/neuro_blogger_bot?start=${userId}`
 
+  const url =
+    'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars'
   const imageSrc =
     updateLevel > questCount
-      ? 'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/miniapp/quest/all_levels_completed.jpg'
-      : `https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/miniapp/quest/${updateLevel}.jpg`
-  console.log(imageSrc, 'imageSrc')
+      ? `${url}/${avatar}/miniapp/quest/all_levels_completed.jpg`
+      : `${url}/${avatar}/miniapp/quest/${updateLevel}.jpg`
+
   let videoSrc = ''
-  // console.log(videoSrc, 'videoSrc')
 
-  // if (userLanguageCode === 'ru') {
-  //   videoSrc =
-  //     updateLevel > questCount
-  //       ? 'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/miniapp/all_levels_completed.mp4'
-  //       : `/images/miniapp/neuro_sage/video_ru/${updateLevel}.mp4`
-  // } else {
-  //   videoSrc =
-  //     updateLevel > questCount
-  //       ? 'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/miniapp/all_levels_completed.mp4'
-  //       : `/images/miniapp/neuro_sage/video_en/${updateLevel}.mp4`
-  // }
+  if (userLanguageCode === 'ru') {
+    videoSrc =
+      updateLevel > questCount
+        ? `${url}/${avatar}/miniapp/video_ru/${updateLevel}.mp4`
+        : `${url}/${avatar}/miniapp/video_ru/all_levels_completed.mp4`
+  } else {
+    videoSrc =
+      updateLevel > questCount
+        ? `${url}/${avatar}/miniapp/video_en/${updateLevel}.mp4`
+        : `${url}/${avatar}/miniapp/video_en/all_levels_completed.mp4`
+  }
 
+  console.log(imageSrc, 'imageSrc')
+  console.log(videoSrc, 'videoSrc')
   return (
     <div>
       <TelegramCard

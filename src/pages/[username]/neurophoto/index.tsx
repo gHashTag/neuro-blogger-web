@@ -43,7 +43,7 @@ export default function LandingPage() {
         autorImageUrl: `${url}/neuro_sage/miniapp/quest/0.jpg`,
         userId: '144022504',
         title: 'НейроФото',
-        subTitle: 'Нейрофото для блога в боте',
+        subTitle: 'Нейрофотосессия',
         subDescription:
           'Представь, как твои фотографии превращаются в стильные и современные произведения искусства, подчеркивая твою индивидуальность и выделяя из толпы.',
         content: contentDefault,
