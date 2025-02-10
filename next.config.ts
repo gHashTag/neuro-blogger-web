@@ -1,8 +1,4 @@
 /** @type {import('next').NextConfig} */
-
-import getConfig from 'next/config'
-
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   async headers() {
     return [
