@@ -29,7 +29,7 @@ export const NEXT_PUBLIC_AGENT_ID = process.env.NEXT_PUBLIC_AGENT_ID
 export const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY
 
 // Определите объект для хранения токенов и их соответствующих имен
-const BOT_TOKENS_MAP: Record<string, string> = {
+const BOT_TOKENS_MAP: { [key: string]: string } = {
   NEXT_PUBLIC_BOT_TOKEN_1: 'neuro_sage',
   NEXT_PUBLIC_BOT_TOKEN_2: 'muse_nataly',
 }
@@ -47,9 +47,11 @@ const BOT_TOKENS_TEST = [
 export const BOT_TOKENS = isDev ? BOT_TOKENS_TEST : BOT_TOKENS_PROD
 // Функция для получения имени аватара по токену
 export function getAvatarName(token: string): string {
+  console.log('getAvatarName')
   const tokenKey = Object.keys(BOT_TOKENS_MAP).find(
     key => process.env[key] === token
   )
+  console.log(process.env, 'process.env')
   console.log(tokenKey, 'tokenKey')
   return tokenKey ? BOT_TOKENS_MAP[tokenKey] : 'neuro_sage'
 }
