@@ -50,6 +50,7 @@ export function getAvatarName(token: string): string {
   const tokenKey = Object.keys(BOT_TOKENS_MAP).find(
     key => process.env[key] === token
   )
+  console.log(tokenKey, 'tokenKey')
   return tokenKey ? BOT_TOKENS_MAP[tokenKey] : 'neuro_sage'
 }
 

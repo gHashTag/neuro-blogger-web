@@ -30,7 +30,10 @@ export const getReferalsCountAndUserData = async (
       }
     }
 
+    console.log(userData, 'userData')
+
     const avatar = getAvatarName(userData.token)
+    console.log(avatar, 'avatar')
 
     // Теперь ищем рефералов по UUID
     const { data, error } = await supabase
