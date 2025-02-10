@@ -1,6 +1,5 @@
 import { Subscription, UserType } from '@/interfaces/supabase.interface'
 import { supabase } from '.'
-import { getAvatarName, getBotNameByToken } from '@/config'
 
 export const getReferalsCountAndUserData = async (
   telegram_id: string
@@ -9,7 +8,6 @@ export const getReferalsCountAndUserData = async (
   subscription: Subscription
   userData: UserType | null
   isExist: boolean
-  avatar: string
   botName: string
 }> => {
   try {
@@ -27,12 +25,9 @@ export const getReferalsCountAndUserData = async (
         subscription: 'stars',
         userData: null,
         isExist: false,
-        avatar: '',
         botName: '',
       }
     }
-
-    const avatar = getAvatarName(userData.token)
 
     // Теперь ищем рефералов по UUID
     const { data, error } = await supabase
@@ -47,7 +42,6 @@ export const getReferalsCountAndUserData = async (
         subscription: 'stars',
         userData: null,
         isExist: false,
-        avatar,
         botName: '',
       }
     }
@@ -57,7 +51,6 @@ export const getReferalsCountAndUserData = async (
       subscription: userData.subscription || 'stars',
       userData: userData as UserType,
       isExist: true,
-      avatar,
       botName: userData.bot_name,
     }
   } catch (error) {
@@ -67,7 +60,6 @@ export const getReferalsCountAndUserData = async (
       subscription: 'stars',
       userData: null,
       isExist: false,
-      avatar: '',
       botName: '',
     }
   }

@@ -76,7 +76,6 @@ export const levels: Record<number, Level> = {
 export default function MiniApp() {
   const [userLanguageCode, setUserLanguageCode] = useState<string>('ru')
   const [userId, setUserId] = useState<string>('')
-  const [avatar, setAvatar] = useState<string>('')
   const [botName, setBotName] = useState<string>('')
   const [updateLevel, setUpdateLevel] = useState<number>(0)
 
@@ -93,15 +92,12 @@ export default function MiniApp() {
           const userId = initData?.user?.id?.toString()
 
           if (userId) {
-            const { count, avatar, botName } =
-              await getReferalsCountAndUserData(userId)
+            const { count, botName } = await getReferalsCountAndUserData(userId)
 
             if (count) {
               setUpdateLevel(count)
             }
-            if (avatar) {
-              setAvatar(avatar)
-            }
+
             if (botName) {
               setBotName(botName)
             }
@@ -144,14 +140,14 @@ export default function MiniApp() {
   const url =
     'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars'
 
-  if (!avatar) {
-    console.log('!avatar')
+  if (!botName) {
+    console.log('!botName')
     return
   }
   const imageSrc =
     updateLevel > questCount
-      ? `${url}/${avatar}/miniapp/quest/all_levels_completed.jpg`
-      : `${url}/${avatar}/miniapp/quest/${updateLevel}.jpg`
+      ? `${url}/${botName}/miniapp/quest/all_levels_completed.jpg`
+      : `${url}/${botName}/miniapp/quest/${updateLevel}.jpg`
 
   let videoSrc = ''
 
