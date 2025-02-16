@@ -6,7 +6,7 @@ import {
   useQuery,
   useReactiveVar,
 } from '@apollo/client'
-import { createRoom } from '@/utils/edge-functions'
+import { createRoom } from '@/services/createRoom'
 import {
   DELETE_ROOM_MUTATION,
   GET_ROOMS_COLLECTIONS_BY_telegram_id_QUERY,

@@ -30,7 +30,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/interfaces/custom.d.ts"
+    "src/interfaces/custom.d.ts",
+    "next.config.mjs"
   ],
   "exclude": ["node_modules"]
 }

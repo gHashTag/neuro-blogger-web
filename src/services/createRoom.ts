@@ -1,5 +1,13 @@
-import { headers } from './headers'
+import { headers } from '@/helpers/headers'
 import { SITE_URL } from '@/config'
+
+if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
+  throw new Error('NEXT_PUBLIC_SUPABASE_URL is not set')
+}
+
+if (!process.env.NEXT_PUBLIC_FUNCTION_SECRET) {
+  throw new Error('NEXT_PUBLIC_FUNCTION_SECRET is not set')
+}
 
 type CreateRoomProps = {
   telegram_id: string
@@ -23,7 +31,7 @@ async function createRoom({
   language_code,
 }: CreateRoomProps) {
   const url = `${SITE_URL}/api/create-room`
-
+  console.log(url, 'createRoom: url')
   const newData = {
     telegram_id,
     username,
@@ -42,13 +50,14 @@ async function createRoom({
       },
       body: JSON.stringify(newData),
     })
+    console.log(response, 'createRoom: response')
 
     if (!response.ok) {
       throw new Error(`Error creating room: ${response.statusText}`)
     }
 
     const text = await response.text()
-
+    console.log(text, 'createRoom: text')
     try {
       const data = JSON.parse(text)
       return data

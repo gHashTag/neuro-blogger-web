@@ -6,9 +6,20 @@ import {
   useHMSActions,
   useHMSStore,
 } from '@100mslive/react-sdk'
-// import { HMSPrebuilt } from '@100mslive/roomkit-react'
+import dynamic from 'next/dynamic'
+
 import { usePassport } from '@/hooks/usePassport'
 import { useRouter } from 'next/router'
+
+const HMSPrebuilt = dynamic(
+  () =>
+    import('@100mslive/roomkit-react').then(mod => ({
+      default: mod.HMSPrebuilt,
+    })),
+  {
+    ssr: false,
+  }
+)
 
 import { useUser } from '@/hooks/useUser'
 import { captureExceptionSentry } from '@/utils/sentry'
@@ -92,11 +103,10 @@ const Rooms = () => {
   return (
     <Layout loading={loading || passportLoading}>
       {isPassport && (
-        // <HMSPrebuilt
-        //   roomCode={roomCode}
-        //   options={{ userName: getUserName() }}
-        // />
-        <div></div>
+        <HMSPrebuilt
+          roomCode={roomCode}
+          options={{ userName: getUserName() }}
+        />
       )}
     </Layout>
   )
