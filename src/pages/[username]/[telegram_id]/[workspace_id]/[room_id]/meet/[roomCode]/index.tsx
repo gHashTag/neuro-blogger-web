@@ -1,5 +1,5 @@
 'use client'
-// @ts-nocheck
+
 import { useState, useEffect } from 'react'
 import Layout from '@/components/layout'
 import {
@@ -7,17 +7,9 @@ import {
   useHMSActions,
   useHMSStore,
 } from '@100mslive/react-sdk'
-import dynamic from 'next/dynamic'
-
+import { HMSPrebuilt } from '@100mslive/roomkit-react'
 import { usePassport } from '@/hooks/usePassport'
 import { useRouter } from 'next/router'
-
-const HMSPrebuilt = dynamic(
-  () => import('@100mslive/roomkit-react').then(mod => mod.HMSPrebuilt),
-  {
-    ssr: false,
-  }
-)
 
 import { useUser } from '@/hooks/useUser'
 import { captureExceptionSentry } from '@/utils/sentry'
