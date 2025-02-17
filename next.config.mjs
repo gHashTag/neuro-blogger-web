@@ -3,7 +3,7 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/api/create-user',
+        source: '/api/:path*',
         headers: [
           {
             key: 'Access-Control-Allow-Origin',
@@ -24,7 +24,6 @@ const nextConfig = {
   reactStrictMode: true,
   output: 'standalone',
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
