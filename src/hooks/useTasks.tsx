@@ -434,7 +434,6 @@ const useTasks = (): UseTasksReturn => {
                 {row.getValue('title')}
               </span>
               {row.original.node.label && (
-                // @ts-ignore
                 <Badge variant='outline'>{row.original.node.label}</Badge>
               )}
             </div>

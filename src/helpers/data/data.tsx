@@ -7,7 +7,6 @@ import {
   CrossCircledIcon,
   QuestionMarkCircledIcon,
   StopwatchIcon,
-  // @ts-ignore
 } from '@radix-ui/react-icons'
 
 export const labels = [

@@ -1,6 +1,6 @@
 export function transliterate(word: string): string {
-  var A: { [key: string]: string } = {}
-  var result = ''
+  const A: { [key: string]: string } = {}
+  let result = ''
 
   A['Ё'] = 'YO'
   A['Й'] = 'I'
@@ -69,8 +69,8 @@ export function transliterate(word: string): string {
   A['б'] = 'b'
   A['ю'] = 'yu'
 
-  for (var i = 0; i < word.length; i++) {
-    var c = word.charAt(i)
+  for (let i = 0; i < word.length; i++) {
+    const c = word.charAt(i)
 
     result += A[c] || c
   }

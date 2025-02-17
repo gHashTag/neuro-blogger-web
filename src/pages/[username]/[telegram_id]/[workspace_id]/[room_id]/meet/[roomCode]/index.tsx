@@ -6,6 +6,7 @@ import {
   selectIsConnectedToRoom,
   useHMSActions,
   useHMSStore,
+  // @ts-ignore
 } from '@100mslive/react-sdk'
 import dynamic from 'next/dynamic'
 import { usePassport } from '@/hooks/usePassport'

@@ -4,6 +4,7 @@ import {
   selectIsConnectedToRoom,
   useHMSActions,
   useHMSStore,
+  // @ts-ignore
 } from '@100mslive/react-sdk'
 
 import {

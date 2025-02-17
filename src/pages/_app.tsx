@@ -3,6 +3,7 @@ import '@/styles/globals.css'
 import { useEffect, useState } from 'react'
 import type { AppProps } from 'next/app'
 import { HeroUIProvider } from '@heroui/react'
+// @ts-ignore
 import { HMSRoomProvider } from '@100mslive/react-sdk'
 import { EnvProvider } from '@/env/provider'
 import { TonConnectUIProvider } from '@tonconnect/ui-react'

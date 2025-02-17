@@ -106,7 +106,7 @@ export function useSupabase() {
 
   const getAllAssets = async () => {
     try {
-      let { data, error } = await supabase.from('room_assets').select('*')
+      const { data, error } = await supabase.from('room_assets').select('*')
       if (error) console.error('Error fetching assets:', error)
 
       data && setAssets(data)
@@ -117,7 +117,7 @@ export function useSupabase() {
 
   const getAssetById = async (recording_id: string) => {
     try {
-      let { data, error } = await supabase
+      const { data, error } = await supabase
         .from('room_assets')
         .select('*')
         .eq('recording_id', recording_id)
@@ -131,7 +131,7 @@ export function useSupabase() {
 
   const getTaskById = async (id: number) => {
     try {
-      let { data, error } = await supabase
+      const { data, error } = await supabase
         .from('tasks')
         .select('*')
         .eq('id', id)

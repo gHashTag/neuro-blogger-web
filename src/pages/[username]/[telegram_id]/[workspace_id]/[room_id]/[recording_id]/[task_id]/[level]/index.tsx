@@ -149,7 +149,7 @@ export default function MiniApp() {
       ? `${url}/${botName}/miniapp/quest/all_levels_completed.jpg`
       : `${url}/${botName}/miniapp/quest/${updateLevel}.jpg`
 
-  let videoSrc = ''
+  const videoSrc = ''
 
   // if (userLanguageCode === 'ru' && avatar) {
   //   videoSrc =

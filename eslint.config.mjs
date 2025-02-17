@@ -1,35 +1,17 @@
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
-import { FlatCompat } from '@eslint/eslintrc'
+import globals from 'globals'
+import pluginJs from '@eslint/js'
+import tseslint from 'typescript-eslint'
+import pluginReact from 'eslint-plugin-react'
+import pluginNext from 'eslint-plugin-next'
+import pluginTailwindcss from 'eslint-plugin-tailwindcss'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-})
-
-const eslintConfig = [
-  ...compat.extends('next/core-web-vitals', 'next/typescript'),
-  {
-    rules: {
-      '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/no-unused-vars': 'warn',
-      'prefer-const': 'warn',
-      '@typescript-eslint/no-unused-expressions': 'warn',
-      'react-hooks/exhaustive-deps': 'warn',
-      '@typescript-eslint/ban-ts-comment': 'warn',
-      'react/no-unescaped-entities': 'warn',
-      'no-var': 'error',
-      'no-console': 'warn',
-      'no-undef': 'error',
-      '@next/next/no-img-element': 'warn',
-      'jsx-a11y/alt-text': 'warn',
-      '@typescript-eslint/no-empty-interface': 'warn',
-      '@typescript-eslint/no-empty-object-type': 'warn',
-      '@typescript-eslint/no-unsafe-function-type': 'warn',
-    },
-  },
+/** @type {import('eslint').Linter.Config[]} */
+export default [
+  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
+  { languageOptions: { globals: globals.browser } },
+  pluginJs.configs.recommended,
+  ...tseslint.configs.recommended,
+  pluginReact.configs.flat.recommended,
+  pluginNext.configs.flat.recommended,
+  pluginTailwindcss.configs.recommended,
 ]
-
-export default eslintConfig
