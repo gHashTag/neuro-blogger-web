@@ -1,35 +1,39 @@
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import js from '@eslint/js'
 import { FlatCompat } from '@eslint/eslintrc'
+import { fixupConfigRules } from '@eslint/compat'
 
 const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-
+const __dirname = path.dirname(__filename)
 const compat = new FlatCompat({
   baseDirectory: __dirname,
+  recommendedConfig: js.configs.recommended,
+  allConfig: js.configs.all,
 })
 
 const eslintConfig = [
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
   {
     rules: {
-      '@typescript-eslint/no-explicit-any': 'warn', // Предупреждение вместо отключения
-      '@typescript-eslint/no-unused-vars': 'warn', // Предупреждение вместо отключения
-      'prefer-const': 'warn', // Предупреждение вместо отключения
-      '@typescript-eslint/no-unused-expressions': 'warn', // Предупреждение вместо отключения
-      'react-hooks/exhaustive-deps': 'warn', // Предупреждение вместо отключения
-      '@typescript-eslint/ban-ts-comment': 'warn', // Предупреждение вместо отключения
-      'react/no-unescaped-entities': 'warn', // Предупреждение вместо отключения
-      'no-var': 'error', // Ошибка вместо отключения
-      'no-console': 'warn', // Предупреждение вместо отключения
-      'no-undef': 'error', // Ошибка вместо отключения
-      '@next/next/no-img-element': 'warn', // Предупреждение вместо отключения
-      'jsx-a11y/alt-text': 'warn', // Предупреждение вместо отключения
-      '@typescript-eslint/no-empty-interface': 'warn', // Предупреждение вместо отключения
-      '@typescript-eslint/no-empty-object-type': 'warn', // Предупреждение вместо отключения
-      '@typescript-eslint/no-unsafe-function-type': 'warn', // Предупреждение вместо отключения
+      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-unused-vars': 'warn',
+      'prefer-const': 'warn',
+      '@typescript-eslint/no-unused-expressions': 'warn',
+      'react-hooks/exhaustive-deps': 'warn',
+      '@typescript-eslint/ban-ts-comment': 'warn',
+      'react/no-unescaped-entities': 'warn',
+      'no-var': 'error',
+      'no-console': 'warn',
+      'no-undef': 'error',
+      semi: ['error', 'never'],
+      '@next/next/no-img-element': 'warn',
+      'jsx-a11y/alt-text': 'warn',
+      '@typescript-eslint/no-empty-interface': 'warn',
+      '@typescript-eslint/no-empty-object-type': 'warn',
+      '@typescript-eslint/no-unsafe-function-type': 'warn',
     },
   },
 ]
 
-export default eslintConfig
+export default fixupConfigRules(eslintConfig)

@@ -1,18 +1,19 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import Layout from '@/components/layout'
 import {
   selectIsConnectedToRoom,
   useHMSActions,
   useHMSStore,
 } from '@100mslive/react-sdk'
-import { HMSPrebuilt } from '@100mslive/roomkit-react'
+import dynamic from 'next/dynamic'
 import { usePassport } from '@/hooks/usePassport'
 import { useRouter } from 'next/router'
 
 import { useUser } from '@/hooks/useUser'
 import { captureExceptionSentry } from '@/utils/sentry'
+import Loader from '@/components/loader'
 
 type QueryType = {
   roomCode: string
@@ -21,6 +22,15 @@ type QueryType = {
   room_id: string
   telegram_id: string
 }
+const HMSPrebuilt = dynamic(
+  () =>
+    import('@100mslive/roomkit-react').then(mod => ({
+      default: mod.HMSPrebuilt,
+    })),
+  {
+    ssr: false,
+  }
+)
 
 const Rooms = () => {
   const router = useRouter()
@@ -31,17 +41,12 @@ const Rooms = () => {
   const isConnected = useHMSStore(selectIsConnectedToRoom)
   const [loading, setLoading] = useState(false)
   const [isPassport, setIsPassport] = useState(false)
+  const [userName, setUserName] = useState('')
   const hmsActions = useHMSActions()
   const { passportData, passportLoading } = usePassport({
     telegram_id,
     room_id,
   })
-  const getUserName = () => {
-    if (firstName) {
-      return `${firstName} ${lastName || ''}`
-    }
-    return ''
-  }
 
   useEffect(() => {
     if (passportData && passportData.length === 0) {
@@ -59,6 +64,13 @@ const Rooms = () => {
             const authToken = await hmsActions.getAuthTokenByRoomCode({
               roomCode,
             })
+            const getUserName = () => {
+              if (firstName) {
+                return `${firstName} ${lastName || ''}`
+              }
+              return ''
+            }
+            setUserName(getUserName())
             setToken(authToken)
             setLoading(false)
           } else {
@@ -93,10 +105,9 @@ const Rooms = () => {
   return (
     <Layout loading={loading || passportLoading}>
       {isPassport && (
-        <HMSPrebuilt
-          roomCode={roomCode as any}
-          options={{ userName: getUserName() }}
-        />
+        <Suspense fallback={<Loader />}>
+          <HMSPrebuilt roomCode={roomCode as any} options={{ userName }} />
+        </Suspense>
       )}
     </Layout>
   )

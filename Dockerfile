@@ -3,7 +3,7 @@ RUN apk add --no-cache libc6-compat git python3 make g++
 WORKDIR /app
 
 COPY package.json ./
-RUN  npm install --production
+RUN  npm install --omit=dev
 
 FROM node:20-alpine AS builder
 WORKDIR /app
