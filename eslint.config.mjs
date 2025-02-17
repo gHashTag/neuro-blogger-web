@@ -1,15 +1,12 @@
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
-import js from '@eslint/js'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
 import { FlatCompat } from '@eslint/eslintrc'
-import { fixupConfigRules } from '@eslint/compat'
 
 const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const __dirname = dirname(__filename)
+
 const compat = new FlatCompat({
   baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
 })
 
 const eslintConfig = [
@@ -26,7 +23,6 @@ const eslintConfig = [
       'no-var': 'error',
       'no-console': 'warn',
       'no-undef': 'error',
-      semi: ['error', 'never'],
       '@next/next/no-img-element': 'warn',
       'jsx-a11y/alt-text': 'warn',
       '@typescript-eslint/no-empty-interface': 'warn',
@@ -36,4 +32,4 @@ const eslintConfig = [
   },
 ]
 
-export default fixupConfigRules(eslintConfig)
+export default eslintConfig
