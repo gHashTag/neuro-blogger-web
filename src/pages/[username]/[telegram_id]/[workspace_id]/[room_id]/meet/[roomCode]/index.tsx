@@ -12,10 +12,7 @@ import { usePassport } from '@/hooks/usePassport'
 import { useRouter } from 'next/router'
 
 const HMSPrebuilt = dynamic(
-  () =>
-    import('@100mslive/roomkit-react').then(mod => ({
-      default: mod.HMSPrebuilt,
-    })),
+  () => import('@100mslive/roomkit-react').then(mod => mod.HMSPrebuilt),
   {
     ssr: false,
   }

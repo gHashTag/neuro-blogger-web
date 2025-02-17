@@ -29,6 +29,8 @@ export const AnimatedTooltipRooms = ({
     onClick(passport_id)
   }
 
+  console.log(assigneeItems, 'assigneeItems')
+
   return (
     <div
       style={{
