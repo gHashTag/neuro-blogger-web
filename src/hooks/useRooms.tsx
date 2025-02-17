@@ -72,6 +72,7 @@ const resolver: Resolver<FormValues> = async values => {
 }
 
 const useRooms = (): UseRoomsReturn => {
+  console.log('CASE: useRooms')
   const { createPassport } = usePassport({})
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
   const { register, control, handleSubmit, getValues, setValue, reset, watch } =
@@ -115,7 +116,7 @@ const useRooms = (): UseRoomsReturn => {
   let passportQuery = GET_ROOMS_COLLECTIONS_BY_WORKSPACE_ID_QUERY
 
   if (!room_id && !recording_id && !workspace_id) {
-    // console.log("rooms :::1");
+    console.log('rooms :::1')
     passportQuery = ROOMS_BY_ID_COLLECTION_QUERY
     queryVariables = {
       telegram_id,
@@ -123,7 +124,9 @@ const useRooms = (): UseRoomsReturn => {
   }
 
   if (!room_id && !recording_id && workspace_id) {
-    // console.log("rooms :::2");
+    console.log(
+      `rooms :::2 workspace_id: ${workspace_id}, telegram_id: ${telegram_id}`
+    )
     passportQuery = GET_ROOMS_COLLECTIONS_BY_WORKSPACE_ID_QUERY
     queryVariables = {
       telegram_id,
@@ -132,7 +135,7 @@ const useRooms = (): UseRoomsReturn => {
   }
 
   if (recording_id && !room_id && !workspace_id) {
-    // console.log("rooms :::3");
+    console.log('rooms :::3')
     passportQuery = GET_ROOMS_COLLECTIONS_BY_telegram_id_QUERY
     queryVariables = {
       telegram_id,
@@ -140,7 +143,7 @@ const useRooms = (): UseRoomsReturn => {
   }
 
   if (!recording_id && room_id && workspace_id) {
-    // console.log("rooms :::4");
+    console.log('rooms :::4')
     passportQuery = GET_ROOMS_COLLECTIONS_BY_WORKSPACE_ID_ROOM_ID_QUERY
     queryVariables = {
       telegram_id,
@@ -150,7 +153,7 @@ const useRooms = (): UseRoomsReturn => {
   }
 
   if (recording_id && room_id && workspace_id) {
-    // console.log("rooms :::5");
+    console.log('rooms :::5')
     passportQuery = GET_ROOMS_COLLECTIONS_BY_WORKSPACE_ID_ROOM_ID_QUERY
     queryVariables = {
       telegram_id,
@@ -168,6 +171,7 @@ const useRooms = (): UseRoomsReturn => {
     fetchPolicy: 'network-only',
     variables: queryVariables,
   })
+  console.log(roomsData, 'roomsData')
 
   const roomId = useReactiveVar(setRoomId)
 

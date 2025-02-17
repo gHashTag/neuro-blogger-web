@@ -24,7 +24,7 @@ const useUser = (): UserType => {
     console.log('Mocking user in development mode')
     localStorage.setItem('username', mockedUser.username)
     localStorage.setItem('telegram_id', mockedUser.telegram_id.toString())
-    localStorage.setItem('workspace_id', 'Fire')
+    // localStorage.setItem('workspace_id', 'Fire')
   }
 
   const username = localStorage.getItem('username') || ''
