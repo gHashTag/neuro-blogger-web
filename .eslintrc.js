@@ -11,8 +11,8 @@ module.exports = {
   plugins: ['@typescript-eslint', 'tailwindcss'],
   parser: '@typescript-eslint/parser',
   rules: {
-    '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-unused-vars': 'off',
+    // '@typescript-eslint/no-explicit-any': 'off',
+    // '@typescript-eslint/no-unused-vars': 'off',
     'selector-class-pattern': null,
     'tailwindcss/classnames-order': 'off',
     semi: 'error',
@@ -36,8 +36,8 @@ module.exports = {
       ],
       rules: {
         'tailwindcss/classnames-order': 'off',
-        '@typescript-eslint/no-explicit-any': 'off',
-        '@typescript-eslint/no-unused-vars': 'off',
+        // '@typescript-eslint/no-explicit-any': 'off',
+        // '@typescript-eslint/no-unused-vars': 'off',
         semi: 'error',
       },
     },

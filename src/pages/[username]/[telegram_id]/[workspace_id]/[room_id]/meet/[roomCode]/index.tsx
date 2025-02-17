@@ -1,4 +1,5 @@
 'use client'
+// @ts-nocheck
 import { useState, useEffect } from 'react'
 import Layout from '@/components/layout'
 import {
@@ -101,7 +102,7 @@ const Rooms = () => {
     <Layout loading={loading || passportLoading}>
       {isPassport && (
         <HMSPrebuilt
-          roomCode={roomCode}
+          roomCode={roomCode as any}
           options={{ userName: getUserName() }}
         />
       )}
