@@ -148,10 +148,10 @@ const MeetsPage = () => {
     router.push(
       `/${username}/${telegram_id}/${workspace_id}/${room.node.room_id}`
     )
-    // router.push(`/${username}/${telegram_id}/${workspace_id}/${room.node.name}`);
+
     localStorage.setItem('room_id', room.node.room_id)
     setRoomId(room.node.room_id)
-    room.node.name && localStorage.setItem('room_name', room.node.name)
+    localStorage.setItem('room_name', room.node.name)
   }
 
   const goToMeet = ({ node }: Passport) => {

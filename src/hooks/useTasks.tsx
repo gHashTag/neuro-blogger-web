@@ -195,12 +195,15 @@ const useTasks = (): UseTasksReturn => {
     room_id?: string,
     recording_id?: string
   ) => {
+    console.log('CASE: onCreateNewTask', 'workspace_id:', workspace_id)
+    console.log('CASE: onCreateNewTask', 'room_id:', room_id)
+    console.log('CASE: onCreateNewTask', 'recording_id:', recording_id)
     setValue('title', '')
     setValue('description', '')
     setValue('label', '')
     setValue('is_public', false)
     setValue('cost', 0)
-    workspace_id && localStorage.setItem('workspace_id', workspace_id)
+    // workspace_id && localStorage.setItem('workspace_id', workspace_id)
     room_id && localStorage.setItem('room_id', room_id)
     recording_id && localStorage.setItem('recording_id', recording_id)
     onOpen()
@@ -431,7 +434,6 @@ const useTasks = (): UseTasksReturn => {
                 {row.getValue('title')}
               </span>
               {row.original.node.label && (
-                // @ts-ignore
                 <Badge variant='outline'>{row.original.node.label}</Badge>
               )}
             </div>

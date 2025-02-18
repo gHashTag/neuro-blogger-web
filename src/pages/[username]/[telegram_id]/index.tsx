@@ -33,12 +33,12 @@ export default function Office() {
   const router = useRouter()
 
   const { username, telegram_id, language_code } = useUser()
-  console.log(
-    username,
-    telegram_id,
-    language_code,
-    'username, telegram_id, language_code'
-  )
+  // console.log(
+  //   username,
+  //   telegram_id,
+  //   language_code,
+  //   'username, telegram_id, language_code'
+  // )
 
   const {
     workspacesLoading,
@@ -97,10 +97,12 @@ export default function Office() {
   }, [id_task, setOpenModalTaskId])
 
   const goToOffice = ({
+    id,
     type,
     workspace_id,
     workspace_name,
   }: {
+    id: string
     type: string
     workspace_id: string
     workspace_name: string
@@ -115,7 +117,7 @@ export default function Office() {
     }
 
     // Построение URL для навигации
-    const path = `/${username}/${telegram_id}/${workspace_id}`
+    const path = `/${username}/${telegram_id}/${id}`
     console.log(path, 'path')
     router.push(path)
 
@@ -153,8 +155,8 @@ export default function Office() {
         {!tasksLoading && (
           <CanvasRevealEffectDemo
             officeData={welcomeMenu || []}
-            onClick={(type, workspace_id, workspace_name) =>
-              goToOffice({ type, workspace_id, workspace_name })
+            onClick={(id, type, workspace_id, workspace_name) =>
+              goToOffice({ id, type, workspace_id, workspace_name })
             }
           />
         )}

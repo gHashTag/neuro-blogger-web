@@ -1,50 +1,11 @@
-'use server'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { getWorkspaceById, supabase } from '@/core/supabase/supabase'
 import { RoomNode } from '@/interfaces'
-import { headers } from '@/helpers/headers'
-
-// @ts-ignore
-import jwt from 'jsonwebtoken'
-
-import { v4 as uuidv4 } from 'uuid'
-import { isDev, NEXT_PUBLIC_100MS } from '@/config'
-import { transliterate } from '@/helpers/api/transliterate'
-import { createCodes } from './create-room-from-tg'
+import axios from 'axios'
+import { isDev, NEXT_PUBLIC_LOCAL_URL, ELESTIO_URL } from '@/config'
 
 type ResponseData = {
   rooms?: RoomNode
   message?: string
-}
-
-const createToken100ms = () => {
-  return new Promise((resolve, reject) => {
-    const { APP_ACCESS_KEY, APP_SECRET } = process.env
-    const payload = {
-      access_key: APP_ACCESS_KEY,
-      type: 'management',
-      version: 2,
-      iat: Math.floor(Date.now() / 1000),
-      nbf: Math.floor(Date.now() / 1000),
-    }
-
-    jwt.sign(
-      payload,
-      APP_SECRET,
-      {
-        algorithm: 'HS256',
-        expiresIn: '24h',
-        jwtid: uuidv4(),
-      },
-      (err: any, token: string) => {
-        if (err) {
-          reject(err)
-        } else {
-          resolve(token)
-        }
-      }
-    )
-  })
 }
 
 export default async function handler(
@@ -52,7 +13,12 @@ export default async function handler(
   res: NextApiResponse<ResponseData>
 ) {
   if (req.method === 'OPTIONS') {
-    return new Response('ok', { headers: { ...headers } })
+    res.setHeader('Allow', ['POST'])
+    return res.status(200).end()
+  }
+
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Method Not Allowed' })
   }
 
   try {
@@ -61,97 +27,44 @@ export default async function handler(
       name,
       type,
       workspace_id,
-      username,
       language_code,
       chat_id,
       token,
-    } = await req.body
+    } = req.body
 
-    const { data, error: userError } = await supabase
-      .from('users')
-      .select('*')
-      .eq('username', username)
-
-    // console.log(data, "data");
-    if (userError) {
-      throw new Error(`Error fetching user: ${userError.message}`)
+    const newData = {
+      name,
+      type,
+      telegram_id,
+      chat_id,
+      workspace_id,
+      token,
+      language_code,
     }
 
-    if (!data) {
-      throw new Error(`User not found: ${username}`)
-    }
+    console.log(newData, 'handler: newData')
 
-    const transliterateName = transliterate(name)
+    const url = `${!isDev ? NEXT_PUBLIC_LOCAL_URL : ELESTIO_URL}/room`
+    console.log(url, 'handler: url')
 
-    const createOrFetchRoom = async () => {
-      const roomData = {
-        name: `${transliterateName}:${String(uuidv4())}`,
-        description: workspace_id,
-        template_id:
-          type === 'audio-space'
-            ? '65e84b5148b3dd31b94ff005'
-            : '65efdfab48b3dd31b94ff0dc',
-        enabled: true,
-      }
-
-      const newToken = NEXT_PUBLIC_100MS
-
-      const roomResponse = await fetch('https://api.100ms.live/v2/rooms', {
-        method: 'POST',
-        body: JSON.stringify({ ...roomData }),
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${newToken}`,
-        },
-      })
-
-      if (!roomResponse.ok) {
-        throw new Error(`Failed to create room: ${roomResponse.statusText}`)
-      }
-      const newRoom = await roomResponse.json()
-      const id = newRoom.id
-      const codesResponse = await createCodes(id, newToken as string)
-      // console.log(codesResponse, "codesResponse");
-
-      if (!codesResponse?.ok) {
-        throw new Error(`Failed to create codes: ${codesResponse.statusText}`)
-      }
-      const codes = await codesResponse.json()
-
-      const rooms = {
-        ...newRoom,
-        codes,
-        type,
-        name,
-        workspace_id,
-        updated_at: new Date(),
-        telegram_id,
-        room_id: id,
-        language_code,
-        token,
-        chat_id,
-        username,
-        original_name: name,
-      }
-
-      delete rooms.id
-
-      return rooms
-    }
-
-    const rooms = await createOrFetchRoom()
-
-    const { error } = await supabase.from('rooms').insert({
-      ...rooms,
+    const response = await axios.post(url, newData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
     })
 
-    if (error) {
-      throw new Error(`Error saving to Supabase: ${error.message}`)
+    console.log(response.data, 'handler: response.data')
+
+    return res.status(200).json({ rooms: response.data })
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.error('Axios error:', error.response?.data || error.message)
+      return res.status(error.response?.status || 500).json({
+        message: error.response?.data?.message || 'Internal Server Error',
+      })
+    } else {
+      console.error('Unexpected error:', error)
+      return res.status(500).json({ message: 'Internal Server Error' })
     }
-    // @ts-ignore
-    return res.status(200).json({ rooms })
-  } catch (error: any) {
-    console.log('error', error)
-    return res.status(500).json({ message: error.message })
   }
 }

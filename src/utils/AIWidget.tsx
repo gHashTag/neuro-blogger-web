@@ -35,7 +35,7 @@ function AIWidget() {
       <p style={{ marginTop: '10px' }}>
         #### Terms and conditions
         <br />
-        By clicking "Agree," and each time I interact with this AI agent, I
+        By clicking Agree, and each time I interact with this AI agent, I
         consent to the recording, storage, and sharing of my communications with
         third-party service providers, and as described in the Privacy Policy.
         If you do not wish to have your conversations recorded, please refrain

@@ -54,7 +54,7 @@ const useWorkspace = (): UseWorkspaceReturn => {
 
   const myWorkspace = workspaceNode && workspaceNode
 
-  let welcomeMenu: WorkspaceArray = []
+  const welcomeMenu: WorkspaceArray = []
 
   if (myWorkspace) {
     welcomeMenu.push(myWorkspace)

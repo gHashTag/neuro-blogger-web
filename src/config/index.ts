@@ -76,3 +76,8 @@ export const getBotNameByToken = (token: string): string | undefined => {
 // Экспортируйте токены по умолчанию
 export const DEFAULT_BOT_TOKEN = process.env.NEXT_PUBLIC_BOT_TOKEN_1
 export const PULSE_BOT_TOKEN = process.env.NEXT_PUBLIC_BOT_TOKEN_1
+
+if (!process.env.NEXT_PUBLIC_ELESTIO_URL)
+  throw new Error('NEXT_PUBLIC_ELESTIO_URL is not defined')
+
+export const ELESTIO_URL = process.env.NEXT_PUBLIC_ELESTIO_URL

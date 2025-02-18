@@ -22,7 +22,12 @@ export function CanvasRevealEffectDemo({
   onClick,
 }: {
   officeData: any
-  onClick: (type: string, workspace_id: string, workspace_name: string) => void
+  onClick: (
+    id: string,
+    type: string,
+    workspace_id: string,
+    workspace_name: string
+  ) => void
 }) {
   const { language_code } = useUser()
 
@@ -35,6 +40,7 @@ export function CanvasRevealEffectDemo({
         {officeData.map(({ node }: any) => (
           <Card
             key={node.id}
+            id={node.id}
             workspace_id={node.workspace_id}
             type={node.type}
             title={getTitle(node.title, language_code || 'ru')}
@@ -56,6 +62,7 @@ export function CanvasRevealEffectDemo({
 
 const Card = ({
   title,
+  id,
   workspace_id,
   type,
   icon,
@@ -63,16 +70,22 @@ const Card = ({
   onClick,
 }: {
   title: string
+  id: string
   workspace_id: string
   type: string
   icon: React.ReactNode
   children?: React.ReactNode
-  onClick: (type: string, workspace_id: string, workspace_name: string) => void
+  onClick: (
+    id: string,
+    type: string,
+    workspace_id: string,
+    workspace_name: string
+  ) => void
 }) => {
   const [hovered, setHovered] = React.useState(false)
   return (
     <div
-      onClick={() => onClick(type, workspace_id, title)}
+      onClick={() => onClick(id, type, workspace_id, title)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className='group/canvas-card relative mx-auto flex h-[23rem] w-full max-w-sm items-center justify-center border border-black/[0.2] p-4 dark:border-white/[0.2]'

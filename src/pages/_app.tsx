@@ -3,6 +3,7 @@ import '@/styles/globals.css'
 import { useEffect, useState } from 'react'
 import type { AppProps } from 'next/app'
 import { HeroUIProvider } from '@heroui/react'
+// @ts-ignore
 import { HMSRoomProvider } from '@100mslive/react-sdk'
 import { EnvProvider } from '@/env/provider'
 import { TonConnectUIProvider } from '@tonconnect/ui-react'
@@ -13,8 +14,7 @@ import { Toaster } from '@/components/ui/toaster'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { setHeaderName } from '@/apollo/reactive-store'
 import { ThemeProvider } from '@/components/theme-provider'
-// import { Analytics } from "@vercel/analytics/react";
-// import { SpeedInsights } from "@vercel/speed-insights/next";
+
 import {
   ApolloClient,
   ApolloProvider,
