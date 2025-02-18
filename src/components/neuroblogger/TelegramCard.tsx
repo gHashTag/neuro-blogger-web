@@ -51,14 +51,13 @@ export default function TelegramCard({
             <Image
               src={imageSrc}
               alt='image'
+              height='800'
+              width='430'
               style={{
-                backgroundImage: `url(${imageSrc})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
                 objectFit: 'cover',
                 zIndex: -1,
               }}
-              className='pointer-events-none h-full w-full object-cover'
+              className='pointer-events-none object-cover'
             />
           )}
           {videoSrc && (

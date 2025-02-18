@@ -40,17 +40,17 @@ export default function LandingPage() {
     const config = {
       neuro_sage: {
         photos: neuroPhotoNeuroCoder,
-        autorImageUrl: `${url}/neuro_sage/miniapp/quest/0.jpg`,
+        autorImageUrl: `${url}/neuro_blogger_bot/miniapp/quest/0.jpg`,
         userId: '144022504',
         title: 'НейроФото',
-        subTitle: 'Нейрофото для блога в боте',
+        subTitle: 'Нейрофотосессия',
         subDescription:
           'Представь, как твои фотографии превращаются в стильные и современные произведения искусства, подчеркивая твою индивидуальность и выделяя из толпы.',
         content: contentDefault,
       },
       muse_nataly: {
         photos: metaMuseAutor,
-        autorImageUrl: `${url}/muse_nataly/muse_nataly.jpeg`,
+        autorImageUrl: `${url}/MetaMuse_Manifest_bot/muse_nataly.jpeg`,
         userId: '144022504',
         title: 'АВАТАР ИЗ ВЫСШЕГО Я',
         subTitle:

@@ -8,6 +8,7 @@ export const getReferalsCountAndUserData = async (
   subscription: Subscription
   userData: UserType | null
   isExist: boolean
+  botName: string
 }> => {
   try {
     // Сначала получаем UUID пользователя
@@ -24,6 +25,7 @@ export const getReferalsCountAndUserData = async (
         subscription: 'stars',
         userData: null,
         isExist: false,
+        botName: '',
       }
     }
 
@@ -40,6 +42,7 @@ export const getReferalsCountAndUserData = async (
         subscription: 'stars',
         userData: null,
         isExist: false,
+        botName: '',
       }
     }
 
@@ -48,6 +51,7 @@ export const getReferalsCountAndUserData = async (
       subscription: userData.subscription || 'stars',
       userData: userData as UserType,
       isExist: true,
+      botName: userData.bot_name,
     }
   } catch (error) {
     console.error('Ошибка в getReferalsCountAndUserData:', error)
@@ -56,6 +60,7 @@ export const getReferalsCountAndUserData = async (
       subscription: 'stars',
       userData: null,
       isExist: false,
+      botName: '',
     }
   }
 }

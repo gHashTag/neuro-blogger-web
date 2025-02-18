@@ -36,7 +36,7 @@ export const neuroCoderAutor: Author = {
     Основатель: 'Leela Chakra AI, NeuroCoder, NeuroBlogger',
   },
   neuroPhotoImageUrl:
-    'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_sage/miniapp/01.jpg',
+    'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/neuro_blogger_bot/miniapp/01.jpg',
 }
 
 export const metaMuseAutor = {
@@ -47,7 +47,7 @@ export const metaMuseAutor = {
   bonusDescription:
     'PDF-книга «10 способов заработка на текстовых и графических нейросетях»',
   imageUrl:
-    'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/muse_nataly/muse_nataly.jpeg',
+    'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/MetaMuse_Manifest_bot/muse_nataly.jpeg',
   description:
     'HI-TECH Influencer, блогер, эксперт по автоматизации, хозяйка титанового производства (8 лет), ментор собственников бизнеса и международный спикер. Full Stack разработчик с более чем 10-летним опытом. Автор первого курса по React Native и AWS Amplify в русскоязычном интернете. Член программы AWS Community Builders от Amazon. Основатель нескольких успешных IT-проектов.',
   achievements: [
@@ -99,7 +99,7 @@ export const ezavarykinAutor: Author = {
   experience: 'Первый бизнес в 10 классе, на сегодня 3 бизнес-проекта',
   bonusDescription: 'Автор множества философских текстов и цитат',
   imageUrl:
-    'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/E_Zavarykin/E_Zavarykin.jpg',
+    'https://yuukfqcsdhkyxegfwlcb.supabase.co/storage/v1/object/public/landingpage/avatars/ZavaraBot/E_Zavarykin.jpg',
   description:
     'Разработчик и спикер образовательных тренингов для подростков и молодёжи. Наставник для подростков, находящихся в сложных жизненных ситуациях. Стремился попасть в Книгу рекордов Гиннесса. ИИ Артист с одним аудиоальбомом, созданным совместно с ИИ.',
   achievements: ['Бизнес-наставник', 'Коуч', 'ИИ артист', 'Спикер с 2012 года'],
