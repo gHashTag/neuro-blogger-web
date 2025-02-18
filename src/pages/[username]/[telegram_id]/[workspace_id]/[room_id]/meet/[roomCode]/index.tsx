@@ -1,5 +1,3 @@
-'use client'
-
 import { useState, useEffect, Suspense } from 'react'
 import Layout from '@/components/layout'
 import {
@@ -7,7 +5,7 @@ import {
   useHMSActions,
   useHMSStore,
 } from '@100mslive/react-sdk'
-import dynamic from 'next/dynamic'
+import { HMSPrebuilt } from '@100mslive/roomkit-react'
 import { usePassport } from '@/hooks/usePassport'
 import { useRouter } from 'next/router'
 
@@ -22,13 +20,6 @@ type QueryType = {
   room_id: string
   telegram_id: string
 }
-
-const HMSPrebuilt = dynamic(
-  () => import('@100mslive/roomkit-react').then(mod => mod.HMSPrebuilt),
-  {
-    ssr: false,
-  }
-)
 
 const Rooms = () => {
   const router = useRouter()
