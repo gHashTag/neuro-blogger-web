@@ -6,7 +6,6 @@ import {
   selectIsConnectedToRoom,
   useHMSActions,
   useHMSStore,
-  // @ts-ignore
 } from '@100mslive/react-sdk'
 import dynamic from 'next/dynamic'
 import { usePassport } from '@/hooks/usePassport'
@@ -23,11 +22,9 @@ type QueryType = {
   room_id: string
   telegram_id: string
 }
+
 const HMSPrebuilt = dynamic(
-  () =>
-    import('@100mslive/roomkit-react').then(mod => ({
-      default: mod.HMSPrebuilt,
-    })),
+  () => import('@100mslive/roomkit-react').then(mod => mod.HMSPrebuilt),
   {
     ssr: false,
   }
