@@ -44,7 +44,7 @@ export default async function handler(
 
     console.log(newData, 'handler: newData')
 
-    const url = `${!isDev ? NEXT_PUBLIC_LOCAL_URL : ELESTIO_URL}/room`
+    const url = `${!isDev ? 'http://localhost:3000' : ELESTIO_URL}/room`
     console.log(url, 'handler: url')
 
     const response = await axios.post(url, newData, {

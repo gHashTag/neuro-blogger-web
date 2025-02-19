@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react'
 import type { AppProps } from 'next/app'
 import { HeroUIProvider } from '@heroui/react'
 // @ts-ignore
-import { HMSRoomProvider } from '@100mslive/react-sdk'
+// import { HMSRoomProvider } from '@100mslive/react-sdk'
+import { HuddleProvider, HuddleClient } from '@huddle01/react'
 import { EnvProvider } from '@/env/provider'
 import { TonConnectUIProvider } from '@tonconnect/ui-react'
 
@@ -154,6 +155,15 @@ export default function App({ Component, pageProps }: AppProps) {
     return <Spinner size='lg' />
   }
 
+  const huddleClient = new HuddleClient({
+    projectId: process.env.NEXT_PUBLIC_HUDDLE_API_KEY!,
+    options: {
+      activeSpeakers: {
+        size: 8,
+      },
+    },
+  })
+
   return (
     <main className='bg-background text-foreground dark'>
       <ErrorBoundary>
@@ -178,12 +188,12 @@ export default function App({ Component, pageProps }: AppProps) {
                     {/* <Analytics />
                     <SpeedInsights /> */}
                     {!isDev && <BackgroundBeams />}
-                    <HMSRoomProvider>
+                    <HuddleProvider client={huddleClient}>
                       <Component {...pageProps} />
 
                       <ResizeHandler />
                       <Toaster />
-                    </HMSRoomProvider>
+                    </HuddleProvider>
                     {/* <BackgroundBeamsTwo /> */}
                   </TonConnectUIProvider>
                 </ThemeProvider>
