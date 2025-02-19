@@ -98,14 +98,14 @@ const RemotePeer = ({ peerId }: Props) => {
         ref={vidRef}
         autoPlay
         muted
-        className='border-white-400 aspect-video rounded-xl border-2'
+        className='aspect-video rounded-xl border-1 border-gray-400'
       />
       {screenVideo && (
         <video
           ref={screenVideoRef}
           autoPlay
           muted
-          className='border-white-400 aspect-video rounded-xl border-2'
+          className='aspect-video rounded-xl border-1 border-gray-400'
         />
       )}
       <audio ref={audioRef} autoPlay></audio>

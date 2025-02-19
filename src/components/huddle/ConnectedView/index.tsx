@@ -20,7 +20,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import ChatBox from '../ChatBox'
-import RemotePeer from '../RemotePeer'
+
 import VideoDisplay from '../VideoDisplay'
 
 type ConnectedViewProps = {
@@ -106,17 +106,9 @@ function VideoConference({
         screenRef={screenRef}
       />
 
-      <div className='flex flex-1 items-center justify-center'>
-        <div className='mt-8 grid gap-2 text-center lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left'>
-          {peerIds.map(peerId =>
-            peerId ? <RemotePeer key={peerId} peerId={peerId} /> : null
-          )}
-        </div>
-      </div>
-
       {/* Control bar */}
-      <div className='flex h-16 items-center justify-between gap-2 px-2'>
-        <div className='flex items-center gap-2'>
+      <div className='flex h-16 items-center justify-center gap-2 px-2'>
+        {/* <div className='flex items-center gap-2'>
           <Button
             size='icon'
             variant='ghost'
@@ -132,7 +124,7 @@ function VideoConference({
           >
             <MoreHorizontal className='h-5 w-5' />
           </Button>
-        </div>
+        </div> */}
 
         <div className='flex items-center gap-2'>
           <Button
@@ -170,7 +162,7 @@ function VideoConference({
           </Button>
         </div>
 
-        <div className='flex items-center gap-2'>
+        {/* <div className='flex items-center gap-2'>
           <Button variant='ghost' className='text-zinc-400 hover:text-white'>
             <Users2 className='mr-2 h-4 w-4' />
             <span>1/100</span>
@@ -190,8 +182,8 @@ function VideoConference({
             <Wifi className='mr-2 h-4 w-4' />
             <span>Go live</span>
           </Button>
-        </div>
-        {isChatOpen && <ChatBox />}
+        </div> */}
+        {/* {isChatOpen && <ChatBox />} */}
       </div>
     </div>
   )
