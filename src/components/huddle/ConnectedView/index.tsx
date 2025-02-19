@@ -7,8 +7,11 @@ import {
 } from '@huddle01/react/hooks'
 import {
   Camera,
+  CameraOff,
   MessageCircle,
   Mic,
+  MicOff,
+  MonitorOff,
   MonitorUp,
   MoreHorizontal,
   Phone,
@@ -83,19 +86,36 @@ function VideoConference({
   isRecording,
   toggleRecording,
 }: VideoConferenceProps) {
-  const [isChatOpen, setIsChatOpen] = useState<boolean>(false)
+  const { startScreenShare, stopScreenShare, shareStream } =
+    useLocalScreenShare()
 
+  const [isChatOpen, setIsChatOpen] = useState<boolean>(false)
+  const [isSharing, setIsSharing] = useState(false)
   const { stream } = useLocalVideo()
   const videoRef = useRef<HTMLVideoElement>(null)
   const screenRef = useRef<HTMLVideoElement>(null)
   const { peerIds } = usePeerIds()
-  const { startScreenShare, stopScreenShare, shareStream } =
-    useLocalScreenShare()
+
+  const toggleScreenShare = async () => {
+    if (isSharing) {
+      await stopScreenShare()
+    } else {
+      await startScreenShare()
+    }
+    setIsSharing(!isSharing)
+  }
+
   useEffect(() => {
     if (stream && videoRef.current) {
       videoRef.current.srcObject = stream
     }
   }, [stream])
+
+  useEffect(() => {
+    if (shareStream && screenRef.current) {
+      screenRef.current.srcObject = shareStream
+    }
+  }, [shareStream])
 
   return (
     <div className='flex flex-1 flex-col bg-black'>
@@ -133,7 +153,11 @@ function VideoConference({
             className='text-zinc-400 hover:text-white'
             onClick={toggleVideo}
           >
-            <Camera className='h-5 w-5' />
+            {isVideoOn ? (
+              <Camera className='h-5 w-5' />
+            ) : (
+              <CameraOff className='h-5 w-5' />
+            )}
           </Button>
           <Button
             size='icon'
@@ -141,25 +165,36 @@ function VideoConference({
             className='text-zinc-400 hover:text-white'
             onClick={toggleAudio}
           >
-            <Mic className='h-5 w-5' />
+            {isAudioOn ? (
+              <Mic className='h-5 w-5' />
+            ) : (
+              <MicOff className='h-5 w-5' />
+            )}
           </Button>
-          <Button
+          {/* <Button
             size='icon'
             variant='ghost'
             className='text-zinc-400 hover:text-white'
           >
             <Smile className='h-5 w-5' />
-          </Button>
+          </Button> */}
           <Button
             size='icon'
             variant='ghost'
             className='text-zinc-400 hover:text-white'
+            onClick={() => {
+              toggleScreenShare()
+            }}
           >
-            <MonitorUp className='h-5 w-5' />
+            {isSharing ? (
+              <MonitorOff className='h-5 w-5' />
+            ) : (
+              <MonitorUp className='h-5 w-5' />
+            )}
           </Button>
-          <Button size='icon' variant='destructive'>
+          {/* <Button size='icon' variant='destructive'>
             <Phone className='h-5 w-5' />
-          </Button>
+          </Button> */}
         </div>
 
         {/* <div className='flex items-center gap-2'>
