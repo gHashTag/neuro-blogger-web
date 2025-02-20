@@ -217,7 +217,7 @@ export default async function handler(
 
           const workspace_id = description
 
-          const workspace = await getWorkspaceById(workspace_id)
+          const workspace = await getWorkspaceById(Number(workspace_id))
 
           let workspace_name
           if (workspace) {

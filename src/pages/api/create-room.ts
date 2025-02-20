@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { RoomNode } from '@/interfaces'
 import axios from 'axios'
-import { isDev, NEXT_PUBLIC_LOCAL_URL, ELESTIO_URL } from '@/config'
+import { isDev, ELESTIO_URL } from '@/config'
 
 type ResponseData = {
   rooms?: RoomNode
@@ -22,24 +22,14 @@ export default async function handler(
   }
 
   try {
-    const {
-      telegram_id,
-      name,
-      type,
-      workspace_id,
-      language_code,
-      chat_id,
-      token,
-    } = req.body
+    const { telegram_id, name, type, chat_id, token } = req.body
 
     const newData = {
       name,
       type,
       telegram_id,
       chat_id,
-      workspace_id,
       token,
-      language_code,
     }
 
     console.log(newData, 'handler: newData')

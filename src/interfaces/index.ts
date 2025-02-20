@@ -27,7 +27,7 @@ interface WorkspaceNode {
   type: string
   updated_at: string
   telegram_id: string
-  workspace_id: string
+  workspace_id: number
 }
 
 export type Workspace = {
@@ -90,7 +90,7 @@ export type TaskNode = {
   background: string
   colors: string[][]
   type: string
-  workspace_id: string
+  workspace_id: number
   cost: string
   is_public: boolean
 }
@@ -245,45 +245,33 @@ export type RoomInfoT = {
   chat_id: string
   name: string
   type: string
-  codes: string
+  room_code: string
 }
 
 export interface RoomNode {
   __typename: 'rooms'
   id: number
-  created_at: string
-  updated_at?: string | null
-  workspace_id?: string | null
+  workspace_id: number
   type: string
-  id_additional?: string | null
   name: string
-  enabled?: boolean | null
-  description?: string | null
-  customer_id?: string | null
-  app_id?: string | null
-  recording_info?: string
-  template_id?: string | null
-  template?: string | null
-  region?: string | null
-  customer?: string | null
-  large_room?: boolean | null
-  codes: string
-  type_additional?: string | null
-  telegram_id?: string | null
-  room_id: string
-  language_code: string | null
+  enabled: boolean
+  description: string
   chat_id: string
-  token?: string | null
+  token: string
   username: string
-  original_name?: string | null
-  public?: boolean | null
+  public: boolean
+  room_id: string
+  telegram_id: number
+  room_code: string
+  created_at: string
+  updated_at: string
   rooms?: RoomInfoT
 }
 
 export type TaskNodeType = {
   id: string
   telegram_id: string
-  workspace_id: string
+  workspace_id: number
   room_id: string
   recording_id: string
   created_at: string

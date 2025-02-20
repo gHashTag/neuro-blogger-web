@@ -5,7 +5,7 @@ export const PASSPORT_COLLECTION_QUERY = gql`
     $telegram_id: UUID!
     $room_id: String!
     $recording_id: String
-    $workspace_id: UUID!
+    $workspace_id: Int!
     $is_owner: Boolean!
     $type: String!
     $task_id: BigInt!
@@ -42,7 +42,7 @@ export const PASSPORT_COLLECTION_QUERY = gql`
             name
             chat_id
             type
-            codes
+            room_code
           }
         }
       }
@@ -77,7 +77,7 @@ export const PASSPORT_COLLECTION_IS_NOT_OWNER_QUERY = gql`
     $telegram_id: UUID!
     $room_id: String!
     $recording_id: String
-    $workspace_id: UUID!
+    $workspace_id: Int!
     $is_owner: Boolean!
     $type: String!
   ) {
@@ -111,7 +111,7 @@ export const PASSPORT_COLLECTION_IS_NOT_OWNER_QUERY = gql`
             name
             chat_id
             type
-            codes
+            room_code
           }
         }
       }
@@ -142,7 +142,7 @@ export const PASSPORT_UPDATE_MUTATION = gql`
   mutation updatePassport(
     $telegram_id: UUID!
     $passport_id: BigIntFilter
-    $workspace_id: UUID!
+    $workspace_id: Int!
     $room_id: String!
     $recording_id: String!
   ) {
@@ -184,7 +184,7 @@ export const PASSPORT_DELETE_MUTATION = gql`
 `
 
 export const GET_WORKSPACE_PASSPORTS_QUERY = gql`
-  query GetRoomPassport($telegram_id: UUID!, $workspace_id: UUID!) {
+  query GetRoomPassport($telegram_id: UUID!, $workspace_id: Int!) {
     user_passportCollection(
       filter: {
         and: [

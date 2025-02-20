@@ -105,16 +105,16 @@ const useRooms = (): UseRoomsReturn => {
     recording_id,
     language_code,
   } = useUser()
-  // console.log("username", username);
-  // console.log("telegram_id", telegram_id);
-  // console.log("workspace_id", workspace_id);
-  // console.log("room_id", room_id);
-  // console.log("recording_id", recording_id);
+  // console.log('username', username)
+  // console.log('telegram_id', telegram_id)
+  // console.log('workspace_id', workspace_id)
+  // console.log('room_id', room_id)
+  // console.log('recording_id', recording_id)
 
   let queryVariables
   // console.log(queryVariables, "queryVariables");
   let passportQuery = GET_ROOMS_COLLECTIONS_BY_WORKSPACE_ID_QUERY
-
+  console.log('passportQuery', passportQuery)
   if (!room_id && !recording_id && !workspace_id) {
     console.log('rooms :::1')
     passportQuery = ROOMS_BY_ID_COLLECTION_QUERY
@@ -196,33 +196,10 @@ const useRooms = (): UseRoomsReturn => {
 
   const inviteToMeet = useCallback(
     async (type: string) => {
-      const codesData =
-        await roomNameData?.roomsCollection?.edges[0]?.node?.codes
-
-      if (typeof codesData === 'string') {
-        const parsedCodesData = JSON.parse(codesData)
-        if (parsedCodesData) {
-          const codeObj = parsedCodesData.data.find(
-            (codeObj: { role: string; code: string }) => {
-              return codeObj.role === type
-            }
-          )
-
-          if (codeObj) {
-            if (type === 'guest') {
-              setInviteGuestCode(codeObj.code)
-            } else if (type === 'member') {
-              setInviteMemberCode(codeObj.code)
-            } else if (type === 'host') {
-              setInviteHostCode(codeObj.code)
-            }
-          } else {
-            console.log('No code found for type:', type)
-          }
-        } else {
-          console.error('codesData is not an array')
-        }
-      }
+      const room_code =
+        await roomNameData?.roomsCollection?.edges[0]?.node?.room_code
+      console.log('room_code', room_code)
+      setInviteGuestCode(room_code)
     },
     [roomNameData]
   )
@@ -262,7 +239,6 @@ const useRooms = (): UseRoomsReturn => {
         const response = await createRoom({
           telegram_id,
           username,
-          workspace_id,
           name: formData.name,
           type: openModalRoomId,
           token: formData.token,

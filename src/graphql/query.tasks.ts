@@ -35,10 +35,10 @@ export const GET_ALL_TASKS = gql`
 
 export const TASKS_COLLECTION_QUERY = gql`
   query GetTasks(
-    $telegram_id: UUID!
+    $telegram_id: Int!
     $room_id: String!
     $recording_id: String
-    $workspace_id: UUID!
+    $workspace_id: Int!
   ) {
     tasksCollection(
       filter: {
@@ -51,6 +51,87 @@ export const TASKS_COLLECTION_QUERY = gql`
           }
         ]
       }
+      orderBy: { created_at: DescNullsFirst }
+    ) {
+      edges {
+        node {
+          id
+          telegram_id
+          workspace_id
+          room_id
+          recording_id
+          title
+          description
+          is_public
+          cost
+          updated_at
+          due_date
+          priority
+          completed_at
+          is_archived
+          status
+          label
+          user_passport {
+            telegram_id
+            first_name
+            last_name
+            photo_url
+            passport_id
+          }
+        }
+      }
+    }
+  }
+`
+
+export const TASKS_COLLECTION_QUERY_BY_WORKSPACE_ID = gql`
+  query GetTasks($telegram_id: Int!, $workspace_id: Int!) {
+    tasksCollection(
+      filter: {
+        and: [
+          {
+            workspace_id: { eq: $workspace_id }
+            telegram_id: { eq: $telegram_id }
+          }
+        ]
+      }
+      orderBy: { created_at: DescNullsFirst }
+    ) {
+      edges {
+        node {
+          id
+          telegram_id
+          workspace_id
+          room_id
+          recording_id
+          title
+          description
+          is_public
+          cost
+          updated_at
+          due_date
+          priority
+          completed_at
+          is_archived
+          status
+          label
+          user_passport {
+            telegram_id
+            first_name
+            last_name
+            photo_url
+            passport_id
+          }
+        }
+      }
+    }
+  }
+`
+
+export const TASKS_COLLECTION_QUERY_BY_TELEGRAM_ID = gql`
+  query GetTasks($telegram_id: Int!) {
+    tasksCollection(
+      filter: { and: [{ telegram_id: { eq: $telegram_id } }] }
       orderBy: { created_at: DescNullsFirst }
     ) {
       edges {
@@ -119,14 +200,13 @@ export const CREATE_TASK_MUTATION = gql`
 
 export const MUTATION_TASK_STATUS_UPDATE = gql`
   mutation updatetasksCollection(
-    $id: BigInt!
-    $status: BigInt!
+    $id: Int!
+    $status: String!
     $title: String!
     $description: String!
     $is_public: Boolean!
     $cost: BigInt!
     $updated_at: Datetime!
-    $order: BigInt!
   ) {
     updatetasksCollection(
       filter: { id: { eq: $id } }
@@ -137,7 +217,6 @@ export const MUTATION_TASK_STATUS_UPDATE = gql`
         description: $description
         is_public: $is_public
         cost: $cost
-        order: $order
       }
     ) {
       records {
@@ -158,7 +237,6 @@ export const MUTATION_TASK_STATUS_UPDATE = gql`
         created_at
         label
         priority
-        order
         user_passport {
           telegram_id
           first_name
@@ -173,7 +251,7 @@ export const MUTATION_TASK_STATUS_UPDATE = gql`
 
 export const MUTATION_TASK_UPDATE = gql`
   mutation updatetasksCollection(
-    $id: BigInt!
+    $id: Int!
     $status: String!
     $priority: String!
     $label: String!
@@ -235,7 +313,13 @@ export const DELETE_TASK_MUTATION = gql`
 `
 
 export const GET_TASKS_BY_RECORDING_ID = gql`
-  query GetUserTasks($recording_id: String!) {
+  query GetUserTasks(
+    $id: Int!
+    $telegram_id: Int!
+    $workspace_id: Int!
+    $room_id: String!
+    $recording_id: String!
+  ) {
     tasksCollection(
       filter: {
         and: [
@@ -282,9 +366,9 @@ export const GET_TASKS_BY_RECORDING_ID = gql`
 
 export const GET_TASK_BY_ID = gql`
   query GetUserTasks(
-    $id: UUID!
-    $telegram_id: UUID!
-    $workspace_id: UUID!
+    $id: Int!
+    $telegram_id: Int!
+    $workspace_id: Int!
     $room_id: String!
     $recording_id: String!
   ) {
@@ -372,9 +456,9 @@ export const GET_TASK_BY_ID = gql`
 
 export const GET_TASKS_FOR_ROOM = gql`
   query GetRoomTasks(
-    $telegram_id: UUID!
+    $telegram_id: Int!
     $room_id: String!
-    $workspace_id: UUID!
+    $workspace_id: Int!
   ) {
     tasksCollection(
       filter: {
@@ -419,7 +503,7 @@ export const GET_TASKS_FOR_ROOM = gql`
 `
 
 export const GET_ROOM_TASKS_WORKSPACE_ID_QUERY = gql`
-  query GetPublicRoomTasks($workspace_id: UUID!) {
+  query GetPublicRoomTasks($workspace_id: Int!) {
     tasksCollection(
       filter: { and: [{ workspace_id: { eq: $workspace_id } }] }
       orderBy: { created_at: DescNullsFirst }
@@ -495,7 +579,7 @@ export const GET_PUBLIC_ROOM_TASKS_QUERY = gql`
 `
 
 export const GET_TASKS_BY_telegram_id = gql`
-  query GetUserTasks($telegram_id: UUID!) {
+  query GetUserTasks($telegram_id: Int!) {
     tasksCollection(
       filter: { and: [{ telegram_id: { eq: $telegram_id } }] }
       orderBy: { created_at: DescNullsFirst }
@@ -531,7 +615,7 @@ export const GET_TASKS_BY_telegram_id = gql`
 `
 
 export const GET_TASKS_BY_NOT_EQ_telegram_id = gql`
-  query GetUserTasks($telegram_id: UUID!) {
+  query GetUserTasks($telegram_id: Int!) {
     tasksCollection(
       filter: { and: [{ telegram_id: { neq: $telegram_id } }] }
       orderBy: { created_at: DescNullsFirst }

@@ -47,7 +47,7 @@ const RoomPage = () => {
       localStorage.setItem('recording_id', '')
       localStorage.setItem('recording_name', '')
     }
-  }, [router, workspace_type, workspace_id])
+  }, [router, workspace_type, workspace_id, room_id, username])
 
   const { assetsLoading, assetItems } = useAssets()
   const {
@@ -126,7 +126,7 @@ const RoomPage = () => {
 
   return (
     <>
-      <Layout loading={false}>
+      <Layout loading={roomsLoading || tasksLoading || passportLoading}>
         <div
           style={{
             display: 'flex',

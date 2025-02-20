@@ -22,7 +22,7 @@ interface UpdateResultParams {
   value: boolean
 }
 
-export async function getWorkspaceById(workspace_id: string) {
+export async function getWorkspaceById(workspace_id: number) {
   const { data, error } = await supabase
     .from('workspaces')
     .select('*')
@@ -370,11 +370,11 @@ export async function getUid(username: string) {
   return data.telegram_id
 }
 
-export async function getAssignedTasks(telegram_id: string): Promise<Task[]> {
+export async function getAssignedTasks(telegram_id: number): Promise<Task[]> {
   const { data, error } = await supabase
     .from('tasks')
     .select('*')
-    .neq('telegram_id', telegram_id)
+    .neq('telegram_id', telegram_id.toString())
   // .neq("assigned_to", null)
   // .contains(
   //   "assigned_to",
@@ -421,7 +421,7 @@ export const checkUsernameCodesByUserId = async (
     if (roomsError) {
       console.error(roomsError, 'roomsError')
     }
-    const invitation_codes = rooms && rooms[0]?.codes
+    const invitation_codes = rooms && rooms[0]?.room_code
 
     if (userError) {
       return {
@@ -470,7 +470,7 @@ export const checkUsernameCodesByUserName = async (
     if (roomsError) {
       console.error(roomsError, 'roomsError')
     }
-    const invitation_codes = rooms && rooms[0]?.codes
+    const invitation_codes = rooms && rooms[0]?.room_code
 
     if (userError) {
       return {

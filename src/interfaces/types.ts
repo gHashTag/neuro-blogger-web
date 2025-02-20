@@ -1,7 +1,3 @@
-export type TPeerMetadata = {
-  displayName: string
-}
-
 export interface SelectIzbushkaError {
   message: string
   code?: string

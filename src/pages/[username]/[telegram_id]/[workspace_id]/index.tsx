@@ -22,8 +22,8 @@ import { usePathname } from 'next/navigation'
 import { usePath } from '@/hooks/usePath'
 
 type PassportType = {
-  telegram_id?: string
-  workspace_id?: string
+  telegram_id?: number
+  workspace_id?: number
   room_id?: string
   is_owner: boolean
   type?: string
@@ -38,6 +38,7 @@ const MeetsPage = () => {
 
   const path = usePathname()
   const { username, workspace_id } = usePath(path)
+  console.log(workspace_id, 'usePath workspace_id')
 
   const passportObj: PassportType =
     workspace_type === 'Water'
@@ -103,25 +104,26 @@ const MeetsPage = () => {
     } else {
       setLoading(false)
 
-      if (workspace_id === 'd696abd8-3b7a-46f2-907f-5342a2b533a0') {
-        // console.log("");
+      if (Number(workspace_id) === 1) {
+        console.log('Copper pipes')
         // "Copper pipes"
         localStorage.setItem('workspace_type', 'Copper pipes')
         // setIsVisibleMenu(false);
         // setIsVisibleTask(true);
         localStorage.setItem('is_owner', 'true')
-      } else if (workspace_id === '54dc9d0e-dd96-43e7-bf72-02c2807f8977') {
+      } else if (Number(workspace_id) === 2) {
         // "Water",
+        console.log('Water')
         assigned()
         localStorage.setItem('is_owner', 'false')
         localStorage.setItem('room_id', '')
-        console.log('Water')
         localStorage.setItem('workspace_type', 'Water')
         // setIsVisibleTask(false);
       } else {
         // "Fire"
-        // console.log("Fire");
+        console.log('Fire')
         localStorage.setItem('workspace_type', 'Fire')
+        localStorage.setItem('workspace_id', workspace_id)
 
         localStorage.setItem('is_owner', 'true')
         // setIsVisibleTask(true);
@@ -144,6 +146,7 @@ const MeetsPage = () => {
   }
 
   const goToRoomId = (room: RoomEdge) => {
+    console.log(room, 'room')
     // localStorage.setItem("is_owner", "false");
     router.push(
       `/${username}/${telegram_id}/${workspace_id}/${room.node.room_id}`
@@ -155,15 +158,16 @@ const MeetsPage = () => {
   }
 
   const goToMeet = ({ node }: Passport) => {
-    if (node?.rooms?.codes) {
-      const codes = JSON.parse(node.rooms.codes)
-      const memberCode = codes.data[0].code
+    console.log(node, 'node')
+    if (node?.rooms?.room_code) {
+      const room_code = node.rooms.room_code
+
       localStorage.setItem('workspace_id', workspace_id)
       router.push(
-        `/${node.username}/${telegram_id}/${node.workspace_id}/${node.room_id}/meet/${memberCode}`
+        `/${node.username}/${telegram_id}/${node.workspace_id}/${node.room_id}/meet/${room_code}`
       )
     } else {
-      console.error('No codes available')
+      console.error('No room_code available')
     }
   }
 

@@ -86,10 +86,7 @@ const ShowIzbushka = () => {
           }
 
           const id =
-            inviterSelectIzbushkaData &&
-            inviterSelectIzbushkaData[0].codes.data.filter(
-              (item: any) => item.role === 'host'
-            )[0].code
+            inviterSelectIzbushkaData && inviterSelectIzbushkaData[0].room_code
 
           roomId = id
         } else {
@@ -102,8 +99,7 @@ const ShowIzbushka = () => {
             selectIzbushkaError: inviterSelectIzbushkaError,
           } = await getSelectIzbushkaId(inviterSelectIzbushka)
           roomId =
-            inviterSelectIzbushkaData &&
-            inviterSelectIzbushkaData[0].codes.data[1].code
+            inviterSelectIzbushkaData && inviterSelectIzbushkaData[0].room_code
           if (inviterSelectIzbushkaError) {
             console.log(
               inviterSelectIzbushkaError,
@@ -123,11 +119,10 @@ const ShowIzbushka = () => {
     hmsActions,
     fullName,
     roomId,
-    getRooms,
-    getUser,
     initData?.user?.firstName,
     initData?.user?.lastName,
     initData?.user?.username,
+    initData?.user?.photoUrl,
   ])
 
   useEffect(() => {

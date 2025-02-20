@@ -30,6 +30,7 @@ const useWorkspace = (): UseWorkspaceReturn => {
       telegram_id,
     },
   })
+  console.log(myWorkspaceData, 'myWorkspaceData')
 
   const myWorkspaceNode = myWorkspaceData?.workspacesCollection?.edges
 
@@ -73,7 +74,7 @@ const useWorkspace = (): UseWorkspaceReturn => {
         type: 'water',
         updated_at: '2024-04-10T15:39:50.949122+00:00',
         telegram_id: 'ec0c948a-2b96-4ccd-942f-0a991d78a94f',
-        workspace_id: '54dc9d0e-dd96-43e7-bf72-02c2807f8977',
+        workspace_id: 9,
       },
     },
     {
@@ -91,7 +92,7 @@ const useWorkspace = (): UseWorkspaceReturn => {
         type: 'earth',
         updated_at: '2024-04-10T15:39:50.949122+00:00',
         telegram_id: 'ec0c948a-2b96-4ccd-942f-0a991d78a94f',
-        workspace_id: 'd696abd8-3b7a-46f2-907f-5342a2b533a0',
+        workspace_id: 9,
       },
     }
   )

@@ -36,8 +36,8 @@ export const EvervaultCard = ({
   passportData,
 }: EvervaultCardProps) => {
   const router = useRouter()
-  let mouseX = useMotionValue(0)
-  let mouseY = useMotionValue(0)
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
 
   const [copiedText, copy] = useCopyToClipboard()
   const [randomString, setRandomString] = useState('')
@@ -45,12 +45,12 @@ export const EvervaultCard = ({
   const { username, telegram_id, workspace_id, room_id } = useUser()
 
   useEffect(() => {
-    let str = generateRandomString(1500)
+    const str = generateRandomString(1500)
     setRandomString(str)
   }, [])
 
   function onMouseMove({ currentTarget, clientX, clientY }: any) {
-    let { left, top } = currentTarget.getBoundingClientRect()
+    const { left, top } = currentTarget.getBoundingClientRect()
     mouseX.set(clientX - left)
     mouseY.set(clientY - top)
 
@@ -58,23 +58,26 @@ export const EvervaultCard = ({
     setRandomString(str)
   }
 
-  const handleCopy = (text: string) => {
-    copy(text)
-      .then(() => {
-        toast({
-          title: 'Copied!',
-          description: `${text} copied`,
+  const handleCopy = useCallback(
+    (text: string) => {
+      copy(text)
+        .then(() => {
+          toast({
+            title: 'Copied!',
+            description: `${text} copied`,
+          })
         })
-      })
-      .catch(error => {
-        captureExceptionSentry('handleCopy', 'EvervaultCard')
-        toast({
-          title: 'Error',
-          variant: 'destructive',
-          description: `${error}`,
+        .catch(error => {
+          captureExceptionSentry('handleCopy', 'EvervaultCard')
+          toast({
+            title: 'Error',
+            variant: 'destructive',
+            description: `${error}`,
+          })
         })
-      })
-  }
+    },
+    [copy, toast]
+  )
 
   const handleClick = useCallback(async () => {
     if (
@@ -94,16 +97,17 @@ export const EvervaultCard = ({
       }
     }
   }, [
-    inviteGuestCode,
     inviteHostCode,
     inviteMemberCode,
     inviteToMeet,
     onOpenModalPassport,
-    passportData,
     room_id,
     type,
     telegram_id,
     workspace_id,
+    router,
+    username,
+    handleCopy,
   ])
 
   const href =
@@ -154,8 +158,8 @@ export const EvervaultCard = ({
 }
 
 export function CardPattern({ mouseX, mouseY, randomString, onClick }: any) {
-  let maskImage = useMotionTemplate`radial-gradient(250px at ${mouseX}px ${mouseY}px, white, transparent)`
-  let style = { maskImage, WebkitMaskImage: maskImage }
+  const maskImage = useMotionTemplate`radial-gradient(250px at ${mouseX}px ${mouseY}px, white, transparent)`
+  const style = { maskImage, WebkitMaskImage: maskImage }
 
   return (
     <div className='cursor-pointer' onClick={onClick}>

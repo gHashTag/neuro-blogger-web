@@ -10,10 +10,9 @@ if (!process.env.NEXT_PUBLIC_FUNCTION_SECRET) {
 }
 
 type CreateRoomProps = {
-  telegram_id: string
+  telegram_id: number
   username: string
   name: string
-  workspace_id: string
   type: string
   token: string
   chat_id: string
@@ -24,7 +23,6 @@ async function createRoom({
   telegram_id,
   username,
   name,
-  workspace_id,
   type,
   token,
   chat_id,
@@ -33,10 +31,9 @@ async function createRoom({
   const url = `${SITE_URL}/api/create-room`
   console.log(url, 'createRoom: url')
   const newData = {
-    telegram_id,
+    telegram_id: telegram_id.toString(),
     username,
     name,
-    workspace_id,
     type,
     token,
     chat_id,

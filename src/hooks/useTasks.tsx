@@ -8,8 +8,9 @@ import {
   GET_TASKS_BY_telegram_id,
   TASKS_COLLECTION_QUERY,
   GET_PUBLIC_ROOM_TASKS_QUERY,
-  GET_ROOM_TASKS_WORKSPACE_ID_QUERY,
+  TASKS_COLLECTION_QUERY_BY_WORKSPACE_ID,
   GET_TASKS_BY_NOT_EQ_telegram_id,
+  TASKS_COLLECTION_QUERY_BY_TELEGRAM_ID,
 } from '@/graphql/query.tasks'
 import { useRouter } from 'next/router'
 import { ApolloError, useMutation, useQuery } from '@apollo/client'
@@ -59,8 +60,8 @@ const useTasks = (): UseTasksReturn => {
   console.log(workspace_id, 'workspace_id')
 
   if (!recording_id && !room_id && !workspace_id) {
-    // console.log("tasksQuery :::1");
-    query = TASKS_COLLECTION_QUERY
+    console.log('tasksQuery :::1')
+    query = TASKS_COLLECTION_QUERY_BY_TELEGRAM_ID
     queryVariables = {
       telegram_id,
       // id: localStorage.getItem("id"),
@@ -71,8 +72,8 @@ const useTasks = (): UseTasksReturn => {
     workspace_id &&
     workspace_type === 'Fire'
   ) {
-    // console.log("tasksQuery :::2");
-    query = TASKS_COLLECTION_QUERY
+    console.log('tasksQuery :::2')
+    query = TASKS_COLLECTION_QUERY_BY_WORKSPACE_ID
     queryVariables = {
       workspace_id,
       telegram_id,
@@ -83,7 +84,7 @@ const useTasks = (): UseTasksReturn => {
     workspace_id &&
     workspace_type === 'Water'
   ) {
-    // console.log("tasksQuery Water");
+    console.log('tasksQuery Water')
     query = GET_TASKS_BY_NOT_EQ_telegram_id
     queryVariables = {
       telegram_id,
@@ -97,7 +98,7 @@ const useTasks = (): UseTasksReturn => {
     // console.log("tasksQuery Copper pipes");
     query = GET_PUBLIC_ROOM_TASKS_QUERY
   } else if (!recording_id && room_id && workspace_id) {
-    // console.log("tasksQuery :::3");
+    console.log('tasksQuery :::3')
     query = TASKS_COLLECTION_QUERY
     queryVariables = {
       telegram_id,
@@ -105,13 +106,13 @@ const useTasks = (): UseTasksReturn => {
       workspace_id,
     }
   } else if (recording_id && !room_id && !workspace_id) {
-    // console.log("tasksQuery :::4");
+    console.log('tasksQuery :::4')
     query = GET_TASKS_BY_RECORDING_ID
     queryVariables = {
       recording_id,
     }
   } else if (recording_id && room_id && workspace_id) {
-    // console.log("tasksQuery :::5");
+    console.log('tasksQuery :::5')
     query = GET_TASKS_BY_RECORDING_ID
     queryVariables = {
       telegram_id,
@@ -139,12 +140,12 @@ const useTasks = (): UseTasksReturn => {
   const onClickEdit = (
     isEditing: boolean,
     id: string,
-    workspace_id: string,
+    workspace_id: number,
     room_id: string
   ) => {
     setOpenModalTaskId(id)
     setEditTask(true)
-    localStorage.setItem('workspace_id', workspace_id)
+    localStorage.setItem('workspace_id', workspace_id.toString())
     localStorage.setItem('room_id', room_id)
     router.push(
       `/${username}/${telegram_id}/${workspace_id}/${room_id}/0/${id}`
@@ -265,6 +266,9 @@ const useTasks = (): UseTasksReturn => {
     reset,
     toast,
     telegram_id,
+    workspace_id,
+    room_id,
+    recording_id,
   ])
 
   const onUpdateTaskStatus = useCallback(

@@ -29,7 +29,7 @@ interface DataTableRowActionsProps {
   onClickEdit: (
     isEditing: boolean,
     id: string,
-    workspace_id: string,
+    workspace_id: number,
     room_id: string
   ) => void
 }
@@ -60,7 +60,7 @@ export function DataTableRowActions<TData>({
             onClickEdit(
               true,
               row.original.node.id,
-              row.original.node.workspace_id,
+              Number(row.original.node.workspace_id),
               row.original.node.room_id
             )
           }}

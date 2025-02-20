@@ -1,10 +1,11 @@
 import { initialAuthorState } from '@/data'
 import { mockedUser } from '@/utils/constants'
 import { isDev } from '@/config'
+
 type UserType = {
   username: string
-  telegram_id: string
-  workspace_id: string
+  telegram_id: number
+  workspace_id: number
   workspace_name: string
   workspace_type: string | null
   header_name: string | null
@@ -50,8 +51,8 @@ const useUser = (): UserType => {
 
   return {
     username,
-    telegram_id,
-    workspace_id,
+    telegram_id: Number(telegram_id),
+    workspace_id: Number(workspace_id),
     workspace_name,
     header_name,
     room_id,

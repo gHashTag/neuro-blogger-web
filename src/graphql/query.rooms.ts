@@ -24,7 +24,7 @@ export const GET_ROOMS_COLLECTIONS_BY_ROOM_ID_QUERY = gql`
           type
           enabled
           description
-          codes
+          room_code
           token
           room_id
           chat_id
@@ -35,7 +35,7 @@ export const GET_ROOMS_COLLECTIONS_BY_ROOM_ID_QUERY = gql`
 `
 
 export const GET_ROOMS_COLLECTIONS_BY_WORKSPACE_ID_QUERY = gql`
-  query RoomsCollection($workspace_id: UUID!, $telegram_id: UUID!) {
+  query RoomsCollection($workspace_id: Int!, $telegram_id: BigInt!) {
     roomsCollection(
       filter: {
         and: [
@@ -57,7 +57,7 @@ export const GET_ROOMS_COLLECTIONS_BY_WORKSPACE_ID_QUERY = gql`
           type
           enabled
           description
-          codes
+          room_code
           token
           room_id
           chat_id
@@ -68,7 +68,7 @@ export const GET_ROOMS_COLLECTIONS_BY_WORKSPACE_ID_QUERY = gql`
 `
 
 export const GET_ROOMS_COLLECTIONS_BY_telegram_id_QUERY = gql`
-  query RoomsCollection($telegram_id: UUID!) {
+  query RoomsCollection($telegram_id: BigInt!) {
     roomsCollection(filter: { telegram_id: { eq: $telegram_id } }) {
       edges {
         node {
@@ -84,7 +84,7 @@ export const GET_ROOMS_COLLECTIONS_BY_telegram_id_QUERY = gql`
           enabled
           description
           token
-          codes
+          room_code
           room_id
           chat_id
         }
@@ -109,7 +109,7 @@ export const ROOMS_BY_ID_COLLECTION_QUERY = gql`
           type
           enabled
           description
-          codes
+          room_code
           room_id
         }
       }
@@ -119,9 +119,9 @@ export const ROOMS_BY_ID_COLLECTION_QUERY = gql`
 
 export const GET_ROOMS_COLLECTIONS_BY_WORKSPACE_ID_ROOM_ID_QUERY = gql`
   query RoomsCollection(
-    $workspace_id: UUID!
+    $workspace_id: Int!
     $room_id: String!
-    $telegram_id: UUID!
+    $telegram_id: BigInt!
   ) {
     roomsCollection(
       filter: {
@@ -146,7 +146,7 @@ export const GET_ROOMS_COLLECTIONS_BY_WORKSPACE_ID_ROOM_ID_QUERY = gql`
           enabled
           token
           description
-          codes
+          room_code
           room_id
           chat_id
         }
@@ -212,7 +212,7 @@ export const ROOM_NAME_COLLECTION_QUERY = gql`
           type
           enabled
           description
-          codes
+          room_code
           room_id
         }
       }

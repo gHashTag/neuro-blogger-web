@@ -97,14 +97,12 @@ export default function Office() {
   }, [id_task, setOpenModalTaskId])
 
   const goToOffice = ({
-    id,
     type,
     workspace_id,
     workspace_name,
   }: {
-    id: string
     type: string
-    workspace_id: string
+    workspace_id: number
     workspace_name: string
   }) => {
     if (!username || !telegram_id || !workspace_id) {
@@ -117,12 +115,12 @@ export default function Office() {
     }
 
     // Построение URL для навигации
-    const path = `/${username}/${telegram_id}/${id}`
+    const path = `/${username}/${telegram_id}/${workspace_id}`
     console.log(path, 'path')
     router.push(path)
 
     // Установка значений в localStorage
-    localStorage.setItem('workspace_id', workspace_id)
+    localStorage.setItem('workspace_id', workspace_id.toString())
     localStorage.setItem('workspace_name', workspace_name)
     localStorage.setItem('type', type)
   }
@@ -133,7 +131,7 @@ export default function Office() {
     onOpenModalWorkspace()
     setIsEditingWorkspace(false)
   }
-
+  console.log('welcomeMenu', welcomeMenu)
   const words =
     language_code === 'ru'
       ? `🚀 Мои комнаты - это личные комнаты, где твои слова пишутся и задачи создаются.\n🏢 В гостях - это комнаты, в которые вас пригласил другой пользователь. 💼 Обучение - это комнаты, где обучение к мудрости тебя ведет.`
@@ -155,8 +153,8 @@ export default function Office() {
         {!tasksLoading && (
           <CanvasRevealEffectDemo
             officeData={welcomeMenu || []}
-            onClick={(id, type, workspace_id, workspace_name) =>
-              goToOffice({ id, type, workspace_id, workspace_name })
+            onClick={(type, workspace_id, workspace_name) =>
+              goToOffice({ type, workspace_id, workspace_name })
             }
           />
         )}

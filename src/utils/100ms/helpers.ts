@@ -12,7 +12,7 @@ type CreateOrFetchRoomProps = {
   language_code: string
   telegram_id: string
   chat_id: number
-  workspace_id: string
+  workspace_id: number
   token: string
 }
 
@@ -52,13 +52,13 @@ export const createOrFetchRoom = async ({
   const codesResponse = await createCodes(room_id, newToken100ms as string)
 
   if (!codesResponse?.ok) {
-    throw new Error(`Failed to create codes: ${codesResponse.statusText}`)
+    throw new Error(`Failed to create room_code: ${codesResponse.statusText}`)
   }
-  const codes = await codesResponse.json()
+  const room_code = await codesResponse.json()
 
   const rooms = {
     ...newRoom,
-    codes,
+    room_code,
     type: 'video-space',
     name: `${first_name} ${last_name}`,
     updated_at: new Date(),

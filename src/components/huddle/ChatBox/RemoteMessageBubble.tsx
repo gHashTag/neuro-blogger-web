@@ -1,4 +1,4 @@
-import { TPeerMetadata } from '@/utils/types'
+import { TPeerMetadata } from '@interfaces/huddle01.interface'
 import { useRemotePeer } from '@huddle01/react/hooks'
 import { TMessage } from '.'
 

@@ -19,7 +19,7 @@ import { captureExceptionSentry } from '@/utils/sentry'
 import { checkUsernameAndReturnUser } from '@/core/supabase/supabase'
 
 type passportType = {
-  telegram_id?: string
+  telegram_id?: number
   room_id?: string | null | undefined
   recording_id?: string
   task_id?: string
@@ -304,7 +304,7 @@ passportType): UsePassportReturn => {
   }
 
   const createPassport = async (
-    workspace_id: string,
+    workspace_id: number,
     room_id: string,
     is_owner: boolean
   ) => {
@@ -450,7 +450,7 @@ type UsePassportReturn = {
   onDeletePassportRoom: (id: number) => void
   onCreatePassport: () => void
   createPassport: (
-    workspace_id: string,
+    workspace_id: number,
     room_id: string,
     is_owner: boolean
   ) => void

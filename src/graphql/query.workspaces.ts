@@ -10,11 +10,10 @@ import { gql } from '@apollo/client'
 // `;
 
 export const WORKSPACES_COLLECTION_QUERY = gql`
-  query WorkspacesCollection($telegram_id: UUID!) {
+  query WorkspacesCollection($telegram_id: BigInt!) {
     workspacesCollection(filter: { telegram_id: { eq: $telegram_id } }) {
       edges {
         node {
-          id
           telegram_id
           workspace_id
           colors
@@ -30,11 +29,10 @@ export const WORKSPACES_COLLECTION_QUERY = gql`
 `
 
 export const MY_WORKSPACE_COLLECTION_QUERY = gql`
-  query MyWorkspaceCollection($telegram_id: UUID!) {
+  query MyWorkspaceCollection($telegram_id: BigInt!) {
     workspacesCollection(filter: { telegram_id: { eq: $telegram_id } }) {
       edges {
         node {
-          id
           telegram_id
           workspace_id
           colors
@@ -53,7 +51,6 @@ export const CREATE_WORKSPACE_MUTATION = gql`
   mutation CreateWorkspaces($objects: [workspacesInsertInput!]!) {
     insertIntoworkspacesCollection(objects: $objects) {
       records {
-        id
         telegram_id
         created_at
         title
@@ -67,11 +64,10 @@ export const CREATE_WORKSPACE_MUTATION = gql`
 export const WORKSPACE_UPDATE_MUTATION = gql`
   mutation updateworkspacesCollection(
     $id: BigInt!
-    $status: BigInt!
+    $status: String!
     $title: String!
     $description: String!
     $updated_at: Datetime!
-    $order: BigInt!
   ) {
     updatetasksCollection(
       filter: { id: { eq: $id } }
@@ -80,7 +76,6 @@ export const WORKSPACE_UPDATE_MUTATION = gql`
         updated_at: $updated_at
         title: $title
         description: $description
-        order: $order
       }
     ) {
       records {
@@ -96,7 +91,6 @@ export const WORKSPACE_UPDATE_MUTATION = gql`
         created_at
         label
         priority
-        order
       }
     }
   }
@@ -106,7 +100,7 @@ export const WORKSPACE_DELETE_MUTATION = gql`
   mutation DeleteWorkspace($filter: workspacesFilter!, $atMost: Int!) {
     deleteFromworkspacesCollection(filter: $filter, atMost: $atMost) {
       records {
-        id
+        workspace_id
         title
       }
     }

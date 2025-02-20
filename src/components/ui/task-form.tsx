@@ -75,7 +75,7 @@ export function TaskForm({
 
   const { telegram_id: owner_telegram_id, workspace_id, room_id } = useUser()
 
-  const isOwnerTask = owner_telegram_id === telegram_id
+  const isOwnerTask = owner_telegram_id === Number(telegram_id)
 
   useEffect(() => {
     localStorage.setItem('is_owner', 'false')

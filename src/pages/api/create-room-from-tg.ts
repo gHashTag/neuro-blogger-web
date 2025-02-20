@@ -87,13 +87,15 @@ export default async function handler(
       const codesResponse = await createCodes(id, newToken as string)
 
       if (!codesResponse?.ok) {
-        throw new Error(`Failed to create codes: ${codesResponse.statusText}`)
+        throw new Error(
+          `Failed to create room_code: ${codesResponse.statusText}`
+        )
       }
-      const codes = await codesResponse.json()
+      const room_code = await codesResponse.json()
 
       const rooms = {
         ...newRoom,
-        codes,
+        room_code,
         type,
         name,
         updated_at: new Date(),
