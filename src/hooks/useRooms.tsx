@@ -174,6 +174,7 @@ const useRooms = (): UseRoomsReturn => {
   console.log(roomsData, 'roomsData')
 
   const roomId = useReactiveVar(setRoomId)
+  console.log(roomId, 'roomId useReactiveVar')
 
   const {
     data: roomNameData,
@@ -359,6 +360,7 @@ const useRooms = (): UseRoomsReturn => {
     setIsEditingRoom: setIsEditing,
     isEditingRoom: isEditing,
     watchRoom: watch,
+    setInviteHostCode,
   }
 }
 
@@ -394,6 +396,7 @@ type UseRoomsReturn = {
   onDeleteRoom: () => void
   setIsEditingRoom: (isEditing: boolean) => void
   isEditingRoom: boolean
+  setInviteHostCode: (inviteHostCode: string) => void
 }
 
 export { useRooms }

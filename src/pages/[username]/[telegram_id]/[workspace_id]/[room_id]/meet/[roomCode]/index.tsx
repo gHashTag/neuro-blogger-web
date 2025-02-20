@@ -17,32 +17,42 @@ import { useEffect, useRef, useState } from 'react'
 import { useUser } from '@/hooks/useUser'
 import ConnectedView from '@/components/huddle/ConnectedView'
 import Layout from '@/components/layout'
-
+import { getUserByTelegramId } from '@/core/supabase'
 const inter = Inter({ subsets: ['latin'] })
 
 type Props = {
   token: string
   roomId: string
+  username: string
 }
 
-export default function Rooms({ token, roomId }: Props) {
+export default function Rooms({ token, roomId, username }: Props) {
   console.log('roomId 2', roomId)
   const [displayName, setDisplayName] = useState<string>('')
 
   const router = useRouter()
   const { firstName, lastName } = useUser()
+  const { updateMetadata } = useLocalPeer<TPeerMetadata>()
 
-  const { joinRoom, state } = useRoom({
+  const { joinRoom, room, state } = useRoom({
     onJoin: room => {
       console.log('onJoin', room)
-      updateMetadata({ displayName })
+      if (firstName && lastName) {
+        updateMetadata({
+          firstName,
+          lastName,
+          displayName: `${firstName} ${lastName}`,
+          username,
+        })
+      }
     },
     onPeerJoin: peer => {
       console.log('onPeerJoin', peer)
     },
   })
-
-  const { updateMetadata } = useLocalPeer<TPeerMetadata>()
+  console.log('state', state)
+  console.log('room', room)
+  console.log('sessionId', room?.sessionId)
 
   useEffect(() => {
     console.log('firstName', firstName)
@@ -54,8 +64,9 @@ export default function Rooms({ token, roomId }: Props) {
         roomId,
         token,
       })
+      updateMetadata({ firstName, lastName, displayName: fullName, username })
     }
-  }, [firstName, lastName, joinRoom, roomId, token])
+  }, [firstName, lastName, joinRoom, roomId, token, username, updateMetadata])
 
   return (
     <Layout loading={state === 'idle'}>
@@ -130,16 +141,25 @@ export default function Rooms({ token, roomId }: Props) {
   )
 }
 
-export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+export const getServerSideProps = async (
+  ctx: GetServerSidePropsContext
+): Promise<{
+  props: {
+    token: string | null
+    roomId: string | null
+    username: string | null
+  }
+}> => {
   try {
     console.log('ctx.query', ctx.query)
     const roomId = ctx.query.roomCode as string
     console.log('roomId 1', roomId)
+    const username = ctx.query.username as string
 
     const apiKey = process.env.NEXT_PUBLIC_API_KEY || ''
     if (!apiKey || !roomId) {
       return {
-        props: { token: null, roomId: null },
+        props: { token: null, roomId: null, username: null },
       }
     }
 
@@ -163,19 +183,19 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     })
 
     let token = await accessToken.toJwt()
-    console.log('token', token)
+
     if (!token) {
       console.error('Failed to generate token')
       token = ''
     }
 
     return {
-      props: { token, roomId },
+      props: { token, roomId, username },
     }
   } catch (error) {
     console.error('Error in getServerSideProps', error)
     return {
-      props: { token: null, roomId: null },
+      props: { token: null, roomId: null, username: null },
     }
   }
 }

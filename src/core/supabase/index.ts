@@ -19,3 +19,4 @@ export * from './getPlan'
 
 export * from './getPlanNumber'
 export * from './getReferalsCountAndUserData'
+export * from './getUserByTelegramId'

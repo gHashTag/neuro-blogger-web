@@ -233,6 +233,9 @@ importers:
       react:
         specifier: ^18.2.0
         version: 18.3.1
+      react-bubble-ui:
+        specifier: ^1.1.2
+        version: 1.1.2(react@18.3.1)
       react-copy-to-clipboard:
         specifier: ^5.1.0
         version: 5.1.0(react@18.3.1)
@@ -6981,6 +6984,12 @@ packages:
   rc@1.2.8:
     resolution: {integrity: sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==}
     hasBin: true
+
+  react-bubble-ui@1.1.2:
+    resolution: {integrity: sha512-JZEoHHte7IwIXCXdMc21id+6jBTNFSX5tLMDpFzGHMh45fT8ompWijNmKZiE8d/uPeTI1jUYdp4uDxIaObglsg==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16.0.0
 
   react-composer@5.0.3:
     resolution: {integrity: sha512-1uWd07EME6XZvMfapwZmc7NgCZqDemcvicRi3wMJzXsQLvZ3L7fTHVyPy1bZdnWXM4iPjYuNE+uJ41MLKeTtnA==}
@@ -16633,6 +16642,10 @@ snapshots:
       ini: 1.3.8
       minimist: 1.2.8
       strip-json-comments: 2.0.1
+
+  react-bubble-ui@1.1.2(react@18.3.1):
+    dependencies:
+      react: 18.3.1
 
   react-composer@5.0.3(react@18.3.1):
     dependencies:

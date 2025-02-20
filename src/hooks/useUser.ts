@@ -18,6 +18,7 @@ type UserType = {
   lastName: string | null
   language_code: string | null
   is_owner: boolean | null
+  room_code: string | null
 }
 
 const useUser = (): UserType => {
@@ -46,6 +47,7 @@ const useUser = (): UserType => {
   const lastName = localStorage.getItem('last_name') || null
   const language_code = navigator.language.substring(0, 2) || null
   const owner = localStorage.getItem('is_owner') || null
+  const room_code = localStorage.getItem('room_code') || null
 
   const is_owner = owner === 'false' ? false : true
 
@@ -65,6 +67,7 @@ const useUser = (): UserType => {
     language_code,
     is_owner,
     workspace_type,
+    room_code,
   }
 }
 

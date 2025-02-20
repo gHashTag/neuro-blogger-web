@@ -38,6 +38,7 @@ export const EvervaultCard = ({
   const router = useRouter()
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
+  const room_code = localStorage.getItem('room_code') || null
 
   const [copiedText, copy] = useCopyToClipboard()
   const [randomString, setRandomString] = useState('')
@@ -112,7 +113,7 @@ export const EvervaultCard = ({
 
   const href =
     type === 'host'
-      ? `/${username}/${telegram_id}/${workspace_id}/${room_id}/meet/${inviteHostCode}`
+      ? `/${username}/${telegram_id}/${workspace_id}/${room_id}/meet/${room_code}`
       : router.asPath
 
   return (

@@ -89,6 +89,8 @@ const MeetsPage = () => {
     onDeleteRoom,
     onUpdateRoom,
     watchRoom,
+    inviteHostCode,
+    setInviteHostCode,
   } = useRooms()
   const [assignedTasks, setAssignedTasks] = useState<Task[]>()
 
@@ -146,22 +148,26 @@ const MeetsPage = () => {
   }
 
   const goToRoomId = (room: RoomEdge) => {
-    console.log(room, 'room')
+    console.log(room, 'goToRoomId room')
     // localStorage.setItem("is_owner", "false");
     router.push(
       `/${username}/${telegram_id}/${workspace_id}/${room.node.room_id}`
     )
-
+    const room_code = room.node.room_code
+    console.log(room_code, 'goToRoomId: room_code')
+    setInviteHostCode(room_code)
+    localStorage.setItem('room_code', room_code)
     localStorage.setItem('room_id', room.node.room_id)
     setRoomId(room.node.room_id)
     localStorage.setItem('room_name', room.node.name)
   }
 
   const goToMeet = ({ node }: Passport) => {
-    console.log(node, 'node')
+    console.log(node, 'goToMeet node')
     if (node?.rooms?.room_code) {
       const room_code = node.rooms.room_code
-
+      console.log(room_code, 'goToMeet: room_code')
+      setInviteHostCode(room_code)
       localStorage.setItem('workspace_id', workspace_id)
       router.push(
         `/${node.username}/${telegram_id}/${node.workspace_id}/${node.room_id}/meet/${room_code}`
