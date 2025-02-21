@@ -22,7 +22,7 @@ import Hero from './hero'
 import Form from './form'
 import LearnMore from './learn-more'
 import { useReactiveVar } from '@apollo/client'
-import { setLoggedIn, setVisibleHeader } from '@/apollo/reactive-store'
+import { setLoggedIn, setVisibleHeader } from '@/store/reactive-store'
 
 import { useUser } from '@/hooks/useUser'
 import { useRouter } from 'next/navigation'

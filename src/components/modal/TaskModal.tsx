@@ -18,7 +18,7 @@ import styled from 'styled-components'
 import { cn } from '@/utils/cn'
 import { InputMultiline } from '../ui/input-multiline'
 import { useReactiveVar } from '@apollo/client'
-import { setEditTask } from '@/apollo/reactive-store'
+import { setEditTask } from '@/store/reactive-store'
 
 type Modal = {
   isOpen: boolean

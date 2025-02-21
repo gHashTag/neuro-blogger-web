@@ -12,7 +12,7 @@ import { useToast } from '@/components/ui/use-toast'
 import { SignupFormDemo } from '@/components/ui/signup-form'
 import { AnimatedTooltip } from '@/components/ui/animated-tooltip'
 import { Spinner } from '@/components/ui/spinner'
-import { setHeaderName } from '@/apollo/reactive-store'
+import { setHeaderName } from '@/store/reactive-store'
 import { useUser } from '@/hooks/useUser'
 import { captureExceptionSentry } from '@/utils/sentry'
 

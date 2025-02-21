@@ -8,7 +8,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
-import { setLoading } from '@/apollo/reactive-store'
+import { setLoading } from '@/store/reactive-store'
 import { useUser } from '@/hooks/useUser'
 
 export function BreadcrumbWithCustomSeparator({

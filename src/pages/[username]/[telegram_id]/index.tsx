@@ -12,7 +12,7 @@ import WorkspaceModal from '@/components/modal/WorkspaceModal'
 
 import { useEffect } from 'react'
 import { useWorkspace } from '@/hooks/useWorkspace'
-import { setIdTask, setVisibleHeader } from '@/apollo/reactive-store'
+import { setIdTask, setVisibleHeader } from '@/store/reactive-store'
 
 import { useTasks } from '@/hooks/useTasks'
 import { useUser } from '@/hooks/useUser'

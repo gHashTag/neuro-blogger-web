@@ -21,7 +21,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 import { RowTaskType } from '@/interfaces'
-import { setIdTask } from '@/apollo/reactive-store'
+import { setIdTask } from '@/store/reactive-store'
 
 interface DataTableRowActionsProps {
   row: RowTaskType

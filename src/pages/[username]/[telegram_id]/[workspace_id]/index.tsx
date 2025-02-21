@@ -10,7 +10,7 @@ import { Passport, RoomEdge, Task, TaskNode } from '@/interfaces'
 import CardRoom from '@/components/ui/card-room'
 import { DataTable } from '@/components/table/data-table'
 
-import { setLoading, setRoomId } from '@/apollo/reactive-store'
+import { setLoading, setRoomId } from '@/store/reactive-store'
 import { useUser } from '@/hooks/useUser'
 import { useTasks } from '@/hooks/useTasks'
 import TaskModal from '@/components/modal/TaskModal'

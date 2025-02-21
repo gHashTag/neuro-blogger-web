@@ -15,7 +15,7 @@ import { FocusScope } from '@react-aria/focus'
 import { useButton } from '@react-aria/button'
 import styles from './mobile-menu.module.css'
 import { useReactiveVar } from '@apollo/client'
-import { setUserId } from '@/apollo/reactive-store'
+import { setUserId } from '@/store/reactive-store'
 import { useUser } from '@/hooks/useUser'
 
 function ModalDialog(

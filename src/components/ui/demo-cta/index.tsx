@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import useClickOutside from '@lib/hooks/use-click-outside'
 import { useReactiveVar } from '@apollo/client'
-import { visibleSignInVar, setInviterUserInfo } from '@/apollo/reactive-store'
+import { visibleSignInVar, setInviterUserInfo } from '@/store/reactive-store'
 
 import { TLoginButton, TLoginButtonSize, TUser } from 'react-telegram-auth'
 

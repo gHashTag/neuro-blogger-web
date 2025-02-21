@@ -52,3 +52,16 @@ export const setInviterUserInfo = makeVar<TSupabaseUser>({
   is_bot: false,
   email: '',
 })
+
+export const setAvatarUrlVar = makeVar<string>('')
+export const setUserDisplayNameVar = makeVar<string>('')
+export const setPromptViewVar = makeVar<string>('')
+export const setSidebarViewVar = makeVar<string>('defaultView')
+export const setIsChatOpenVar = makeVar<boolean>(false)
+export const setChatMessagesVar = makeVar<
+  Array<{ name: string; text: string; is_user: boolean }>
+>([])
+export const setMyReactionVar = makeVar<string>('')
+
+export const setShowAcceptRequestVar = makeVar<boolean>(false)
+export const setRequestedPeersVar = makeVar<string[]>([])

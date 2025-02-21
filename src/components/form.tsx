@@ -31,7 +31,7 @@ import {
   setUserId,
   visibleSignInVar,
   setInviterUserInfo,
-} from '@/apollo/reactive-store'
+} from '@/store/reactive-store'
 
 import Captcha, { useCaptcha } from './captcha'
 

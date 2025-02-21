@@ -23,7 +23,7 @@ import {
 import { ButtonAnimate } from './button-animate'
 import { priorities, statuses } from '@/helpers/data/data'
 import { useReactiveVar } from '@apollo/client'
-import { setEditTask } from '@/apollo/reactive-store'
+import { setEditTask } from '@/store/reactive-store'
 import { useUser } from '@/hooks/useUser'
 import { AnimatedTooltipTasks } from './animated-tooltip-tasks'
 import { usePassport } from '@/hooks/usePassport'

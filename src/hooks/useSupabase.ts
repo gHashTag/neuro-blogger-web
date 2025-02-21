@@ -18,7 +18,7 @@ import {
   setUserInfo,
   setUserSupabase,
   setVisibleHeader,
-} from '@/apollo/reactive-store'
+} from '@/store/reactive-store'
 import { useReactiveVar } from '@apollo/client'
 import { captureExceptionSentry } from '@/utils/sentry'
 

@@ -30,6 +30,11 @@ const nextConfig = {
       },
     ]
   },
+  experimental: {
+    serverActions: {
+      allowedOrigins: ['api.huddle01.com', 'apira.huddle01.media'],
+    },
+  },
   reactStrictMode: true,
   output: 'standalone',
   images: {

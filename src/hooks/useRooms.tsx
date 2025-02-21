@@ -23,7 +23,7 @@ import { useToast } from '@/components/ui/use-toast'
 import { useDisclosure } from '@heroui/react'
 import { useRouter } from 'next/router'
 import { ArrayInviteT, RoomEdge, RoomNode, RoomsData } from '@/interfaces'
-import { setLoading, setRoomId } from '@/apollo/reactive-store'
+import { setLoading, setRoomId } from '@/store/reactive-store'
 import { useAssets } from './useAssets'
 import {
   Control,

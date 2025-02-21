@@ -38,7 +38,7 @@ import {
   setActiveRoute,
   // setHeaderName,
   // setVisibleHeader,
-} from '@/apollo/reactive-store'
+} from '@/store/reactive-store'
 import { Spinner } from '@/components/ui/spinner'
 // import { cache } from "@/pages/_app";
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'

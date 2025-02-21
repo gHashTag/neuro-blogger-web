@@ -5,7 +5,7 @@ import {
   GET_ROOM_ASSET,
   GET_ROOMS_ASSETS_COLLECTION,
 } from '@/graphql/query.rooms'
-import { setRoomId } from '@/apollo/reactive-store'
+import { setRoomId } from '@/store/reactive-store'
 
 const useAssets = () => {
   const { recording_id } = useUser()

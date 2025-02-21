@@ -1,6 +1,8 @@
 import { initialAuthorState } from '@/data'
 import { mockedUser } from '@/utils/constants'
 import { isDev } from '@/config'
+import { useReactiveVar } from '@apollo/client'
+import { setAvatarUrlVar } from '@/store/reactive-store'
 
 type UserType = {
   username: string
@@ -23,11 +25,12 @@ type UserType = {
 
 const useUser = (): UserType => {
   if (isDev) {
-    console.log('Mocking user in development mode')
     localStorage.setItem('username', mockedUser.username)
     localStorage.setItem('telegram_id', mockedUser.telegram_id.toString())
     localStorage.setItem('first_name', mockedUser.first_name)
     localStorage.setItem('last_name', mockedUser.last_name)
+    localStorage.setItem('photo_url', mockedUser.photo_url)
+    setAvatarUrlVar(mockedUser.photo_url)
     // localStorage.setItem('workspace_id', 'Fire')
   }
 

@@ -8,12 +8,12 @@ import { HeroUIProvider } from '@heroui/react'
 import { HuddleProvider, HuddleClient } from '@huddle01/react'
 import { EnvProvider } from '@/env/provider'
 import { TonConnectUIProvider } from '@tonconnect/ui-react'
-
+import HuddleContextProvider from '@/components/huddle/ClientComponents/HuddleContextProvider'
 import ResizeHandler from '@components/resize-handler'
 import BackgroundBeams from '@components/ui/background-beams'
 import { Toaster } from '@/components/ui/toaster'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
-import { setHeaderName } from '@/apollo/reactive-store'
+import { setHeaderName } from '@/store/reactive-store'
 import { ThemeProvider } from '@/components/theme-provider'
 
 import {
@@ -155,21 +155,10 @@ export default function App({ Component, pageProps }: AppProps) {
     return <Spinner size='lg' />
   }
 
-  const huddleClient = new HuddleClient({
-    projectId: process.env.NEXT_PUBLIC_HUDDLE_API_KEY!,
-    options: {
-      activeSpeakers: {
-        size: 8,
-      },
-    },
-  })
-
   return (
     <main className='bg-background text-foreground dark'>
       <ErrorBoundary>
         <div>
-          {/* <HuddleProvider client={huddleClient}> */}
-          {/* <HuddleProvider client={huddleClient}> */}
           <ApolloProvider client={client}>
             <HeroUIProvider>
               <NextThemesProvider attribute='class' defaultTheme='dark'>
@@ -188,19 +177,18 @@ export default function App({ Component, pageProps }: AppProps) {
                     {/* <Analytics />
                     <SpeedInsights /> */}
                     {!isDev && <BackgroundBeams />}
-                    <HuddleProvider client={huddleClient}>
+                    <HuddleContextProvider>
                       <Component {...pageProps} />
 
                       <ResizeHandler />
                       <Toaster />
-                    </HuddleProvider>
+                    </HuddleContextProvider>
                     {/* <BackgroundBeamsTwo /> */}
                   </TonConnectUIProvider>
                 </ThemeProvider>
               </NextThemesProvider>
             </HeroUIProvider>
           </ApolloProvider>
-          {/* </HuddleProvider> */}
         </div>
       </ErrorBoundary>
     </main>

@@ -23,7 +23,7 @@ import {
   UseFormWatch,
   useForm,
 } from 'react-hook-form'
-import { setEditTask, setOpenModalId } from '@/apollo/reactive-store'
+import { setEditTask, setOpenModalId } from '@/store/reactive-store'
 import { useUser } from './useUser'
 import { AssignedTo, PassportNode, TasksArray } from '@/interfaces'
 import { DataTableRowActions } from '@/components/table/data-table-row-actions'
