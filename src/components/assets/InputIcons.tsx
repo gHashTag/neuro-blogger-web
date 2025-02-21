@@ -1,4 +1,6 @@
-import type { ISvgIcons } from '@/types'
+interface ISvgIcons {
+  [key: string]: JSX.Element
+}
 
 export const InputIcons: ISvgIcons = {
   search: (

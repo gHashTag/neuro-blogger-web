@@ -1,4 +1,6 @@
-import type { INestedSvgIcons, ISvgIcons } from '@/types'
+interface ISvgIcons {
+  [key: string]: JSX.Element
+}
 
 export const PeerListIcons: ISvgIcons = {
   info: (
@@ -152,6 +154,12 @@ export const PeerListIcons: ISvgIcons = {
       />
     </svg>
   ),
+}
+
+interface INestedSvgIcons {
+  [key: string]: {
+    [key: string]: JSX.Element
+  }
 }
 
 export const NestedPeerListIcons: INestedSvgIcons = {

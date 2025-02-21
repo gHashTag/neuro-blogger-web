@@ -18,6 +18,7 @@ const LocalGridCard: FC = () => {
     avatarUrl: string
     isHandRaised: boolean
   }>()
+  console.log('metadata', metadata)
 
   useDataMessage({
     onMessage(payload, from, label) {
