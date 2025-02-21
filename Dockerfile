@@ -1,6 +1,7 @@
 FROM node:20-alpine AS deps
 RUN apk add --no-cache libc6-compat git python3 make g++
 
+
 WORKDIR /app
 
 COPY package.json ./
@@ -17,6 +18,8 @@ RUN npm run build
 
 FROM node:20-alpine AS runner
 WORKDIR /app
+
+RUN npm install -g pnpm
 
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
