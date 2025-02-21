@@ -108,11 +108,9 @@ export default function Rooms({
 
   const { roomData, updateMetadata } = useRoomMetadata()
   console.log('useRoomMetadata', roomData)
-
   console.log('state', state)
   console.log('room', room)
   console.log('sessionId', room?.sessionId)
-  console.log('userName', userName)
 
   useEffect(() => {
     if (state === 'connected' && firstName && lastName) {
@@ -125,8 +123,18 @@ export default function Rooms({
         username,
         avatarUrl: photo_url ?? '',
       })
+      !userName && updateRole({ role: Role.LISTENER })
     }
-  }, [state, firstName, lastName, updateMetadata, username, photo_url])
+  }, [
+    state,
+    firstName,
+    lastName,
+    updateMetadata,
+    username,
+    photo_url,
+    updateRole,
+    userName,
+  ])
 
   useEffect(() => {
     if (state === 'idle') {
@@ -139,12 +147,6 @@ export default function Rooms({
       avatarUrl: photo_url ?? '',
       isHandRaised: false,
     })
-    //updateRole
-    // updateMetadata({
-    //   displayName: displayName,
-    //   avatarUrl: photo_url ?? '',
-    //   isHandRaised: false,
-    // })
   }, [
     updateMetadata,
     userName,
@@ -190,7 +192,7 @@ export default function Rooms({
         <code className='font-mono font-bold'>{state}</code>
       </p>
 
-      <section className='bg-audio relative flex h-screen w-full items-center justify-center text-slate-100'>
+      <section className='relative flex h-screen w-full items-center justify-center text-slate-100'>
         <div className='flex w-full items-center justify-center'>
           <GridLayout />
           <Sidebar />

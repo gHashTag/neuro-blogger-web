@@ -4,7 +4,7 @@ import { memo } from 'react'
 import LocalGridCard from '../GridCard/LocalGridCard'
 import RemoteGridCard from '../GridCard/RemoteGridCard'
 
-const Speakers = () => {
+const Hosts = () => {
   const { peerIds } = usePeerIds({ roles: [Role.HOST] })
   const { peerId: localPeerId, role: localPeerRole } = useLocalPeer()
 
@@ -20,4 +20,4 @@ const Speakers = () => {
   )
 }
 
-export default memo(Speakers)
+export default memo(Hosts)
