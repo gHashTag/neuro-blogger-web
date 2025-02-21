@@ -170,6 +170,7 @@ const Lobby = ({
                     className='h-5 w-5'
                     width={30}
                     height={30}
+                    priority
                   />
                 </div>
                 <input

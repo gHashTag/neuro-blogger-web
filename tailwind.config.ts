@@ -11,6 +11,20 @@ export default {
   ],
   theme: {
     extend: {
+      animation: {
+        ripple: 'ripple 0.8s infinite',
+        ripple2: 'ripple2 0.8s infinite 0.4s', // Добавлена задержка 0.4s
+      },
+      keyframes: {
+        ripple: {
+          '0%': { transform: 'scale(0.9)', opacity: '1' },
+          '100%': { transform: 'scale(1.2)', opacity: '0' },
+        },
+        ripple2: {
+          '0%': { transform: 'scale(0.9)', opacity: '1' },
+          '100%': { transform: 'scale(1.2)', opacity: '0' },
+        },
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

@@ -10,6 +10,7 @@ import {
   usePeerIds,
   useRoom,
   useDataMessage,
+  useActivePeers,
 } from '@huddle01/react/hooks'
 import { useRoomMetadata } from '@huddle01/react'
 import { AccessToken, Role } from '@huddle01/server-sdk/auth'
@@ -64,7 +65,9 @@ export default function Rooms({
   const { push } = useRouter()
   const { username: userName, firstName, lastName } = useUser()
   useUser()
-
+  const { activePeerIds, dominantSpeakerId } = useActivePeers()
+  console.log('activePeerIds', activePeerIds)
+  console.log('dominantSpeakerId', dominantSpeakerId)
   // Use reactive variables
   const [requestedPeerId, setRequestedPeerId] = useState('')
   const avatarUrl = useReactiveVar(setAvatarUrlVar)
