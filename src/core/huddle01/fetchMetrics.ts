@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { NEXT_PUBLIC_API_KEY } from '@/config'
+import { NEXT_PUBLIC_HUDDLE01_API_KEY } from '@/config'
 
 export async function fetchMetrics() {
   try {
@@ -8,7 +8,7 @@ export async function fetchMetrics() {
       {
         headers: {
           'Content-Type': 'application/json',
-          'x-api-key': NEXT_PUBLIC_API_KEY,
+          'x-api-key': NEXT_PUBLIC_HUDDLE01_API_KEY,
         },
       }
     )

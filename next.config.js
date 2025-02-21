@@ -19,6 +19,15 @@ const nextConfig = {
           },
         ],
       },
+      {
+        source: '/api/huddle01/fetchRoomMetadata',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+        ],
+      },
     ]
   },
   reactStrictMode: true,

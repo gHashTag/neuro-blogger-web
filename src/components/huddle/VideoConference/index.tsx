@@ -17,7 +17,6 @@ import {
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import ChatBox from '../ChatBox'
-import { getRoomMetadata } from '@/core/huddle01'
 import {
   useLocalAudio,
   useLocalScreenShare,
@@ -64,11 +63,6 @@ export default function VideoConference({
     }
     setIsSharing(!isSharing)
   }
-
-  useEffect(() => {
-    const roomMetadata = getRoomMetadata(roomId)
-    console.log('roomMetadata', roomMetadata)
-  }, [roomId])
 
   useEffect(() => {
     if (stream && videoRef.current) {

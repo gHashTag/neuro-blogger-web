@@ -30,7 +30,7 @@ const Meets = () => {
     }
 
     setRoute()
-  }, [router])
+  }, [router, workspace_id, roomCode])
 }
 
 export default Meets

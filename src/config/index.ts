@@ -80,4 +80,7 @@ export const PULSE_BOT_TOKEN = process.env.NEXT_PUBLIC_BOT_TOKEN_1
 export const ELESTIO_URL = process.env.NEXT_PUBLIC_ELESTIO_URL!
 
 export const NEXT_PUBLIC_PROJECT_ID = process.env.NEXT_PUBLIC_PROJECT_ID!
-export const NEXT_PUBLIC_API_KEY = process.env.NEXT_PUBLIC_API_KEY!
+export const NEXT_PUBLIC_HUDDLE01_API_KEY =
+  process.env.NEXT_PUBLIC_HUDDLE01_API_KEY!
+
+export const HUDDLE01_API_KEY = process.env.HUDDLE01_API_KEY!

@@ -226,12 +226,12 @@ const useRooms = (): UseRoomsReturn => {
     },
   ]
 
-  const handlerEditRoom = () => {
+  const handlerEditRoom = useCallback(() => {
     setIsEditing(true)
     onOpen()
-  }
+  }, [onOpen, setIsEditing])
 
-  const onCreateRoom = async () => {
+  const onCreateRoom = useCallback(async () => {
     setLoading(true)
     const formData = getValues()
 
@@ -289,9 +289,20 @@ const useRooms = (): UseRoomsReturn => {
         })
       }
     }
-  }
+  }, [
+    createPassport,
+    getValues,
+    language_code,
+    router,
+    toast,
+    username,
+    telegram_id,
+    workspace_id,
+    reset,
+    openModalRoomId,
+  ])
 
-  const onUpdateRoom = () => {
+  const onUpdateRoom = useCallback(() => {
     const values = getValues()
     updateRoom({
       variables: {
@@ -311,9 +322,16 @@ const useRooms = (): UseRoomsReturn => {
         roomNameRefetch()
       },
     })
-  }
+  }, [
+    getValues,
+    updateRoom,
+    toast,
+    refetchRooms,
+    assetsRefetch,
+    roomNameRefetch,
+  ])
 
-  const onDeleteRoom = () => {
+  const onDeleteRoom = useCallback(() => {
     deleteRoom({
       variables: {
         room_id,
@@ -328,7 +346,18 @@ const useRooms = (): UseRoomsReturn => {
         router.push(`/${username}/${telegram_id}/${workspace_id}`)
       },
     })
-  }
+  }, [
+    deleteRoom,
+    toast,
+    refetchRooms,
+    assetsRefetch,
+    roomNameRefetch,
+    router,
+    username,
+    telegram_id,
+    workspace_id,
+    room_id,
+  ])
 
   return {
     roomsItem: roomsData?.roomsCollection?.edges[0]?.node,

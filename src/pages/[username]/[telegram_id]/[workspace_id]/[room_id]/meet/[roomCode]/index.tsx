@@ -10,6 +10,7 @@ import {
   usePeerIds,
   useRoom,
 } from '@huddle01/react/hooks'
+import { useRoomMetadata } from '@huddle01/react'
 import { AccessToken, Role } from '@huddle01/server-sdk/auth'
 import { Inter } from 'next/font/google'
 import { useRouter } from 'next/router'
@@ -18,7 +19,8 @@ import { useUser } from '@/hooks/useUser'
 import ConnectedView from '@/components/huddle/ConnectedView'
 import Layout from '@/components/layout'
 import { getUserByTelegramId } from '@/core/supabase'
-const inter = Inter({ subsets: ['latin'] })
+import axios from 'axios'
+import { HUDDLE01_API_KEY } from '@/config'
 
 type Props = {
   token: string
@@ -26,13 +28,21 @@ type Props = {
   username: string
 }
 
+type RoomEvents = {
+  'room-metadata-updated': [
+    {
+      metadata: Record<string, string>
+    },
+  ]
+}
+
 export default function Rooms({ token, roomId, username }: Props) {
   console.log('roomId 2', roomId)
   const [displayName, setDisplayName] = useState<string>('')
 
   const router = useRouter()
-  const { firstName, lastName } = useUser()
-  const { updateMetadata } = useLocalPeer<TPeerMetadata>()
+  const { firstName, lastName, photo_url } = useUser()
+  // const { updateMetadata } = useLocalPeer<TPeerMetadata>()
 
   const { joinRoom, room, state } = useRoom({
     onJoin: room => {
@@ -43,6 +53,7 @@ export default function Rooms({ token, roomId, username }: Props) {
           lastName,
           displayName: `${firstName} ${lastName}`,
           username,
+          photo_url,
         })
       }
     },
@@ -50,29 +61,49 @@ export default function Rooms({ token, roomId, username }: Props) {
       console.log('onPeerJoin', peer)
     },
   })
+
+  const { peerIds } = usePeerIds({
+    roles: [],
+    labels: [],
+    onPeerRoleUpdate(data) {},
+  })
+  console.log('peerIds', peerIds)
+
+  const { roomData, updateMetadata } = useRoomMetadata()
+  console.log('useRoomMetadata', roomData)
+
   console.log('state', state)
   console.log('room', room)
   console.log('sessionId', room?.sessionId)
-
+  console.log('firstName', firstName)
+  console.log('lastName', lastName)
   useEffect(() => {
-    console.log('firstName', firstName)
-    console.log('lastName', lastName)
-    if (firstName && lastName) {
-      const fullName = `${firstName} ${lastName}`
-      setDisplayName(fullName)
+    if (state === 'idle') {
       joinRoom({
         roomId,
         token,
       })
-      updateMetadata({ firstName, lastName, displayName: fullName, username })
     }
-  }, [firstName, lastName, joinRoom, roomId, token, username, updateMetadata])
+  }, [state, firstName, lastName, updateMetadata, roomId, token, joinRoom])
+
+  useEffect(() => {
+    if (state === 'connected' && firstName && lastName) {
+      const fullName = `${firstName} ${lastName}`
+      setDisplayName(fullName)
+      updateMetadata({
+        firstName,
+        lastName,
+        displayName: fullName,
+        username,
+      })
+    }
+  }, [state, firstName, lastName, updateMetadata, username])
 
   return (
-    <Layout loading={state === 'idle'}>
-      {/* <p className='fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30'>
-          <code className='font-mono font-bold'>{state}</code>
-        </p> */}
+    <Layout loading={false}>
+      <p className='fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30'>
+        <code className='font-mono font-bold'>{state}</code>
+      </p>
 
       {state === 'idle' && (
         <>
@@ -156,7 +187,7 @@ export const getServerSideProps = async (
     console.log('roomId 1', roomId)
     const username = ctx.query.username as string
 
-    const apiKey = process.env.NEXT_PUBLIC_API_KEY || ''
+    const apiKey = process.env.NEXT_PUBLIC_HUDDLE01_API_KEY || ''
     if (!apiKey || !roomId) {
       return {
         props: { token: null, roomId: null, username: null },
@@ -188,6 +219,22 @@ export const getServerSideProps = async (
       console.error('Failed to generate token')
       token = ''
     }
+
+    // const response = await fetch(
+    //   `https://api.huddle01.com/api/v2/sdk/rooms/get-metadata/${roomId}`,
+    //   {
+    //     method: 'GET',
+    //     headers: {
+    //       'Content-type': 'application/json',
+    //       'x-api-key': HUDDLE01_API_KEY,
+    //     },
+    //   }
+    // )
+    // console.log('response', response)
+    // if (response.ok) {
+    //   const roomData = await response.json()
+    //   console.log('roomData', roomData)
+    // }
 
     return {
       props: { token, roomId, username },

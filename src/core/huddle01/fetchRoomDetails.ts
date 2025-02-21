@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { NEXT_PUBLIC_API_KEY } from '@/config'
+import { NEXT_PUBLIC_HUDDLE01_API_KEY } from '@/config'
 
 export async function fetchRoomDetails(roomId: string) {
   try {
@@ -7,7 +7,7 @@ export async function fetchRoomDetails(roomId: string) {
       `https://api.huddle01.com/api/v2/sdk/rooms/room-details/${roomId}`,
       {
         headers: {
-          'x-api-key': NEXT_PUBLIC_API_KEY,
+          'x-api-key': NEXT_PUBLIC_HUDDLE01_API_KEY,
         },
       }
     )

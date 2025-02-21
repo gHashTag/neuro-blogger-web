@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { NEXT_PUBLIC_API_KEY } from '@/config'
+import { NEXT_PUBLIC_HUDDLE01_API_KEY } from '@/config'
 
 export async function fetchRecordings(sessionId: string) {
   const config = {
@@ -7,7 +7,7 @@ export async function fetchRecordings(sessionId: string) {
     maxBodyLength: Infinity,
     url: `https://api.huddle01.com/api/v2/sdk/recordings?sessionId=${sessionId}&limit=1&cursor=1`,
     headers: {
-      'x-api-key': NEXT_PUBLIC_API_KEY,
+      'x-api-key': NEXT_PUBLIC_HUDDLE01_API_KEY,
     },
   }
 
