@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Image from 'next/image'
 
+import { AnimatedTooltip } from '@/components/ui/animated-tooltip'
 // Assets
 import { BasicIcons } from '@/components/assets/BasicIcons'
 import {
@@ -47,30 +47,24 @@ const GridCard: React.FC<GridCardProps> = ({ peerId }) => {
   return (
     <div className='relative flex flex-col items-center justify-center'>
       {stream && <AudioElem peerId={peerId} />}
-      <Image
-        src={metadata?.avatarUrl || getFallbackAvatar()}
-        alt='default-avatar'
-        width={100}
-        height={100}
-        quality={100}
-        priority
-        className='maskAvatar'
+      <AnimatedTooltip
+        items={[
+          {
+            id: 1,
+            name: `${metadata?.displayName}`,
+            designation: role || '',
+            image: metadata?.avatarUrl || getFallbackAvatar(),
+          },
+        ]}
       />
-
-      <div className='mt-1 text-center'>
-        <div className='text-custom-5 text-base font-medium'>
-          {metadata?.displayName}
-        </div>
-        <div className='text-custom-6 text-sm font-normal'>{role}</div>
-      </div>
-      <div className='absolute bottom-1/2 left-1/2 mb-2 -translate-x-1/2 text-4xl'>
+      <div className='absolute -right-8 -top-1 flex size-8 items-center justify-center text-4xl'>
         {reaction}
       </div>
       {role && ['host, coHost, speaker'].includes(role) && (
         <div className='absolute right-0'>{BasicIcons.audio}</div>
       )}
       {metadata?.isHandRaised && (
-        <div className='bg-custom-8 border-custom-1 absolute -top-1 right-2 flex h-8 w-8 items-center justify-center rounded-full border-2 text-xl'>
+        <div className='absolute -left-3 -top-1 flex size-8 items-center justify-center text-4xl'>
           ✋
         </div>
       )}

@@ -7,7 +7,8 @@ import RemoteGridCard from '../GridCard/RemoteGridCard'
 const Hosts = () => {
   const { peerIds } = usePeerIds({ roles: [Role.HOST] })
   const { peerId: localPeerId, role: localPeerRole } = useLocalPeer()
-
+  console.log('localPeerRole', localPeerRole)
+  console.log('peerIds', peerIds)
   return (
     <>
       {localPeerRole === Role.HOST && localPeerId && (
