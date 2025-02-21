@@ -30,7 +30,7 @@ const useUser = (): UserType => {
     localStorage.setItem('first_name', mockedUser.first_name)
     localStorage.setItem('last_name', mockedUser.last_name)
     localStorage.setItem('photo_url', mockedUser.photo_url)
-    setAvatarUrlVar(mockedUser.photo_url)
+    //setAvatarUrlVar(mockedUser.photo_url)
     // localStorage.setItem('workspace_id', 'Fire')
   }
 

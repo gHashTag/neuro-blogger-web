@@ -62,12 +62,12 @@ export default function Rooms({
   const [displayName, setDisplayName] = useState<string>('')
 
   const { push } = useRouter()
-  const { username: userName, firstName, lastName, photo_url } = useUser()
+  const { username: userName, firstName, lastName } = useUser()
   useUser()
 
   // Use reactive variables
   const [requestedPeerId, setRequestedPeerId] = useState('')
-
+  const avatarUrl = useReactiveVar(setAvatarUrlVar)
   const isChatOpen = useReactiveVar(setIsChatOpenVar)
   const chatMessages = useReactiveVar(setChatMessagesVar)
   const showAcceptRequest = useReactiveVar(setShowAcceptRequestVar)
@@ -121,7 +121,7 @@ export default function Rooms({
         lastName,
         displayName: fullName,
         username,
-        avatarUrl: photo_url ?? '',
+        avatarUrl: avatarUrl ?? '',
       })
       !userName && updateRole({ role: Role.LISTENER })
     }
@@ -131,7 +131,7 @@ export default function Rooms({
     lastName,
     updateMetadata,
     username,
-    photo_url,
+    avatarUrl,
     updateRole,
     userName,
   ])
@@ -141,10 +141,10 @@ export default function Rooms({
       push(lobbyUrl)
       return
     }
-    console.log('photo_url', photo_url)
+    console.log('photo_url', avatarUrl)
     updateMetadataLocalPeer({
       displayName: displayName,
-      avatarUrl: photo_url ?? '',
+      avatarUrl: avatarUrl ?? '',
       isHandRaised: false,
     })
   }, [
@@ -152,7 +152,7 @@ export default function Rooms({
     userName,
     state,
     displayName,
-    photo_url,
+    avatarUrl,
     updateMetadataLocalPeer,
     lobbyUrl,
     push,
