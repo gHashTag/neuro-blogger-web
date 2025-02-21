@@ -164,9 +164,6 @@ importers:
       apollo3-cache-persist:
         specifier: ^0.15.0
         version: 0.15.0(@apollo/client@3.13.1(@types/react@18.3.18)(graphql-ws@6.0.4(graphql@16.10.0)(ws@8.18.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)))(graphql@16.10.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
-      auth:
-        specifier: link:@huddle01/server-sdk/auth
-        version: link:@huddle01/server-sdk/auth
       axios:
         specifier: ^1.7.9
         version: 1.7.9
