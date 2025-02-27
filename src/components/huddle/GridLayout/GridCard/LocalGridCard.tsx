@@ -14,7 +14,8 @@ import RippleAnimation from './RippleAnimation'
 const LocalGridCard: FC = () => {
   const [reaction, setReaction] = useState('')
   const { activePeerIds, dominantSpeakerId } = useActivePeers()
-
+  console.log('activePeerIds', activePeerIds)
+  console.log('dominantSpeakerId', dominantSpeakerId)
   const {
     metadata,
     peerId: localPeerId,

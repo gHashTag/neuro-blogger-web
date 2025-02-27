@@ -39,7 +39,7 @@ const Lobby = ({
   telegram_id,
 }: TLobboyProps) => {
   const avatarUrl = useReactiveVar(setAvatarUrlVar)
-  console.log('avatarUrl', avatarUrl)
+
   const { username: firstName, lastName } = useUser()
 
   const roomUrl = `${SITE_URL}/${username}/${telegram_id}/${workspace_id}/${room_name}/meet/${roomCode}`
@@ -101,7 +101,7 @@ const Lobby = ({
                   alt='audio-spaces-img'
                   width={125}
                   height={125}
-                  className='maskAvatar rounded-full object-contain' // Добавлен класс rounded-full
+                  className='maskAvatar rounded-full object-contain'
                   quality={100}
                   priority
                 />

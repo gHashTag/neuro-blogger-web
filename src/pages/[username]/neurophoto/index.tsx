@@ -114,7 +114,7 @@ export default function LandingPage() {
           <CardStackDemo
             imageUrl={autorImageUrl || ''}
             refLink={`https://t.me/${botName}?start=${userId}`}
-            price={4800}
+            price={1999}
             title='Тариф "Нейрофото"'
           />
         </div>

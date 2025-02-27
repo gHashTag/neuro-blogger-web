@@ -17,6 +17,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
 
   if (sidebarView === 'close') return null
   const currentView = ViewComponent[sidebarView]
+  console.log('currentView', currentView)
   return (
     <aside
       className={cn(
@@ -33,7 +34,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
       />
 
       <div className='noScrollbar overflow-y-auto px-6 py-4'>
-        {currentView ? currentView.component : <div>Default View</div>}
+        {currentView && ViewComponent[sidebarView].component}
       </div>
     </aside>
   )

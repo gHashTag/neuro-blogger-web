@@ -3,7 +3,22 @@ import { SupabaseUser, Task } from '@/interfaces'
 
 import { captureExceptionSentry } from '@/utils/sentry'
 import { SupabaseResponse } from '@/interfaces/types'
-import { supabase } from '.'
+import { createClient } from '@supabase/supabase-js'
+import {
+  NEXT_PUBLIC_SUPABASE_URL,
+  NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY,
+} from '../../config'
+
+export const supabase = createClient(
+  NEXT_PUBLIC_SUPABASE_URL!,
+  NEXT_PUBLIC_SUPABASE_ANON_KEY!
+)
+
+export const supabaseAdmin = createClient(
+  NEXT_PUBLIC_SUPABASE_URL!,
+  NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY!
+)
 
 interface QuestionContext {
   lesson_number?: number
@@ -654,5 +669,3 @@ export const setUserPhotoUrl = async ({
     throw new Error('Error setUserPhotoUrl: ' + error)
   }
 }
-
-export { supabase }

@@ -61,7 +61,7 @@ export default function Rooms({
 }: TRoomsProps) {
   console.log('roomId 2', roomId)
   const [displayName, setDisplayName] = useState<string>('')
-
+  const { enableAudio, disableAudio, isAudioOn } = useLocalAudio()
   const { push } = useRouter()
   const { username: userName, firstName, lastName } = useUser()
   useUser()
@@ -144,7 +144,7 @@ export default function Rooms({
       push(lobbyUrl)
       return
     }
-    console.log('photo_url', avatarUrl)
+
     updateMetadataLocalPeer({
       displayName: displayName,
       avatarUrl: avatarUrl ?? '',

@@ -16,7 +16,15 @@ const ConnectedView: React.FC<ConnectedViewProps> = ({ roomId }) => {
   }
 
   const toggleAudio = async () => {
-    isAudioOn ? await disableAudio() : await enableAudio()
+    if (isAudioOn) {
+      console.log('Disabling audio...')
+      await disableAudio()
+      console.log('Audio disabled.')
+    } else {
+      console.log('Enabling audio...')
+      await enableAudio()
+      console.log('Audio enabled.')
+    }
   }
 
   const toggleRecording = async () => {

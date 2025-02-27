@@ -85,11 +85,12 @@ export default function Form({ sharePage }: Props) {
     if (inputRefWord.current) {
       inputRefWord.current.focus()
     }
-  }, [router, workspace_id])
+  }, [router, username, telegram_id, workspace_id])
 
   const checkEmail = useCallback(async () => {
     if (inviteCode) {
       const isInviterExist = isValidEmail(inviteCode)
+      console.log('isInviterExist', isInviterExist)
       if (isInviterExist) {
         visibleSignInVar(true)
         setFormState('success')
@@ -108,7 +109,7 @@ export default function Form({ sharePage }: Props) {
         return
       }
     }
-  }, [inviteCode, toast])
+  }, [inviteCode, userInfo, language_code])
 
   const checkInviteWord = useCallback(async () => {
     if (inviteCode) {
@@ -141,7 +142,7 @@ export default function Form({ sharePage }: Props) {
         return
       }
     }
-  }, [inviteCode])
+  }, [inviteCode, language_code])
 
   const onSubmit = useCallback(
     (e: React.FormEvent) => {
@@ -150,22 +151,17 @@ export default function Form({ sharePage }: Props) {
       if (formState === 'default') {
         setFormState('loading')
 
-        if (isCaptchaEnabled) {
-          return executeCaptcha()
-        }
+        // if (isCaptchaEnabled) {
+        //   console.log('isCaptchaEnabled')
+        //   return executeCaptcha()
+        // }
+        console.log('isEmailStep', isEmailStep)
         return isEmailStep ? checkEmail() : checkInviteWord()
       } else {
         setFormState('default')
       }
     },
-    [
-      formState,
-      isCaptchaEnabled,
-      isEmailStep,
-      checkEmail,
-      checkInviteWord,
-      executeCaptcha,
-    ]
+    [formState, isEmailStep, checkEmail, checkInviteWord]
   )
 
   const onTryAgainClick = useCallback(
@@ -220,15 +216,13 @@ export default function Form({ sharePage }: Props) {
                 <Button
                   type='submit'
                   className={cn(
-                    'w-full rounded-lg bg-yellow-500 px-4 py-2 font-semibold text-black shadow-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-75',
-                    'sm:px-6 sm:py-3 sm:text-lg',
-                    'md:px-8 md:py-4 md:text-xl',
-                    'lg:px-10 lg:py-5 lg:text-2xl',
+                    styles.submit,
+                    styles.register,
                     styles[formState]
                   )}
                   disabled={formState === 'loading'}
                 >
-                  <p className='text-center'>
+                  <p className={styles['register-text']}>
                     {language_code === 'ru' ? 'Проверка' : 'Check'}
                   </p>
                 </Button>

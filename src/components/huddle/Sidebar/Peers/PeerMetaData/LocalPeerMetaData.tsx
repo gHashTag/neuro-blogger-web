@@ -102,7 +102,15 @@ const PeerMetaData: React.FC<PeerMetaDatProps> = ({
           <button
             onClick={() => {
               if (role && ['host', 'coHost', 'speaker'].includes(role)) {
-                isAudioOn ? disableAudio() : enableAudio()
+                if (isAudioOn) {
+                  console.log('Disabling audio...')
+                  disableAudio()
+                  console.log('Audio disabled.')
+                } else {
+                  console.log('Enabling audio...')
+                  enableAudio()
+                  console.log('Audio enabled.')
+                }
               }
             }}
           >
