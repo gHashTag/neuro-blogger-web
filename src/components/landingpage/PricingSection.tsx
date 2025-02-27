@@ -38,7 +38,7 @@ export function PricingSection() {
             </h3>
             <ul className='list-inside list-disc space-y-4 text-gray-700'>
               <li>
-                <span className='font-semibold'>1900$</span> — поддержка,
+                <span className='font-semibold'>999$</span> — поддержка,
                 автоматизация и развитие аватара. 🔄
               </li>
             </ul>

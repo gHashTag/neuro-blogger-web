@@ -38,7 +38,7 @@ export function NeuroCallsPricingSection() {
             </h3>
             <ul className='list-inside list-disc space-y-4 text-gray-700'>
               <li>
-                <span className='font-semibold'>1000$</span> — техническая
+                <span className='font-semibold'>999$</span> — техническая
                 поддержка, обновления и мониторинг системы. 🔄
               </li>
             </ul>
