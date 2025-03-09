@@ -1,70 +1,86 @@
-'use client'
+import { Player } from '@remotion/player'
+import type { NextPage } from 'next'
+import Head from 'next/head'
+import React, { useMemo, useState } from 'react'
+import { Main } from '../../../remotion/MyComp/Main'
+import {
+  CompositionProps,
+  defaultMyCompProps,
+  DURATION_IN_FRAMES,
+  VIDEO_FPS,
+  VIDEO_HEIGHT,
+  VIDEO_WIDTH,
+} from '../../../interfaces/remotion.interface'
+import { z } from 'zod'
+import { RenderControls } from '@/components/remotion/RenderControls'
+import { Tips } from '@/components/remotion/Tips/Tips'
+import { Spacing } from '@/components/remotion/Spacing'
 
-import { useState, useEffect } from 'react'
-import { Loader } from '@/components'
+const container: React.CSSProperties = {
+  maxWidth: 768,
+  margin: 'auto',
+  marginBottom: 20,
+}
 
-export default function VideoPlayerComponent() {
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+const outer: React.CSSProperties = {
+  borderRadius: 'var(--geist-border-radius)',
+  overflow: 'hidden',
+  boxShadow: '0 0 200px rgba(0, 0, 0, 0.15)',
+  marginBottom: 40,
+  marginTop: 60,
+}
 
-  useEffect(() => {
-    // Загружаем плеер динамически
-    const loadRevideoPlayer = async () => {
-      try {
-        // Вместо импорта из @revideo, создаем простой компонент-плейсхолдер
-        const RevideoPlayer = () => (
-          <div className='flex aspect-video items-center justify-center rounded-lg bg-black'>
-            <p className='text-white'>Revideo Player Placeholder</p>
-            <p className='mt-2 text-sm text-gray-400'>
-              (Для настоящего плеера требуется отдельный запуск через CLI)
-            </p>
-          </div>
-        )
+const player: React.CSSProperties = {
+  width: '100%',
+}
 
-        setLoading(false)
-      } catch (error) {
-        console.error('❌ Ошибка загрузки плеера:', error)
-        setError(String(error))
-        setLoading(false)
-      }
+const Home: NextPage = () => {
+  const [text, setText] = useState<string>(defaultMyCompProps.title)
+
+  const inputProps: z.infer<typeof CompositionProps> = useMemo(() => {
+    return {
+      title: text,
     }
-
-    loadRevideoPlayer()
-  }, [])
-
-  if (loading) {
-    return <Loader />
-  }
-
-  if (error) {
-    return (
-      <div className='mx-auto max-w-2xl rounded-lg border border-red-300 bg-red-50 p-6'>
-        <h3 className='mb-2 text-lg font-bold text-red-700'>
-          Ошибка загрузки @revideo:
-        </h3>
-        <p className='text-red-600'>{error}</p>
-
-        <div className='mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4'>
-          <p className='font-medium text-amber-800'>Рекомендации:</p>
-          <ul className='mt-2 list-disc pl-5 text-amber-700'>
-            <li>
-              Запустите @revideo отдельно через CLI:{' '}
-              <code>npm run revideo:serve</code>
-            </li>
-            <li>Проверьте совместимость версий @revideo с Next.js</li>
-            <li>
-              В production режиме используйте отдельное приложение на Vite для
-              @revideo
-            </li>
-          </ul>
-        </div>
-      </div>
-    )
-  }
+  }, [text])
 
   return (
     <div>
-      <p>Hello world</p>
+      <Head>
+        <title>Remotion and Next.js</title>
+        <meta name='description' content='Remotion and Next.js' />
+        <meta
+          name='viewport'
+          content='width=device-width, initial-scale=1, maximum-scale=1'
+        />
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
+      <div style={container}>
+        <div className='cinematics' style={outer}>
+          <Player
+            component={Main}
+            inputProps={inputProps}
+            durationInFrames={DURATION_IN_FRAMES}
+            fps={VIDEO_FPS}
+            compositionHeight={VIDEO_HEIGHT}
+            compositionWidth={VIDEO_WIDTH}
+            style={player}
+            controls
+            autoPlay
+            loop
+          />
+        </div>
+        <RenderControls
+          text={text}
+          setText={setText}
+          inputProps={inputProps}
+        ></RenderControls>
+        <Spacing></Spacing>
+        <Spacing></Spacing>
+        <Spacing></Spacing>
+        <Spacing></Spacing>
+      </div>
     </div>
   )
 }
+
+export default Home
