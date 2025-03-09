@@ -142,5 +142,33 @@
     "*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write"
     ]
+  },
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "@heroui/shared-utils",
+      "@parcel/watcher",
+      "@tsparticles/engine",
+      "@vercel/speed-insights",
+      "better-sqlite3",
+      "bufferutil",
+      "core-js",
+      "es5-ext",
+      "esbuild",
+      "sharp",
+      "utf-8-validate"
+    ],
+    "onlyBuiltDependencies": [
+      "@heroui/shared-utils",
+      "@parcel/watcher",
+      "@tsparticles/engine",
+      "@vercel/speed-insights",
+      "better-sqlite3",
+      "bufferutil",
+      "core-js",
+      "es5-ext",
+      "esbuild",
+      "sharp",
+      "utf-8-validate"
+    ]
   }
 }
