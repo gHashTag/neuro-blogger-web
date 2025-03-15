@@ -13,7 +13,7 @@ import {
 } from '../../../interfaces/remotion.interface'
 import { z } from 'zod'
 import { RenderControls } from '@/components/remotion/RenderControls'
-import { Tips } from '@/components/remotion/Tips/Tips'
+
 import { Spacing } from '@/components/remotion/Spacing'
 
 const container: React.CSSProperties = {

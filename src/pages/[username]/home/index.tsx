@@ -26,6 +26,7 @@ import {
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { Loader } from '@/components'
 
 const description = {
   title: 'НЕЙРОСЕТИ ОБУЧЕНИЕ С НУЛЯ',
@@ -42,6 +43,7 @@ const description = {
 
 function Home() {
   const [currentAuthor, setCurrentAuthor] = useState<Author>(initialAuthorState)
+  const [botName, setBotName] = useState<string>('')
   const router = useRouter()
 
   useEffect(() => {
@@ -49,30 +51,47 @@ function Home() {
     const newpathname = router.asPath
 
     const username = newpathname ? newpathname.split('/')[1] : null
-    console.log(username, 'username')
+    console.log('👾 Пользователь из URL:', username)
+
+    // Маппинг для получения имени бота
+    const usernameToBotMap = {
+      neuro_sage: 'neuro_blogger_bot',
+      muse_nataly: 'MetaMuse_Manifest_bot',
+      E_Zavarykin: 'ZavaraBot',
+      playom: 'LeeSolarbot',
+    }
 
     let author
+    let botName
     switch (username) {
       case 'neuro_sage':
         author = neuroCoderAutor
+        botName = usernameToBotMap[username]
         break
       case 'muse_nataly':
         author = metaMuseAutor
+        botName = usernameToBotMap[username]
         break
       case 'E_Zavarykin':
         author = ezavarykinAutor
+        botName = usernameToBotMap[username]
         break
       case 'playom':
         author = playomAutor
+        botName = usernameToBotMap[username]
         break
       default:
         author = metaMuseAutor
+        botName = usernameToBotMap['muse_nataly']
     }
+
     setCurrentAuthor(author)
+    setBotName(botName)
     console.log(author, 'currentAuthor')
   }, [router.isReady])
 
-  if (!router.isReady) return <p>Loading...</p>
+  if (!router.isReady) return <Loader />
+
   return (
     <div className='min-h-screen bg-gradient-to-b from-pink-50 to-white'>
       <MainMenu />
@@ -145,7 +164,7 @@ function Home() {
       {/* Цена и CTA */}
       <section id='price' className='px-4 py-5'>
         <div className='mx-auto max-w-7xl'>
-          <CoursePricing plans={PricingPlans} />
+          <CoursePricing plans={PricingPlans} botName={botName} />
         </div>
       </section>
       {currentAuthor && (

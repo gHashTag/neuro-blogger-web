@@ -1,6 +1,6 @@
 export const PricingPlans = [
   {
-    title: '🤖 Нейрофото',
+    title: '📸 Нейрофото',
     description: `
       🛠️ Настройка ИИ под твой стиль<br />  
       🎓 Обучение нейросети на ваших фото<br />
@@ -8,11 +8,9 @@ export const PricingPlans = [
       ✨ Эксклюзивные промпты и эффекты, доступные только в боте<br />
       🔄 Регулярные обновления<br />
       ⭐️ 3000 звезд на баланс бота`,
-    discountedPrice: 4800,
-    price: 6999,
-    discountedLink:
-      'https://auth.robokassa.ru/merchant/Invoice/9gcXa7QQM02bE9b39WTI3w',
-    link: 'https://auth.robokassa.ru/merchant/Invoice/80iNMydeekGIqtbc1qZvhQ',
+    discountedPrice: 1100,
+    price: 4800,
+    subscriptionType: 'neurophoto',
   },
   {
     title: '📚 НейроБаза',
@@ -22,11 +20,9 @@ export const PricingPlans = [
       🔧 Поддержка и актуальные технологии<br />
       💬 Доступ к чату с ментором<br />
       ⭐️ 1000 на баланс бота`,
-    discountedPrice: 9999,
-    price: 11998,
-    discountedLink:
-      'https://auth.robokassa.ru/merchant/Invoice/9gcXa7QQM02bE9b39WTI3w',
-    link: 'https://auth.robokassa.ru/merchant/Invoice/80iNMydeekGIqtbc1qZvhQ',
+    discountedPrice: 2999,
+    price: 9999,
+    subscriptionType: 'neurobase',
   },
   {
     title: '🤖 НейроБлогер',
@@ -35,11 +31,9 @@ export const PricingPlans = [
       🗓️ Курс на 1 месяц с 4 онлайн уроками по 2 часа<br />
       📝 Практические занятия, домашние задания и поддержка куратора<br />
       ⭐️ 3040 на баланс бота`,
-    discountedPrice: 99999,
-    price: 119998,
-    discountedLink:
-      'https://auth.robokassa.ru/merchant/Invoice/zI00mWxJ2UWhw9yFSVem6A',
-    link: 'https://auth.robokassa.ru/merchant/Invoice/VX-Fd8Tg_Um5cj00RSz6BQ',
+    discountedPrice: 75000,
+    price: 99999,
+    subscriptionType: 'neuroblogger',
   },
   {
     title: '🧠 НейроВстреча',
@@ -51,9 +45,7 @@ export const PricingPlans = [
       ⭐️ 5000 на баланс бота`,
     discountedPrice: 49999,
     price: 69998,
-    discountedLink:
-      'https://auth.robokassa.ru/merchant/Invoice/Hu3lmJjUSUimg_A53_QQ4g',
-    link: 'https://auth.robokassa.ru/merchant/Invoice/CCj0r98FBE-GWMtU9Q5vAA',
+    subscriptionType: 'neuromentor',
   },
   // {
   //   title: '🌐 НейроСмм',

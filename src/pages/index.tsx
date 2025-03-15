@@ -18,7 +18,7 @@ import '@radix-ui/themes/styles.css'
 // import { SkipNavContent } from "@reach/skip-nav";
 
 import Page from '@components/page'
-import ConfContent from '@components/index'
+import ConfContent from '@components/conf'
 
 export default function Conf() {
   const meta = {

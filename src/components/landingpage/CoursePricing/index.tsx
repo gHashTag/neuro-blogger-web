@@ -1,24 +1,66 @@
 import { useEffect, useState } from 'react'
 import { Clock } from 'lucide-react'
-
+import md5 from 'md5'
+import { MERCHANT_LOGIN, PASSWORD1, RESULT_URL2 } from '@/config'
+import { setPayments } from '@/core/supabase'
+import { Subscription } from '@/interfaces/supabase.interface'
+import { useUser } from '@/hooks/useUser'
 interface PricingPlan {
   title: string
   description: string
   discountedPrice: number
   price: number
-  discountedLink: string
-  link: string
+  subscriptionType: string // Тип подписки (stars, neuroblogger и т.д.)
+  stars?: number // Количество звезд, если применимо
 }
 
 interface CoursePricingProps {
   plans: PricingPlan[]
+  botName: string
+  userEmail?: string // Email пользователя, если он авторизован
 }
 
-export function CoursePricing({ plans }: CoursePricingProps) {
+// Функция сохранения платежа в базу данных
+
+// Функция генерации платежной ссылки Робокассы
+function generateRobokassaUrl(
+  outSum: number,
+  description: string,
+  invId: number
+): string {
+  const merchantLogin = MERCHANT_LOGIN
+  const password1 = PASSWORD1
+  const resultUrl2 = RESULT_URL2
+
+  const signatureValue = md5(
+    `${merchantLogin}:${outSum}:${invId}:${encodeURIComponent(
+      resultUrl2
+    )}:${password1}`
+  ).toUpperCase()
+
+  const url = `https://auth.robokassa.ru/Merchant/Index.aspx?MerchantLogin=${merchantLogin}&OutSum=${outSum}&InvId=${invId}&Description=${encodeURIComponent(
+    description
+  )}&SignatureValue=${signatureValue}&ResultUrl2=${encodeURIComponent(
+    resultUrl2
+  )}`
+
+  return url
+}
+
+export function CoursePricing({
+  plans,
+  botName,
+  userEmail,
+}: CoursePricingProps) {
   const [timeLeft, setTimeLeft] = useState(() => {
     const savedTime = localStorage.getItem('timeLeft')
     return savedTime ? parseInt(savedTime, 10) : 24 * 60 * 60
   })
+
+  const { telegram_id } = useUser()
+  // Состояние для хранения email, если пользователь неавторизован
+
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -37,6 +79,68 @@ export function CoursePricing({ plans }: CoursePricingProps) {
     const m = Math.floor((seconds % 3600) / 60)
     const s = seconds % 60
     return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`
+  }
+
+  // Функция создания счета и перехода к оплате
+  const handlePurchase = async (
+    plan: PricingPlan,
+    event: React.MouseEvent<HTMLAnchorElement>
+  ) => {
+    event.preventDefault()
+
+    setIsLoading(true)
+
+    try {
+      // Выбираем цену в зависимости от состояния таймера
+      const price = timeLeft > 0 ? plan.discountedPrice : plan.price
+
+      // Генерируем уникальный номер заказа
+      const invId = Math.floor(Date.now() / 1000)
+
+      // Формируем описание заказа
+      const description = `Покупка "${plan.subscriptionType}"`
+
+      // Сохраняем информацию о платеже в базу данных
+      await setPayments({
+        email: '',
+        OutSum: price.toString(),
+        InvId: invId.toString(),
+        currency: 'RUB',
+        stars: plan.stars || 0,
+        status: 'PENDING',
+        payment_method: 'Robokassa',
+        subscription: plan.subscriptionType as Subscription,
+        language: navigator.language,
+        telegram_id: telegram_id.toString(),
+        bot_name: botName,
+      })
+
+      // Генерируем URL и переходим по нему
+      const paymentUrl = generateRobokassaUrl(price, description, invId)
+      console.log(paymentUrl, 'paymentUrl')
+
+      // Сохраняем данные о заказе в localStorage
+      localStorage.setItem(
+        'lastOrder',
+        JSON.stringify({
+          invId,
+          planTitle: plan.title,
+          price,
+          email: '',
+          timestamp: Date.now(),
+        })
+      )
+
+      // Перенаправляем на страницу оплаты
+      window.location.href = paymentUrl
+    } catch (error) {
+      console.error('Ошибка при создании заказа:', error)
+      alert(
+        'Произошла ошибка при создании заказа. Пожалуйста, попробуйте позже.'
+      )
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -74,7 +178,8 @@ export function CoursePricing({ plans }: CoursePricingProps) {
                 </div>
                 <div className='mt-4 flex justify-center'>
                   <a
-                    href={timeLeft > 0 ? plan.discountedLink : plan.link}
+                    href='#'
+                    onClick={e => handlePurchase(plan, e)}
                     className={`inline-block w-full px-8 py-3 ${getButtonColor(index)} transform rounded text-center font-bold text-white shadow-lg transition-transform hover:scale-105 hover:shadow-xl`}
                   >
                     {timeLeft > 0

@@ -1,3 +1,4 @@
+import React, { useMemo, useState, useEffect } from 'react'
 import { z } from 'zod'
 import {
   AbsoluteFill,
@@ -5,13 +6,19 @@ import {
   spring,
   useCurrentFrame,
   useVideoConfig,
+  cancelRender,
+  continueRender,
+  delayRender,
+  staticFile,
 } from 'remotion'
+import { Lottie, LottieAnimationData } from '@remotion/lottie'
 import { NextLogo } from './NextLogo'
 import { loadFont, fontFamily } from '@remotion/google-fonts/Inter'
-import React, { useMemo } from 'react'
+
 import { Rings } from './Rings'
 import { TextFade } from './TextFade'
 import { CompositionProps } from '@/interfaces/remotion.interface'
+import { LottieAnimation } from './LottieAnimation'
 
 loadFont()
 
@@ -47,17 +54,11 @@ export const Main = ({ title }: z.infer<typeof CompositionProps>) => {
 
   return (
     <AbsoluteFill style={container}>
-      <Sequence durationInFrames={transitionStart + transitionDuration}>
-        <Rings outProgress={logoOut}></Rings>
-        <AbsoluteFill style={logo}>
-          <NextLogo outProgress={logoOut}></NextLogo>
-        </AbsoluteFill>
-      </Sequence>
-      <Sequence from={transitionStart + transitionDuration / 2}>
-        <TextFade>
-          <h1 style={titleStyle}>{title}</h1>
-        </TextFade>
-      </Sequence>
+      <LottieAnimation
+        animationPath='news.json' // Файл должен быть в public/
+        width={1280}
+        height={720}
+      />
     </AbsoluteFill>
   )
 }

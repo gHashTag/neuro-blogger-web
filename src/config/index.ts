@@ -84,3 +84,7 @@ export const NEXT_PUBLIC_HUDDLE01_API_KEY =
   process.env.NEXT_PUBLIC_HUDDLE01_API_KEY!
 
 export const HUDDLE01_API_KEY = process.env.HUDDLE01_API_KEY!
+
+export const MERCHANT_LOGIN = process.env.NEXT_PUBLIC_MERCHANT_LOGIN!
+export const PASSWORD1 = process.env.NEXT_PUBLIC_PASSWORD1!
+export const RESULT_URL2 = process.env.NEXT_PUBLIC_RESULT_URL2!
