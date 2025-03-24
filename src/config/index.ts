@@ -31,13 +31,6 @@ export const NEXT_PUBLIC_100MS = process.env.NEXT_PUBLIC_100MS
 export const NEXT_PUBLIC_AGENT_ID = process.env.NEXT_PUBLIC_AGENT_ID
 export const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY
 
-export const NEXT_PUBLIC_BOT_TOKEN_1 = process.env.NEXT_PUBLIC_BOT_TOKEN_1
-export const NEXT_PUBLIC_BOT_TOKEN_2 = process.env.NEXT_PUBLIC_BOT_TOKEN_2
-export const NEXT_PUBLIC_BOT_TOKEN_3 = process.env.NEXT_PUBLIC_BOT_TOKEN_3
-export const NEXT_PUBLIC_BOT_TOKEN_4 = process.env.NEXT_PUBLIC_BOT_TOKEN_4
-export const NEXT_PUBLIC_BOT_TOKEN_5 = process.env.NEXT_PUBLIC_BOT_TOKEN_5
-export const NEXT_PUBLIC_BOT_TOKEN_6 = process.env.NEXT_PUBLIC_BOT_TOKEN_6
-export const NEXT_PUBLIC_BOT_TOKEN_7 = process.env.NEXT_PUBLIC_BOT_TOKEN_7
 export const NEXT_PUBLIC_BOT_TOKEN_TEST_1 =
   process.env.NEXT_PUBLIC_BOT_TOKEN_TEST_1
 export const NEXT_PUBLIC_BOT_TOKEN_TEST_2 =
@@ -46,55 +39,55 @@ export const NEXT_PUBLIC_BOT_TOKEN_TEST_2 =
 // Переструктурированный объект BOT_DATA, содержащий информацию о ботах
 export const BOT_DATA = {
   neuro_blogger_bot: {
-    token: NEXT_PUBLIC_BOT_TOKEN_1,
+    token: process.env.NEXT_PUBLIC_BOT_TOKEN_1,
     avatarName: 'neuro_sage',
     botName: 'neuro_blogger_bot',
     isProd: true,
   },
   MetaMuse_Manifest_bot: {
-    token: NEXT_PUBLIC_BOT_TOKEN_2,
+    token: process.env.NEXT_PUBLIC_BOT_TOKEN_2,
     avatarName: 'muse_nataly',
     botName: 'MetaMuse_Manifest_bot',
     isProd: true,
   },
   ZavaraBot: {
-    token: NEXT_PUBLIC_BOT_TOKEN_3,
+    token: process.env.NEXT_PUBLIC_BOT_TOKEN_3,
     avatarName: 'default',
     botName: 'ZavaraBot',
     isProd: true,
   },
   LeeSolarbot: {
-    token: NEXT_PUBLIC_BOT_TOKEN_4,
+    token: process.env.NEXT_PUBLIC_BOT_TOKEN_4,
     avatarName: 'default',
     botName: 'LeeSolarbot',
     isProd: true,
   },
   NeuroLenaAssistant_bot: {
-    token: NEXT_PUBLIC_BOT_TOKEN_5,
+    token: process.env.NEXT_PUBLIC_BOT_TOKEN_5,
     avatarName: 'lena_assistant',
     botName: 'NeuroLenaAssistant_bot',
     isProd: true,
   },
   NeurostylistShtogrina_bot: {
-    token: NEXT_PUBLIC_BOT_TOKEN_6,
+    token: process.env.NEXT_PUBLIC_BOT_TOKEN_6,
     avatarName: 'default',
     botName: 'NeurostylistShtogrina_bot',
     isProd: true,
   },
   Gaia_Kamskaia_bot: {
-    token: NEXT_PUBLIC_BOT_TOKEN_7,
+    token: process.env.NEXT_PUBLIC_BOT_TOKEN_7,
     avatarName: 'playom',
     botName: 'Gaia_Kamskaia_bot',
     isProd: true,
   },
   ai_koshey_bot: {
-    token: NEXT_PUBLIC_BOT_TOKEN_TEST_1,
+    token: process.env.NEXT_PUBLIC_BOT_TOKEN_TEST_1,
     avatarName: 'neuro_sage',
     botName: 'ai_koshey_bot',
     isProd: false,
   },
   clip_maker_neuro_bot: {
-    token: NEXT_PUBLIC_BOT_TOKEN_TEST_2,
+    token: process.env.NEXT_PUBLIC_BOT_TOKEN_TEST_2,
     avatarName: 'default',
     botName: 'clip_maker_neuro_bot',
     isProd: false,
