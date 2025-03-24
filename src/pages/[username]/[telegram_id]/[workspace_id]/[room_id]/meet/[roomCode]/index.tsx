@@ -10,6 +10,7 @@ import {
   usePeerIds,
   useRoom,
   useDataMessage,
+  useActivePeers,
 } from '@huddle01/react/hooks'
 import { useRoomMetadata } from '@huddle01/react'
 import { AccessToken, Role } from '@huddle01/server-sdk/auth'
@@ -60,14 +61,16 @@ export default function Rooms({
 }: TRoomsProps) {
   console.log('roomId 2', roomId)
   const [displayName, setDisplayName] = useState<string>('')
-
+  const { enableAudio, disableAudio, isAudioOn } = useLocalAudio()
   const { push } = useRouter()
-  const { username: userName, firstName, lastName, photo_url } = useUser()
+  const { username: userName, firstName, lastName } = useUser()
   useUser()
-
+  const { activePeerIds, dominantSpeakerId } = useActivePeers()
+  console.log('activePeerIds', activePeerIds)
+  console.log('dominantSpeakerId', dominantSpeakerId)
   // Use reactive variables
   const [requestedPeerId, setRequestedPeerId] = useState('')
-
+  const avatarUrl = useReactiveVar(setAvatarUrlVar)
   const isChatOpen = useReactiveVar(setIsChatOpenVar)
   const chatMessages = useReactiveVar(setChatMessagesVar)
   const showAcceptRequest = useReactiveVar(setShowAcceptRequestVar)
@@ -121,7 +124,7 @@ export default function Rooms({
         lastName,
         displayName: fullName,
         username,
-        avatarUrl: photo_url ?? '',
+        avatarUrl: avatarUrl ?? '',
       })
       !userName && updateRole({ role: Role.LISTENER })
     }
@@ -131,7 +134,7 @@ export default function Rooms({
     lastName,
     updateMetadata,
     username,
-    photo_url,
+    avatarUrl,
     updateRole,
     userName,
   ])
@@ -141,10 +144,10 @@ export default function Rooms({
       push(lobbyUrl)
       return
     }
-    console.log('photo_url', photo_url)
+
     updateMetadataLocalPeer({
       displayName: displayName,
-      avatarUrl: photo_url ?? '',
+      avatarUrl: avatarUrl ?? '',
       isHandRaised: false,
     })
   }, [
@@ -152,7 +155,7 @@ export default function Rooms({
     userName,
     state,
     displayName,
-    photo_url,
+    avatarUrl,
     updateMetadataLocalPeer,
     lobbyUrl,
     push,

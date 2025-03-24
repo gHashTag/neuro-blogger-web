@@ -56,7 +56,7 @@ export const setInviterUserInfo = makeVar<TSupabaseUser>({
 export const setAvatarUrlVar = makeVar<string>('')
 export const setUserDisplayNameVar = makeVar<string>('')
 export const setPromptViewVar = makeVar<string>('')
-export const setSidebarViewVar = makeVar<string>('defaultView')
+export const setSidebarViewVar = makeVar<string>('close')
 export const setIsChatOpenVar = makeVar<boolean>(false)
 export const setChatMessagesVar = makeVar<
   Array<{ name: string; text: string; is_user: boolean }>

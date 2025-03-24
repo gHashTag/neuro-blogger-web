@@ -10,6 +10,7 @@ import { Role } from '@huddle01/server-sdk/auth'
 import { SITE_URL } from '@/config'
 import { useUser } from '@/hooks/useUser'
 import { useRoom } from '@huddle01/react/hooks'
+import Layout from '@/components/layout'
 // Assets
 import { toast } from 'react-hot-toast'
 import { BasicIcons } from '@/components/assets/BasicIcons'
@@ -54,7 +55,7 @@ const Lobby = ({
 
   useEffect(() => {
     if (!avatarUrl) {
-      const defaultAvatarUrl = '/avatars/avatars/0.png'
+      const defaultAvatarUrl = '/avatars/avatars/1.jpg'
       setAvatarUrlVar(defaultAvatarUrl)
     }
     if (firstName && lastName) {
@@ -89,118 +90,122 @@ const Lobby = ({
   }
 
   return (
-    <main className='bg-lobby flex h-screen flex-col items-center justify-center text-slate-100'>
-      <div className='flex w-[26.25rem] flex-col items-center justify-center gap-4'>
-        <div className='relative mx-auto flex w-fit items-center justify-center text-center'>
-          {avatarUrl && (
-            <>
-              <Image
-                src={avatarUrl}
-                alt='audio-spaces-img'
-                width={125}
-                height={125}
-                className='maskAvatar rounded-full object-contain' // Добавлен класс rounded-full
-                quality={100}
-                priority
-              />
-              <video
-                src={avatarUrl}
-                muted
-                className='maskAvatar absolute left-1/2 top-1/2 z-10 h-full w-full -translate-x-1/2 -translate-y-1/2'
-                // autoPlay
-                loop
-              />
-            </>
-          )}
-          <button
-            onClick={() => setIsOpen(prev => !prev)}
-            type='button'
-            className='absolute bottom-0 right-0 z-10 text-white'
-          >
-            {BasicIcons.edit}
-          </button>
-          <FeatCommon
-            onClose={() => setIsOpen(false)}
-            className={
-              isOpen
-                ? 'absolute top-4 block'
-                : 'absolute top-1/2 hidden -translate-y-1/2'
-            }
-          >
-            <div className='relative mt-5'>
-              <div className='grid h-full w-full grid-cols-3 place-items-center gap-6 px-6'>
-                {Array.from({ length: 20 }).map((_, i) => {
-                  const url = `/avatars/avatars/${i}.png`
-
-                  return (
-                    <AvatarWrapper
-                      key={`sidebar-avatars-${i}`}
-                      isActive={avatarUrl === url}
-                      onClick={() => {
-                        setAvatarUrlVar(url)
-                        setIsOpen(false)
-                      }}
-                    >
-                      <Image
-                        src={url}
-                        alt={`avatar-${i}`}
-                        width={45}
-                        height={45}
-                        loading='lazy'
-                        className='object-contain'
-                      />
-                    </AvatarWrapper>
-                  )
-                })}
-              </div>
-            </div>
-          </FeatCommon>
-        </div>
-        <div className='flex w-full flex-col items-center'>
-          <div className='flex w-full flex-col justify-center gap-1'>
-            Set a display name
-            <div className='gap- flex w-full items-center rounded-[10px] border border-zinc-800 px-3 text-slate-300 outline-none backdrop-blur-[400px] focus-within:border-slate-600'>
-              <div className='mr-2'>
+    <Layout loading={isJoining}>
+      <div className='flex h-[80vh] items-center justify-center'>
+        <div className='flex w-[26.25rem] flex-col items-center justify-center gap-4'>
+          <div className='relative mx-auto flex w-fit items-center justify-center text-center'>
+            {avatarUrl && (
+              <>
                 <Image
-                  alt='user-icon'
-                  src='/images/user-icon.svg'
-                  className='h-5 w-5'
-                  width={30}
-                  height={30}
+                  src={avatarUrl}
+                  alt='audio-spaces-img'
+                  width={125}
+                  height={125}
+                  className='maskAvatar rounded-full object-contain'
+                  quality={100}
+                  priority
+                />
+                <video
+                  src={avatarUrl}
+                  muted
+                  className='maskAvatar absolute left-1/2 top-1/2 z-10 h-full w-full -translate-x-1/2 -translate-y-1/2'
+                  // autoPlay
+                  loop
+                />
+              </>
+            )}
+            <button
+              onClick={() => setIsOpen(prev => !prev)}
+              type='button'
+              className='absolute bottom-0 right-0 z-10 text-white'
+            >
+              {BasicIcons.edit}
+            </button>
+            <FeatCommon
+              onClose={() => setIsOpen(false)}
+              className={
+                isOpen
+                  ? 'absolute top-4 block'
+                  : 'absolute top-1/2 hidden -translate-y-1/2'
+              }
+            >
+              <div className='relative mt-5'>
+                <div className='grid h-full w-full grid-cols-3 place-items-center gap-6 px-6'>
+                  {Array.from({ length: 24 }).map((_, i) => {
+                    const url = `/avatars/avatars/${i}.jpg`
+
+                    return (
+                      <AvatarWrapper
+                        key={`sidebar-avatars-${i}`}
+                        isActive={avatarUrl === url}
+                        onClick={() => {
+                          console.log('url', url)
+                          setAvatarUrlVar(url)
+                          setIsOpen(false)
+                        }}
+                      >
+                        <Image
+                          src={url}
+                          alt={`avatar-${i}`}
+                          width={45}
+                          height={45}
+                          loading='lazy'
+                          className='object-contain'
+                        />
+                      </AvatarWrapper>
+                    )
+                  })}
+                </div>
+              </div>
+            </FeatCommon>
+          </div>
+          <div className='flex w-full flex-col items-center'>
+            <div className='flex w-full flex-col justify-center gap-1'>
+              Set a display name
+              <div className='gap- flex w-full items-center rounded-[10px] border border-zinc-800 px-3 text-slate-300 outline-none backdrop-blur-[400px] focus-within:border-slate-600'>
+                <div className='mr-2'>
+                  <Image
+                    alt='user-icon'
+                    src='/images/user-icon.svg'
+                    className='h-5 w-5'
+                    width={30}
+                    height={30}
+                    priority
+                  />
+                </div>
+                <input
+                  value={userDisplayName}
+                  onChange={e => {
+                    setUserDisplayNameVar(e.target.value)
+                  }}
+                  onKeyDown={e => e.key === 'Enter' && handleStartSpaces()}
+                  type='text'
+                  placeholder='Enter your name'
+                  className='flex-1 bg-transparent py-3 outline-none'
                 />
               </div>
-              <input
-                value={userDisplayName}
-                onChange={e => {
-                  setUserDisplayNameVar(e.target.value)
-                }}
-                onKeyDown={e => e.key === 'Enter' && handleStartSpaces()}
-                type='text'
-                placeholder='Enter your name'
-                className='flex-1 bg-transparent py-3 outline-none'
-              />
             </div>
           </div>
-        </div>
-        <div className='flex w-full items-center'>
-          <button
-            className='mt-2 flex w-full items-center justify-center rounded-md bg-[#246BFD] p-2 text-slate-100'
-            onClick={handleStartSpaces}
-          >
-            {isJoining ? 'Joining Spaces...' : 'Start Spaces'}
-            {!isJoining && (
-              <Image
-                alt='narrow-right'
-                width={30}
-                height={30}
-                src='/images/arrow-narrow-right.svg'
-                className='ml-1 h-6 w-6'
-              />
-            )}
-          </button>
+          <div className='flex w-full items-center'>
+            <button
+              className='mt-2 flex w-full items-center justify-center rounded-md bg-[#246BFD] p-2 text-slate-100'
+              onClick={handleStartSpaces}
+            >
+              {isJoining ? 'Joining Spaces...' : 'Start Spaces'}
+              {!isJoining && (
+                <Image
+                  alt='narrow-right'
+                  width={30}
+                  height={30}
+                  src='/images/arrow-narrow-right.svg'
+                  className='ml-1 h-6 w-6'
+                />
+              )}
+            </button>
+          </div>
         </div>
       </div>
-    </main>
+    </Layout>
   )
 }
 export default Lobby

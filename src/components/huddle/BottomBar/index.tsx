@@ -19,15 +19,20 @@ import {
   useLocalAudio,
   usePeerIds,
   useRoom,
+  useLocalScreenShare,
 } from '@huddle01/react/hooks'
 import toast from 'react-hot-toast'
 import { NestedPeerListIcons } from '@/components/assets/PeerListIcons'
+import { Button } from '@/components/ui/button'
+import { MonitorOff, MonitorUp } from 'lucide-react'
 
 type BottomBarProps = {}
 
 const BottomBar: React.FC<BottomBarProps> = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
-
+  const [isSharing, setIsSharing] = useState<boolean>(false)
+  const { startScreenShare, stopScreenShare, shareStream } =
+    useLocalScreenShare()
   const { peerIds } = usePeerIds()
 
   const { leaveRoom, closeRoom } = useRoom()
@@ -56,6 +61,15 @@ const BottomBar: React.FC<BottomBarProps> = () => {
   }>()
 
   const [showLeaveDropDown, setShowLeaveDropDown] = useState<boolean>(false)
+
+  const toggleScreenShare = async () => {
+    if (isSharing) {
+      await stopScreenShare()
+    } else {
+      await startScreenShare()
+    }
+    setIsSharing(!isSharing)
+  }
 
   return (
     <div className='absolute bottom-6 flex w-full items-center justify-between px-10'>
@@ -94,6 +108,18 @@ const BottomBar: React.FC<BottomBarProps> = () => {
               {NestedBasicIcons.active.mic}
             </button>
           ))}
+        <Button
+          size='icon'
+          variant='ghost'
+          className='text-zinc-400 hover:text-white'
+          onClick={toggleScreenShare}
+        >
+          {isSharing ? (
+            <MonitorOff className='h-5 w-5' />
+          ) : (
+            <MonitorUp className='h-5 w-5' />
+          )}
+        </Button>
         <Dropdown
           triggerChild={BasicIcons.avatar}
           open={isOpen}

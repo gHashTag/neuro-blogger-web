@@ -3,6 +3,7 @@ import {
   neuroPhotoNeuroCoder,
   neuroPhotoPlayom,
   metaMuseAutor,
+  neuroPhotoRyabinikaPerm,
 } from '@/data/photos'
 import { contentDefault, contentMuseNataly } from '@/data/stepscontent'
 import { useRouter } from 'next/router'
@@ -47,6 +48,7 @@ export default function LandingPage() {
         subDescription:
           'Представь, как твои фотографии превращаются в стильные и современные произведения искусства, подчеркивая твою индивидуальность и выделяя из толпы.',
         content: contentDefault,
+        botName: 'neuro_blogger_bot',
       },
       muse_nataly: {
         photos: metaMuseAutor,
@@ -57,8 +59,8 @@ export default function LandingPage() {
           'Карта желаний и фотосессии для блога в телеграм боте за 2 сек. 24/7',
         subDescription:
           'Представь, как твои фотографии превращаются в стильные и современные произведения искусства, подчеркивая твою индивидуальность, манифестируя высшую версию себя.',
-        botName: 'MetaMuse_Manifest_bot',
         content: contentMuseNataly,
+        botName: 'MetaMuse_Manifest_bot',
       },
       playom: {
         photos: neuroPhotoPlayom,
@@ -69,6 +71,18 @@ export default function LandingPage() {
         subDescription:
           'Представь, как твои фотографии превращаются в стильные и современные произведения искусства, подчеркивая твою индивидуальность и выделяя из толпы.',
         content: contentDefault,
+        botName: 'Gaia_Kamskaia_bot',
+      },
+      ryabinika_Perm: {
+        photos: neuroPhotoRyabinikaPerm,
+        autorImageUrl: `${url}/NeuroLenaAssistant_bot/NeuroLenaAssistant_bot_step2.JPG`,
+        userId: '2086031075',
+        title: 'НейроФото',
+        subTitle: '',
+        subDescription:
+          'Представь, как твои фотографии превращаются в стильные и современные произведения искусства, подчеркивая твою индивидуальность и выделяя из толпы.',
+        content: contentDefault,
+        botName: 'NeuroLenaAssistant_bot',
       },
     }
 
@@ -114,7 +128,7 @@ export default function LandingPage() {
           <CardStackDemo
             imageUrl={autorImageUrl || ''}
             refLink={`https://t.me/${botName}?start=${userId}`}
-            price={4800}
+            price={1110}
             title='Тариф "Нейрофото"'
           />
         </div>

@@ -33,46 +33,113 @@ export const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY
 
 export const NEXT_PUBLIC_BOT_TOKEN_1 = process.env.NEXT_PUBLIC_BOT_TOKEN_1
 export const NEXT_PUBLIC_BOT_TOKEN_2 = process.env.NEXT_PUBLIC_BOT_TOKEN_2
-// Определите объект для хранения токенов и их соответствующих имен
-const BOT_TOKENS_MAP = [
-  {
-    value: NEXT_PUBLIC_BOT_TOKEN_1,
-    name: 'neuro_sage',
+export const NEXT_PUBLIC_BOT_TOKEN_3 = process.env.NEXT_PUBLIC_BOT_TOKEN_3
+export const NEXT_PUBLIC_BOT_TOKEN_4 = process.env.NEXT_PUBLIC_BOT_TOKEN_4
+export const NEXT_PUBLIC_BOT_TOKEN_5 = process.env.NEXT_PUBLIC_BOT_TOKEN_5
+export const NEXT_PUBLIC_BOT_TOKEN_6 = process.env.NEXT_PUBLIC_BOT_TOKEN_6
+export const NEXT_PUBLIC_BOT_TOKEN_7 = process.env.NEXT_PUBLIC_BOT_TOKEN_7
+export const NEXT_PUBLIC_BOT_TOKEN_TEST_1 =
+  process.env.NEXT_PUBLIC_BOT_TOKEN_TEST_1
+export const NEXT_PUBLIC_BOT_TOKEN_TEST_2 =
+  process.env.NEXT_PUBLIC_BOT_TOKEN_TEST_2
+
+// Переструктурированный объект BOT_DATA, содержащий информацию о ботах
+export const BOT_DATA = {
+  neuro_blogger_bot: {
+    token: NEXT_PUBLIC_BOT_TOKEN_1,
+    avatarName: 'neuro_sage',
     botName: 'neuro_blogger_bot',
+    isProd: true,
   },
-  {
-    value: NEXT_PUBLIC_BOT_TOKEN_2,
-    name: 'muse_nataly',
+  MetaMuse_Manifest_bot: {
+    token: NEXT_PUBLIC_BOT_TOKEN_2,
+    avatarName: 'muse_nataly',
     botName: 'MetaMuse_Manifest_bot',
+    isProd: true,
   },
-]
+  ZavaraBot: {
+    token: NEXT_PUBLIC_BOT_TOKEN_3,
+    avatarName: 'default',
+    botName: 'ZavaraBot',
+    isProd: true,
+  },
+  LeeSolarbot: {
+    token: NEXT_PUBLIC_BOT_TOKEN_4,
+    avatarName: 'default',
+    botName: 'LeeSolarbot',
+    isProd: true,
+  },
+  NeuroLenaAssistant_bot: {
+    token: NEXT_PUBLIC_BOT_TOKEN_5,
+    avatarName: 'lena_assistant',
+    botName: 'NeuroLenaAssistant_bot',
+    isProd: true,
+  },
+  NeurostylistShtogrina_bot: {
+    token: NEXT_PUBLIC_BOT_TOKEN_6,
+    avatarName: 'default',
+    botName: 'NeurostylistShtogrina_bot',
+    isProd: true,
+  },
+  Gaia_Kamskaia_bot: {
+    token: NEXT_PUBLIC_BOT_TOKEN_7,
+    avatarName: 'playom',
+    botName: 'Gaia_Kamskaia_bot',
+    isProd: true,
+  },
+  ai_koshey_bot: {
+    token: NEXT_PUBLIC_BOT_TOKEN_TEST_1,
+    avatarName: 'neuro_sage',
+    botName: 'ai_koshey_bot',
+    isProd: false,
+  },
+  clip_maker_neuro_bot: {
+    token: NEXT_PUBLIC_BOT_TOKEN_TEST_2,
+    avatarName: 'default',
+    botName: 'clip_maker_neuro_bot',
+    isProd: false,
+  },
+}
 
-const BOT_TOKENS_PROD = [
-  process.env.NEXT_PUBLIC_BOT_TOKEN_1,
-  process.env.NEXT_PUBLIC_BOT_TOKEN_2,
-]
-const BOT_TOKENS_TEST = [
-  process.env.NEXT_PUBLIC_BOT_TOKEN_TEST_1,
-  process.env.NEXT_PUBLIC_BOT_TOKEN_TEST_2,
-]
+// Функция для создания обратного отображения от токенов к именам ботов
+const createTokenToBotMap = () => {
+  const result: Record<string, string> = {}
+  Object.entries(BOT_DATA).forEach(([botName, data]) => {
+    if (data.token) {
+      result[data.token] = botName
+    }
+  })
+  return result
+}
 
-export const BOT_TOKENS = isDev ? BOT_TOKENS_TEST : BOT_TOKENS_PROD
+// Объект для быстрого поиска имени бота по токену
+const TOKEN_TO_BOT_MAP = createTokenToBotMap()
+
+export const BOT_TOKENS = isDev
+  ? Object.values(BOT_DATA)
+      .filter(data => !data.isProd)
+      .map(data => data.token)
+      .filter(Boolean)
+  : Object.values(BOT_DATA)
+      .filter(data => data.isProd)
+      .map(data => data.token)
+      .filter(Boolean)
+
 // Функция для получения имени аватара по токену
 export function getAvatarName(token: string): string {
-  const tokenEntry = BOT_TOKENS_MAP.find(entry => {
-    return entry.value === token
-  })
-
-  return tokenEntry ? tokenEntry.name : 'neuro_sage'
+  const botName = TOKEN_TO_BOT_MAP[token]
+  return botName && BOT_DATA[botName as keyof typeof BOT_DATA]
+    ? BOT_DATA[botName as keyof typeof BOT_DATA].avatarName
+    : 'neuro_sage'
 }
 
 export const getBotNameByToken = (token: string): string | undefined => {
-  const tokenEntry = BOT_TOKENS_MAP.find(entry => {
-    return entry.value === token
-  })
-
-  return tokenEntry ? tokenEntry.botName : 'neuro_blogger_bot'
+  const botName = TOKEN_TO_BOT_MAP[token]
+  return botName && BOT_DATA[botName as keyof typeof BOT_DATA]
+    ? BOT_DATA[botName as keyof typeof BOT_DATA].botName
+    : 'neuro_blogger_bot'
 }
+
 // Экспортируйте токены по умолчанию
 export const DEFAULT_BOT_TOKEN = process.env.NEXT_PUBLIC_BOT_TOKEN_1
 export const PULSE_BOT_TOKEN = process.env.NEXT_PUBLIC_BOT_TOKEN_1

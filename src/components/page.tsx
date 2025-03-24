@@ -73,7 +73,7 @@ export default function Page({ meta, children, fullViewport = false }: Props) {
         <link rel='manifest' href='/site.webmanifest' />
         <link rel='shortcut icon' href='/favicon.ico' />
         <link
-          rel='preload'
+          rel='prefetch'
           href='https://assets.vercel.com/raw/upload/v1587415301/fonts/2/inter-var-latin.woff2'
           as='font'
           type='font/woff2'

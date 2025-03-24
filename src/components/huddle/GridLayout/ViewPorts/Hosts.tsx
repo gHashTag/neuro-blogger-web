@@ -9,6 +9,7 @@ const Hosts = () => {
   const { peerId: localPeerId, role: localPeerRole } = useLocalPeer()
   console.log('localPeerRole', localPeerRole)
   console.log('peerIds', peerIds)
+  console.log('localPeerId', localPeerId)
   return (
     <>
       {localPeerRole === Role.HOST && localPeerId && (

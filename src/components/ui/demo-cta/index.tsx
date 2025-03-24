@@ -42,7 +42,7 @@ const DemoButton = () => {
 
   useEffect(() => {
     if (isDev) {
-      router.push(`/${mockedUser.username}/${mockedUser.telegram_id}`)
+      // router.push(`/${mockedUser.username}/${mockedUser.telegram_id}`)
       return
     }
     setTimeout(() => {

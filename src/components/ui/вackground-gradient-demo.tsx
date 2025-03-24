@@ -40,7 +40,7 @@ export function BackgroundGradientDemo({
           <br />
           🔄 Регулярные обновления
           <br />
-          ⭐️ 3000 звезд на баланс бота
+          ⭐️ 476 звезд на баланс бота
           <br />
         </p>
         <button

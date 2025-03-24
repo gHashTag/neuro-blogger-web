@@ -32,7 +32,11 @@ const nextConfig = {
   },
   experimental: {
     serverActions: {
-      allowedOrigins: ['api.huddle01.com', 'apira.huddle01.media'],
+      allowedOrigins: [
+        'dao999nft.com',
+        'api.huddle01.com',
+        'apira.huddle01.media',
+      ],
     },
   },
   reactStrictMode: true,

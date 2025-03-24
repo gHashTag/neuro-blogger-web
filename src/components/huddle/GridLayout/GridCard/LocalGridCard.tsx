@@ -3,12 +3,19 @@ import Image from 'next/image'
 import { AnimatedTooltip } from '@/components/ui/animated-tooltip'
 // Assets
 import { BasicIcons } from '@/components/assets/BasicIcons'
-import { useDataMessage, useLocalPeer } from '@huddle01/react/hooks'
+import {
+  useDataMessage,
+  useLocalPeer,
+  useActivePeers,
+} from '@huddle01/react/hooks'
 import { getFallbackAvatar } from '@/lib/utils'
+import RippleAnimation from './RippleAnimation'
 
 const LocalGridCard: FC = () => {
   const [reaction, setReaction] = useState('')
-
+  const { activePeerIds, dominantSpeakerId } = useActivePeers()
+  console.log('activePeerIds', activePeerIds)
+  console.log('dominantSpeakerId', dominantSpeakerId)
   const {
     metadata,
     peerId: localPeerId,
@@ -18,6 +25,7 @@ const LocalGridCard: FC = () => {
     avatarUrl: string
     isHandRaised: boolean
   }>()
+  console.log('metadata', metadata)
 
   useDataMessage({
     onMessage(payload, from, label) {
@@ -34,6 +42,10 @@ const LocalGridCard: FC = () => {
 
   return (
     <div className='relative flex flex-col items-center justify-center'>
+      {dominantSpeakerId === localPeerId && (
+        <RippleAnimation isVisible={true} />
+      )}
+
       <AnimatedTooltip
         items={[
           {
