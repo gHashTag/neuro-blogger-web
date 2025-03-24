@@ -3,9 +3,6 @@ services:
     build:
       context: ./
       target: runner
-    volumes:
-      - .:/app
-    command: npm run dev
     ports:
       - "80:80"
     environment:

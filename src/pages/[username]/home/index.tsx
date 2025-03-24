@@ -19,6 +19,7 @@ import {
   neuroCoderAutor,
   problemData,
   initialAuthorState,
+  ryabinikaAutor,
   Author,
   ezavarykinAutor,
 } from '@/data'
@@ -26,6 +27,7 @@ import {
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import Loader from '@/components/loader'
 
 const description = {
   title: 'НЕЙРОСЕТИ ОБУЧЕНИЕ С НУЛЯ',
@@ -65,6 +67,9 @@ function Home() {
       case 'playom':
         author = playomAutor
         break
+      case 'Ryabinika_Perm':
+        author = ryabinikaAutor
+        break
       default:
         author = metaMuseAutor
     }
@@ -72,7 +77,8 @@ function Home() {
     console.log(author, 'currentAuthor')
   }, [router.isReady])
 
-  if (!router.isReady) return <p>Loading...</p>
+  if (!router.isReady) return <Loader />
+
   return (
     <div className='min-h-screen bg-gradient-to-b from-pink-50 to-white'>
       <MainMenu />
