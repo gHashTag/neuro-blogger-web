@@ -36,9 +36,28 @@ export default function LandingPage() {
     if (!router.isReady) return
 
     const newpathname = router.asPath
-    console.log(newpathname, 'newpathname')
-    const username = newpathname ? newpathname.split('/')[1] : null
-    console.log(username, 'username')
+    console.log('🔍 Исходный путь:', newpathname)
+
+    // Получаем username из пути, игнорируя /neurophoto
+    const pathParts = newpathname.split('/')
+    const rawUsername = pathParts.length > 1 ? pathParts[1] : null
+    console.log('👤 Исходное имя пользователя:', rawUsername)
+
+    // Приводим к нижнему регистру для сравнения
+    const username = rawUsername?.toLowerCase()
+    console.log('👤 Имя пользователя в нижнем регистре:', username)
+
+    // Маппинг для разных вариантов написания имени пользователя
+    const usernameMapping: { [key: string]: string } = {
+      ryabinika_perm: 'ryabinika_perm',
+      neuro_sage: 'neuro_sage',
+      muse_nataly: 'muse_nataly',
+      playom: 'playom',
+    }
+
+    // Получаем корректное имя пользователя из маппинга
+    const normalizedUsername = usernameMapping[username ?? ''] || username
+    console.log('🔧 Нормализованное имя:', normalizedUsername)
 
     const config = {
       neuro_sage: {
@@ -75,7 +94,7 @@ export default function LandingPage() {
         content: contentDefault,
         botName: 'Gaia_Kamskaia_bot',
       },
-      ryabinika_Perm: {
+      ryabinika_perm: {
         photos: neuroPhotoRyabinikaPerm,
         autorImageUrl: `${url}/NeuroLenaAssistant_bot/NeuroLenaAssistant_bot_step2.JPG`,
         userId: '2086031075',
@@ -88,13 +107,21 @@ export default function LandingPage() {
       },
     }
 
-    const userConfig = config[username as keyof typeof config] || {
+    console.log('🔧 Проверяем конфигурацию для:', normalizedUsername)
+    console.log('🔑 Доступные конфигурации:', Object.keys(config))
+
+    const userConfig = config[normalizedUsername as keyof typeof config] || {
       photos: neuroPhotoNeuroCoder,
     }
 
+    console.log('⚙️ Конфигурация загружена:', !!userConfig)
+    console.log('📸 Количество фотографий:', userConfig.photos.length)
+    console.log('🖼️ Первая фотография:', userConfig.photos[0])
+    console.log('🤖 Имя бота:', userConfig.botName)
+
     setState(prevState => ({
       ...prevState,
-      username,
+      username: normalizedUsername || null,
       ...userConfig,
     }))
   }, [router.asPath, router.isReady])
