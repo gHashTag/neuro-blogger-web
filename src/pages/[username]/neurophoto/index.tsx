@@ -36,7 +36,9 @@ export default function LandingPage() {
     if (!router.isReady) return
 
     const newpathname = router.asPath
+    console.log(newpathname, 'newpathname')
     const username = newpathname ? newpathname.split('/')[1] : null
+    console.log(username, 'username')
 
     const config = {
       neuro_sage: {
