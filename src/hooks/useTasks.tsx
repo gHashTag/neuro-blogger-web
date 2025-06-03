@@ -658,7 +658,7 @@ type UseTasksReturn = {
   ) => void
   columns: any
   resetTask: any
-  handleSubmitTask: UseFormHandleSubmit<FieldValues, undefined>
+  handleSubmitTask: UseFormHandleSubmit<FieldValues>
   watchTask: UseFormWatch<FieldValues>
   setValueTask: UseFormSetValue<FieldValues>
 }

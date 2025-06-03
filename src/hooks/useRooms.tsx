@@ -414,7 +414,7 @@ type UseRoomsReturn = {
   onOpenMeet: () => void
   onOpenChangeRoom: () => void
   controlRoom: Control<FormValues, any>
-  handleSubmitRoom: UseFormHandleSubmit<FormValues, undefined>
+  handleSubmitRoom: UseFormHandleSubmit<FormValues>
   getValuesRoom: () => FieldValues
   setValueRoom: UseFormSetValue<FormValues>
   reset: () => void
