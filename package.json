@@ -12,7 +12,8 @@
     "lint": "next lint",
     "format": "prettier --write .",
     "prepare": "husky",
-    "ngrok": "ngrok http 80",
+    "ngrok": "ngrok http 80 --host-header=rewrite",
+    "dev:tunnel": "concurrently \"npm run dev\" \"npm run ngrok\"",
     "depcheck": "npx depcheck",
     "tunnel": "ssh -R 80:localhost:8080 localhost.run"
   },
@@ -110,7 +111,8 @@
     "three-globe": "^2.41.5",
     "usehooks-ts": "^3.1.0",
     "uuid": "^11.0.5",
-    "web-vitals": "^4.2.4"
+    "web-vitals": "^4.2.4",
+    "concurrently": "^8.2.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",

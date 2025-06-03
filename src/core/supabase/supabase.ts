@@ -552,6 +552,7 @@ export const checkUsernameAndReturnUser = async (
     .from('users')
     .select('*')
     .eq('username', username)
+  console.log('users', data)
 
   if (error) {
     console.log(error, 'error checkUsername')

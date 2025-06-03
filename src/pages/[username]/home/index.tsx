@@ -67,7 +67,7 @@ function Home() {
       case 'playom':
         author = playomAutor
         break
-      case 'Ryabinika_Perm':
+      case 'ryabinika_perm':
         author = ryabinikaAutor
         break
       default:

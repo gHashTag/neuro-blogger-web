@@ -117,6 +117,8 @@ export default function Form({ sharePage }: Props) {
       const { isUserExist: isInviterExist, user } =
         await checkUsernameAndReturnUser(inviteCode)
 
+      console.log('isInviterExist', isInviterExist)
+
       if (isInviterExist) {
         const { select_izbushka, telegram_id } = user
         setIsEmailStep(true)
