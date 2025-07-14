@@ -7,7 +7,7 @@
     "dev": "next dev -p 80 --turbo",
     "build": "next build",
     "build:local": "prettier --write . && next build",
-    "start": "npx next start -p 80",
+    "start": "npx next start -p ${PORT:-3000}",
     "lint": "next lint",
     "format": "prettier --write .",
     "prepare": "husky",
