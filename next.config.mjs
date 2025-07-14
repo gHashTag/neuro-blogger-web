@@ -10,7 +10,6 @@ const nextConfig = {
     ]
   },
   reactStrictMode: false,
-  output: 'standalone',
   images: {
     domains: [
       'randomuser.me',
