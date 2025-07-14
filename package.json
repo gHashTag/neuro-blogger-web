@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev -p 80",
     "build": "next build",
-    "start": "next start -p 80",
+    "start": "node .next/standalone/server.js",
     "lint": "next lint",
     "ngrok": "ngrok http 80",
     "generate": "NEXT_PUBLIC_SUPABASE_URL=https://dmrooqbmxdhdyblqzswu.supabase.co graphql-codegen --config ./src/apollo/codegen.ts",
