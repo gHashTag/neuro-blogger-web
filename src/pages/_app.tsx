@@ -145,6 +145,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   if (!client) {
+    console.log('🕉️ _app.tsx: Apollo client not ready, showing spinner');
     return <Spinner size="lg" />;
   }
 

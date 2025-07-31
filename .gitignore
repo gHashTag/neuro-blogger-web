@@ -66,3 +66,11 @@ client.session
 client.session-shm
 
 client.session-wal
+
+# Video rendering temporary files
+public/temp-videos/
+scripts/logs/
+*.pid
+
+# Remotion temp files
+public/remotion-temp/

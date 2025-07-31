@@ -1,4 +1,7 @@
-if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
+import { DEV_AUTH_BYPASS } from "@/utils/constants";
+
+// 🕉️ Dev Authentication Bypass: Skip validation in dev mode
+if (!DEV_AUTH_BYPASS && !process.env.NEXT_PUBLIC_SUPABASE_URL) {
   throw new Error("NEXT_PUBLIC_SUPABASE_URL is not set");
 }
 
@@ -39,16 +42,29 @@ const cache = new InMemoryCache({
 });
 
 const httpLink = createHttpLink({
-  uri: `${process.env.NEXT_PUBLIC_SUPABASE_URL}/graphql/v1`,
+  uri: DEV_AUTH_BYPASS 
+    ? "http://localhost:80/api/mock-graphql" // Mock GraphQL endpoint for dev
+    : `${process.env.NEXT_PUBLIC_SUPABASE_URL}/graphql/v1`,
 });
 
 const authLink = setContext(async (_, { headers }) => {
   //const token = (await supabase.auth.getSession()).data.session?.access_token;
 
+  // 🕉️ Dev Authentication Bypass: Use mock headers
+  if (DEV_AUTH_BYPASS) {
+    console.log('🕉️ Apollo Client: Using dev bypass mode');
+    return {
+      headers: {
+        ...corsHeaders,
+        apiKey: "dev-bypass-key",
+      },
+    };
+  }
+
   return {
     headers: {
       ...corsHeaders,
-      apiKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+      apiKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "dev-fallback",
     },
   };
 });

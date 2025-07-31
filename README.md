@@ -1,65 +1,191 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎬 999-Web Video Platform
 
-## Getting Started
+*"करावै सो भी होणो"* - *"Что задумано, то сбудется"*
 
-First, run the development server:
+**Современная платформа для создания персонализированных видео с аватарами, Telegram интеграцией и Remotion рендерингом.**
+
+---
+
+## 🚀 **БЫСТРЫЙ ЗАПУСК**
+
+### **📋 Требования:**
+- Node.js 18+
+- pnpm (рекомендовано)
+- Supabase аккаунт
+- Telegram Bot токен (опционально)
+
+### **⚡ Установка:**
+```bash
+# Clone repository
+git clone https://github.com/your-repo/999-web.git
+cd 999-web
+
+# Install dependencies
+pnpm install
+
+# Start full development environment
+pnpm run dev:full
+```
+
+### **🎛️ Доступные сервисы:**
+- 🌐 **Main App**: http://localhost:80
+- 🎬 **Video Editor**: http://localhost:80/video-editor  
+- 🎛️ **Remotion Studio**: http://localhost:3001
+- ⚡ **Inngest Dashboard**: http://localhost:8288
+
+---
+
+## 🎭 **ОСНОВНЫЕ ФУНКЦИИ**
+
+### **🎬 Video Templates:**
+- **LipSyncTemplate**: Создание видео с синхронизацией губ
+- **Настраиваемые параметры**: музыка, фоны, эффекты
+- **Без текстового слоя**: Чистая визуальная композиция
+
+### **🤖 Telegram Integration:**
+- Аутентификация через Telegram
+- Bot команды для создания комнат
+- WebApp интеграция
+
+### **🎥 Video Rendering:**
+- **Remotion** для программного создания видео
+- **Inngest** для очередей рендеринга  
+- **Local/Cloud** рендеринг
+
+### **🗄️ Data Management:**
+- **Supabase** PostgreSQL database
+- **Apollo GraphQL** API
+- **Real-time** subscriptions
+
+---
+
+## 📚 **ДОКУМЕНТАЦИЯ**
+
+Вся документация находится в папке [`docs/`](./docs/):
+
+- 🚀 [`DEPLOYMENT_PLAN.md`](./docs/DEPLOYMENT_PLAN.md) - План деплоя
+- 🎬 [`VIDEO_SETUP_GUIDE.md`](./docs/VIDEO_SETUP_GUIDE.md) - Настройка видео
+- 🔧 [`TESTING_PLAN.md`](./docs/TESTING_PLAN.md) - План тестирования
+- ⚡ [`INNGEST_INTEGRATION_GUIDE.md`](./docs/INNGEST_INTEGRATION_GUIDE.md) - Inngest интеграция
+- 🛠️ [`DEV_AUTH_BYPASS_PLAYRA.md`](./docs/DEV_AUTH_BYPASS_PLAYRA.md) - Dev режим
+
+---
+
+## 🛠️ **КОМАНДЫ РАЗРАБОТКИ**
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# 🚀 Полное окружение (Next.js + Remotion + Inngest)
+pnpm run dev:full
+
+# 🛑 Остановить все сервисы  
+pnpm run dev:stop
+
+# 🏥 Проверка здоровья всех сервисов
+pnpm run test:health-check
+
+# 🎬 Только Remotion Studio
+pnpm run video:preview
+
+# 🎥 Рендеринг видео
+pnpm run video:render
+
+# 📦 Production build
+pnpm build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🌊 **ТЕХНОЛОГИЧЕСКИЙ СТЕК**
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### **Frontend:**
+- **Next.js 14** - React framework
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **Radix UI** - Component library
 
-## Learn More
+### **Backend:**
+- **Supabase** - Database & Auth
+- **Apollo GraphQL** - API layer
+- **Inngest** - Background jobs
 
-To learn more about Next.js, take a look at the following resources:
+### **Video:**
+- **Remotion** - Programmatic video creation
+- **FFmpeg** - Video processing
+- **100ms** - Video calls
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### **Deployment:**
+- **Vercel** - Hosting (recommended)
+- **Docker** - Containerization
+- **PM2** - Process management
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🔧 **ENVIRONMENT VARIABLES**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+# Copy example
+cp .env.example .env.local
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Required variables:
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_key
+INNGEST_EVENT_KEY=your_inngest_key
 
-# [grammY](https://grammy.dev) on [Supabase Edge Functions](https://supabase.com/edge-functions)
-
-> Try it out: [@supabase_example_bot](https://t.me/supabase_example_bot)
-
-## Deploying
-
-1. Create the function:
-
-```shell
-supabase functions deploy --no-verify-jwt telegram-bot
+# Development:
+NEXT_PUBLIC_DEV_AUTH_BYPASS=true  # Skip auth in dev
 ```
 
-2. Contact [@BotFather](https://t.me/BotFather) to create a bot and get its
-   token.
-3. Set the secrets:
+---
 
-```shell
-supabase secrets set BOT_TOKEN=your_token FUNCTION_SECRET=random_secret
-```
+## 🎯 **ROADMAP**
 
-4. Set your bot’s webhook URL to
-   `https://<PROJECT_NAME>.functions.supabase.co/telegram-bot` (replacing
-   `<...>` with respective values). To do that, you open the request URL in your
-   browser:
+### **✅ Готово:**
+- [x] Next.js приложение
+- [x] Telegram auth интеграция
+- [x] Remotion video templates
+- [x] LipSyncTemplate (без текста)
+- [x] Inngest background jobs
+- [x] Video Editor UI
 
-```text
-https://api.telegram.org/bot<BOT_TOKEN>/setWebhook?url=https://<PROJECT_NAME>.functions.supabase.co/telegram-bot?secret=<FUNCTION_SECRET>
-```
+### **🔄 В разработке:**
+- [ ] Production authentication
+- [ ] Больше video templates
+- [ ] Cloud video rendering
+- [ ] Mobile optimization
+- [ ] Analytics dashboard
+
+### **🎯 Планы:**
+- [ ] AI voice generation
+- [ ] Advanced video effects  
+- [ ] Multi-language support
+- [ ] Enterprise features
+
+---
+
+## 🤝 **CONTRIBUTING**
+
+1. Fork репозиторий
+2. Создайте feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit изменения (`git commit -m 'Add amazing feature'`)
+4. Push в branch (`git push origin feature/amazing-feature`)
+5. Откройте Pull Request
+
+---
+
+## 📱 **КОНТАКТЫ**
+
+- **Telegram**: @neuro_sage
+- **GitHub**: [999-web](https://github.com/your-repo/999-web)
+- **Docs**: [./docs/](./docs/)
+
+---
+
+## 📄 **ЛИЦЕНЗИЯ**
+
+MIT License - see [LICENSE](LICENSE) file for details.
+
+---
+
+*🕉️ "तत्त्वमसि" - "Ты есть То"*
+
+**Создано с 💜 для будущего персонализированного контента**

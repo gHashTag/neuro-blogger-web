@@ -38,6 +38,7 @@ import Captcha, { useCaptcha } from "./captcha";
 import { useUser } from "@/hooks/useUser";
 import { checkUsernameAndReturnUser } from "@/utils/supabase";
 import { isValidEmail } from "@/helpers/utils";
+import { DEV_AUTH_BYPASS } from "@/utils/constants";
 
 type FormState = "default" | "loading" | "error" | "success";
 
@@ -74,13 +75,23 @@ export default function Form({ sharePage }: Props) {
   const { username, user_id, language_code } = useUser();
 
   useEffect(() => {
+    // 🕉️ Dev Authentication Bypass: Auto-skip form and show signin
+    if (DEV_AUTH_BYPASS && !visible) {
+      console.log("🎭 DEV_AUTH_BYPASS: Auto-skipping form, showing signin...");
+      setTimeout(() => {
+        visibleSignInVar(true);
+        setFormState("success");
+      }, 100);
+      return;
+    }
+
     if (workspace_id) {
       router.push(`/${username}/${user_id}`);
     }
     if (inputRef.current || inputRefWord.current) {
       (inputRef.current as any)?.focus();
     }
-  }, [router, workspace_id]);
+  }, [router, workspace_id, visible]);
 
   const checkEmail = useCallback(async () => {
     if (inviteCode) {
@@ -318,6 +329,21 @@ export default function Form({ sharePage }: Props) {
   };
 
   const renderPage = () => {
+    // 🕉️ Dev Authentication Bypass: Show dev mode indicator
+    if (DEV_AUTH_BYPASS && !visible) {
+      return (
+        <div className="text-center p-4 border border-blue-500 border-dashed rounded-lg bg-blue-50 dark:bg-blue-900/20">
+          <p className="text-sm text-blue-800 dark:text-blue-200">
+            🎭 <strong>Dev Mode:</strong> Skipping invite form...
+          </p>
+          <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">
+            Auto-proceeding to login as <strong>neuro_sage</strong>
+          </p>
+          <Spinner size="sm" />
+        </div>
+      );
+    }
+
     if (formState === "success") {
       return;
     }

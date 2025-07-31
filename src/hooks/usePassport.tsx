@@ -17,6 +17,7 @@ import { AssignedTo, Passport, PassportNode } from "@/types";
 import { useTasks } from "./useTasks";
 import { captureExceptionSentry } from "@/utils/sentry";
 import { checkUsernameAndReturnUser } from "@/utils/supabase";
+import { DEV_AUTH_BYPASS } from "@/utils/constants";
 
 type passportType = {
   user_id?: string;
@@ -48,7 +49,6 @@ passportType): UsePassportReturn => {
   const { toast } = useToast();
   const { updateTask, refetchTasks } = useTasks();
   const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
-  const { control, handleSubmit, getValues, setValue, reset } = useForm();
   const [openModalPassportId, setOpenModalPassportId] = useState<number | null>(
     null
   );
@@ -162,6 +162,10 @@ passportType): UsePassportReturn => {
 
   // console.log(queryVariables, "queryVariables");
 
+  // 🕉️ React Hooks - MUST be called first (rules of hooks)
+  const { control, handleSubmit, getValues, setValue, reset } = useForm();
+  
+  // Apollo hooks
   const {
     data: passportData,
     loading: passportLoading,
@@ -169,17 +173,11 @@ passportType): UsePassportReturn => {
     refetch: passportRefetch,
   } = useQuery(passportQuery, {
     variables: queryVariables,
+    skip: DEV_AUTH_BYPASS, // Skip query in dev mode
   });
-
-  const passportNode = passportData?.user_passportCollection?.edges;
 
   const [mutateCreatePassport, { error: mutateCreatePassportError }] =
     useMutation(PASSPORT_CREATE_MUTATION);
-
-  if (mutateCreatePassportError instanceof ApolloError) {
-    // Обработка ошибки ApolloError
-    console.log("mutateCreatePassportError", mutateCreatePassportError.message);
-  }
 
   const [mutateUpdatePassport, { error: mutateUpdatePassportError }] =
     useMutation(PASSPORT_UPDATE_MUTATION, {
@@ -188,16 +186,77 @@ passportType): UsePassportReturn => {
       },
     });
 
-  if (mutateUpdatePassportError instanceof ApolloError) {
-    // Обработка ошибки ApolloError
-    console.log(mutateUpdatePassportError.message);
-  }
-
   const [mutateDeletePassport, { error: mutateDeletePassportError }] =
     useMutation(PASSPORT_DELETE_MUTATION);
 
+  // Callbacks
+  const closeModal = useCallback(() => {
+    setOpenModalId(null);
+    onClose();
+  }, [onClose]);
+  
+  // 🕉️ Dev Authentication Bypass: Return mock passport data
+  if (DEV_AUTH_BYPASS) {
+    const mockPassportData: Passport[] = [
+      {
+        __typename: "user_passportCollection",
+        node: {
+          __typename: "user_passport",
+          id: "1",
+          user_id,
+          username: "neuro_sage",
+          photo_url:
+            "https://api.dicebear.com/7.x/avataaars/svg?seed=neuro_sage",
+          passport_id: 1,
+          type: (type as "room" | "workspace" | "task") || "room",
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+          first_name: "Neuro",
+          last_name: "Sage",
+          workspace_id: "neuro_sage-workspace-main",
+          room_id: "neuro_sage-room-dev",
+          is_owner: true,
+        },
+      },
+    ];
+
+    return {
+      passportData: mockPassportData,
+      passportLoading: false,
+      passportError: null,
+      passportRefetch: () => {},
+      isOpenModalPassport: isOpen,
+      onOpenModalPassport: onOpen,
+      onOpenChangeModalPassport: onOpenChange,
+      onDeletePassportTask: () => {},
+      onDeletePassportRoom: () => {},
+      onCreatePassport: () => {},
+      createPassport: () => {},
+      onUpdatePassport: () => {},
+      setValuePassport: setValue,
+      controlPassport: control,
+      handleSubmitPassport: handleSubmit,
+      getValuesPassport: getValues,
+      openModalPassportId,
+      setOpenModalPassportId,
+      isEditingPassport: isEditing,
+      setIsEditingPassport: setIsEditing,
+    };
+  }
+
+  // Process passport data for normal mode
+  const passportNode = passportData?.user_passportCollection?.edges;
+
+  // Error handling for mutations
+  if (mutateCreatePassportError instanceof ApolloError) {
+    console.log("mutateCreatePassportError", mutateCreatePassportError.message);
+  }
+
+  if (mutateUpdatePassportError instanceof ApolloError) {
+    console.log(mutateUpdatePassportError.message);
+  }
+
   if (mutateDeletePassportError instanceof ApolloError) {
-    // Обработка ошибки ApolloError
     console.log(mutateDeletePassportError.message);
   }
 
@@ -404,11 +463,6 @@ passportType): UsePassportReturn => {
     });
     closeModal();
   };
-
-  const closeModal = useCallback(() => {
-    setOpenModalId(null);
-    onClose();
-  }, [onClose]);
 
   const onOpenModalPassport = () => {
     onOpen();

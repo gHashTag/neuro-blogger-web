@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  // Настройка хоста для продакшена (moved to start script)
+  // hostname: process.env.HOSTNAME || '0.0.0.0', // ⚠️ Invalid option, removed
   async headers() {
     return [
       {
