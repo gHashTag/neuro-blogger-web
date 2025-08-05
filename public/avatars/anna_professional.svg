@@ -1,0 +1,45 @@
+<svg width="200" height="240" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc"/>
+      <stop offset="100%" style="stop-color:#e2e8f0"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="240" fill="url(#bg1)"/>
+  
+  <!-- Hair -->
+  <ellipse cx="100" cy="60" rx="45" ry="35" fill="#8B4513"/>
+  
+  <!-- Face -->
+  <ellipse cx="100" cy="80" rx="35" ry="40" fill="#FDBCB4"/>
+  
+  <!-- Eyes -->
+  <circle cx="90" cy="75" r="3" fill="#2563eb"/>
+  <circle cx="110" cy="75" r="3" fill="#2563eb"/>
+  
+  <!-- Nose -->
+  <ellipse cx="100" cy="85" rx="2" ry="3" fill="#F4A460"/>
+  
+  <!-- Mouth -->
+  <path d="M95 90 Q100 95 105 90" stroke="#dc2626" stroke-width="2" fill="none"/>
+  
+  <!-- Body/Clothing -->
+  <rect x="70" y="120" width="60" height="120" rx="10" fill="#1e40af"/>
+  
+  <!-- Professional jacket details -->
+  <rect x="75" y="125" width="50" height="15" fill="#1e3a8a"/>
+  <circle cx="85" cy="135" r="2" fill="#f59e0b"/>
+  <circle cx="95" cy="135" r="2" fill="#f59e0b"/>
+  <circle cx="105" cy="135" r="2" fill="#f59e0b"/>
+  
+  <!-- Arms -->
+  <rect x="50" y="130" width="20" height="80" rx="10" fill="#1e40af"/>
+  <rect x="130" y="130" width="20" height="80" rx="10" fill="#1e40af"/>
+  
+  <!-- Hands -->
+  <circle cx="60" cy="210" r="8" fill="#FDBCB4"/>
+  <circle cx="140" cy="210" r="8" fill="#FDBCB4"/>
+  
+  <!-- Text -->
+  <text x="100" y="230" text-anchor="middle" fill="#374151" font-family="Arial" font-size="12" font-weight="bold">Anna Professional</text>
+</svg>

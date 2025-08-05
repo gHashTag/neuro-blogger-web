@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import { VideoFrameProvider } from "../components/context/VideoFrameContext";
 import { Button } from "../components/ui/button";
+import { Badge } from "../components/ui/badge";
 import {
   Tabs,
   TabsContent,
@@ -14,14 +15,65 @@ import {
 
 // Компоненты
 import ExportButton from "../components/video-editor/ExportButton";
-// import TrackList from "../components/video-editor/TrackList";
-// import RemotionPlayer from "../components/video-editor/RemotionPlayer";
-// import FrameConfig from "../components/video-editor/FrameConfig";
+import TrackList from "../components/video-editor/TrackList";
+import RemotionPlayer from "../components/video-editor/RemotionPlayer";
+import FrameConfig from "../components/video-editor/FrameConfig";
+import { AvatarCreationModal } from "../components/modal/AvatarCreationModal";
+import { AvatarManager } from "../components/video-editor/AvatarManager";
+import { HeyGenAvatarLibrary } from "../components/video-editor/HeyGenAvatarLibrary";
 
 export default function VideoEditor() {
   const [activeTemplate, setActiveTemplate] = useState<
     "lipSync" | "promo" | "lottie"
   >("promo");
+
+  // 🎭 Avatar Management State
+  const [isAvatarModalOpen, setIsAvatarModalOpen] = useState(false);
+  const [createdAvatars, setCreatedAvatars] = useState<any[]>([]);
+  const [selectedAvatar, setSelectedAvatar] = useState<any>(null);
+  const [currentVideoProps, setCurrentVideoProps] = useState<any>({});
+
+  // 🎭 Avatar Creation Handler
+  const handleAvatarCreated = (avatar: any) => {
+    console.log("🎭 New avatar created:", avatar);
+    setCreatedAvatars((prev) => [...prev, avatar]);
+
+    // Автоматически выбираем созданный аватар
+    setSelectedAvatar(avatar);
+
+    // Автоматически переключаемся на lip-sync шаблон для аватара
+    if (activeTemplate !== "lipSync") {
+      setActiveTemplate("lipSync");
+    }
+  };
+
+  // 🎭 Avatar Use Handler - интеграция с видео шаблоном
+  const handleAvatarUse = (avatar: any) => {
+    console.log("🎬 Using avatar in video:", avatar);
+
+    // Обновляем props для Remotion шаблона
+    const newVideoProps = {
+      ...currentVideoProps,
+      // Используем avatar данные в lip-sync шаблоне
+      lipSyncVideo:
+        avatar.remotion_props?.lipSyncVideo ||
+        avatar.preview_video ||
+        "/test-assets/lip-sync.mp4",
+      avatarImageUrl: avatar.thumbnail,
+      avatarName: avatar.name,
+      avatarStyle: avatar.style,
+    };
+
+    setCurrentVideoProps(newVideoProps);
+    setSelectedAvatar(avatar);
+
+    // Переключаемся на lip-sync шаблон
+    if (activeTemplate !== "lipSync") {
+      setActiveTemplate("lipSync");
+    }
+
+    console.log("✅ Video props updated with avatar:", newVideoProps);
+  };
 
   return (
     <>
@@ -43,9 +95,16 @@ export default function VideoEditor() {
                   <h1 className="text-2xl font-bold text-gray-900">
                     🎬 Video Editor
                   </h1>
-                  <p className="text-sm text-gray-500">
-                    Создавайте профессиональные видео
-                  </p>
+                  <div className="flex items-center gap-2">
+                    <p className="text-sm text-gray-500">
+                      Создавайте профессиональные видео
+                    </p>
+                    {selectedAvatar && (
+                      <Badge variant="outline" className="text-xs">
+                        🎭 {selectedAvatar.name}
+                      </Badge>
+                    )}
+                  </div>
                 </div>
 
                 {/* Template Selector */}
@@ -64,8 +123,27 @@ export default function VideoEditor() {
 
                 {/* Actions */}
                 <div className="flex gap-3">
+                  <AvatarCreationModal
+                    isOpen={isAvatarModalOpen}
+                    onOpen={() => setIsAvatarModalOpen(true)}
+                    onOpenChange={() => setIsAvatarModalOpen(false)}
+                    onAvatarCreated={handleAvatarCreated}
+                  />
+                  <HeyGenAvatarLibrary onAvatarSelect={handleAvatarUse} />
+                  {createdAvatars.length > 0 && (
+                    <AvatarManager
+                      avatars={createdAvatars}
+                      selectedAvatar={selectedAvatar}
+                      onAvatarSelect={setSelectedAvatar}
+                      onAvatarUse={handleAvatarUse}
+                    />
+                  )}
                   <Button variant="outline">💾 Сохранить</Button>
-                  <ExportButton activeTemplate={activeTemplate} />
+                  <ExportButton
+                    activeTemplate={activeTemplate}
+                    videoProps={currentVideoProps}
+                    selectedAvatar={selectedAvatar}
+                  />
                 </div>
               </div>
             </div>
@@ -93,20 +171,10 @@ export default function VideoEditor() {
               {/* 📋 Left Panel - Track List */}
               <div className="col-span-1">
                 <div className="bg-white rounded-lg shadow p-4">
-                  <h3 className="font-semibold text-gray-900 mb-3">📋 Треки</h3>
-                  {/* <TrackList activeTemplate={activeTemplate} /> */}
-
-                  {/* Временный заглушка */}
-                  <div className="space-y-2">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <div
-                        key={i}
-                        className="p-2 bg-gray-50 rounded border text-sm"
-                      >
-                        Кадр {i}
-                      </div>
-                    ))}
-                  </div>
+                  <TrackList
+                    activeTemplate={activeTemplate}
+                    selectedAvatar={selectedAvatar}
+                  />
                 </div>
               </div>
 
@@ -116,123 +184,23 @@ export default function VideoEditor() {
                   <h3 className="font-semibold text-gray-900 mb-3">
                     🎥 Превью
                   </h3>
-                  {/* <RemotionPlayer activeTemplate={activeTemplate} /> */}
-
-                  {/* Временная заглушка */}
-                  <div className="aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
-                    <div className="text-center text-gray-500">
-                      <div className="text-4xl mb-2">🎬</div>
-                      <div>Remotion Player</div>
-                      <div className="text-sm mt-1">
-                        Активный шаблон: <strong>{activeTemplate}</strong>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Video Controls */}
-                  <div className="mt-4 flex gap-4">
-                    <div className="flex-1">
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        📺 Формат видео
-                      </label>
-                      <select className="w-full p-2 border border-gray-300 rounded-md text-sm">
-                        <option value="9:16">9:16 (Вертикальное)</option>
-                        <option value="16:9">16:9 (Горизонтальное)</option>
-                        <option value="1:1">1:1 (Квадрат)</option>
-                      </select>
-                    </div>
-                    <div className="flex-1">
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        🎵 Фоновая музыка
-                      </label>
-                      <select className="w-full p-2 border border-gray-300 rounded-md text-sm">
-                        <option>News Theme</option>
-                        <option>Upbeat</option>
-                        <option>Corporate</option>
-                        <option>Chill</option>
-                      </select>
-                    </div>
-                  </div>
+                  <RemotionPlayer
+                    activeTemplate={activeTemplate}
+                    videoProps={currentVideoProps}
+                    selectedAvatar={selectedAvatar}
+                  />
                 </div>
               </div>
 
               {/* ⚙️ Right Panel - Frame Configuration */}
               <div className="col-span-2">
                 <div className="bg-white rounded-lg shadow p-4">
-                  <h3 className="font-semibold text-gray-900 mb-3">
-                    ⚙️ Настройки кадра
-                  </h3>
-                  {/* <FrameConfig activeTemplate={activeTemplate} /> */}
-
-                  {/* Временная заглушка */}
-                  <div className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        📝 Текст
-                      </label>
-                      <input
-                        type="text"
-                        defaultValue="НОВАЯ МОДЕЛЬ GEMINI"
-                        className="w-full p-2 border border-gray-300 rounded-md text-sm"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        🎨 Цвет фона
-                      </label>
-                      <div className="flex gap-2">
-                        <input
-                          type="color"
-                          defaultValue="#007AFF"
-                          className="w-12 h-8 rounded"
-                        />
-                        <input
-                          type="text"
-                          defaultValue="#007AFF"
-                          className="flex-1 p-2 border border-gray-300 rounded-md text-sm"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        ⏱️ Длительность: 1.0 сек
-                      </label>
-                      <input
-                        type="range"
-                        min="0.5"
-                        max="5"
-                        step="0.1"
-                        defaultValue="1"
-                        className="w-full"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        🎭 Анимация
-                      </label>
-                      <select className="w-full p-2 border border-gray-300 rounded-md text-sm">
-                        <option>fadeIn</option>
-                        <option>slideUp</option>
-                        <option>zoomIn</option>
-                        <option>slideRight</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        🔤 Шрифт
-                      </label>
-                      <select className="w-full p-2 border border-gray-300 rounded-md text-sm">
-                        <option>Outfit</option>
-                        <option>Bungee</option>
-                        <option>Anton</option>
-                        <option>Rowdies</option>
-                      </select>
-                    </div>
-                  </div>
+                  <FrameConfig
+                    activeTemplate={activeTemplate}
+                    videoProps={currentVideoProps}
+                    onPropsChange={setCurrentVideoProps}
+                    selectedAvatar={selectedAvatar}
+                  />
                 </div>
               </div>
             </div>

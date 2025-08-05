@@ -57,7 +57,7 @@ export default function Header() {
             color={isTabActive("/meets") ? "primary" : "foreground"}
             href="/meets"
           >
-            Meets
+            🎤 Meets
           </Link>
         </NavbarItem>
         <NavbarItem isActive={isTabActive("/tasks")}>
@@ -65,7 +65,25 @@ export default function Header() {
             color={isTabActive("/tasks") ? "primary" : "foreground"}
             href="/tasks"
           >
-            Tasks
+            ✅ Tasks
+          </Link>
+        </NavbarItem>
+        <NavbarItem isActive={isTabActive("/video-editor")}>
+          <Link
+            color={isTabActive("/video-editor") ? "primary" : "foreground"}
+            href="/video-editor"
+          >
+            🎬 Video Editor
+          </Link>
+        </NavbarItem>
+        <NavbarItem isActive={isTabActive("/create-avatar-video")}>
+          <Link
+            color={
+              isTabActive("/create-avatar-video") ? "primary" : "foreground"
+            }
+            href="/create-avatar-video"
+          >
+            ✨ AI Studio
           </Link>
         </NavbarItem>
         <NavbarItem isActive={isTabActive("/wallet")}>
@@ -73,7 +91,7 @@ export default function Header() {
             color={isTabActive("/wallet") ? "primary" : "foreground"}
             href={`/${username}`}
           >
-            Wallet
+            💰 Wallet
           </Link>
         </NavbarItem>
       </NavbarContent>

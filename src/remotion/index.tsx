@@ -113,7 +113,7 @@ export const RemotionRoot: React.FC = () => {
           ],
 
           // ⏱️ Тайминг
-          coverDuration: 2,
+          coverDuration: 0.5,
           lipSyncDelay: 0, // НЕ ИСПОЛЬЗУЕТСЯ
 
           // ✨ Простые эффекты

@@ -23,6 +23,8 @@ import { toast } from "sonner";
 
 interface ExportButtonProps {
   activeTemplate: "lipSync" | "promo" | "lottie";
+  videoProps?: any;
+  selectedAvatar?: any;
 }
 
 interface RenderStatus {
@@ -34,7 +36,11 @@ interface RenderStatus {
   estimated_completion?: string;
 }
 
-export default function ExportButton({ activeTemplate }: ExportButtonProps) {
+export default function ExportButton({
+  activeTemplate,
+  videoProps,
+  selectedAvatar,
+}: ExportButtonProps) {
   const { videoFrames } = useVideoFrame();
   const [loading, setLoading] = useState(false);
   const [renderStatus, setRenderStatus] = useState<RenderStatus | null>(null);

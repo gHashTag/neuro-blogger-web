@@ -1,4 +1,5 @@
 import { useToast } from "@/components/ui/use-toast";
+import { DEV_AUTH_BYPASS } from "@/utils/constants";
 import {
   CREATE_TASK_MUTATION,
   DELETE_TASK_MUTATION,
@@ -48,6 +49,52 @@ const useTasks = (): UseTasksReturn => {
   const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
 
   const [openModalTaskId, setOpenModalTaskId] = useState<string>("");
+
+  // 🕉️ Dev Authentication Bypass: Return mock tasks data
+  if (DEV_AUTH_BYPASS) {
+    console.log("🕉️ useTasks: Using mock data in DEV_AUTH_BYPASS mode");
+    const mockTasksData = [
+      {
+        __typename: "tasksCollection",
+        node: {
+          __typename: "tasks",
+          id: "task-1",
+          name: "Dev Task Example",
+          description: "Sample task for development",
+          status: "active",
+          user_id: "neuro_sage-user-id-999",
+          workspace_id: "neuro_sage-workspace-main",
+          created_at: "2024-01-01T00:00:00.000Z",
+        },
+      },
+    ];
+
+    return {
+      tasksData: mockTasksData as any,
+      tasksLoading: false,
+      tasksError: null,
+      refetchTasks: () => {},
+      isOpenModalTask: isOpen,
+      onOpenModalTask: onOpen,
+      onOpenChangeModalTask: onOpenChange,
+      onCreateTask: () => {},
+      onDeleteTask: () => {},
+      onUpdateTask: () => {},
+      setValueTask: () => {},
+      controlTask: {},
+      handleSubmitTask: (onSubmit: (data: any) => void) => (e?: any) =>
+        Promise.resolve(),
+      getValuesTask: () => {},
+      onCreateNewTask: () => {},
+      columns: [],
+      openModalTaskId,
+      setOpenModalTaskId,
+      updateTask: () => {},
+      onUpdateTaskStatus: () => {},
+      resetTask: () => {},
+      watchTask: (() => {}) as any,
+    };
+  }
 
   const { control, handleSubmit, getValues, setValue, reset, watch } =
     useForm();

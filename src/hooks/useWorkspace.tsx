@@ -1,4 +1,5 @@
 import { useToast } from "@/components/ui/use-toast";
+import { DEV_AUTH_BYPASS } from "@/utils/constants";
 import {
   CREATE_WORKSPACE_MUTATION,
   MY_WORKSPACE_COLLECTION_QUERY,
@@ -19,6 +20,47 @@ const useWorkspace = (): UseWorkspaceReturn => {
   const { toast } = useToast();
   const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
   const { control, handleSubmit, getValues, setValue, reset } = useForm();
+
+  // 🕉️ Dev Authentication Bypass: Return mock workspace data
+  if (DEV_AUTH_BYPASS) {
+    console.log("🕉️ useWorkspace: Using mock data in DEV_AUTH_BYPASS mode");
+    const mockWorkspaceData = [
+      {
+        __typename: "workspacesCollection",
+        node: {
+          __typename: "workspaces",
+          id: "neuro_sage-workspace-main",
+          name: "Neuro Sage Main Workspace",
+          description: "Main workspace for development",
+          user_id: "neuro_sage-user-id-999",
+          type: "personal",
+          created_at: "2024-01-01T00:00:00.000Z",
+        },
+      },
+    ];
+
+    return {
+      workspacesData: mockWorkspaceData as any,
+      workspacesLoading: false,
+      workspacesError: null,
+      workspacesRefetch: () => {},
+      isOpenModalWorkspace: isOpen,
+      onOpenModalWorkspace: onOpen,
+      onOpenChangeModalWorkspace: onOpenChange,
+      onCreateWorkspace: () => {},
+      onDeleteWorkspace: () => {},
+      onUpdateWorkspace: () => {},
+      setValueWorkspace: setValue,
+      controlWorkspace: control,
+      handleSubmitWorkspace: handleSubmit,
+      getValuesWorkspace: getValues,
+      openModalWorkspaceId: null,
+      setOpenModalWorkspaceId: () => {},
+      isEditingWorkspace: false,
+      setIsEditingWorkspace: () => {},
+      welcomeMenu: mockWorkspaceData as any,
+    };
+  }
 
   const {
     data: myWorkspaceData,

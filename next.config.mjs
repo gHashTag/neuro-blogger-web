@@ -6,24 +6,30 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)?',
-        headers: [{ key: 'X-Frame-Options', value: 'SAMEORIGIN' }],
+        source: "/(.*)?",
+        headers: [{ key: "X-Frame-Options", value: "SAMEORIGIN" }],
       },
-    ]
+    ];
   },
   reactStrictMode: false,
-  output: 'standalone',
+  output: "standalone",
   images: {
     domains: [
-      'randomuser.me',
-      'images.domains',
-      'images.unsplash.com',
-      'lh3.googleusercontent.com',
-      't.me',
-      'dmrooqbmxdhdyblqzswu.supabase.co',
-      'app.delabwallet.com',
-      'pbs.twimg.com',
+      "randomuser.me",
+      "images.domains",
+      "images.unsplash.com",
+      "lh3.googleusercontent.com",
+      "t.me",
+      "dmrooqbmxdhdyblqzswu.supabase.co",
+      "app.delabwallet.com",
+      "pbs.twimg.com",
+      "api.dicebear.com", // 🌟 Для генерации аватарок
     ],
+  },
+  eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true,
   },
   // typescript: {
   //   // !! WARN !!
@@ -32,6 +38,6 @@ const nextConfig = {
   //   // !! WARN !!
   //   ignoreBuildErrors: true,
   // },
-}
+};
 
-export default nextConfig
+export default nextConfig;

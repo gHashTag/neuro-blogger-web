@@ -164,7 +164,7 @@ passportType): UsePassportReturn => {
 
   // 🕉️ React Hooks - MUST be called first (rules of hooks)
   const { control, handleSubmit, getValues, setValue, reset } = useForm();
-  
+
   // Apollo hooks
   const {
     data: passportData,
@@ -173,7 +173,7 @@ passportType): UsePassportReturn => {
     refetch: passportRefetch,
   } = useQuery(passportQuery, {
     variables: queryVariables,
-    skip: DEV_AUTH_BYPASS, // Skip query in dev mode
+    // НЕ скипаем запрос - пусть Apollo работает нормально
   });
 
   const [mutateCreatePassport, { error: mutateCreatePassportError }] =
@@ -194,8 +194,9 @@ passportType): UsePassportReturn => {
     setOpenModalId(null);
     onClose();
   }, [onClose]);
-  
+
   // 🕉️ Dev Authentication Bypass: Return mock passport data
+  console.log("🕉️ usePassport: DEV_AUTH_BYPASS =", DEV_AUTH_BYPASS);
   if (DEV_AUTH_BYPASS) {
     const mockPassportData: Passport[] = [
       {
@@ -220,6 +221,9 @@ passportType): UsePassportReturn => {
       },
     ];
 
+    console.log(
+      "🕉️ usePassport: Returning MOCK data with passportLoading = false"
+    );
     return {
       passportData: mockPassportData,
       passportLoading: false,

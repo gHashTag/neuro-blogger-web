@@ -133,10 +133,8 @@ export default function Layout({
   const shortName = `${(firstName && firstName[0]) || ""}${
     (lastName && lastName[0]) || ""
   }`;
-  
 
   const mainButtonRoute = activeRoute !== "/" ? `/${username}/${user_id}` : "/";
- 
 
   return (
     <>
@@ -198,9 +196,11 @@ export default function Layout({
             {activeRoute !== "/" && (
               <div className={styles["header-logos"]}>
                 <Link href={`/${username}`} className={styles.logo}>
-                  <Avatar>
+                  <Avatar className="ring-2 ring-purple-500 ring-offset-2 ring-offset-gray-800">
                     <AvatarImage src={photo_url || ""} />
-                    <AvatarFallback>{shortName}</AvatarFallback>
+                    <AvatarFallback className="bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 text-white font-bold">
+                      🌟✨
+                    </AvatarFallback>
                   </Avatar>
                 </Link>
               </div>

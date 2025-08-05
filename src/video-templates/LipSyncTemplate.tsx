@@ -103,9 +103,10 @@ export const LipSyncTemplate: React.FC<
   // Удалено: getCurrentBgSegment и currentBgSegment - теперь используются отдельные Sequence
 
   // 🎬 ПРОСТАЯ АНИМАЦИЯ: FULLSCREEN → ИСЧЕЗНОВЕНИЕ В ОДИН ШАГ
+  const fadeStartFrame = Math.max(1, coverDurationFrames - fps * 0.3); // Минимум 1 кадр до конца
   const coverOpacity = interpolate(
     frame,
-    [0, coverDurationFrames - fps * 0.5, coverDurationFrames],
+    [0, fadeStartFrame, coverDurationFrames],
     [1, 1, 0], // Видимая до конца, потом резко исчезает
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
@@ -113,7 +114,7 @@ export const LipSyncTemplate: React.FC<
   // Масштаб: ОДИН В ОДИН → исчезновение
   const coverScale = interpolate(
     frame,
-    [0, coverDurationFrames - fps * 0.5, coverDurationFrames],
+    [0, fadeStartFrame, coverDurationFrames],
     [1.0, 1.0, 0], // Начинаем 1:1, держим, потом сжимаемся в точку
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );

@@ -92,7 +92,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const { toast } = useToast();
 
-  // 🕉️ Используем уже настроенный Apollo client из apollo-client.ts
+  // 🕉️ Use the properly configured Apollo client from apollo-client.ts directly
   useEffect(() => {
     setHeaderName("");
   }, [router, toast]);
@@ -108,49 +108,62 @@ export default function App({ Component, pageProps }: AppProps) {
     window.location.reload();
   }, []);
 
-  console.log("🕉️ _app.tsx: apolloClient =", !!apolloClient);
+  console.log(
+    "🕉️ _app.tsx: apolloClient =",
+    !!apolloClient,
+    "DEV_AUTH_BYPASS =",
+    DEV_AUTH_BYPASS
+  );
 
   // 🚀 В DEV_AUTH_BYPASS режиме всегда продолжаем работу
-  if (!apolloClient) {
+  if (!apolloClient && !DEV_AUTH_BYPASS) {
     console.log("🕉️ _app.tsx: Apollo client not ready, showing spinner");
     return <Spinner size="lg" />;
   }
+
+  const AppContent = () => (
+    <NextUIProvider>
+      <NextThemesProvider attribute="class" defaultTheme="dark">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <TonConnectUIProvider
+            manifestUrl="https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/docs/tonconnect-manifest.json"
+            actionsConfiguration={{
+              twaReturnUrl: `https://t.me/${botName}/start`,
+            }}
+          >
+            {/* <Analytics />
+            <SpeedInsights /> */}
+            {!__DEV__ && <BackgroundBeams />}
+            <HMSRoomProvider>
+              <Component {...pageProps} />
+
+              <ResizeHandler />
+              <Toaster />
+            </HMSRoomProvider>
+            {/* <BackgroundBeamsTwo /> */}
+          </TonConnectUIProvider>
+        </ThemeProvider>
+      </NextThemesProvider>
+    </NextUIProvider>
+  );
 
   return (
     <main className="dark text-foreground bg-background">
       <ErrorBoundary>
         <div>
           {/* <HuddleProvider client={huddleClient}> */}
-          <ApolloProvider client={apolloClient}>
-            <NextUIProvider>
-              <NextThemesProvider attribute="class" defaultTheme="dark">
-                <ThemeProvider
-                  attribute="class"
-                  defaultTheme="dark"
-                  enableSystem
-                  disableTransitionOnChange
-                >
-                  <TonConnectUIProvider
-                    manifestUrl="https://dmrooqbmxdhdyblqzswu.supabase.co/storage/v1/object/public/docs/tonconnect-manifest.json"
-                    actionsConfiguration={{
-                      twaReturnUrl: `https://t.me/${botName}/start`,
-                    }}
-                  >
-                    {/* <Analytics />
-                    <SpeedInsights /> */}
-                    {!__DEV__ && <BackgroundBeams />}
-                    <HMSRoomProvider>
-                      <Component {...pageProps} />
-
-                      <ResizeHandler />
-                      <Toaster />
-                    </HMSRoomProvider>
-                    {/* <BackgroundBeamsTwo /> */}
-                  </TonConnectUIProvider>
-                </ThemeProvider>
-              </NextThemesProvider>
-            </NextUIProvider>
-          </ApolloProvider>
+          {apolloClient ? (
+            <ApolloProvider client={apolloClient}>
+              <AppContent />
+            </ApolloProvider>
+          ) : (
+            <AppContent />
+          )}
           {/* </HuddleProvider> */}
         </div>
       </ErrorBoundary>

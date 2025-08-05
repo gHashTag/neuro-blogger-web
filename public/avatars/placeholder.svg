@@ -1,0 +1,18 @@
+<svg width="200" height="240" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgPlaceholder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#374151"/>
+      <stop offset="100%" style="stop-color:#1f2937"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="240" fill="url(#bgPlaceholder)"/>
+  
+  <!-- Avatar icon -->
+  <circle cx="100" cy="80" r="30" fill="#6b7280"/>
+  <circle cx="100" cy="70" r="12" fill="#9ca3af"/>
+  <path d="M70 110 Q70 90 100 90 Q130 90 130 110 L130 130 Q130 140 120 140 L80 140 Q70 140 70 130 Z" fill="#9ca3af"/>
+  
+  <!-- Text -->
+  <text x="100" y="180" text-anchor="middle" fill="#d1d5db" font-family="Arial" font-size="14" font-weight="bold">AI Avatar</text>
+  <text x="100" y="200" text-anchor="middle" fill="#9ca3af" font-family="Arial" font-size="10">Preview Loading...</text>
+</svg>
