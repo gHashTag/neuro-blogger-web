@@ -74,6 +74,14 @@ export function useSupabase() {
         // если да то направитьего дальше сохранить аватарку
         const updateUser = await updateUserInfoByUsername(user);
 
+        if (!updateUser) {
+          console.error("Failed to update user info");
+          return {
+            user_id: "",
+            username: "",
+          };
+        }
+
         setUserId(updateUser.user_id);
 
         updateUserLocalStorage(
