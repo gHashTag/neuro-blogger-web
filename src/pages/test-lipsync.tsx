@@ -37,7 +37,7 @@ export default function TestLipSyncPage() {
       addLog('info', '🎤 ШАГ 1: Создание lip-sync видео...');
       addLog('info', '📝 Тестовый текст: "Привет! Это тестовое видео для проверки липсинга. Система работает отлично!"');
       
-      const heygenCreateResponse = await fetch('/api/video/generate-real-lipsync', {
+      const heygenCreateResponse = await fetch('/api/video/generate-real-working-lipsync', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

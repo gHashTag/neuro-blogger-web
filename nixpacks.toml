@@ -12,3 +12,6 @@ cmd = "pnpm run start"
 
 [variables]
 NODE_ENV = "production"
+NEXT_PUBLIC_LOCAL_URL = "https://999-web-production.up.railway.app"
+NEXT_PUBLIC_SITE_URL = "https://dao999nft.com"
+NEXT_PUBLIC_DEV = "false"

@@ -21,6 +21,12 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Set build-time environment variables to prevent build errors
+ENV NEXT_PUBLIC_LOCAL_URL=https://999-web-production.up.railway.app
+ENV NEXT_PUBLIC_SITE_URL=https://dao999nft.com
+ENV NEXT_PUBLIC_DEV=false
+ENV NODE_ENV=production
+
 RUN \
   if [ -f yarn.lock ]; then yarn run build; \
   elif [ -f package-lock.json ]; then npm run build; \

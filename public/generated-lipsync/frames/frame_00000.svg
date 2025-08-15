@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+  <!-- Фон -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E3F2FD" />
+      <stop offset="100%" style="stop-color:#BBDEFB" />
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" fill="url(#bg)"/>
+  
+  <!-- Лицо -->
+  <circle cx="320" cy="240" r="150" fill="#FFE0B2" stroke="#FFCC80" stroke-width="2"/>
+  
+  <!-- Глаза -->
+  <circle cx="280" cy="200" r="15" fill="#424242"/>
+  <circle cx="360" cy="200" r="15" fill="#424242"/>
+  
+  <!-- Нос -->
+  <path d="M 320 220 L 310 250 L 330 250" stroke="#FFCC80" stroke-width="2" fill="none"/>
+  
+  <!-- Рот -->
+  
+        <ellipse cx="320" cy="300" rx="30" ry="8" fill="#FF6B6B" stroke="#D32F2F" stroke-width="3"/>
+        <line x1="290" y1="300" x2="350" y2="300" stroke="white" stroke-width="1"/>
+      
+  
+  
+  <!-- Текст с фонемой -->
+  <text x="320" y="50" font-family="Arial" font-size="24" font-weight="bold" fill="#1976D2" text-anchor="middle">Звук: "т"</text>
+  
+  <!-- Метка кадра -->
+  <text x="320" y="460" font-family="Arial" font-size="16" fill="#757575" text-anchor="middle">Кадр: 0</text>
+</svg>
