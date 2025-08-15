@@ -42,12 +42,12 @@ const DemoModal = () => {
   return (
     <div className="font-sans">
       <p className="text-[32px] font-semibold my-0">
-        Welcome to the NEUROCALLS
+        Welcome to the Vibecoder 999
       </p>
       <div>
         <p className="text-gray-300 text-[15px] my-0">
           A new era in the financial world opens today with the launch of the
-          NEUROCALLS digital avatar bank. This is a unique financial
+          Vibecoder 999 digital avatar bank. This is a unique financial
           institution where immortality is now not only a concept, but a
           reality.
         </p>
@@ -72,7 +72,7 @@ const DemoModal = () => {
             backgroundColor="var(--brand)"
             foregroundColor="black"
           />
-          NeuroCalls
+          Vibecoder 999
         </div>
       </div>
     </div>

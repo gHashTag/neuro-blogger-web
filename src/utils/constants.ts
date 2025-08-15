@@ -53,9 +53,9 @@ export const DEV_MOCK_USER = {
   is_premium: true,
   is_admin: true,
   created_at: "2024-01-01T00:00:00.000Z",
-  projects: ["999-web", "neurocoder", "neurocalls"],
+  projects: ["999-web", "neurocoder", "vibecoder999"],
 };
 
-export const botName = __DEV__ ? "dao999nft_dev_bot" : "neurocalls_chat_bot";
+export const botName = __DEV__ ? "dao999nft_dev_bot" : "vibecoder999_chat_bot";
 
 console.log(botName, "botName");

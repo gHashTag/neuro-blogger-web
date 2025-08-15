@@ -22,8 +22,8 @@ import ConfContent from "@components/index";
 
 export default function Conf() {
   const meta = {
-    title: "NEUROCALLS",
-    description: "NEUROCALLS in Telegram",
+    title: "Vibecoder 999",
+    description: "Vibecoder 999 in Telegram",
   };
 
   return (

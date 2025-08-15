@@ -37,7 +37,7 @@ export function HostedByVercel() {
         backgroundColor="var(--accents-1)"
         foregroundColor="black"
       />
-      NeuroCalls 
+      Vibecoder 999
     </div>
   );
 }
