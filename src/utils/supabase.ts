@@ -22,18 +22,31 @@ interface UpdateResultParams {
   value: boolean;
 }
 
-if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
-  throw new Error("NEXT_PUBLIC_SUPABASE_URL is not set");
-}
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
 
-if (!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
-  throw new Error("NEXT_PUBLIC_SUPABASE_ANON_KEY is not set");
-}
+// During build time, we might not have env variables yet
+let supabase: ReturnType<typeof createClient>;
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-);
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.warn("Supabase environment variables not fully set:", {
+    url: !!supabaseUrl,
+    key: !!supabaseAnonKey
+  });
+  
+  // During build, use placeholder values
+  if (typeof window === "undefined") {
+    const dummyUrl = "https://placeholder.supabase.co";
+    const dummyKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.placeholder";
+    console.warn("Using placeholder Supabase config for build");
+    supabase = createClient(dummyUrl, dummyKey);
+  } else {
+    // In browser, throw error if env vars are missing
+    throw new Error("NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY is not set");
+  }
+} else {
+  supabase = createClient(supabaseUrl, supabaseAnonKey);
+}
 
 export async function getWorkspaceById(workspace_id: string) {
   const { data, error } = await supabase
