@@ -7,7 +7,7 @@ import { promisify } from 'util';
 const execAsync = promisify(exec);
 
 // Фонемы для русского языка с формами рта
-const PHONEME_MOUTH_SHAPES = {
+const PHONEME_MOUTH_SHAPES: Record<string, { width: number; height: number; shape: string }> = {
   // Гласные
   'а': { width: 0.8, height: 0.9, shape: 'wide' },
   'э': { width: 0.7, height: 0.6, shape: 'wide' },
@@ -71,7 +71,7 @@ function textToPhonemes(text: string): Array<{ phoneme: string; duration: number
 
 // Генерация SVG кадра видео
 function generateSVGFrame(phoneme: string, frameNumber: number): string {
-  const mouthShape = PHONEME_MOUTH_SHAPES[phoneme] || PHONEME_MOUTH_SHAPES['_'];
+  const mouthShape = PHONEME_MOUTH_SHAPES[phoneme as keyof typeof PHONEME_MOUTH_SHAPES] || PHONEME_MOUTH_SHAPES['_'];
   
   // Анимация
   const animationPhase = Math.sin(frameNumber * 0.2) * 0.1;
