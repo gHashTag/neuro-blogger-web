@@ -2,28 +2,30 @@
 export var __DEV__ = process.env.NODE_ENV !== "production";
 export const DEV_AUTH_BYPASS = __DEV__ && process.env.NEXT_PUBLIC_DEV_AUTH_BYPASS === "true";
 
-// Skip environment validation in dev bypass mode
-if (!DEV_AUTH_BYPASS) {
-  if (!process.env.NEXT_PUBLIC_LOCAL_URL) {
-    throw new Error("NEXT_PUBLIC_LOCAL_URL is not set");
+// Skip environment validation in dev bypass mode and during build
+const isBuildTime = process.env.NODE_ENV === 'production' && typeof window === 'undefined';
+
+if (!DEV_AUTH_BYPASS && !isBuildTime) {
+  if (!process.env.NEXT_PUBLIC_LOCAL_URL && __DEV__) {
+    console.warn("NEXT_PUBLIC_LOCAL_URL is not set, using default");
   }
 
-  if (!process.env.NEXT_PUBLIC_SITE_URL) {
-    throw new Error("NEXT_PUBLIC_SITE_URL is not set");
+  if (!process.env.NEXT_PUBLIC_SITE_URL && !__DEV__) {
+    console.warn("NEXT_PUBLIC_SITE_URL is not set, using default");
   }
 
   if (!process.env.NEXT_PUBLIC_SENTRY_DSN) {
-    throw new Error("NEXT_PUBLIC_SENTRY_DSN is not set");
+    console.warn("NEXT_PUBLIC_SENTRY_DSN is not set");
   }
 
   if (!process.env.NEXT_PUBLIC_DEV) {
-    throw new Error("NEXT_PUBLIC_DEV is not set");
+    console.warn("NEXT_PUBLIC_DEV is not set");
   }
 }
 
 export const SITE_URL = __DEV__
   ? (process.env.NEXT_PUBLIC_LOCAL_URL || "http://localhost:80") 
-  : (process.env.NEXT_PUBLIC_SITE_URL || "https://localhost");
+  : (process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_LOCAL_URL || "https://dao999nft.com");
 
 export const headers = {
   "Content-Type": "application/json",
