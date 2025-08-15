@@ -32,6 +32,15 @@ interface VideoGenerationData {
   language: string;
 }
 
+interface Voice {
+  id: string;
+  name: string;
+  language: string;
+  gender: "male" | "female" | "neutral";
+  preview_audio?: string;
+  description?: string;
+}
+
 // 🎨 Avatar Hover Card Component
 const AvatarCard = ({
   avatar,
@@ -170,18 +179,22 @@ const AvatarCard = ({
             {avatar.name}
           </h3>
           <div className="flex items-center gap-2 flex-wrap">
-            <Badge
-              variant="secondary"
-              className="text-xs bg-gradient-to-r from-purple-500/20 to-blue-500/20 border-purple-500/30 text-purple-200"
-            >
-              {avatar.style}
-            </Badge>
-            <Badge
-              variant="outline"
-              className="text-xs border-cyan-500/30 text-cyan-200 bg-cyan-500/10"
-            >
-              {avatar.gender}
-            </Badge>
+            {avatar.style && (
+              <Badge
+                variant="secondary"
+                className="text-xs bg-gradient-to-r from-purple-500/20 to-blue-500/20 border-purple-500/30 text-purple-200"
+              >
+                {avatar.style}
+              </Badge>
+            )}
+            {avatar.gender && (
+              <Badge
+                variant="outline"
+                className="text-xs border-cyan-500/30 text-cyan-200 bg-cyan-500/10"
+              >
+                {avatar.gender}
+              </Badge>
+            )}
           </div>
         </div>
       </div>
@@ -193,7 +206,9 @@ const AvatarCard = ({
 export default function CreateAvatarVideo() {
   const [currentStep, setCurrentStep] = useState(1);
   const [avatars, setAvatars] = useState<Avatar[]>([]);
+  const [voices, setVoices] = useState<Voice[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isVoicesLoading, setIsVoicesLoading] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [generationProgress, setGenerationProgress] = useState(0);
   const [videoResult, setVideoResult] = useState<any>(null);
@@ -210,7 +225,7 @@ export default function CreateAvatarVideo() {
     avatar: null,
     script: "",
     title: "",
-    voice: "natural",
+    voice: "81bb7c1a521442f6b812b2294a29acc1", // Dmitry - Professional (Russian)
     language: "ru-RU",
   });
 
@@ -235,11 +250,12 @@ export default function CreateAvatarVideo() {
     }
   }, [avatars, isLoading, currentStep]);
 
-  // 📡 Load avatars on mount
+  // 📡 Load avatars and voices on mount
   useEffect(() => {
-    console.log("🚀 Component mounted, checking API and loading avatars...");
+    console.log("🚀 Component mounted, checking API and loading data...");
     checkApiStatus();
     loadAvatars();
+    loadVoices();
   }, []);
 
   // 🔍 Check HeyGen API Status
@@ -462,19 +478,60 @@ export default function CreateAvatarVideo() {
     }
   };
 
+  // 🎤 Load voices from HeyGen API
+  const loadVoices = async () => {
+    console.log("🎤 === FRONTEND: Starting to load voices ===");
+    setIsVoicesLoading(true);
+    try {
+      console.log("📡 Making API request to /api/voices/list");
+      const response = await fetch("/api/voices/list");
+      console.log(
+        "📨 Voices response status:",
+        response.status,
+        response.statusText
+      );
+
+      const result = await response.json();
+      console.log("📦 Raw voices API response:", result);
+
+      if (result.success && result.voices && Array.isArray(result.voices)) {
+        console.log(`🎤 Received ${result.voices.length} voices from API`);
+        console.log("🔍 First 3 voices:", result.voices.slice(0, 3));
+
+        setVoices(result.voices);
+        console.log("✅ Voices loaded successfully:", result.voices.length);
+
+        // Set default voice if not already set
+        if (!formData.voice && result.voices.length > 0) {
+          const defaultVoice =
+            result.voices.find((v: Voice) => v.gender === "male") ||
+            result.voices[0];
+          setFormData((prev) => ({
+            ...prev,
+            voice: defaultVoice.id,
+          }));
+          console.log("🎤 Set default voice:", defaultVoice.name);
+        }
+      } else {
+        console.error("❌ Invalid voices response:", result);
+        setVoices([]);
+      }
+    } catch (error) {
+      console.error("❌ Error loading voices:", error);
+      setVoices([]);
+    } finally {
+      console.log("🏁 Setting voices loading to false");
+      setIsVoicesLoading(false);
+    }
+  };
+
   // 🎯 Generate Video with HeyGen API
   const generateVideo = async () => {
     if (!formData.avatar || !formData.script) return;
 
-    // 🚫 Временно отключена генерация видео - API endpoints не работают
-    alert(
-      "⚠️ Генерация видео временно недоступна.\n\n" +
-        "🔍 Причина: HeyGen video API endpoints возвращают 404.\n" +
-        "💡 Возможно ваш API ключ не имеет доступа к генерации видео.\n\n" +
-        "📞 Решение: Свяжитесь с поддержкой HeyGen для активации video generation API.\n" +
-        "📧 support@heygen.com"
+    console.log(
+      "🚀 Starting HeyGen video generation with correct headers and payload..."
     );
-    return;
 
     // Check API status before starting
     if (apiStatus === "unavailable") {
@@ -521,23 +578,27 @@ export default function CreateAvatarVideo() {
       const videoId = generateResult.video_id;
       console.log("✅ Video generation started, ID:", videoId);
 
-      // Poll for completion
+      // 🔄 Poll for real completion status
+      console.log("🔄 Starting real status polling...");
+      setGenerationProgress(25);
+
       const pollInterval = setInterval(async () => {
         try {
           const statusResponse = await fetch(`/api/video/status/${videoId}`);
           const statusResult = await statusResponse.json();
 
-          console.log("📊 Status update:", statusResult);
+          console.log("📊 Video status update:", statusResult);
 
           if (statusResult.success) {
-            // Update progress based on status
             if (statusResult.status === "completed") {
               clearInterval(pollInterval);
               setGenerationProgress(100);
 
-              // Set final result
+              // Set final result with real video URL
               setVideoResult({
-                video_url: statusResult.video_url,
+                video_url:
+                  statusResult.video_url ||
+                  `https://app.heygen.com/share/${videoId}`,
                 thumbnail:
                   statusResult.thumbnail_url ||
                   formData.avatar?.preview_image_url ||
@@ -557,30 +618,40 @@ export default function CreateAvatarVideo() {
               statusResult.status === "error"
             ) {
               clearInterval(pollInterval);
-              throw new Error("Video generation failed");
-            } else {
+              console.error("❌ Video generation failed:", statusResult.error);
+              alert(
+                `Ошибка генерации видео: ${
+                  statusResult.error?.detail ||
+                  statusResult.error?.message ||
+                  "Неизвестная ошибка"
+                }`
+              );
+              setIsGenerating(false);
+            } else if (statusResult.status === "processing") {
               // Update progress for processing status
-              const progress =
-                statusResult.progress || Math.min(95, Date.now() % 95);
+              const progress = Math.min(95, 25 + Math.random() * 50);
               setGenerationProgress(progress);
+              console.log(`⏳ Video processing... ${Math.round(progress)}%`);
             }
+          } else {
+            console.warn("⚠️ Status check failed, retrying...");
           }
         } catch (error) {
           console.error("❌ Status check error:", error);
         }
-      }, 2000); // Poll every 2 seconds
+      }, 3000); // Poll every 3 seconds
 
-      // Timeout (5 minutes)
+      // Timeout after 5 minutes
       setTimeout(() => {
         clearInterval(pollInterval);
         if (isGenerating) {
-          console.error("⏰ Video generation timeout - stopping");
-          setIsGenerating(false);
+          console.error("⏰ Video generation timeout");
           alert(
-            "Генерация видео превысила лимит времени (5 минут). Попробуйте позже."
+            "Генерация видео превысила лимит времени (5 минут). Проверьте статус позже."
           );
+          setIsGenerating(false);
         }
-      }, 300000); // 5 minute timeout
+      }, 5 * 60 * 1000);
     } catch (error) {
       console.error("❌ Video generation failed:", error);
       setIsGenerating(false);
@@ -928,22 +999,73 @@ export default function CreateAvatarVideo() {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-white mb-2">
-                      Голос
+                      Голос {isVoicesLoading && "⏳"}
                     </label>
-                    <select
-                      value={formData.voice}
-                      onChange={(e) =>
-                        setFormData((prev) => ({
-                          ...prev,
-                          voice: e.target.value,
-                        }))
-                      }
-                      className="w-full bg-white/[0.02] border border-white/[0.1] rounded-md px-3 py-2 text-white"
-                    >
-                      <option value="natural">Натуральный</option>
-                      <option value="professional">Профессиональный</option>
-                      <option value="friendly">Дружелюбный</option>
-                    </select>
+                    {isVoicesLoading ? (
+                      <div className="w-full bg-white/[0.02] border border-white/[0.1] rounded-md px-3 py-2 text-gray-400">
+                        Загрузка голосов...
+                      </div>
+                    ) : voices.length > 0 ? (
+                      <select
+                        value={formData.voice}
+                        onChange={(e) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            voice: e.target.value,
+                          }))
+                        }
+                        className="w-full bg-white/[0.02] border border-white/[0.1] rounded-md px-3 py-2 text-white"
+                      >
+                        {voices.map((voice) => (
+                          <option key={voice.id} value={voice.id}>
+                            {voice.name} (
+                            {voice.gender === "male"
+                              ? "👨"
+                              : voice.gender === "female"
+                              ? "👩"
+                              : "🎭"}{" "}
+                            {voice.language})
+                          </option>
+                        ))}
+                      </select>
+                    ) : (
+                      <div className="w-full bg-red-900/20 border border-red-500/30 rounded-md px-3 py-2 text-red-300 text-sm">
+                        ⚠️ Голоса не загружены
+                      </div>
+                    )}
+
+                    {/* Voice preview button */}
+                    {voices.length > 0 && formData.voice && (
+                      <div className="mt-2">
+                        {(() => {
+                          const selectedVoice = voices.find(
+                            (v: Voice) => v.id === formData.voice
+                          );
+                          return selectedVoice?.preview_audio ? (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const audio = new Audio(
+                                  selectedVoice.preview_audio
+                                );
+                                audio
+                                  .play()
+                                  .catch((e) =>
+                                    console.log("Audio play failed:", e)
+                                  );
+                              }}
+                              className="text-xs text-blue-400 hover:text-blue-300 transition-colors"
+                            >
+                              🔊 Прослушать образец
+                            </button>
+                          ) : (
+                            <span className="text-xs text-gray-500">
+                              ✅ {selectedVoice?.name || "Выбран"}
+                            </span>
+                          );
+                        })()}
+                      </div>
+                    )}
                   </div>
 
                   <div>

@@ -21,7 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const avatarsResponse = await fetch('https://api.heygen.com/v2/avatars', {
       method: 'GET',
       headers: {
-        'X-API-Key': HEYGEN_API_KEY,
+        'x-api-key': HEYGEN_API_KEY,
         'Accept': 'application/json',
       },
     });
@@ -55,7 +55,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const videoResponse = await fetch('https://api.heygen.com/v1/talking_photo.generate', {
         method: 'POST',
         headers: {
-          'X-API-Key': HEYGEN_API_KEY,
+          'x-api-key': HEYGEN_API_KEY,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({

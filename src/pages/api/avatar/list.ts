@@ -42,7 +42,7 @@ async function getHeyGenAvatars(): Promise<HeyGenAvatar[]> {
       ];
     
     const authMethods = [
-      { "X-API-Key": HEYGEN_API_KEY },
+  
       { "Authorization": `Bearer ${HEYGEN_API_KEY}` },
       { "x-api-key": HEYGEN_API_KEY },
     ];
@@ -213,6 +213,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       ...avatar,
       id: avatar.avatar_id, // avatar_id -> id для совместимости
       name: avatar.avatar_name,
+      style: "realistic" as const, // HeyGen аватары всегда realistic
+      gender: avatar.gender || "unknown" as const, // используем gender из API
     }));
 
     const response = {

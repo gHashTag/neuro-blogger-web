@@ -53,7 +53,7 @@ async function createHeyGenVideo(request: VideoGenerationRequest): Promise<strin
           voice: {
             type: "text",
             input_text: request.script,
-            voice_id: request.voice || "BV009_en"
+            voice_id: request.voice || "81bb7c1a521442f6b812b2294a29acc1" // Dmitry - Professional (Russian)
           }
         }
       ]
@@ -62,7 +62,7 @@ async function createHeyGenVideo(request: VideoGenerationRequest): Promise<strin
     {
       avatar_id: request.avatar_id,
       script: request.script,
-      voice: request.voice || "natural",
+      voice: request.voice || "81bb7c1a521442f6b812b2294a29acc1", // Dmitry - Professional (Russian)
       language: request.language || "ru-RU",
       title: request.title
     },
@@ -70,7 +70,7 @@ async function createHeyGenVideo(request: VideoGenerationRequest): Promise<strin
     {
       talking_photo_id: request.avatar_id,
       text: request.script,
-      voice: request.voice || "natural",
+      voice: request.voice || "81bb7c1a521442f6b812b2294a29acc1", // Dmitry - Professional (Russian)
       language: request.language || "ru-RU"
     }
   ];
@@ -88,7 +88,7 @@ async function createHeyGenVideo(request: VideoGenerationRequest): Promise<strin
       const response = await fetch(endpoint, {
         method: "POST",
         headers: {
-          "X-API-Key": HEYGEN_API_KEY,
+          "x-api-key": HEYGEN_API_KEY,
           "Content-Type": "application/json",
           "Accept": "application/json",
         },
@@ -139,7 +139,7 @@ async function checkVideoStatus(videoId: string): Promise<any> {
       const response = await fetch(endpoint, {
         method: "GET",
         headers: {
-          "X-API-Key": HEYGEN_API_KEY,
+          "x-api-key": HEYGEN_API_KEY,
           "Accept": "application/json",
         },
       });

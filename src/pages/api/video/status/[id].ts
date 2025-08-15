@@ -26,6 +26,7 @@ async function checkHeyGenVideoStatus(videoId: string): Promise<any> {
   }
 
   const statusEndpoints = [
+    `${HEYGEN_API_BASE}/v1/video_status.get?video_id=${videoId}`, // ✅ WORKING ENDPOINT
     `${HEYGEN_API_BASE}/v1/video_status?video_id=${videoId}`,
     `${HEYGEN_API_BASE}/v2/video_status?video_id=${videoId}`,
     `${HEYGEN_API_BASE}/v1/video/${videoId}`,
@@ -43,7 +44,7 @@ async function checkHeyGenVideoStatus(videoId: string): Promise<any> {
       const response = await fetch(endpoint, {
         method: "GET",
         headers: {
-          "X-API-Key": HEYGEN_API_KEY,
+          "x-api-key": HEYGEN_API_KEY,
           "Accept": "application/json",
         },
       });
